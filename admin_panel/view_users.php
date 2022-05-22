@@ -48,7 +48,6 @@
 									$user_img = $row_users['admin_image'];
 									$user_email = $row_users['admin_email'];
 									$user_country = $row_users['admin_country'];
-									$user_job = $row_users['admin_job'];
 									$user_phone = $row_users['admin_phone'];
 									$i++;
 								

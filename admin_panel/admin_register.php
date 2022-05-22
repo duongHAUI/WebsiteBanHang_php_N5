@@ -137,7 +137,7 @@
 
 		move_uploaded_file($ad_image_tmp, "admin_images/$ad_image");
 
-		$insert_ad = "insert into admins (admin_name, admin_email, admin_password, admin_country, admin_phone, admin_job, admin_image, admin_about) values ('$ad_name', '$ad_email', '$ad_password', '$ad_country', '$ad_phone', '$ad_job', '$ad_image', '$ad_about')";
+		$insert_ad = "insert into admins (admin_name, admin_email, admin_password, admin_country, admin_phone, admin_image, admin_about) values ('$ad_name', '$ad_email', '$ad_password', '$ad_country', '$ad_phone', '$ad_image', '$ad_about')";
 
 		$run_ad = mysqli_query($con, $insert_ad);
 		if ($run_ad) {

@@ -1,6 +1,7 @@
 <?php 
 	$active='Account'; 
-	include("includes/header.php");
+	//include("includes/header.php");
+	include("includes/db.php");
 ?>
 
 	<div id="content">
@@ -13,7 +14,7 @@
 			</div>
 			<div class="col-md-3">
 				<?php
-					include("includes/sidebar.php");
+					//include("includes/sidebar.php");
 				?>
 			</div>
 			<div class="col-md-9">
@@ -65,7 +66,7 @@
 		</div>
 	</div>
 	<?php
-		include("includes/footer.php");
+		//include("includes/footer.php");
 	?>
 	<script src="js/bootstrap-337.min.js"></script>
 </body>
@@ -82,24 +83,18 @@
 		$c_address = $_POST['c_address'];
 		$c_image = $_FILES['c_image']['name'];
 		$c_image_tmp = $_FILES['c_image']['tmp_name'];
-		$c_ip = getRealIpUser();
 		move_uploaded_file($c_image_tmp, "customer/customer_images/$c_image");
-		$insert_customer = "insert into customers (customer_name, customer_email, customer_password, customer_country, customer_city, customer_phone, customer_address, customer_image, customer_ip) values ('$c_name', '$c_email', '$c_password', '$c_country', '$c_city', '$c_phone', '$c_address', '$c_image', '$c_ip')";
+		$insert_customer = "insert into customers (customer_name, customer_email, customer_password, customer_country, customer_city, customer_phone, customer_address, customer_image) values ('$c_name', '$c_email', '$c_password', '$c_country', '$c_city', '$c_phone', '$c_address', '$c_image')";
+		
 		$run_customer = mysqli_query($con, $insert_customer);
-		$sel_cart = "select * from cart where ip_add='$c_ip'";
-		$run_cart = mysqli_query($con, $sel_cart);
-		$check_cart = mysqli_num_rows($run_cart);
-		if ($check_cart > 0) {
-			// if register have items in cart
-			$_SESSION['customer_email'] = $c_email;
+		$cus_ip = mysqli_insert_id($con);
+		if($run_customer){
+			$_SESSION['customer_id'] = $cus_ip;
 			echo "<script>alert('Account has been registered successfully')</script>";
-			echo "<script>window.open('checkout.php', '_self')</script>";
+			header("Location: index.php");
+		}else{
+			echo "<script>alert('Account registration failed')</script>";
 		}
-		else{
-			// if register have no items in cart
-			$_SESSION['customer_email'] = $c_email;
-			echo "<script>alert('Account has been registered successfully')</script>";
-			echo "<script>window.open('index.php', '_self')</script>";
-		}
+		
 	}
 ?>

@@ -190,7 +190,6 @@
 					<img src="admin_images/<?php echo $admin_image; ?>" alt="<?php echo $admin_image; ?>" class="rounded img-responsive" style="width: 100%;">
 					<div class="thumb-info-title">
 						<span class="thumb-info-inner"><?php echo $admin_name; ?></span>
-						<span class="thumb-info-type"><?php echo $admin_job; ?></span>
 					</div>
 				</div>
 				<div class="mb-md">

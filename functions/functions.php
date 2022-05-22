@@ -8,7 +8,6 @@
 			case(!empty($_SERVER['HTTP_X_REAL_IP'])) : return $_SERVER['HTTP_X_REAL_IP'];
 			case(!empty($_SERVER['HTTP_CLIENT_IP'])) : return $_SERVER['HTTP_CLIENT_IP'];
 			case(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) : return $_SERVER['HTTP_X_FORWARDED_FOR'];
-
 			default : return $_SERVER['REMOTE_ADDR'];
 		}
 	}
@@ -206,7 +205,7 @@
 		$run_cart = mysqli_query($db, $select_cart);
 		$i = 0;
 		while ($record = mysqli_fetch_array($run_cart)) {
-			$pro_id = $record['p_id'];
+			$pro_id = $record['cart_id'];
 			$pro_qty = $record['qty'];
 			$get_price = "select * from procloth where product_id = '$pro_id'";
 			$run_price = mysqli_query($db, $get_price);

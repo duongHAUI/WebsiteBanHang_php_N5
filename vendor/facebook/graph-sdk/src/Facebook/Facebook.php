@@ -63,7 +63,7 @@ class Facebook
     /**
      * @const string The name of the environment variable that contains the app ID.
      */
-    const APP_ID_ENV_NAME = 'FACEBOOK_APP_ID';
+    const APp_id_ENV_NAME = 'FACEBOOK_APp_id';
 
     /**
      * @const string The name of the environment variable that contains the app secret.
@@ -125,7 +125,7 @@ class Facebook
     public function __construct(array $config = [])
     {
         $config = array_merge([
-            'app_id' => getenv(static::APP_ID_ENV_NAME),
+            'app_id' => getenv(static::APp_id_ENV_NAME),
             'app_secret' => getenv(static::APP_SECRET_ENV_NAME),
             'default_graph_version' => static::DEFAULT_GRAPH_VERSION,
             'enable_beta_mode' => false,
@@ -136,7 +136,7 @@ class Facebook
         ], $config);
 
         if (!$config['app_id']) {
-            throw new FacebookSDKException('Required "app_id" key not supplied in config and could not find fallback environment variable "' . static::APP_ID_ENV_NAME . '"');
+            throw new FacebookSDKException('Required "app_id" key not supplied in config and could not find fallback environment variable "' . static::APp_id_ENV_NAME . '"');
         }
         if (!$config['app_secret']) {
             throw new FacebookSDKException('Required "app_secret" key not supplied in config and could not find fallback environment variable "' . static::APP_SECRET_ENV_NAME . '"');

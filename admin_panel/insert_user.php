@@ -73,12 +73,6 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-3 control-label">Job</label>
-							<div class="col-md-6">
-								<input type="text" name="admin_job" class="form-control" required>
-							</div>
-						</div>
-						<div class="form-group">
 							<label class="col-md-3 control-label">Profile Image</label>
 							<div class="col-md-6">
 								<input type="file" name="admin_image" class="form-control" required>
@@ -112,7 +106,6 @@
 		$user_password = $_POST['admin_password'];
 		$user_country = $_POST['admin_country'];
 		$user_phone = $_POST['admin_phone'];
-		$user_job = $_POST['admin_job'];
 		$user_about = $_POST['admin_about'];
 
 		$user_image = $_FILES['admin_image']['name'];
@@ -120,7 +113,7 @@
 
 		move_uploaded_file($temp_admin_image, "admin_images/$user_image");
 
-		$insert_user = "insert into admins (admin_name, admin_email, admin_password, admin_country, admin_phone, admin_job, admin_image, admin_about) values ('$user_name', '$user_email', '$user_password', '$user_country', '$user_phone', '$user_job', '$user_image', '$user_about')";
+		$insert_user = "insert into admins (admin_name, admin_email, admin_password, admin_country, admin_phone, admin_image, admin_about) values ('$user_name', '$user_email', '$user_password', '$user_country', '$user_phone', '$user_image', '$user_about')";
 
 		$run_user = mysqli_query($con, $insert_user);
 		if ($run_user) {

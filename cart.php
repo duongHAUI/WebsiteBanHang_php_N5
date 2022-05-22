@@ -16,7 +16,7 @@
 					<form action="cart.php" method="post" enctype="multipart/form-data">
 						<h1>Shopping cart</h1>
 						<?php  
-							$ip_add = getRealIpUser();
+							
 							$select_cart = "select * from cart where ip_add='$ip_add'";
 							$run_cart = mysqli_query($con, $select_cart);
 							$count = mysqli_num_rows($run_cart);

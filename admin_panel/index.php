@@ -17,7 +17,6 @@
 		$admin_country = $row_admin['admin_country'];
 		$admin_about = $row_admin['admin_about'];
 		$admin_phone = $row_admin['admin_phone'];
-		$admin_job = $row_admin['admin_job'];
 		$get_products = "select * from procloth";
 		$run_products = mysqli_query($con, $get_products);
 		$count_products = mysqli_num_rows($run_products);

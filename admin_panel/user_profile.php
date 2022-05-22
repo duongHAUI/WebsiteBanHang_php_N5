@@ -20,7 +20,6 @@
 		$user_country = $row_user['admin_country'];
 		$user_about = $row_user['admin_about'];
 		$user_phone = $row_user['admin_phone'];
-		$user_job = $row_user['admin_job'];
 	}
 ?>
 
@@ -91,12 +90,6 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-3 control-label">Job</label>
-							<div class="col-md-6">
-								<input value="<?php echo $user_job; ?>" type="text" name="admin_job" class="form-control">
-							</div>
-						</div>
-						<div class="form-group">
 							<label class="col-md-3 control-label">Profile Image</label>
 							<div class="col-md-6">
 								<input type="file" name="admin_image" class="form-control">
@@ -131,7 +124,6 @@
 		$user_password = $_POST['admin_password'];
 		$user_country = $_POST['admin_country'];
 		$user_phone = $_POST['admin_phone'];
-		$user_job = $_POST['admin_job'];
 		$user_about = $_POST['admin_about'];
 
 		$user_image = $_FILES['admin_image']['name'];
@@ -139,7 +131,7 @@
 
 		move_uploaded_file($temp_admin_image, "admin_images/$user_image");
 
-		$update_user = "update admins set admin_name = '$user_name', admin_email = '$user_email', admin_password = '$user_password', admin_country = '$user_country', admin_phone = '$user_phone', admin_job = '$user_job', admin_about = '$user_about', admin_image = '$user_image' where admin_id = '$user_id'";
+		$update_user = "update admins set admin_name = '$user_name', admin_email = '$user_email', admin_password = '$user_password', admin_country = '$user_country', admin_phone = '$user_phone', admin_about = '$user_about', admin_image = '$user_image' where admin_id = '$user_id'";
 
 		$run_update_user = mysqli_query($con, $update_user);
 		if ($run_update_user) {
