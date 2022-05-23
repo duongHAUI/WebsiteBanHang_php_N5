@@ -1,6 +1,6 @@
 <?php 
 	$active='Account'; 
-	//include("includes/header.php");
+	include("includes/header.php");
 	include("includes/db.php");
 ?>
 
@@ -14,7 +14,7 @@
 			</div>
 			<div class="col-md-3">
 				<?php
-					//include("includes/sidebar.php");
+					include("includes/sidebar.php");
 				?>
 			</div>
 			<div class="col-md-9">
@@ -66,7 +66,7 @@
 		</div>
 	</div>
 	<?php
-		//include("includes/footer.php");
+		include("includes/footer.php");
 	?>
 	<script src="js/bootstrap-337.min.js"></script>
 </body>

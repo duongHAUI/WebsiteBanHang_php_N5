@@ -472,7 +472,7 @@
 				</a>
 				<a href="cart.php">
 					<i class="fa" style="font-size: 24px;">&#xf07a;</i>
-					<span class='badge badge-warning' id='lblCartCount'><?php items(); ?></span>
+					<!-- <span class='badge badge-warning' id='lblCartCount'><?php items(); ?></span> -->
 				</a>
 			</div>
 			<div class="col-md-6">
