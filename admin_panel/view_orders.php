@@ -41,7 +41,7 @@
 						<tbody>
 							<?php
 								$i=0;  
-								$get_orders = "select * from pending_orders";
+								$get_orders = "select * from orders";
 								$run_orders = mysqli_query($con, $get_orders);
 								while ($row_orders=mysqli_fetch_array($run_orders)) {
 									$order_id = $row_orders['order_id'];
@@ -51,7 +51,7 @@
 									$qty = $row_orders['qty'];
 									$size = $row_orders['size'];
 									$order_status = $row_orders['order_status'];
-									$get_products = "select * from procloth where product_id = '$product_id'";
+									$get_products = "select * from products where product_id = '$product_id'";
 									$run_products = mysqli_query($con, $get_products);
 									$row_products = mysqli_fetch_array($run_products);
 									$product_title = $row_products['product_title'];
@@ -59,7 +59,7 @@
 									$run_customer = mysqli_query($con, $get_customer);
 									$row_customer = mysqli_fetch_array($run_customer);
 									$customer_email = $row_customer['customer_email'];
-									$get_c_order = "select * from customer_orders where order_id = '$order_id'";
+									$get_c_order = "select * from orders where order_id = '$order_id'";
 									$run_c_order = mysqli_query($con, $get_c_order);
 									$row_c_order = mysqli_fetch_array($run_c_order);
 									$order_date = $row_c_order['order_date'];

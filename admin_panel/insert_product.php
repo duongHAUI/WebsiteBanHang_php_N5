@@ -158,7 +158,7 @@
 		move_uploaded_file($temp_name2, "product_images/$product_img2");
 		move_uploaded_file($temp_name3, "product_images/$product_img3");
 
-		$insert_product = "insert into procloth (cat_id, brand_id, date, product_title, product_img1, product_img2, product_img3, product_price, product_keywords, product_desc) values ('$cat', '$brand', NOW(), '$product_title', '$product_img1', '$product_img2', '$product_img3', '$product_price', '$product_keywords', '$product_desc')";
+		$insert_product = "insert into products (cat_id, brand_id, date, product_title, product_img1, product_img2, product_img3, product_price, product_keywords, product_desc) values ('$cat', '$brand', NOW(), '$product_title', '$product_img1', '$product_img2', '$product_img3', '$product_price', '$product_keywords', '$product_desc')";
 
 		$run_product = mysqli_query($con, $insert_product);
 		if ($run_product) {

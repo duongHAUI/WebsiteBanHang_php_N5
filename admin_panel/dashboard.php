@@ -129,7 +129,7 @@
 						<tbody>
 							<?php  
 								$i=0;
-								$get_order = "select * from pending_orders order by 1 DESC LIMIT 0,5";
+								$get_order = "select * from orders order by 1 DESC LIMIT 0,5";
 								$run_order = mysqli_query($con, $get_order);
 								while ($row_order=mysqli_fetch_array($run_order)) {
 									$order_id = $row_order['order_id'];

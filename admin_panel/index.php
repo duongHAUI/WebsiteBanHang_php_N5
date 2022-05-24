@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	include("includes/db.php");
+	include("../db/connectdb.php");
 	
 	if (!isset($_SESSION['admin_email'])){
 		echo "<script>window.open('login.php', '_self')</script>";
@@ -17,7 +17,7 @@
 		$admin_country = $row_admin['admin_country'];
 		$admin_about = $row_admin['admin_about'];
 		$admin_phone = $row_admin['admin_phone'];
-		$get_products = "select * from procloth";
+		$get_products = "select * from products";
 		$run_products = mysqli_query($con, $get_products);
 		$count_products = mysqli_num_rows($run_products);
 		$get_customers = "select * from customers";
@@ -26,7 +26,7 @@
 		$get_categories = "select * from categories";
 		$run_categories = mysqli_query($con, $get_categories);
 		$count_categories = mysqli_num_rows($run_categories);
-		$get_pending_orders = "select * from pending_orders";
+		$get_pending_orders = "select * from orders";
 		$run_pending_orders = mysqli_query($con, $get_pending_orders);
 		$count_pending_orders = mysqli_num_rows($run_pending_orders);
 	
@@ -265,7 +265,7 @@
 	</style>
 	<div id="wrapper">
 		<?php  
-			include("includes/sidebar.php");
+			include("sidebar.php");
 		?>
 		<div id="page-wrapper">
 			<div class="container-fluid">

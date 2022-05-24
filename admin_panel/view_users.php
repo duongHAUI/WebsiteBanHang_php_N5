@@ -31,7 +31,6 @@
 								<th>User Image</th>
 								<th>Email</th>
 								<th>Country</th>
-								<th>Job</th>
 								<th>Phone Number</th>
 								<th>Edit</th>
 								<th>Delete</th>
@@ -58,7 +57,6 @@
 								<td><img src="../admin_panel/admin_images/<?php echo $user_img; ?>" width="250" height="150"></td>
 								<td><?php echo $user_email; ?></td>
 								<td><?php echo $user_country; ?></td>
-								<td><?php echo $user_job; ?></td>
 								<td><?php echo $user_phone; ?></td>
 								<td>
 									<button class="btn btn-success">

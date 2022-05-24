@@ -9,7 +9,7 @@
 <?php  
 	if (isset($_GET['edit_product'])) {
 		$edit_id = $_GET['edit_product'];
-		$get_p = "select * from procloth where product_id = '$edit_id'";
+		$get_p = "select * from products where product_id = '$edit_id'";
 		$run_edit = mysqli_query($con, $get_p);
 		$row_edit = mysqli_fetch_array($run_edit);
 		$p_id = $row_edit['product_id'];
@@ -193,7 +193,7 @@
 		move_uploaded_file($temp_name2, "product_images/$product_img2");
 		move_uploaded_file($temp_name3, "product_images/$product_img3");
 
-		$update_product = "update procloth set cat_id = '$cat', brand_id = '$brand', date = NOW(), product_title = '$product_title', product_img1 = '$product_img1', product_img2 = '$product_img2', product_img3 = '$product_img3', product_keywords = '$product_keywords', product_desc = '$product_desc', product_price = '$product_price' where product_id = '$p_id'";
+		$update_product = "update products set cat_id = '$cat', brand_id = '$brand', date = NOW(), product_title = '$product_title', product_img1 = '$product_img1', product_img2 = '$product_img2', product_img3 = '$product_img3', product_keywords = '$product_keywords', product_desc = '$product_desc', product_price = '$product_price' where product_id = '$p_id'";
 		$run_update = mysqli_query($con, $update_product);
 		if ($run_update) {
 			echo "<script>alert('Product has been updated successfully')</script>";

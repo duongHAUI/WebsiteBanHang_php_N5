@@ -36,7 +36,8 @@
 							<h3 class="panel-title" align="center"><?php echo $slide_name; ?></h3>
 						</div>
 						<div class="panel-body">
-							<img src="slides_images/<?php echo $slide_image; ?>" alt="<?php echo $slide_name; ?>" class="img-responsive">
+							
+							<img src="./slides_images/<?=$slide_image?>" alt="<?php echo $slide_name; ?>" class="img-responsive">
 						</div>
 						<div class="panel-footer">
 							<center>

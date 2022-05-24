@@ -40,7 +40,7 @@
 						<tbody>
 							<?php
 								$i=0;  
-								$get_pro = "select * from procloth";
+								$get_pro = "select * from products";
 								$run_pro = mysqli_query($con, $get_pro);
 								while ($row_pro=mysqli_fetch_array($run_pro)) {
 									$pro_id = $row_pro['product_id'];
