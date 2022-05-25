@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 24, 2022 lúc 05:29 PM
+-- Thời gian đã tạo: Th5 25, 2022 lúc 12:25 PM
 -- Phiên bản máy phục vụ: 10.4.22-MariaDB
 -- Phiên bản PHP: 8.1.2
 
@@ -64,17 +64,6 @@ CREATE TABLE `brands` (
   `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Đang đổ dữ liệu cho bảng `brands`
---
-
-INSERT INTO `brands` (`brand_id`, `brand_title`, `brand_desc`, `createdAt`, `updatedAt`) VALUES
-(1, 'Prada', 'This is the brand related to Prada company. This brand has been edited', '2022-05-22 03:00:13', '2022-05-22 03:00:25'),
-(2, 'Canifa', 'This is the brand related to Canifa company', '2022-05-22 03:00:13', '2022-05-22 03:00:25'),
-(3, 'H&M', 'This is the brand related to H&M company', '2022-05-22 03:00:13', '2022-05-22 03:00:25'),
-(4, 'Zara', 'This is the brand related to Zara company', '2022-05-22 03:00:13', '2022-05-22 03:00:25'),
-(6, 'NEM', 'This is the brand related to NEM company and it very popular', '2022-05-22 03:00:13', '2022-05-22 03:00:25');
-
 -- --------------------------------------------------------
 
 --
@@ -105,17 +94,6 @@ CREATE TABLE `categories` (
   `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Đang đổ dữ liệu cho bảng `categories`
---
-
-INSERT INTO `categories` (`cat_id`, `cat_title`, `cat_desc`, `createdAt`, `updatedAt`) VALUES
-(1, 'Vest', 'This is the category including with all Vest shirts and Vest suits. It is suitable for both men and women', '2022-05-22 03:10:09', '2022-05-22 03:10:46'),
-(2, 'Jacket', 'This is the category including with all Jacket', '2022-05-22 03:10:09', '2022-05-22 03:10:46'),
-(3, 'T-shirt', 'This is the category including with all T-shirt.  It is suitable for both men and women', '2022-05-22 03:10:09', '2022-05-22 03:10:46'),
-(5, 'Coat', 'This is the category including with all Coat', '2022-05-22 03:10:09', '2022-05-22 03:10:46'),
-(6, 'Shoes', 'This is the category including all shoes. It is suitable for both men, women and kid (updated)', '2022-05-22 03:10:09', '2022-05-22 03:10:46');
-
 -- --------------------------------------------------------
 
 --
@@ -135,23 +113,6 @@ CREATE TABLE `customers` (
   `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
   `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Đang đổ dữ liệu cho bảng `customers`
---
-
-INSERT INTO `customers` (`customer_id`, `customer_name`, `customer_email`, `customer_password`, `customer_country`, `customer_city`, `customer_phone`, `customer_address`, `customer_image`, `createdAt`, `updatedAt`) VALUES
-(1, 'Robert Downey Jr', 'RobertDowney123@yahoo.com', '123456', 'USA', 'California', '0866-555-888', 'Arrow Highway', 'c2.jpg', '2022-05-22 03:13:36', '2022-05-22 03:13:56'),
-(2, 'Hoang Hot', 'goddragon703@gmail.com', 'hoangpzo1999', 'Vietnam', 'Ha Noi', '0962-379-888', 'FPT Greenwich university', 'myimage.jpg', '2022-05-22 03:13:36', '2022-05-22 03:13:56'),
-(4, 'duong', 'duongvipro2k1@gmail.com', 'adasd', 'Việt Nam', 'thanh hoa', '0321321321', 'tu honag', 'CaiTu.png', '2022-05-22 04:13:31', '2022-05-22 04:13:31'),
-(5, 'duong', 'duongvipro2k1@gmail.com', '3213213', 'Việt Nam', 'thanh hoa', '0321321321', 'tu honag', 'CaiTu.png', '2022-05-22 04:14:32', '2022-05-22 04:14:32'),
-(6, 'duong', 'duongvipro2k1@gmail.com', '213213213', 'Việt Nam', 'thanh hoa', '0321321321', 'tu honag', 'CaiTu.png', '2022-05-22 04:16:02', '2022-05-22 04:16:02'),
-(7, 'đá ', 'duongvipro2k1@gmail.com', '123213', 'Việt Nam123213', 'thanh hoa', '0321321321', 'tu honag', 'CaiTu.png', '2022-05-22 04:20:57', '2022-05-22 04:20:57'),
-(8, '1231', 'duongvipro2k1@gmail.com', '1232131', 'Việt Nam', 'thanh hoa', '0321321321', 'tu honag', 'CaiTu.png', '2022-05-22 04:23:08', '2022-05-22 04:23:08'),
-(9, '123', 'duongvipro2k1@gmail.com', '123', 'Việt Nam', 'thanh hoa', '0321321321', 'tu honag', 'CaiTu.png', '2022-05-22 04:24:04', '2022-05-22 04:24:04'),
-(10, '123', 'duongvipro2k1@gmail.com', '12313', 'Việt Nam', 'thanh hoa', '0321321321', 'tu honag', 'CaiTu.png', '2022-05-22 04:25:21', '2022-05-22 04:25:21'),
-(11, 'duong', 'duongvipro2k1@gmail.com', '1231', 'Việt Nam', 'thanh hoa', '0321321321', 'tu honag', 'CaiTu.png', '2022-05-22 04:30:17', '2022-05-22 04:30:17'),
-(12, 'duong', 'duongvipro2k1@gmail.com', '213', 'Việt Nam', 'thanh hoa', '0321321321', 'tu honag', 'CaiTu.png', '2022-05-22 04:34:00', '2022-05-22 04:34:00');
 
 -- --------------------------------------------------------
 
@@ -354,7 +315,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT cho bảng `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `brand_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `brand_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `cart`
@@ -366,13 +327,19 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT cho bảng `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `cat_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `cat_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `customers`
 --
 ALTER TABLE `customers`
   MODIFY `customer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT cho bảng `images`
+--
+ALTER TABLE `images`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `order_details`
@@ -385,6 +352,12 @@ ALTER TABLE `order_details`
 --
 ALTER TABLE `payments`
   MODIFY `payment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT cho bảng `products`
+--
+ALTER TABLE `products`
+  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `slider`

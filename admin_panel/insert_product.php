@@ -87,27 +87,27 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-3 control-label">Product Image 1</label>
+							<label class="col-md-3 control-label">Product Img title</label>
 							<div class="col-md-6">
 								<input type="file" name="product_img1" class="form-control" required>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-3 control-label">Product Image 2</label>
+							<label class="col-md-3 control-label">Product Images</label>
 							<div class="col-md-6">
-								<input type="file" name="product_img2" class="form-control">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-md-3 control-label">Product Image 3</label>
-							<div class="col-md-6">
-								<input type="file" name="product_img3" class="form-control form-height-custom">
+								<input type="file" name="product_images[]" class="form-control" multiple="multiple">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-md-3 control-label">Product Price</label>
 							<div class="col-md-6">
 								<input type="text" name="product_price" class="form-control" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label">Product Discount</label>
+							<div class="col-md-6">
+								<input type="text" name="discount" class="form-control" required>
 							</div>
 						</div>
 						<div class="form-group">
@@ -143,31 +143,32 @@
 		$cat = $_POST['cat'];
 		$brand = $_POST['brand'];
 		$product_price = $_POST['product_price'];
+		$discount = $_POST['discount'];
 		$product_keywords = $_POST['product_keywords'];
 		$product_desc = $_POST['product_desc'];
-
+		
 		$product_img1 = $_FILES['product_img1']['name'];
-		$product_img2 = $_FILES['product_img2']['name'];
-		$product_img3 = $_FILES['product_img3']['name'];
-
 		$temp_name1 = $_FILES['product_img1']['tmp_name'];
-		$temp_name2 = $_FILES['product_img2']['tmp_name'];
-		$temp_name3 = $_FILES['product_img3']['tmp_name'];
+		
+		move_uploaded_file($temp_name1, "product_images/$product_img1");	
 
-		move_uploaded_file($temp_name1, "product_images/$product_img1");
-		move_uploaded_file($temp_name2, "product_images/$product_img2");
-		move_uploaded_file($temp_name3, "product_images/$product_img3");
-
-		$insert_product = "insert into products (cat_id, brand_id, date, product_title, product_img1, product_img2, product_img3, product_price, product_keywords, product_desc) values ('$cat', '$brand', NOW(), '$product_title', '$product_img1', '$product_img2', '$product_img3', '$product_price', '$product_keywords', '$product_desc')";
-
+		$images = $_FILES['product_images'];
+		$images_name = $images['name'];
+		foreach ($images_name as $key => $value) {
+		 	move_uploaded_file($images['tmp_name'][$key], "product_images/$value");
+		}
+		$insert_product = "insert into products (cat_id, brand_id, product_title, product_img, product_price, discount, product_keywords, product_desc) values ('$cat', '$brand', '$product_title', '$product_img1', '$product_price','$discount', '$product_keywords', '$product_desc')";
 		$run_product = mysqli_query($con, $insert_product);
+		$id_pro = mysqli_insert_id($con);	
+		foreach ($images_name as $key => $value) {
+		 	mysqli_query($con, "insert into images(id_product ,img) values('$id_pro','$value')");
+	   	}
 		if ($run_product) {
 			echo "<script>alert('Clothing product has been added successfully')</script>";
 			echo "<script>window.open('index.php?view_products', '_self')</script>";
 		}
 	}
 ?>
-
 <?php  
 	}
 ?>
