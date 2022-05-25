@@ -295,7 +295,7 @@
     <!-- end blogs -->
 
     <?php
-        include("./footer.php");
+        include("footer.php");
     ?>
 
     <!-- app js -->

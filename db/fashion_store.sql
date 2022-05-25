@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 25, 2022 lúc 12:25 PM
+-- Thời gian đã tạo: Th5 25, 2022 lúc 05:06 PM
 -- Phiên bản máy phục vụ: 10.4.22-MariaDB
 -- Phiên bản PHP: 8.1.2
 
@@ -45,7 +45,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`admin_id`, `admin_name`, `admin_email`, `admin_password`, `admin_image`, `admin_country`, `admin_about`, `admin_phone`, `createdAt`, `updatedAt`) VALUES
-(2, 'Boss Hoang', 'hoangbvgch17056@fpt.edu.vn', 'hoangdepzai', 'admin4.jpg', 'Vietnam', '<p>I am the 1st Admin</p>', '0974-555-666', '2022-05-22 02:56:57', '2022-05-22 02:57:20'),
+(2, 'Boss Hoang', 'hoangbvgch17056@fpt.edu.vn', 'hoangdepzai', '', 'Vietnam', '<p>I am the 1st Admin a</p>', '0974-555-666', '2022-05-22 02:56:57', '2022-05-25 10:54:30'),
 (3, 'Admin Duong', 'duong123@gmail.com', '123456', 'admin.jpg', 'Vietnam', '<p>I am the 2th Admin</p>', '0933-777-888', '2022-05-22 02:56:57', '2022-05-22 02:57:20'),
 (4, 'Admin Viet Hoang', 'hoang1835@gmail.com', 'hoangpzo123', 'admin1.jpg', 'Vietnam', '<p><span style=\"color: #444444; font-family: sans-serif; font-size: 13.12px;\">I am the creator of this website</span></p>', '0962-379-888', '2022-05-22 02:56:57', '2022-05-22 02:57:20'),
 (8, 'Nguyen van Duong', 'duongvipro2k1@gmail.com', 'duong2k1', 'HN.png', 'Việt Nam', 'haha', '0321321321', '2022-05-23 06:48:07', '2022-05-23 06:48:07');
@@ -63,10 +63,6 @@ CREATE TABLE `brands` (
   `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
   `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Đang đổ dữ liệu cho bảng `brands`
---
 
 -- --------------------------------------------------------
 
@@ -199,10 +195,9 @@ CREATE TABLE `products` (
   `brand_id` int(10) NOT NULL,
   `product_title` text NOT NULL,
   `product_price` int(100) NOT NULL,
-  `discount` int(11) NOT NULL,
+  `product_discount` int(11) NOT NULL,
   `product_img` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `product_desc` text NOT NULL,
-  `product_keywords` text NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
   `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -319,7 +314,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT cho bảng `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `brand_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `brand_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `cart`
@@ -361,7 +356,7 @@ ALTER TABLE `payments`
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `slider`
