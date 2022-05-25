@@ -64,6 +64,10 @@ CREATE TABLE `brands` (
   `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Đang đổ dữ liệu cho bảng `brands`
+--
+
 -- --------------------------------------------------------
 
 --
