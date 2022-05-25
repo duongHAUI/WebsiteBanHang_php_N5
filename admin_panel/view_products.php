@@ -47,7 +47,6 @@
 									$pro_title = $row_pro['product_title'];
 									$pro_img1 = $row_pro['product_img'];
 									$pro_price = $row_pro['product_price'];
-									$pro_keywords = $row_pro['product_keywords'];
 									$pro_date = $row_pro['createdAt'];
 									$i++;
 								

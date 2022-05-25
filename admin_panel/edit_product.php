@@ -21,7 +21,6 @@
 		$p_image3 = $row_edit['product_img3'];
 		$p_price = $row_edit['product_price'];
 		$p_desc = $row_edit['product_desc'];
-		$p_keywords = $row_edit['product_keywords'];
 	}
 
 	$get_cat = "select * from categories where cat_id = '$cat'";
@@ -146,12 +145,6 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-3 control-label">Product Keywords</label>
-							<div class="col-md-6">
-								<input type="text" name="product_keywords" class="form-control" value="<?php echo $p_keywords; ?>">
-							</div>
-						</div>
-						<div class="form-group">
 							<label class="col-md-3 control-label">Product Description</label>
 							<div class="col-md-6">
 								<textarea name="product_desc" cols="19" rows="6" class="form-control"><?php echo $p_desc; ?></textarea>
@@ -178,7 +171,6 @@
 		$cat = $_POST['cat'];
 		$brand = $_POST['brand'];
 		$product_price = $_POST['product_price'];
-		$product_keywords = $_POST['product_keywords'];
 		$product_desc = $_POST['product_desc'];
 
 		$product_img1 = $_FILES['product_img1']['name'];
@@ -193,7 +185,7 @@
 		move_uploaded_file($temp_name2, "product_images/$product_img2");
 		move_uploaded_file($temp_name3, "product_images/$product_img3");
 
-		$update_product = "update products set cat_id = '$cat', brand_id = '$brand', date = NOW(), product_title = '$product_title', product_img1 = '$product_img1', product_img2 = '$product_img2', product_img3 = '$product_img3', product_keywords = '$product_keywords', product_desc = '$product_desc', product_price = '$product_price' where product_id = '$p_id'";
+		$update_product = "update products set cat_id = '$cat', brand_id = '$brand', date = NOW(), product_title = '$product_title', product_img1 = '$product_img1', product_img2 = '$product_img2', product_img3 = '$product_img3', product_desc = '$product_desc', product_price = '$product_price' where product_id = '$p_id'";
 		$run_update = mysqli_query($con, $update_product);
 		if ($run_update) {
 			echo "<script>alert('Product has been updated successfully')</script>";
