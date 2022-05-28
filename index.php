@@ -17,6 +17,9 @@ switch ($request) {
     case '/product-detail' :
         require __DIR__ . '/views/product-detail.php';
         break;
+    case '/checkout' :
+        require __DIR__ . '/views/checkout.php';
+        break;
     default:
         http_response_code(404);
         require __DIR__ . '/views/404.php';
