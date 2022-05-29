@@ -6,7 +6,6 @@ class Detail extends Model
 {
   public $quantity;
   public $price;
-  public $size;
   public $pro_id;
   public $order_id;
   public $product;
@@ -18,7 +17,6 @@ class Detail extends Model
     $this->id = $row["detail_id"];
     $this->quantity = $row["quantity"];
     $this->price = $row["price"];
-    $this->size = $row["size"];
     $this->pro_id = $row["pro_id"];
     $this->order_id = $row["order_id"];
     $this->createdAt = $row["createdAt"];
@@ -29,7 +27,7 @@ class Detail extends Model
   {
     extract(get_object_vars($this));
     $query = "update " . self::TABLE_NAME . " set quantity='$quantity', price='$price', 
-      size='$size', pro_id='$pro_id', order_id='$order_id' where detail_id = $id";
+     pro_id='$pro_id', order_id='$order_id' where detail_id = $id";
 
     mysqli_query($con, $query);
   }
@@ -79,12 +77,11 @@ class Detail extends Model
     [
       "quantity" => $quantity,
       "price" => $price,
-      "size" => $size,
       "pro_id" => $pro_id,
       "order_id" => $order_id,
     ] = $form;
-    $query = "insert into " . self::TABLE_NAME . "(quantity, price, size, pro_id, order_id)
-              values ('$quantity', '$price', '$size', '$pro_id', '$order_id')";
+    $query = "insert into " . self::TABLE_NAME . "(quantity, price, pro_id, order_id)
+              values ('$quantity', '$price', '$pro_id', '$order_id')";
 
     if (mysqli_query($con, $query)) {
       $id = mysqli_insert_id($con);
@@ -205,7 +202,6 @@ class Detail extends Model
     $fields_update = [
       "quantity",
       "price",
-      "size",
       "pro_id",
       "order_id",
     ];
