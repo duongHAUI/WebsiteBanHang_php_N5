@@ -10,3 +10,4 @@ include_once("Detail.php");
 include_once("Order.php");
 include_once("Admin.php");
 include_once("Slider.php");
+?>

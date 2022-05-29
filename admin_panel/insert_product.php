@@ -87,12 +87,6 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-3 control-label">Product Img title</label>
-							<div class="col-md-6">
-								<input type="file" name="product_img1" class="form-control" required>
-							</div>
-						</div>
-						<div class="form-group">
 							<label class="col-md-3 control-label">Product Images</label>
 							<div class="col-md-6">
 								<input type="file" name="product_images[]" class="form-control" multiple="multiple">
@@ -138,12 +132,7 @@
 		$brand = $_POST['brand'];
 		$product_price = $_POST['product_price'];
 		$discount = $_POST['product_discount'];
-		$product_desc = $_POST['product_desc'];
-		
-		$product_img1 = $_FILES['product_img1']['name'];
-		$temp_name1 = $_FILES['product_img1']['tmp_name'];
-		
-		move_uploaded_file($temp_name1, "product_images/$product_img1");	
+		$product_desc = $_POST['product_desc'];	
 
 		$images = $_FILES['product_images'];
 		$images_name = $images['name'];

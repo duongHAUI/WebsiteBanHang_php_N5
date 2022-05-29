@@ -1,3 +1,7 @@
+<?php
+    namespace Models;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +23,7 @@
 <body>
 
     <?php
+    include_once("models/index.php");
     include("header.php");
     include("./db/connectdb.php");
     ?>
@@ -45,11 +50,10 @@
                             </span>
                             <ul class="filter-list">
                                 <?php
-                                    $sqlSelectCategory = "SELECT * FROM categories";
-                                    $CateAll = mysqli_query($con,$sqlSelectCategory);
-                                    while($row = mysqli_fetch_assoc($CateAll)){
+                                    $categories = Category::find_all($con);
+                                    foreach ($categories as $key => $value) {
                                         ?>
-                                        <li><a href=""><?=$row["cat_title"]?></a></li>
+                                        <li><a href="?cat-id=<?=$value->id?>"> <?=$value->title?></a></li>
                                         <?php
                                     }
                                 ?>
@@ -102,24 +106,13 @@
                             </span>
                             <ul class="filter-list">
                                 <?php
-                                    $sqlSelectBrands= "SELECT * FROM brands";
-                                    $BrandsAll = mysqli_query($con,$sqlSelectBrands);
-                                    while($row = mysqli_fetch_assoc($BrandsAll)){
+                                    $brands = Brand::find_all($con);
+                                    foreach ($brands as $key => $value) {
                                         ?>
-                                        <li>
-                                            <div class="group-checkbox">
-                                                <input type="checkbox" id="remember1" checked="checked">
-                                                <label for="remember1">
-                                                    <?=$row["brand_title"]?>
-                                                    <i class='bx bx-check'></i>
-                                                </label>
-                                            </div>
-                                        </li>
-                                    <?php
+                                        <li><a href="?brand-id=<?=$value->id?>"> <?=$value->title?></a></li>
+                                        <?php
                                     }
                                 ?>
-                                
-                            
                             </ul>
                         </div>
                         <div class="box">
@@ -265,15 +258,14 @@
                         <div class="box">
                             <div class="row" id="products">
                                 <?php
-                                    $sqlGetPro = "SELECT * FROM products";
-                                    $ProAll = mysqli_query($con,$sqlGetPro);
-                                    while($row = mysqli_fetch_assoc($ProAll)){
+                                    $prducts = Product::find_all($con);
+                                    foreach ($prducts as $key => $value) {
                                 ?>
                                     <div class="col-4 col-md-6 col-sm-12">
                                         <div class="product-card">
                                             <div class="product-card-img">
-                                                <img src="images/<?=$row["product_img"]?>" alt="">
-                                                <img src="images/<?=$row["product_img"]?>" alt="">
+                                                <img src="../admin_panel/product_images/<?=$value->get_images()[0]->link?>" alt="">
+                                                <img src="../admin_panel/product_images/<?=$value->get_images()[0]->link?>" alt="">
                                             </div>
                                             <div class="product-card-info">
                                                 <div class="product-btn">
@@ -286,11 +278,11 @@
                                                     </button>
                                                 </div>
                                                 <div class="product-card-name">
-                                                    <?=$row["product_title"]?>
+                                                    <?=$value->title?>
                                                 </div>
                                                 <div class="product-card-price">
-                                                    <span><del><?=$row["product_price"]?></del></span>
-                                                    <span class="curr-price"><?=$row["product_price"]?></span>
+                                                    <span><del> <?=$value->price?></del></span>
+                                                    <span class="curr-price"><?=$value->discount?></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -306,8 +298,6 @@
                                 <li><a href="#" class="active">1</a></li>
                                 <li><a href="#">2</a></li>
                                 <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
                                 <li><a href="#"><i class='bx bxs-chevron-right'></i></a></li>
                             </ul>
                         </div>
