@@ -183,7 +183,7 @@
                 </div>
             </div>
             <div class="section-footer">
-                <a href="./products.php" class="btn-flat btn-hover">view all</a>
+                <a href="./products" class="btn-flat btn-hover">view all</a>
             </div>
         </div>
     </div>
@@ -247,7 +247,7 @@
                 </div>
             </div>
             <div class="section-footer">
-                <a href="products.php" class="btn-flat btn-hover">view all</a>
+                <a href="./products" class="btn-flat btn-hover">view all</a>
             </div>
         </div>
     </div>

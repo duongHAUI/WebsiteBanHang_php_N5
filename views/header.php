@@ -60,7 +60,7 @@
                     <ul class="user-menu">
                         <li><a href="#"><i class='bx bx-bell'></i></a></li>
                         <li><a href="#"><i class='bx bx-user-circle'></i></a></li>
-                        <li><a href="#"><i class='bx bx-cart'></i></a></li>
+                        <li><a href="./checkout"><i class='bx bx-cart'></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -69,7 +69,7 @@
             <div class="bg-second">
                 <div class="bottom-header container">
                     <ul class="main-menu">
-                        <li><a href="#">home</a></li>
+                        <li><a href="./">home</a></li>
                         <!-- mega menu -->
                         <li class="mega-dropdown">
                             <a href="./products.html">Shop<i class='bx bxs-chevron-down'></i></a>
