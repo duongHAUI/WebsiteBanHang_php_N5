@@ -1,0 +1,137 @@
+:root {
+    --btn-color: #fff;
+    --blue-color: #74b9ff;
+}
+.checkout {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.checkout-title {
+    font-size: 24px;
+    margin: 10px 0;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.checkout-content,
+.order-total {
+    padding: 20px 40px;
+    border: 1px solid #cacaca;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.star-red {
+    color: red;
+    margin-left: 3px;
+    font-weight: bold;
+}
+
+.field-item {
+    padding: 15px 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.field-item label {
+    display: inline-block;
+    width: 220px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.field-item input,
+.field-item textarea,
+.field-item select {
+    flex: 1;
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1px solid #c9cacb;
+    opacity: 0.5;
+    transition: 0.5s;
+    color: #000!important;
+}
+
+.field-item input:focus,
+.field-item textarea:focus,
+.field-item select:focus {
+    border-bottom: 2px solid #000;
+    outline: none;
+}
+
+.line,
+.order-item {
+    border-bottom: 1px solid #c9cacb;
+    padding-bottom: 15px;
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.order-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.order-item .order-item__name {
+    width: 150px;
+}
+
+.order-item .count {
+    color: #cacaca;
+}
+
+.order-item .order-price {
+    color: #000;
+    font-weight: 500;
+    text-align: right;
+}
+.price {
+    font-weight: 500;
+}
+.total-money {
+    font-weight: 500;
+    font-size: 20px;
+}
+.order-item__name,
+.order-total__title {
+    text-transform: capitalize;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.checkout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.checkout-btn-item {
+    width: 100%;
+    padding: 12px 0;
+    text-align: center;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.back-to-cart {
+    background-color: transparent;
+    border: 1px solid var(--blue-color);
+    color: var(--blue-color);
+    margin-right: 10px;
+}
+
+.place-order {
+    border: none;
+    background-color: var(--blue-color);
+    color: var(--btn-color);
+}
+
+.cash label, .line label {
+    font-size: 14px !important;
+}

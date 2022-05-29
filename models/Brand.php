@@ -2,7 +2,6 @@
 
 namespace Models;
 
-
 class Brand extends Model
 {
   public $title;

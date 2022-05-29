@@ -17,6 +17,7 @@
 		$cat = $row_edit['cat_id'];
 		$brand = $row_edit['brand_id'];
 		$p_price = $row_edit['product_price'];
+		$p_discount = $row_edit['product_discount'];
 		$p_desc = $row_edit['product_desc'];
 	}
 
@@ -115,6 +116,12 @@
 							<label class="col-md-3 control-label">Product Price</label>
 							<div class="col-md-6">
 								<input type="text" name="product_price" class="form-control" value="<?php echo $p_price; ?>">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label">Product Discount</label>
+							<div class="col-md-6">
+								<input type="text" name="product_discount" class="form-control" value="<?php echo $p_discount; ?>">
 							</div>
 						</div>
 						<div class="form-group">

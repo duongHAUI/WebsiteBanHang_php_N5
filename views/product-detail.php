@@ -243,7 +243,7 @@
     <!-- end product-detail content -->
 
     <?php
-        include("./footer.php");
+        include("footer.php");
     ?>
 
     <!-- app js -->

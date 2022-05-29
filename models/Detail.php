@@ -190,7 +190,6 @@ class Detail extends Model
     $query_count = "select count(*) from " . self::TABLE_NAME . " " . $where;
     $result_count = mysqli_query($con, $query_count);
     $count =  mysqli_fetch_array($result_count)[0];
-
     return $count;
   }
 

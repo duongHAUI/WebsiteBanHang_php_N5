@@ -145,7 +145,7 @@
 		$run_product = mysqli_query($con, $insert_product);
 		$id_pro = mysqli_insert_id($con);	
 		foreach ($images_name as $key => $value) {
-		 	mysqli_query($con, "insert into images(id_product ,img) values('$id_pro','$value')");
+		 	mysqli_query($con, "insert into images(pro_id ,	image_link) values('$id_pro','$value')");
 	   	}
 		if ($run_product) {
 			echo "<script>alert('Clothing product has been added successfully')</script>";
