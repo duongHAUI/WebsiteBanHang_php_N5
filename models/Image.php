@@ -14,8 +14,6 @@ class Image extends Model
     $this->id = $row["image_id"];
     $this->pro_id = $row["pro_id"];
     $this->link = $row["image_link"];
-    $this->createdAt = $row["createdAt"];
-    $this->updatedAt = $row["updatedAt"];
   }
 
   function save($con)

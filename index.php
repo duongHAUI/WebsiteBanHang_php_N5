@@ -23,6 +23,12 @@ switch ($request) {
     case '/cart':
         require __DIR__ . '/views/cart.php';
         break;
+    case "/update-cart":
+        require __DIR__ . '/handlers/cart/update-cart.php';
+        break;
+    case "/delete-cart":
+        require __DIR__ . '/handlers/cart/delete-cart.php';
+        break;
     default:
         http_response_code(404);
         require __DIR__ . '/views/404.php';
