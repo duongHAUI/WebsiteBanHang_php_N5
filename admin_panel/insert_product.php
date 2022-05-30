@@ -132,9 +132,13 @@
 		$brand = $_POST['brand'];
 		$product_price = $_POST['product_price'];
 		$discount = $_POST['product_discount'];
+<<<<<<< HEAD
+		$product_desc = $_POST['product_desc'];	
+=======
 		$product_desc = $_POST['product_desc'];
 		
 		
+>>>>>>> 4f770e2288128086447311b4fa57f514bed84a75
 
 		$images = $_FILES['product_images'];
 		$images_name = $images['name'];

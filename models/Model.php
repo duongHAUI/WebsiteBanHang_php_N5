@@ -31,3 +31,4 @@ abstract class Model
     return $queryArr;
   }
 }
+  
