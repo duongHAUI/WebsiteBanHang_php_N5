@@ -152,7 +152,7 @@
                             document.getElementById("latest-product").innerHTML=this.responseText;
                         }
                     }
-                    xmlhttp.open("GET","/WebsiteBanHang_php_N5/controller/product.php?latest-product="+index,true);
+                    xmlhttp.open("GET","/WebsiteBanHang_php_N5/controllers/product.php?latest-product="+index,true);
                     xmlhttp.send();
                 }
             </script>

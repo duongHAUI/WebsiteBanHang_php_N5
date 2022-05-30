@@ -62,7 +62,7 @@
                                         document.getElementById("products").innerHTML=this.responseText;
                                     }
                                 }
-                                xmlhttp.open("GET","/WebsiteBanHang_php_N5/controller/product.php?search="+str,true);
+                                xmlhttp.open("GET","/WebsiteBanHang_php_N5/controllers/product.php?search="+str,true);
                                 xmlhttp.send();
                                 
                         }
@@ -74,7 +74,7 @@
                     <ul class="user-menu">
                         <li><a href="#"><i class='bx bx-bell'></i></a></li>
                         <li><a href="#"><i class='bx bx-user-circle'></i></a></li>
-                        <li><a href="./checkout"><i class='bx bx-cart'></i></a></li>
+                        <li><a href="cart"><i class='bx bx-cart'></i></a></li>
                     </ul>
                 </div>
             </div>
