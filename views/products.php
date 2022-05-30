@@ -62,7 +62,7 @@
                                             document.getElementById("products").innerHTML=this.responseText;
                                         }
                                     }
-                                    xmlhttp.open("GET","/WebsiteBanHang_php_N5/controller/product.php?cat_id="+cat_id,true);
+                                    xmlhttp.open("GET","/WebsiteBanHang_php_N5/controllers/product.php?cat_id="+cat_id,true);
                                     xmlhttp.send();
                                 }
                             </script>
@@ -281,7 +281,7 @@
                                             document.getElementById("products").innerHTML=this.responseText;
                                         }
                                     }
-                            xmlhttp.open("GET","/WebsiteBanHang_php_N5/controller/product.php",true);
+                            xmlhttp.open("GET","/WebsiteBanHang_php_N5/controllers/product.php",true);
                             xmlhttp.send();
                         </script>
                         <div class="box">
