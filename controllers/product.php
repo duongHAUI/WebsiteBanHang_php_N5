@@ -30,7 +30,6 @@
         if($_GET['latest-product'] == "false"){
             $products = Product::find_all($con,array("limit"=>4,"order" => "createdAt DESC"));
             show($products);
-            
         }else{
             $latest_product = intval($_GET['latest-product'])*4;
             $products = Product::find_all($con,array("limit"=>$latest_product,"order" => "createdAt DESC"));
