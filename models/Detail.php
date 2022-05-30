@@ -44,7 +44,7 @@ class Detail extends Model
   function populated($con, $model)
   {
     if (gettype($model) == "string") {
-      if ($model == "Product" || $model = "product") {
+      if ($model == "Product" || $model == "product") {
         $this->product = Product::find_by_pk($con, $this->pro_id);
       }
     }
