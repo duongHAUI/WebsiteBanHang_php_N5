@@ -24,14 +24,9 @@
 
     <?php
     include_once("models/index.php");
-<<<<<<< HEAD
-    include("header.php");
-    include("./db/connectdb.php");
-=======
     include_once("header.php");
     include_once("./db/connectdb.php");
 
->>>>>>> 4f770e2288128086447311b4fa57f514bed84a75
     ?>
 
     <!-- products content -->
@@ -82,16 +77,12 @@
                             </select>
                             <ul class="filter-list">
                                 <?php
-<<<<<<< HEAD
                                     $categories = Category::find_all($con);
                                     foreach ($categories as $key => $value) {
                                         ?>
                                         <li><a href="?cat-id=<?=$value->id?>"> <?=$value->title?></a></li>
                                         <?php
                                     }
-=======
-                                    
->>>>>>> 4f770e2288128086447311b4fa57f514bed84a75
                                 ?>
                             </ul>
                         </div>
@@ -142,16 +133,12 @@
                             </span>
                             <ul class="filter-list">
                                 <?php
-<<<<<<< HEAD
                                     $brands = Brand::find_all($con);
                                     foreach ($brands as $key => $value) {
                                         ?>
                                         <li><a href="?brand-id=<?=$value->id?>"> <?=$value->title?></a></li>
                                         <?php
                                     }
-=======
-                                    $brand = Brand::find_all($con);
->>>>>>> 4f770e2288128086447311b4fa57f514bed84a75
                                 ?>
                             </ul>
                         </div>
@@ -307,7 +294,6 @@
                         </script>
                         <div class="box">
                             <div class="row" id="products">
-<<<<<<< HEAD
                                 <?php
                                     $prducts = Product::find_all($con);
                                     foreach ($prducts as $key => $value) {
@@ -341,8 +327,6 @@
                                 <?php
                                     }
                                 ?>
-=======
->>>>>>> 4f770e2288128086447311b4fa57f514bed84a75
                             </div> 
                         </div>  
                         <div class="box">
