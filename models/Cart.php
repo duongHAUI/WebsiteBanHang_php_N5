@@ -8,7 +8,7 @@ class Cart extends Model
   public $cus_id;
   public $pro_id;
   public $customer;
-  public $cart;
+  public $product;
   const TABLE_NAME = "cart";
 
   // entity function
@@ -43,7 +43,7 @@ class Cart extends Model
   function populated($con, $model)
   {
     if (gettype($model) == "string") {
-      if ($model == "Customer" || $model = "customer") {
+      if ($model == "Customer" || $model == "customer") {
         $this->customer = Customer::find_by_pk($con, $this->cus_id);
       }
 

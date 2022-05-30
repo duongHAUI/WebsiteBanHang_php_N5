@@ -27,7 +27,8 @@ class Detail extends Model
   {
     extract(get_object_vars($this));
     $query = "update " . self::TABLE_NAME . " set quantity='$quantity', price='$price', 
-       pro_id='$pro_id', order_id='$order_id' where detail_id = $id";
+
+     pro_id='$pro_id', order_id='$order_id' where detail_id = $id";
 
     mysqli_query($con, $query);
   }
@@ -44,7 +45,7 @@ class Detail extends Model
   function populated($con, $model)
   {
     if (gettype($model) == "string") {
-      if ($model == "Product" || $model = "product") {
+      if ($model == "Product" || $model == "product") {
         $this->product = Product::find_by_pk($con, $this->pro_id);
       }
     }
