@@ -87,12 +87,6 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-3 control-label">Product Img title</label>
-							<div class="col-md-6">
-								<input type="file" name="product_img1" class="form-control" required>
-							</div>
-						</div>
-						<div class="form-group">
 							<label class="col-md-3 control-label">Product Images</label>
 							<div class="col-md-6">
 								<input type="file" name="product_images[]" class="form-control" multiple="multiple">
@@ -140,21 +134,18 @@
 		$discount = $_POST['product_discount'];
 		$product_desc = $_POST['product_desc'];
 		
-		$product_img1 = $_FILES['product_img1']['name'];
-		$temp_name1 = $_FILES['product_img1']['tmp_name'];
 		
-		move_uploaded_file($temp_name1, "product_images/$product_img1");	
 
 		$images = $_FILES['product_images'];
 		$images_name = $images['name'];
 		foreach ($images_name as $key => $value) {
 		 	move_uploaded_file($images['tmp_name'][$key], "product_images/$value");
 		}
-		$insert_product = "insert into products (cat_id, brand_id, product_title, product_img, product_price, product_discount, product_desc) values ('$cat', '$brand', '$product_title', '$product_img1', '$product_price','$discount', '$product_desc')";
+		$insert_product = "insert into products (cat_id, brand_id, product_title, product_price, product_discount, product_desc) values ('$cat', '$brand', '$product_title', '$product_price','$discount', '$product_desc')";
 		$run_product = mysqli_query($con, $insert_product);
 		$id_pro = mysqli_insert_id($con);	
 		foreach ($images_name as $key => $value) {
-		 	mysqli_query($con, "insert into images(id_product ,img) values('$id_pro','$value')");
+		 	mysqli_query($con, "insert into images(pro_id ,	image_link) values('$id_pro','$value')");
 	   	}
 		if ($run_product) {
 			echo "<script>alert('Clothing product has been added successfully')</script>";

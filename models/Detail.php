@@ -27,6 +27,7 @@ class Detail extends Model
   {
     extract(get_object_vars($this));
     $query = "update " . self::TABLE_NAME . " set quantity='$quantity', price='$price', 
+
      pro_id='$pro_id', order_id='$order_id' where detail_id = $id";
 
     mysqli_query($con, $query);
@@ -187,7 +188,6 @@ class Detail extends Model
     $query_count = "select count(*) from " . self::TABLE_NAME . " " . $where;
     $result_count = mysqli_query($con, $query_count);
     $count =  mysqli_fetch_array($result_count)[0];
-
     return $count;
   }
 

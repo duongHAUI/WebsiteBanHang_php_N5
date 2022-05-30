@@ -27,6 +27,8 @@
 					while ($row_slides=mysqli_fetch_array($run_slides)) {
 						$slide_id = $row_slides['slide_id'];
 						$slide_name = $row_slides['slide_name'];
+						$slide_good = $row_slides['slide_good'];
+						$slide_desc = $row_slides['slide_desc'];
 						$slide_image = $row_slides['slide_image'];
 					
 				?>

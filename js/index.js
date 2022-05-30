@@ -25,6 +25,7 @@ document.querySelector('.slider').addEventListener('mouseover', () => slide_play
 document.querySelector('.slider').addEventListener('mouseleave', () => slide_play = true)
 
 // slider controll
+
 document.querySelector('.slide-next').addEventListener('click', () => {
     nextSlide()
     showSlide()
@@ -34,7 +35,6 @@ document.querySelector('.slide-prev').addEventListener('click', () => {
     prevSlide()
     showSlide()
 })
-
 
 showSlide()
 
@@ -131,8 +131,8 @@ products.forEach(e => {
         </div>
     `
 
-    product_list.insertAdjacentHTML("beforeend", prod)
-    best_product_list.insertAdjacentHTML("afterbegin", prod)
+    //product_list.insertAdjacentHTML("beforeend", prod)
+    //best_product_list.insertAdjacentHTML("afterbegin", prod)
 })
 
 

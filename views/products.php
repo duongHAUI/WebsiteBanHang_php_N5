@@ -1,3 +1,7 @@
+<?php
+    namespace Models;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,8 +23,10 @@
 <body>
 
     <?php
-    include("header.php");
-    include("./db/connectdb.php");
+    include_once("models/index.php");
+    include_once("header.php");
+    include_once("./db/connectdb.php");
+
     ?>
 
     <!-- products content -->
@@ -31,6 +37,11 @@
                     <a href="./">home</a>
                     <span><i class='bx bxs-chevrons-right'></i></span>
                     <a href="./products.php">all products</a>
+                </div>
+                <div>
+                    <select name="category" onchange="showProductCategory(this.value)">
+                        <option value="">Select a Category:</option>
+                    </select>
                 </div>
             </div>
             <div class="box">
@@ -43,15 +54,30 @@
                             <span class="filter-header">
                                 Categories
                             </span>
+                            <script>
+                                function showProductCategory(cat_id) {
+                                    var xmlhttp=new XMLHttpRequest();
+                                    xmlhttp.onreadystatechange=function() {
+                                        if (this.readyState==4 && this.status==200) {
+                                            document.getElementById("products").innerHTML=this.responseText;
+                                        }
+                                    }
+                                    xmlhttp.open("GET","/WebsiteBanHang_php_N5/controller/product.php?cat_id="+cat_id,true);
+                                    xmlhttp.send();
+                                }
+                            </script>
+                            <select name="category" onchange="showProductCategory(this.value)">
+                                <option value="">Select a Category:</option>
+                                <?php
+                                    $categories =  Category::find_all($con);
+                                    foreach($categories as $key => $value){
+                                        echo "<option value='$value->id'>$value->title</option>";
+                                    }
+                                ?>
+                            </select>
                             <ul class="filter-list">
                                 <?php
-                                    $sqlSelectCategory = "SELECT * FROM categories";
-                                    $CateAll = mysqli_query($con,$sqlSelectCategory);
-                                    while($row = mysqli_fetch_assoc($CateAll)){
-                                        ?>
-                                        <li><a href=""><?=$row["cat_title"]?></a></li>
-                                        <?php
-                                    }
+                                    
                                 ?>
                             </ul>
                         </div>
@@ -102,21 +128,7 @@
                             </span>
                             <ul class="filter-list">
                                 <?php
-                                    $sqlSelectBrands= "SELECT * FROM brands";
-                                    $BrandsAll = mysqli_query($con,$sqlSelectBrands);
-                                    while($row = mysqli_fetch_assoc($BrandsAll)){
-                                        ?>
-                                        <li>
-                                            <div class="group-checkbox">
-                                                <input type="checkbox" id="remember1" checked="checked">
-                                                <label for="remember1">
-                                                    <?=$row["brand_title"]?>
-                                                    <i class='bx bx-check'></i>
-                                                </label>
-                                            </div>
-                                        </li>
-                                    <?php
-                                    }
+                                    $brand = Brand::find_all($con);
                                 ?>
                                 
                             
@@ -262,42 +274,18 @@
                             <button class="btn-flat btn-hover" id="filter-toggle">filter</button>
                         </div>
                         <!-- L -->
+                        <script>
+                            var xmlhttp=new XMLHttpRequest();
+                            xmlhttp.onreadystatechange=function() {
+                                        if (this.readyState==4 && this.status==200) {
+                                            document.getElementById("products").innerHTML=this.responseText;
+                                        }
+                                    }
+                            xmlhttp.open("GET","/WebsiteBanHang_php_N5/controller/product.php",true);
+                            xmlhttp.send();
+                        </script>
                         <div class="box">
                             <div class="row" id="products">
-                                <?php
-                                    $sqlGetPro = "SELECT * FROM products";
-                                    $ProAll = mysqli_query($con,$sqlGetPro);
-                                    while($row = mysqli_fetch_assoc($ProAll)){
-                                ?>
-                                    <div class="col-4 col-md-6 col-sm-12">
-                                        <div class="product-card">
-                                            <div class="product-card-img">
-                                                <img src="images/<?=$row["product_img"]?>" alt="">
-                                                <img src="images/<?=$row["product_img"]?>" alt="">
-                                            </div>
-                                            <div class="product-card-info">
-                                                <div class="product-btn">
-                                                    <a href="./product-detail.php" class="btn-flat btn-hover btn-shop-now">shop now</a>
-                                                    <button class="btn-flat btn-hover btn-cart-add">
-                                                        <i class='bx bxs-cart-add'></i>
-                                                    </button>
-                                                    <button class="btn-flat btn-hover btn-cart-add">
-                                                        <i class='bx bxs-heart'></i>
-                                                    </button>
-                                                </div>
-                                                <div class="product-card-name">
-                                                    <?=$row["product_title"]?>
-                                                </div>
-                                                <div class="product-card-price">
-                                                    <span><del><?=$row["product_price"]?></del></span>
-                                                    <span class="curr-price"><?=$row["product_price"]?></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <?php
-                                    }
-                                ?>
                             </div> 
                         </div>  
                         <div class="box">
@@ -306,8 +294,6 @@
                                 <li><a href="#" class="active">1</a></li>
                                 <li><a href="#">2</a></li>
                                 <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
                                 <li><a href="#"><i class='bx bxs-chevron-right'></i></a></li>
                             </ul>
                         </div>
@@ -319,7 +305,7 @@
     <!-- end products content -->
 
     <?php
-        include("./footer.php");
+        include_once("footer.php");
     ?>
     <!-- app js -->
     <script src="./js/app.js"></script>

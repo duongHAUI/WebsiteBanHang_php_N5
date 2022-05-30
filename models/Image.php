@@ -15,7 +15,6 @@ class Image extends Model
     $this->pro_id = $row["pro_id"];
     $this->link = $row["image_link"];
   }
-
   function save($con)
   {
     extract(get_object_vars($this));
@@ -79,7 +78,6 @@ class Image extends Model
     ] = $queryArr;
     $query = $select . " from " . self::TABLE_NAME . " " . $where . " " . $order . " " . $limit . " " . $offset;
     $result = mysqli_query($con, $query);
-
     $images = array();
 
     if (!$result) {
