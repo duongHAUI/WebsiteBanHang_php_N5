@@ -5,11 +5,10 @@ namespace Models;
 class Cart extends Model
 {
   public $qty;
-  public $size;
   public $cus_id;
   public $pro_id;
   public $customer;
-  public $cart;
+  public $product;
   const TABLE_NAME = "cart";
 
   // entity function
@@ -17,7 +16,6 @@ class Cart extends Model
   {
     $this->id = $row["cart_id"];
     $this->qty = $row["cart_qty"];
-    $this->size = $row["cart_size"];
     $this->cus_id = $row["cus_id"];
     $this->pro_id = $row["pro_id"];
     $this->createdAt = $row["createdAt"];
@@ -27,7 +25,7 @@ class Cart extends Model
   function save($con)
   {
     extract(get_object_vars($this));
-    $query = "update " . self::TABLE_NAME . " set cart_qty='$qty', cart_size='$size', 
+    $query = "update " . self::TABLE_NAME . " set cart_qty='$qty', 
       cus_id='$cus_id', pro_id='$pro_id' where cart_id = $id";
 
     mysqli_query($con, $query);
@@ -45,7 +43,7 @@ class Cart extends Model
   function populated($con, $model)
   {
     if (gettype($model) == "string") {
-      if ($model == "Customer" || $model = "customer") {
+      if ($model == "Customer" || $model == "customer") {
         $this->customer = Customer::find_by_pk($con, $this->cus_id);
       }
 
@@ -81,12 +79,11 @@ class Cart extends Model
   {
     [
       "cart_qty" => $qty,
-      "cart_size" => $size,
       "cus_id" => $cus_id,
       "pro_id" => $pro_id,
     ] = $form;
-    $query = "insert into " . self::TABLE_NAME . "(cart_qty, cart_size, cus_id, pro_id)
-              values ('$qty', '$size', '$cus_id', '$pro_id')";
+    $query = "insert into " . self::TABLE_NAME . "(cart_qty, cus_id, pro_id)
+              values ('$qty', '$cus_id', '$pro_id')";
 
     if (mysqli_query($con, $query)) {
       $id = mysqli_insert_id($con);
@@ -206,7 +203,6 @@ class Cart extends Model
   {
     $fields_update = [
       "cart_qty",
-      "cart_size",
       "cus_id",
       "pro_id",
     ];

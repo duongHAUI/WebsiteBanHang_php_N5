@@ -51,7 +51,7 @@ class Order extends Model
   function populated($con, $model)
   {
     if (gettype($model) == "string") {
-      if ($model == "Customer" || $model = "customer") {
+      if ($model == "Customer" || $model == "customer") {
         $this->customer = Customer::find_by_pk($con, $this->cus_id);
       }
     }
@@ -100,7 +100,6 @@ class Order extends Model
     $query = "insert into " . self::TABLE_NAME . "(order_receiver, order_address, order_status, 
               order_amount, order_phone, order_note, cus_id)
               values ('$receiver', '$address', '$status', '$amount', '$phone', '$note', '$cus_id')";
-
     if (mysqli_query($con, $query)) {
       $id = mysqli_insert_id($con);
       $order = self::find_by_pk($con, $id);
@@ -247,9 +246,7 @@ class Order extends Model
 
       mysqli_query($con, $query);
     }
-
     $order = self::find_by_pk($con, $id);
-
     return $order;
   }
 }

@@ -31,7 +31,6 @@
 								<th>Product Image</th>
 								<th>Product Price</th>
 								<th>Product Sold</th>
-								<th>Product Keyword</th>
 								<th>Product Date</th>
 								<th>Delete</th>
 								<th>Edit</th>
@@ -45,26 +44,27 @@
 								while ($row_pro=mysqli_fetch_array($run_pro)) {
 									$pro_id = $row_pro['product_id'];
 									$pro_title = $row_pro['product_title'];
-									$pro_img1 = $row_pro['product_img'];
 									$pro_price = $row_pro['product_price'];
 									$pro_date = $row_pro['createdAt'];
 									$i++;
+									$sql_imgs = "select * from images where pro_id = '$pro_id'";
+									$get_imgs = mysqli_query($con, $sql_imgs);
+									$pro_img = mysqli_fetch_array($get_imgs)['image_link'];
 								
 							?>
 							<tr>
 								<td><?php echo $i; ?></td>
 								<td><?php echo $pro_title; ?></td>
-								<td><img src="product_images/<?php echo $pro_img1; ?>" width="100" height="100"></td>
+								<td><img src="product_images/<?=$pro_img?>" width="100" height="100"></td>
 								<td><?php echo $pro_price; ?></td>
 								<td>
 									<?php
-										$get_sold = "select * from order_details where product_id = '$pro_id'";
+										$get_sold = "select * from order_details where pro_id = '$pro_id'";
 										$run_sold = mysqli_query($con, $get_sold);
 										$count = mysqli_num_rows($run_sold);
 										echo $count;
 									?>
 								</td>
-								<td><?php echo $pro_keywords; ?></td>
 								<td><?php echo $pro_date; ?></td>
 								<td>
 									<button class="btn btn-danger">

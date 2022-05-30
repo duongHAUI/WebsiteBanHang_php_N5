@@ -1,3 +1,6 @@
+<?php
+    namespace Models;
+?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,8 +19,14 @@
 <body>
 
     <?php
-    include("header.php");
     
+    if(!isset($_GET['pro_id'])){
+        
+    }else{
+        include_once("models/index.php");
+        include_once("header.php");
+        include_once("./db/connectdb.php");
+        $product      = Product::find_by_pk($con,$_GET['pro_id']);
     ?>
 
     <!-- product-detail content -->
@@ -25,28 +34,28 @@
         <div class="container">
             <div class="box">
                 <div class="breadcumb">
-                    <a href="./index.html">home</a>
+                    <a href="/">home</a>
                     <span><i class='bx bxs-chevrons-right'></i></span>
-                    <a href="./products.html">all products</a>
+                    <a href="products">all products</a>
                     <span><i class='bx bxs-chevrons-right'></i></span>
-                    <a href="./product-detail.html">JBL Tune 750TNC</a>
+                    <a href="./product-detail.html"><?=$product->title?></a>
                 </div>
             </div>
             <div class="row product-row">
                 <div class="col-5 col-md-12">
                     <div class="product-img" id="product-img">
-                        <img src="./images/kisspng-beats-electronics-headphones-apple-beats-studio-red-headphones.png" alt="">
+                        <img src="admin_panel/product_images/<?=$product->get_images($con)[0]->link?>" alt="">
                     </div>
                     <div class="box">
                         <div class="product-img-list">
                             <div class="product-img-item">
-                                <img src="./images/kisspng-beats-electronics-headphones-apple-beats-studio-red-headphones.png" alt="">
+                                <img src="images/<?=$product->get_images($con)[0]->link?>" alt="">
                             </div>
                             <div class="product-img-item">
-                                <img src="./images/JBL-Endurance-Sprint_Alt_Red-1605x1605px.webp" alt="">
+                                <img src="images/<?=$product->get_images($con)[1]->link?>" alt="">
                             </div>
                             <div class="product-img-item">
-                                <img src="./images/JBL_Quantum_400_Product Image_Hero 02.png" alt="">
+                                <img src="images/<?=$product->get_images($con)[1]->link?>" alt="">
                             </div>
                         </div>
                     </div>
@@ -54,11 +63,15 @@
                 <div class="col-7 col-md-12">
                     <div class="product-info">
                         <h1>
-                            JBL TUNE 750TNC
+                            <?=$product->title?>
                         </h1>
                         <div class="product-info-detail">
+                            <span class="product-info-detail-title">Category:</span>
+                            <a href="#"><?=Category::find_by_pk($con,$product->cat_id)->title?></a>
+                        </div>
+                        <div class="product-info-detail">
                             <span class="product-info-detail-title">Brand:</span>
-                            <a href="#">JBL</a>
+                            <a href="#"><?=Brand::find_by_pk($con,$product->brand_id)->title?></a>
                         </div>
                         <div class="product-info-detail">
                             <span class="product-info-detail-title">Rated:</span>
@@ -71,9 +84,9 @@
                             </span>
                         </div>
                         <p class="product-description">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo libero alias officiis dolore doloremque eveniet culpa dignissimos, itaque, cum animi excepturi sed veritatis asperiores soluta, nisi atque quae illum. Ipsum.
+                            <?= $product->desc?>
                         </p>
-                        <div class="product-info-price">$2345</div>
+                        <div class="product-info-price"><?=$product->priceDiscount()?></div>
                         <div class="product-quantity-wrapper">
                             <span class="product-quantity-btn">
                                 <i class='bx bx-minus'></i>
@@ -244,6 +257,7 @@
 
     <?php
         include("footer.php");
+    }
     ?>
 
     <!-- app js -->

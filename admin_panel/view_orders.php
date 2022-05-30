@@ -31,7 +31,6 @@
 								<th>Invoice No</th>
 								<th>Product Name</th>
 								<th>Product Qty</th>
-								<th>Product Size</th>
 								<th>Order Date</th>
 								<th>Total</th>
 								<th>Status</th>
@@ -49,7 +48,6 @@
 									$invoice_no = $row_orders['invoice_no'];
 									$product_id = $row_orders['product_id'];
 									$qty = $row_orders['qty'];
-									$size = $row_orders['size'];
 									$order_status = $row_orders['order_status'];
 									$get_products = "select * from products where product_id = '$product_id'";
 									$run_products = mysqli_query($con, $get_products);
@@ -73,7 +71,6 @@
 								<td><?php echo $invoice_no; ?></td>
 								<td><?php echo $product_title; ?></td>
 								<td><?php echo $qty; ?></td>
-								<td><?php echo $size; ?></td>
 								<td><?php echo $order_date; ?></td>
 								<td><?php echo $order_amount; ?></td>
 								<td>

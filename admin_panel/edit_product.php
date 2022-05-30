@@ -16,10 +16,8 @@
 		$p_title = $row_edit['product_title'];
 		$cat = $row_edit['cat_id'];
 		$brand = $row_edit['brand_id'];
-		$p_image1 = $row_edit['product_img1'];
-		$p_image2 = $row_edit['product_img2'];
-		$p_image3 = $row_edit['product_img3'];
 		$p_price = $row_edit['product_price'];
+		$p_discount = $row_edit['product_discount'];
 		$p_desc = $row_edit['product_desc'];
 	}
 
@@ -115,33 +113,15 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-3 control-label">Product Image 1</label>
-							<div class="col-md-6">
-								<input type="file" name="product_img1" class="form-control" required>
-								<br>
-								<img width="300" height="300" src="product_images/<?php echo $p_image1; ?>" alt="<?php echo $p_image1; ?>">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-md-3 control-label">Product Image 2</label>
-							<div class="col-md-6">
-								<input type="file" name="product_img2" class="form-control" required>
-								<br>
-								<img width="300" height="300" src="product_images/<?php echo $p_image2; ?>" alt="<?php echo $p_image2; ?>">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-md-3 control-label">Product Image 3</label>
-							<div class="col-md-6">
-								<input type="file" name="product_img3" class="form-control form-height-custom" required>
-								<br>
-								<img width="300" height="300" src="product_images/<?php echo $p_image3; ?>" alt="<?php echo $p_image3; ?>">
-							</div>
-						</div>
-						<div class="form-group">
 							<label class="col-md-3 control-label">Product Price</label>
 							<div class="col-md-6">
 								<input type="text" name="product_price" class="form-control" value="<?php echo $p_price; ?>">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label">Product Discount</label>
+							<div class="col-md-6">
+								<input type="text" name="product_discount" class="form-control" value="<?php echo $p_discount; ?>">
 							</div>
 						</div>
 						<div class="form-group">
@@ -173,19 +153,7 @@
 		$product_price = $_POST['product_price'];
 		$product_desc = $_POST['product_desc'];
 
-		$product_img1 = $_FILES['product_img1']['name'];
-		$product_img2 = $_FILES['product_img2']['name'];
-		$product_img3 = $_FILES['product_img3']['name'];
-
-		$temp_name1 = $_FILES['product_img1']['tmp_name'];
-		$temp_name2 = $_FILES['product_img2']['tmp_name'];
-		$temp_name3 = $_FILES['product_img3']['tmp_name'];
-
-		move_uploaded_file($temp_name1, "product_images/$product_img1");
-		move_uploaded_file($temp_name2, "product_images/$product_img2");
-		move_uploaded_file($temp_name3, "product_images/$product_img3");
-
-		$update_product = "update products set cat_id = '$cat', brand_id = '$brand', date = NOW(), product_title = '$product_title', product_img1 = '$product_img1', product_img2 = '$product_img2', product_img3 = '$product_img3', product_desc = '$product_desc', product_price = '$product_price' where product_id = '$p_id'";
+		$update_product = "update products set cat_id = '$cat', brand_id = '$brand', product_title = '$product_title', product_desc = '$product_desc', product_price = '$product_price' where product_id = '$p_id'";
 		$run_update = mysqli_query($con, $update_product);
 		if ($run_update) {
 			echo "<script>alert('Product has been updated successfully')</script>";

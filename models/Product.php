@@ -50,7 +50,7 @@ class Product extends Model
   function populated($con, $model)
   {
     if (gettype($model) == "string") {
-      if ($model == "Category" || $model = "category") {
+      if ($model == "Category" || $model == "category") {
         $this->category = Category::find_by_pk($con, $this->cat_id);
       }
 
@@ -69,7 +69,6 @@ class Product extends Model
   function get_images($con)
   {
     $images = Image::find_all($con, array("where" => "pro_id = $this->id"));
-
     return $images;
   }
 
@@ -252,5 +251,8 @@ class Product extends Model
     $product = self::find_by_pk($con, $id);
 
     return $product;
+  }
+  public function priceDiscount(){
+    return $this->price*(1-$this->discount/100);
   }
 }

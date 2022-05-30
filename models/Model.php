@@ -1,7 +1,6 @@
 <?php
 
 namespace Models;
-
 abstract class Model
 {
   public $id;
