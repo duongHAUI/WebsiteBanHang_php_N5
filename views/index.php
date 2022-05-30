@@ -28,33 +28,10 @@
         <div class="slider">
             <div class="container">
                 <!-- slide item -->
-                <div class="slide active">
-                    <div class="info">
-                        <div class="info-content">
-                            <h3 class="top-down">
-                                <?=$slides[0]->name?>
-                            </h3>
-                            <h2 class="top-down trans-delay-0-2">
-                                <?=$slides[0]->good?>
-                            </h2>
-                            <p class="top-down trans-delay-0-4">
-                                <?=$slides[0]->desc?>
-                            </p>
-                            <a href= "products" class="top-down trans-delay-0-6">
-                                <button class="btn-flat btn-hover">
-                                    <span>shop now</span>
-                                </button>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="img top-down">
-                        <img src="admin_panel/slides_images/<?=$slides[0]->image?>" alt="">
-                    </div>
-                </div>
                 <!-- end slide item -->
-                <?php for ($i=1; $i < sizeof($slides); $i++) { ?>
+                <?php for ($i=0; $i < sizeof($slides); $i++) { ?>
                 <!-- slide item -->
-                    <div class="slide">
+                    <div class="slide <?php echo ($i==0) ? "active" : "" ?>">
                         <div class="info">
                             <div class="info-content">
                                 <h3 class="top-down">
@@ -286,7 +263,6 @@
     <?php
         include("footer.php");
     ?>
-
     <!-- app js -->
     <script src="./js/app.js"></script>
 </body>
