@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 30, 2022 lúc 02:12 PM
--- Phiên bản máy phục vụ: 10.4.22-MariaDB
--- Phiên bản PHP: 8.1.2
+-- Thời gian đã tạo: Th5 30, 2022 lúc 06:56 PM
+-- Phiên bản máy phục vụ: 10.4.24-MariaDB
+-- Phiên bản PHP: 8.0.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `fashion_store`
+-- Cơ sở dữ liệu: `headphone_store`
 --
 
 -- --------------------------------------------------------
@@ -48,7 +48,8 @@ INSERT INTO `admins` (`admin_id`, `admin_name`, `admin_email`, `admin_password`,
 (2, 'Boss Hoang', 'hoangbvgch17056@fpt.edu.vn', 'hoangdepzai', '', 'Vietnam', '<p>I am the 1st Admin a</p>', '0974-555-666', '2022-05-22 02:56:57', '2022-05-25 10:54:30'),
 (3, 'Admin Duong', 'duong123@gmail.com', '123456', 'admin.jpg', 'Vietnam', '<p>I am the 2th Admin</p>', '0933-777-888', '2022-05-22 02:56:57', '2022-05-22 02:57:20'),
 (4, 'Admin Viet Hoang', 'hoang1835@gmail.com', 'hoangpzo123', 'admin1.jpg', 'Vietnam', '<p><span style=\"color: #444444; font-family: sans-serif; font-size: 13.12px;\">I am the creator of this website</span></p>', '0962-379-888', '2022-05-22 02:56:57', '2022-05-22 02:57:20'),
-(8, 'Nguyen van Duong', 'duongvipro2k1@gmail.com', 'duong2k1', 'HN.png', 'Việt Nam', 'haha', '0321321321', '2022-05-23 06:48:07', '2022-05-23 06:48:07');
+(8, 'Nguyen van Duong', 'duongvipro2k1@gmail.com', 'duong2k1', 'HN.png', 'Việt Nam', 'haha', '0321321321', '2022-05-23 06:48:07', '2022-05-23 06:48:07'),
+(25, 'ThuHuong', 'thuhuong123@gmail.com', 'Huong12', 'admin6.jpg', 'VietNam', 'No', '0967825310', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -69,11 +70,15 @@ CREATE TABLE `brands` (
 --
 
 INSERT INTO `brands` (`brand_id`, `brand_title`, `brand_desc`, `createdAt`, `updatedAt`) VALUES
-(11, 'FIONA', '', '2022-05-27 06:07:42', '2022-05-27 06:07:42'),
-(12, 'CANIFA', '', '2022-05-27 06:07:55', '2022-05-27 06:07:55'),
-(13, 'Yody', '', '2022-05-27 06:08:35', '2022-05-27 06:08:35'),
-(14, 'Elise', '', '2022-05-27 06:09:21', '2022-05-27 06:09:21'),
-(15, 'Vascara', '', '2022-05-27 06:09:41', '2022-05-27 06:09:41');
+(16, 'Sony', 'NO', '2022-05-30 15:03:29', '2022-05-30 15:03:29'),
+(17, 'Apple', 'NO', '2022-05-30 15:03:57', '2022-05-30 15:03:57'),
+(18, 'Audio-technical', 'NO', '2022-05-30 15:04:33', '2022-05-30 15:04:33'),
+(19, ' iclever ', 'NO', '2022-05-30 15:12:37', '2022-05-30 15:12:37'),
+(20, 'SoundPEATS', 'NO', '2022-05-30 15:14:04', '2022-05-30 15:14:04'),
+(21, 'Monster', 'NO', '2022-05-30 15:14:30', '2022-05-30 15:14:30'),
+(22, 'Hifiman', 'NO', '2022-05-30 15:15:23', '2022-05-30 15:15:23'),
+(23, 'LG', 'NO', '2022-05-30 15:15:50', '2022-05-30 15:15:50'),
+(24, 'Shure', 'NO', '2022-05-30 15:16:17', '2022-05-30 15:16:17');
 
 -- --------------------------------------------------------
 
@@ -109,16 +114,11 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`cat_id`, `cat_title`, `cat_desc`, `createdAt`, `updatedAt`) VALUES
-(12, 'Váy, Đầm', '', '2022-05-27 06:04:08', '2022-05-27 06:04:08'),
-(13, 'Chân váy', '', '2022-05-27 06:04:37', '2022-05-27 06:04:37'),
-(14, 'Sơ mi nữ', '', '2022-05-27 06:04:52', '2022-05-27 06:04:52'),
-(15, 'Quần âu nữ', '', '2022-05-27 06:05:06', '2022-05-27 06:05:06'),
-(16, 'Áo len nữ', '', '2022-05-27 06:05:29', '2022-05-27 06:05:29'),
-(17, 'Áo cotton nữ', '', '2022-05-27 06:05:56', '2022-05-27 06:05:56'),
-(18, 'Quần jean', '', '2022-05-27 06:06:11', '2022-05-27 06:06:11'),
-(19, 'Áo dài', '', '2022-05-27 06:06:24', '2022-05-27 06:06:24'),
-(20, 'Áo khoác nữ', '', '2022-05-27 06:06:39', '2022-05-27 06:06:39'),
-(21, 'Quần soóc', '', '2022-05-27 06:07:09', '2022-05-27 06:07:09');
+(22, 'Noise-canceling Headphones', 'Noise-cancelling headphones can make your music easier to hear and your world a little more peaceful.', '2022-05-30 14:32:03', '2022-05-30 14:40:55'),
+(23, 'Gaming Headsets', 'The gaming headset has to mix outstanding audio, the comfort to last a proper gaming session, and great connectivity, too.', '2022-05-30 14:39:07', '2022-05-30 14:39:07'),
+(25, 'Sports Headphones', 'A new pair of sports headphones is a great way to give yourself a boost. ', '2022-05-30 14:41:56', '2022-05-30 14:42:52'),
+(26, 'Children\'s Headphones', 'At some point, most kids need access to headphones, whether it’s for school, travel, or simply to save an adult’s sanity.', '2022-05-30 14:46:58', '2022-05-30 15:12:14'),
+(27, 'DJ Headphones', 'A type of headphone that is designed specifically for DJs', '2022-05-30 15:02:33', '2022-05-30 15:02:33');
 
 -- --------------------------------------------------------
 
@@ -157,14 +157,18 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`image_id`, `pro_id`, `image_link`) VALUES
-(9, 10, 'ao-so-mi-nu-tron-from-ao-doc-dao-679-1.jpg'),
-(10, 13, 'ao-so-mi-nu-tron-from-ao-doc-dao-679-2.jpg'),
-(11, 13, 'ao-so-mi-nu-tron-from-ao-doc-dao-679-3.jpg'),
-(12, 11, 'ao-so-mi-nu-tron-from-ao-doc-dao-679-1.jpg'),
-(13, 10, 'ao-so-mi-nu-tron-from-ao-doc-dao-679-2.jpg'),
-(14, 12, 'ao-so-mi-nu-tron-from-ao-doc-dao-679-3.jpg'),
-(15, 11, 'ao-so-mi-nu-tron-from-ao-doc-dao-679-1.jpg'),
-(16, 12, 'ao-so-mi-nu-tron-from-ao-doc-dao-679-3.jpg');
+(23, 21, 'products/blt_sn1.jpg'),
+(24, 21, 'products/blt_sn2.jpg'),
+(25, 21, 'products/blt_sn3.jpg'),
+(26, 22, 'products/co_sn1.jpg'),
+(27, 22, 'products/co_sn2.jpg'),
+(28, 22, 'products/co_sn3.jpg'),
+(29, 23, 'products/dj_au1.jpg'),
+(30, 23, 'products/dj_au2.jpg'),
+(31, 23, 'products/dj_au3.jpg'),
+(32, 24, 'products/dj_sh1.jpg'),
+(33, 24, 'products/dj_sh2.jpg'),
+(34, 24, 'products/dj_sh3.jpg');
 
 -- --------------------------------------------------------
 
@@ -225,14 +229,10 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `cat_id`, `brand_id`, `product_title`, `product_price`, `product_discount`, `product_desc`, `createdAt`, `updatedAt`) VALUES
-(10, 12, 15, 'ÁO SƠ MI NỮ TRƠN FROM ÁO ĐỘC ĐÁO', 250000, 16, '<p><span style=\"color: #333333; font-family: Arial, Helvetica, sans-serif;\">&Aacute;O SƠ MI NỮ TRƠN FROM &Aacute;O ĐỘC Đ&Aacute;O: Với chất vải kate cao cấp mềm mịn v&agrave; tho&aacute;ng kh&iacute; gi&uacute;p người mang thoải m&aacute;i khi hoạt động cả ng&agrave;y d&ugrave; trong thời tiết nắng n&oacute;ng. B&ecirc;n cạnh đ&oacute; l&agrave; from &aacute;o độc đ&aacute;o mang tới vẻ đẹp c&aacute; t&iacute;nh, hiện đại gi&uacute;p c&aacute;c n&agrave;ng tr&ocirc;ng thật nổi bật trong mọi cuộc vui.</span></p>', '2022-05-29 03:15:41', '2022-05-29 13:37:59'),
-(11, 13, 15, 'ÁO SƠ MI NỮ TRƠN FROM ÁO ĐỘC ĐÁO2', 250000, 20, '<p><span style=\"color: #333333; font-family: Arial, Helvetica, sans-serif;\">&Aacute;O SƠ MI NỮ TRƠN FROM &Aacute;O ĐỘC Đ&Aacute;O: Với chất vải kate cao cấp mềm mịn v&agrave; tho&aacute;ng kh&iacute; gi&uacute;p người mang thoải m&aacute;i khi hoạt động cả ng&agrave;y d&ugrave; trong thời tiết nắng n&oacute;ng. B&ecirc;n cạnh đ&oacute; l&agrave; from &aacute;o độc đ&aacute;o mang tới vẻ đẹp c&aacute; t&iacute;nh, hiện đại gi&uacute;p c&aacute;c n&agrave;ng tr&ocirc;ng thật nổi bật trong mọi cuộc vui.</span></p>', '2022-05-29 03:15:41', '2022-05-29 13:38:03'),
-(12, 14, 15, 'ÁO SƠ MI NỮ TRƠN FROM ÁO ĐỘC ĐÁO3', 250000, 30, '<p><span style=\"color: #333333; font-family: Arial, Helvetica, sans-serif;\">&Aacute;O SƠ MI NỮ TRƠN FROM &Aacute;O ĐỘC Đ&Aacute;O: Với chất vải kate cao cấp mềm mịn v&agrave; tho&aacute;ng kh&iacute; gi&uacute;p người mang thoải m&aacute;i khi hoạt động cả ng&agrave;y d&ugrave; trong thời tiết nắng n&oacute;ng. B&ecirc;n cạnh đ&oacute; l&agrave; from &aacute;o độc đ&aacute;o mang tới vẻ đẹp c&aacute; t&iacute;nh, hiện đại gi&uacute;p c&aacute;c n&agrave;ng tr&ocirc;ng thật nổi bật trong mọi cuộc vui.</span></p>', '2022-05-29 03:15:41', '2022-05-29 13:23:38'),
-(13, 16, 15, 'ÁO SƠ MI NỮ TRƠN FROM ÁO ĐỘC ĐÁO3', 250000, 30, '<p><span style=\"color: #333333; font-family: Arial, Helvetica, sans-serif;\">&Aacute;O SƠ MI NỮ TRƠN FROM &Aacute;O ĐỘC Đ&Aacute;O: Với chất vải kate cao cấp mềm mịn v&agrave; tho&aacute;ng kh&iacute; gi&uacute;p người mang thoải m&aacute;i khi hoạt động cả ng&agrave;y d&ugrave; trong thời tiết nắng n&oacute;ng. B&ecirc;n cạnh đ&oacute; l&agrave; from &aacute;o độc đ&aacute;o mang tới vẻ đẹp c&aacute; t&iacute;nh, hiện đại gi&uacute;p c&aacute;c n&agrave;ng tr&ocirc;ng thật nổi bật trong mọi cuộc vui.</span></p>', '2022-05-29 03:15:41', '2022-05-29 13:23:38'),
-(14, 12, 15, 'ÁO SƠ MI NỮ TRƠN FROM ÁO ĐỘC ĐÁO', 250000, 16, '<p><span style=\"color: #333333; font-family: Arial, Helvetica, sans-serif;\">&Aacute;O SƠ MI NỮ TRƠN FROM &Aacute;O ĐỘC Đ&Aacute;O: Với chất vải kate cao cấp mềm mịn v&agrave; tho&aacute;ng kh&iacute; gi&uacute;p người mang thoải m&aacute;i khi hoạt động cả ng&agrave;y d&ugrave; trong thời tiết nắng n&oacute;ng. B&ecirc;n cạnh đ&oacute; l&agrave; from &aacute;o độc đ&aacute;o mang tới vẻ đẹp c&aacute; t&iacute;nh, hiện đại gi&uacute;p c&aacute;c n&agrave;ng tr&ocirc;ng thật nổi bật trong mọi cuộc vui.</span></p>', '2022-05-29 03:15:41', '2022-05-29 13:37:59'),
-(15, 13, 15, 'ÁO SƠ MI NỮ TRƠN FROM ÁO ĐỘC ĐÁO2', 250000, 20, '<p><span style=\"color: #333333; font-family: Arial, Helvetica, sans-serif;\">&Aacute;O SƠ MI NỮ TRƠN FROM &Aacute;O ĐỘC Đ&Aacute;O: Với chất vải kate cao cấp mềm mịn v&agrave; tho&aacute;ng kh&iacute; gi&uacute;p người mang thoải m&aacute;i khi hoạt động cả ng&agrave;y d&ugrave; trong thời tiết nắng n&oacute;ng. B&ecirc;n cạnh đ&oacute; l&agrave; from &aacute;o độc đ&aacute;o mang tới vẻ đẹp c&aacute; t&iacute;nh, hiện đại gi&uacute;p c&aacute;c n&agrave;ng tr&ocirc;ng thật nổi bật trong mọi cuộc vui.</span></p>', '2022-05-29 03:15:41', '2022-05-29 13:38:03'),
-(16, 14, 15, 'ÁO SƠ MI NỮ TRƠN FROM ÁO ĐỘC ĐÁO3', 250000, 30, '<p><span style=\"color: #333333; font-family: Arial, Helvetica, sans-serif;\">&Aacute;O SƠ MI NỮ TRƠN FROM &Aacute;O ĐỘC Đ&Aacute;O: Với chất vải kate cao cấp mềm mịn v&agrave; tho&aacute;ng kh&iacute; gi&uacute;p người mang thoải m&aacute;i khi hoạt động cả ng&agrave;y d&ugrave; trong thời tiết nắng n&oacute;ng. B&ecirc;n cạnh đ&oacute; l&agrave; from &aacute;o độc đ&aacute;o mang tới vẻ đẹp c&aacute; t&iacute;nh, hiện đại gi&uacute;p c&aacute;c n&agrave;ng tr&ocirc;ng thật nổi bật trong mọi cuộc vui.</span></p>', '2022-05-29 03:15:41', '2022-05-29 13:23:38'),
-(17, 16, 15, 'ÁO SƠ MI NỮ TRƠN FROM ÁO ĐỘC ĐÁO3', 250000, 30, '<p><span style=\"color: #333333; font-family: Arial, Helvetica, sans-serif;\">&Aacute;O SƠ MI NỮ TRƠN FROM &Aacute;O ĐỘC Đ&Aacute;O: Với chất vải kate cao cấp mềm mịn v&agrave; tho&aacute;ng kh&iacute; gi&uacute;p người mang thoải m&aacute;i khi hoạt động cả ng&agrave;y d&ugrave; trong thời tiết nắng n&oacute;ng. B&ecirc;n cạnh đ&oacute; l&agrave; from &aacute;o độc đ&aacute;o mang tới vẻ đẹp c&aacute; t&iacute;nh, hiện đại gi&uacute;p c&aacute;c n&agrave;ng tr&ocirc;ng thật nổi bật trong mọi cuộc vui.</span></p>', '2022-05-29 03:15:41', '2022-05-29 13:23:38');
+(21, 22, 16, 'Tai nghe Bluetooth Sony WH-1000XM4', 8490000, 35, '<h2 style=\"color: #222222; font-family: arial, Helvetica, sans-serif;\"><span style=\"font-family: arial, helvetica, sans-serif; font-size: 12pt;\">Tai nghe Sony WH-1000XM4 ch&iacute;nh h&atilde;ng</span></h2>\r\n<p style=\"color: #222222; font-family: arial, Helvetica, sans-serif;\"><span style=\"font-family: arial, helvetica, sans-serif; font-size: 12pt;\">Mới đ&acirc;y, Sony vừa c&ocirc;ng bố thế hệ thứ 4 của d&ograve;ng tai nghe chụp đầu chống ồn cao cấp:&nbsp;<a style=\"color: #333333; text-decoration-line: none; font-size: inherit;\" href=\"https://tainghe.com.vn/tai-nghe-bluetooth-sony-wh-1000xm4.html\" target=\"_blank\" rel=\"noopener\">WH1000XM4</a>.&nbsp;<a style=\"color: #333333; text-decoration-line: none; font-size: inherit;\" href=\"https://tainghe.com.vn/tai-nghe-bluetooth-sony-wh-1000xm4.html\" target=\"_blank\" rel=\"noopener\">Sony WH-1000XM4</a>&nbsp;c&oacute; thiết kế tương tự như người đ&agrave;n anh của m&igrave;nh, v&agrave; cũng được trang bị bộ xử l&yacute; chống ồn QN1, thứ gi&uacute;p cho Sony WH-1000XM3 trở th&agrave;nh một trong những tai nghe kh&ocirc;ng d&acirc;y tốt nhất trong ph&acirc;n kh&uacute;c chống ồn chủ động.</span></p>', '2022-05-30 16:08:23', '2022-05-30 16:08:23'),
+(22, 22, 16, 'Tai nghe Bluetooth Sony WH-XB900N', 5790000, 21, '<h2 style=\"color: #222222; font-family: arial, Helvetica, sans-serif; text-align: justify;\"><span style=\"font-size: 12pt;\">Tai nghe Bluetooth Sony WH-XB900N</span></h2>\r\n<p style=\"color: #222222; font-family: arial, Helvetica, sans-serif; text-align: justify;\"><span style=\"font-size: 12pt;\">Khả năng chống ồn đỉnh cao, &acirc;m thanh tinh tế, c&acirc;n bằng l&agrave; những g&igrave; m&agrave; ch&uacute;ng ta đ&atilde; qu&aacute; quen thuộc với d&ograve;ng sản phẩm Sony WH-1000X của Sony. Nhưng mới đ&acirc;y những c&ocirc;ng nghệ ti&ecirc;n tiến bao gồm cả t&iacute;nh năng chống ồn đ&atilde; được h&atilde;ng mang xuống d&ograve;ng sản phẩm Extra Bass của m&igrave;nh qua sản phẩm&nbsp;<strong><a style=\"color: #333333; text-decoration-line: none; font-size: inherit;\" href=\"https://tainghe.com.vn/tai-nghe-bluetooth-sony-wh-xb900n.html\" target=\"_blank\" rel=\"noopener\">Sony WH-XB900N</a></strong>.</span></p>', '2022-05-30 16:14:33', '2022-05-30 16:14:33'),
+(23, 27, 18, 'Tai nghe Audio Technica ATH-M70X', 5990000, 0, '<p style=\"color: #222222; font-family: arial, Helvetica, sans-serif;\"><span style=\"font-family: arial, helvetica, sans-serif;\">M-Series của&nbsp;<strong>AudioTechnica</strong>&nbsp;l&agrave; d&ograve;ng tai nghe ph&ograve;ng thu chuy&ecirc;n nghiệp, được ch&uacute; trọng chế tạo với kiểu d&aacute;ng, thiết kế v&agrave; chất lượng &acirc;m thanh trung thực nhất. M70x hiện l&agrave; tai nghe đầu bảng thuộc d&ograve;ng M-series với tất cả những đặc điểm tuyệt vời n&ecirc;u tr&ecirc;n.&nbsp;</span></p>\r\n<div style=\"color: #222222; font-family: arial, Helvetica, sans-serif;\">\r\n<ul>\r\n<li>\r\n<p><span style=\"font-family: arial, helvetica, sans-serif;\">M70x c&oacute; chất &acirc;m ch&iacute;nh x&aacute;c, tất cả c&aacute;c chi tiết được gia c&ocirc;ng kỹ c&agrave;ng, c&aacute;c khớp nối v&agrave; headband bằng kim loại cho độ bền cao nhất.&nbsp;</span></p>\r\n</li>\r\n<li>\r\n<p><span style=\"font-family: arial, helvetica, sans-serif;\">Driver 45mm với cuộn cảm nh&ocirc;m, c&oacute; trọng lượng nhẹ, linh hoạt với c&aacute;c rung động nhanh, nhằm t&aacute;i tạo &acirc;m thanh thật tốt m&agrave; kh&ocirc;ng g&acirc;y ra hiện tượng trễ tiếng.&nbsp;</span></p>\r\n</li>\r\n<li>\r\n<p><span style=\"font-family: arial, helvetica, sans-serif;\">Chất &acirc;m c&acirc;n bằng, đều ba dải &acirc;m mang đến sự ch&iacute;nh x&aacute;c v&agrave; trung t&iacute;nh nhất</span></p>\r\n</li>\r\n<li>\r\n<p><span style=\"font-family: arial, helvetica, sans-serif;\">Thiết kế closed c&aacute;ch &acirc;m tuyệt đối, earcup xoay 90 độ để gập lại dễ d&agrave;ng, ph&ugrave; hợp cho nhu cầu di chuyển.&nbsp;</span></p>\r\n</li>\r\n<li>\r\n<p><span style=\"font-family: arial, helvetica, sans-serif;\">Earpad mềm dẻo, thoải m&aacute;i v&agrave; c&oacute; thể thay thế dễ d&agrave;ng.&nbsp;</span></p>\r\n</li>\r\n<li>\r\n<p><span style=\"font-family: arial, helvetica, sans-serif;\">Cable th&aacute;o rời, c&oacute; 1 d&acirc;y xoắn 3m, 1 d&acirc;y 1,2m v&agrave; 1 d&acirc;y 3m.&nbsp;</span></p>\r\n</li>\r\n</ul>\r\n</div>', '2022-05-30 16:19:21', '2022-05-30 16:19:21'),
+(24, 27, 24, 'Tai nghe Shure SRH440', 2255000, 10, '<div class=\"products--description-txt txt\" style=\"padding: 0px; margin: 0px 0px 10px; border: 0px; font-size: 16px; vertical-align: baseline; clear: both; line-height: 1.5; color: #5a5d5e; font-family: tradegothic, sans-serif; letter-spacing: 0.07px; background: transparent; text-align: justify;\"><strong><a style=\"color: #333333; text-decoration-line: none; font-size: inherit;\" href=\"https://tainghe.com.vn/tai-nghe.html\">Tai nghe</a>&nbsp;Shure SRH 440</strong>&nbsp;rất phổ biến trong studio, tai nghe với &acirc;m thanh c&acirc;n bằng, tai nghe cỡ to SRH440 c&oacute; thể gập lại dễ d&agrave;ng để mang theo.</div>\r\n<div class=\"products--description-txt txt\" style=\"padding: 0px; margin: 0px 0px 10px; border: 0px; font-size: 16px; vertical-align: baseline; clear: both; line-height: 1.5; color: #5a5d5e; font-family: tradegothic, sans-serif; letter-spacing: 0.07px; background: transparent; text-align: justify;\">Đ&acirc;y l&agrave; một trong những headphone tai nghe studio gi&aacute; hợp l&yacute; m&agrave; chất lượng nếu bạn t&igrave;m tai nghe k&iacute;n &acirc;m thanh tầm trung chất lượng</div>\r\n<div class=\"products--description-txt txt\" style=\"padding: 0px; margin: 0px 0px 10px; border: 0px; font-size: 16px; vertical-align: baseline; clear: both; line-height: 1.5; color: #5a5d5e; font-family: tradegothic, sans-serif; letter-spacing: 0.07px; background: transparent; text-align: justify;\">Tai nghe SRH440 Professional Studio từ Shure cung cấp &acirc;m thanh đặc biệt v&agrave; thoải m&aacute;i.</div>\r\n<div class=\"products--description-txt txt\" style=\"padding: 0px; margin: 0px 0px 10px; border: 0px; font-size: 16px; vertical-align: baseline; clear: both; line-height: 1.5; color: #5a5d5e; font-family: tradegothic, sans-serif; letter-spacing: 0.07px; background: transparent; text-align: justify;\">Trở kh&aacute;ng, xử l&yacute; điện năng v&agrave; độ nhạy đều được hiệu chỉnh cho c&aacute;c thiết bị &acirc;m thanh chuy&ecirc;n nghiệp như m&aacute;y trộn DJ, m&aacute;y trộn v&agrave; bộ khuếch đại tai&nbsp;nghe. Bao gồm t&uacute;i x&aacute;ch v&agrave; bộ nối mạ v&agrave;ng 1/4 \"(6.3mm)</div>\r\n<div class=\"products--description-txt txt\" style=\"padding: 0px; margin: 0px 0px 10px; border: 0px; font-size: 16px; vertical-align: baseline; clear: both; line-height: 1.5; color: #5a5d5e; font-family: tradegothic, sans-serif; letter-spacing: 0.07px; background: transparent; text-align: justify;\">T&iacute;nh năng, đặc điểm</div>\r\n<div class=\"products--description-txt txt\" style=\"padding: 0px; margin: 0px 0px 10px; border: 0px; font-size: 16px; vertical-align: baseline; clear: both; line-height: 1.5; color: #5a5d5e; font-family: tradegothic, sans-serif; letter-spacing: 0.07px; background: transparent; text-align: justify;\">Đ&aacute;p ứng tần số n&acirc;ng cao cung cấp &acirc;m thanh ch&iacute;nh x&aacute;c qua một phạm vi rộng hơn</div>\r\n<div class=\"products--description-txt txt\" style=\"padding: 0px; margin: 0px 0px 10px; border: 0px; font-size: 16px; vertical-align: baseline; clear: both; line-height: 1.5; color: #5a5d5e; font-family: tradegothic, sans-serif; letter-spacing: 0.07px; background: transparent; text-align: justify;\">Trở kh&aacute;ng v&agrave; xử l&yacute; nguồn tối ưu h&oacute;a cho hiệu suất với c&aacute;c thiết bị &acirc;m thanh chuy&ecirc;n nghiệp</div>\r\n<div class=\"products--description-txt txt\" style=\"padding: 0px; margin: 0px 0px 10px; border: 0px; font-size: 16px; vertical-align: baseline; clear: both; line-height: 1.5; color: #5a5d5e; font-family: tradegothic, sans-serif; letter-spacing: 0.07px; background: transparent; text-align: justify;\">D&acirc;y nối&nbsp;c&oacute; thể điều chỉnh được v&agrave; cấu tr&uacute;c đ&oacute;ng lại mang lại sự thoải m&aacute;i v&agrave; t&iacute;nh di động</div>', '2022-05-30 16:21:54', '2022-05-30 16:21:54');
 
 -- --------------------------------------------------------
 
@@ -298,7 +298,7 @@ ALTER TABLE `customers`
 --
 ALTER TABLE `images`
   ADD PRIMARY KEY (`image_id`),
-  ADD KEY `FK_Images_Products` (`pro_id`);
+  ADD KEY `fk_img_pro` (`pro_id`);
 
 --
 -- Chỉ mục cho bảng `orders`
@@ -320,8 +320,8 @@ ALTER TABLE `order_details`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`product_id`),
-  ADD KEY `FK_Product_Categories` (`cat_id`),
-  ADD KEY `FK_Product_Brands` (`brand_id`);
+  ADD KEY `fk_pro_cat` (`cat_id`),
+  ADD KEY `fk_pro_brand` (`brand_id`);
 
 --
 -- Chỉ mục cho bảng `slider`
@@ -337,13 +337,13 @@ ALTER TABLE `slider`
 -- AUTO_INCREMENT cho bảng `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `admin_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `admin_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT cho bảng `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `brand_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `brand_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT cho bảng `cart`
@@ -355,7 +355,7 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT cho bảng `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `cat_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `cat_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT cho bảng `customers`
@@ -367,7 +367,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT cho bảng `images`
 --
 ALTER TABLE `images`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT cho bảng `order_details`
@@ -379,7 +379,7 @@ ALTER TABLE `order_details`
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT cho bảng `slider`
@@ -402,7 +402,7 @@ ALTER TABLE `cart`
 -- Các ràng buộc cho bảng `images`
 --
 ALTER TABLE `images`
-  ADD CONSTRAINT `FK_Images_Products` FOREIGN KEY (`pro_id`) REFERENCES `products` (`product_id`);
+  ADD CONSTRAINT `fk_img_pro` FOREIGN KEY (`pro_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `orders`
@@ -421,8 +421,8 @@ ALTER TABLE `order_details`
 -- Các ràng buộc cho bảng `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `FK_Product_Brands` FOREIGN KEY (`brand_id`) REFERENCES `brands` (`brand_id`),
-  ADD CONSTRAINT `FK_Product_Categories` FOREIGN KEY (`cat_id`) REFERENCES `categories` (`cat_id`);
+  ADD CONSTRAINT `fk_pro_brand` FOREIGN KEY (`brand_id`) REFERENCES `brands` (`brand_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_pro_cat` FOREIGN KEY (`cat_id`) REFERENCES `categories` (`cat_id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
