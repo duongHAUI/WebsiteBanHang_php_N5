@@ -62,7 +62,7 @@
                                         document.getElementById("products").innerHTML=this.responseText;
                                     }
                                 }
-                                xmlhttp.open("GET","/WebsiteBanHang_php_N5/controller/product.php?search="+str,true);
+                                xmlhttp.open("GET","/WebsiteBanHang_php_N5/controllers/product.php?search="+str,true);
                                 xmlhttp.send();
                                 
                         }
