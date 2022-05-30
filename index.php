@@ -1,7 +1,7 @@
 <?php
 
 $request = str_replace("/WebsiteBanHang_php_N5", "", $_SERVER['REQUEST_URI']);
-$request = preg_replace('/\?[a-zA-Z]+\_*[a-zA-Z]*\=[a-zA-z0-9]+(&[a-zA-Z]+\_*[a-zA-Z]*=[a-zA-Z0-9])*/', "", $request);
+$request = preg_replace('/\?[a-zA-Z]+\_*[a-zA-Z]*\=[a-zA-z0-9]*(&[a-zA-Z]+\_*[a-zA-Z]*=[a-zA-Z0-9]*)*/', "", $request);
 //$request = $_SERVER["REQUEST_URI"];
 
 switch ($request) {
@@ -24,10 +24,7 @@ switch ($request) {
         require __DIR__ . '/views/cart.php';
         break;
     case "/update-cart":
-        require __DIR__ . '/handlers/cart/update-cart.php';
-        break;
-    case "/delete-cart":
-        require __DIR__ . '/handlers/cart/delete-cart.php';
+        require __DIR__ . '/controllers/cart/update-cart.php';
         break;
     default:
         http_response_code(404);

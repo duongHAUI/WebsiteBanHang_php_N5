@@ -11,7 +11,7 @@ $cart_qty = $_GET["cart_qty"];
 
 if ($cart_qty > 0) {
   Cart::update_by_pk($con, $cart_id, array("cart_qty" => $cart_qty));
-} else {
+} else if ($cart_qty == 0) {
   Cart::delete_by_pk($con, $cart_id);
 }
 

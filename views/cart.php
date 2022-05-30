@@ -52,11 +52,9 @@ session_start();
 $_SESSION["user_id"] = 13;
 $user_id = 13;
 $carts = Cart::find_all($con, array("where" => "cus_id = $user_id", "order" => "createdAt DESC"));
+
 for ($i = 0; $i < count($carts); $i++) {
-  $carts[$i] = $carts[$i]->populated($con, "product");
-  if (isset($carts[$i]->product)) {
-    $carts[$i]->product = $carts[$i]->product->get_images($con);
-  }
+  $carts[$i]->populated($con, "product");
 }
 
 ?>
@@ -80,30 +78,66 @@ for ($i = 0; $i < count($carts); $i++) {
 </head>
 
 <body>
+
   <div class="container">
     <div class="header">
       <a href="shop">
         <i class='bx bx-chevron-left'></i> SHOP
       </a>
-      <a href="javascript:history.go(-1)"><i class='bx bx-x bx-rotate-90'></i></a>
+      <a href="/WebsiteBanHang_php_N5/"><i class='bx bx-x bx-rotate-90'></i></a>
     </div>
-    <h1>Giỏ hàng</h1>
+    <h1>SHOPPING CART</h1>
     <div class="list">
-      <div class="item">
-        <div class="item_img">
-          <img src="images/JBL_TUNE220TWS_ProductImage_Pink_Back.png" alt="">
+      <?php
+      if (count($carts) == 0) {
+        echo '<p class="no-product">No products in your cart.</p>';
+        return;
+      }
+
+      $total = 0;
+      foreach ($carts as $index => $cart) {
+        $last_item = $index == count($carts) - 1 ? "last-item" : "";
+        $product = $cart->product;
+
+        $thumb = $product->get_images($con)[0]->link;
+        $name = $product->title;
+        $quantity = $cart->qty;
+        $total += $product->price * $quantity * (100 - $product->discount) / 100;
+        $price = number_format($product->price * (100 - $product->discount) / 100, 2);
+      ?>
+        <div class="item <?= $last_item ?>">
+          <div class="item_img">
+            <img src="<?= $thumb ?>" alt="">
+          </div>
+          <p class="item_name"><?= $name ?></p>
+          <div class="item_qty">
+            <a href="update-cart?cart_id=<?= $cart->id ?>&cart_qty=<?= $quantity - 1 ?>"><i class='bx bx-minus'></i></a>
+            <input type="text" oninput="handleInput(event)" onchange="handleChange(event, <?= $cart->id ?>)" value="<?= $quantity ?>" />
+            <a href="update-cart?cart_id=<?= $cart->id ?>&cart_qty=<?= $quantity + 1 ?>"><i class='bx bx-plus'></i></a>
+          </div>
+          <div class="item_price">$<?= $price ?></div>
+          <a href="update-cart?cart_id=<?= $cart->id ?>&cart_qty=0"><i class='bx bx-x bx-rotate-90'></i></a>
         </div>
-        <p class="item_name">Tai nghe Bluetooth AirPods 2 Wireless</p>
-        <div class="item_qty">
-          <a href="update-cart?cart_id=11&cart_qty=2"><i class='bx bx-minus'></i></a>
-          <p>3</p>
-          <a href="update-cart?cart_id=11&cart_qty=4"><i class='bx bx-plus'></i></a>
-        </div>
-        <div class="item_price">5000</div>
-        <a href="delete-cart?cart_id=11"><i class='bx bx-x bx-rotate-90'></i></a>
+      <?php
+      }
+      ?>
+      <div class="checkout">
+        <a href="checkout" class="btn-checkout">$<?= number_format($total, 2) ?> <span></span>Checkout</a>
       </div>
     </div>
   </div>
+  <script>
+    function handleInput(event) {
+      let value = event.target.value;
+      console.log(event.target.value);
+      event.target.value = value.replace(/[^0-9]/g, '');
+    }
+
+    function handleChange(event, cart_id) {
+      let quantity = event.target.value;
+      window.open(`update-cart?cart_id=${cart_id}&cart_qty=${quantity}`, "_self")
+    }
+  </script>
 </body>
 
 </html>

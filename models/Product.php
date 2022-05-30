@@ -50,7 +50,7 @@ class Product extends Model
   function populated($con, $model)
   {
     if (gettype($model) == "string") {
-      if ($model == "Category" || $model = "category") {
+      if ($model == "Category" || $model == "category") {
         $this->category = Category::find_by_pk($con, $this->cat_id);
       }
 
