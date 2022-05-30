@@ -6,6 +6,8 @@ class Slider extends Model
 {
   public $name;
   public $image;
+  public $good;
+  public $desc;
   const TABLE_NAME = "slider";
 
   // entity function
@@ -14,8 +16,8 @@ class Slider extends Model
     $this->id = $row["slide_id"];
     $this->name = $row["slide_name"];
     $this->image = $row["slide_image"];
-    $this->createdAt = $row["createdAt"];
-    $this->updatedAt = $row["updatedAt"];
+    $this->good = $row["slide_good"];
+    $this->desc = $row["slide_desc"];
   }
 
   function save($con)
@@ -56,16 +58,16 @@ class Slider extends Model
     [
       "slide_name" => $name,
       "slide_image" => $image,
+      "slide_good" => $good,
+      "slide_desc" => $desc
     ] = $form;
-    $query = "insert into " . self::TABLE_NAME . "(slide_name, slide_image) values ('$name', '$image')";
-
+    $query = "insert into " . self::TABLE_NAME . "(slide_name,slide_good, slide_image,slide_desc) values ('$name','$good' ,'$image','$desc')";
     if (mysqli_query($con, $query)) {
       $id = mysqli_insert_id($con);
       $slide = self::find_by_pk($con, $id);
 
       return $slide;
     }
-
     return null;
   }
 

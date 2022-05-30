@@ -38,6 +38,11 @@
                     <span><i class='bx bxs-chevrons-right'></i></span>
                     <a href="./products.php">all products</a>
                 </div>
+                <div>
+                    <select name="category" onchange="showProductCategory(this.value)">
+                        <option value="">Select a Category:</option>
+                    </select>
+                </div>
             </div>
             <div class="box">
                 <div class="row">
@@ -49,12 +54,30 @@
                             <span class="filter-header">
                                 Categories
                             </span>
-                            <ul class="filter-list">
+                            <script>
+                                function showProductCategory(cat_id) {
+                                    var xmlhttp=new XMLHttpRequest();
+                                    xmlhttp.onreadystatechange=function() {
+                                        if (this.readyState==4 && this.status==200) {
+                                            document.getElementById("products").innerHTML=this.responseText;
+                                        }
+                                    }
+                                    xmlhttp.open("GET","/WebsiteBanHang_php_N5/controller/product.php?cat_id="+cat_id,true);
+                                    xmlhttp.send();
+                                }
+                            </script>
+                            <select name="category" onchange="showProductCategory(this.value)">
+                                <option value="">Select a Category:</option>
                                 <?php
                                     $categories =  Category::find_all($con);
                                     foreach($categories as $key => $value){
-                                        echo "<li>$value->title</li>";
+                                        echo "<option value='$value->id'>$value->title</option>";
                                     }
+                                ?>
+                            </select>
+                            <ul class="filter-list">
+                                <?php
+                                    
                                 ?>
                             </ul>
                         </div>
@@ -251,42 +274,18 @@
                             <button class="btn-flat btn-hover" id="filter-toggle">filter</button>
                         </div>
                         <!-- L -->
+                        <script>
+                            var xmlhttp=new XMLHttpRequest();
+                            xmlhttp.onreadystatechange=function() {
+                                        if (this.readyState==4 && this.status==200) {
+                                            document.getElementById("products").innerHTML=this.responseText;
+                                        }
+                                    }
+                            xmlhttp.open("GET","/WebsiteBanHang_php_N5/controller/product.php",true);
+                            xmlhttp.send();
+                        </script>
                         <div class="box">
                             <div class="row" id="products">
-                                <?php
-                                    $products = Product::find_all($con);
-                                    foreach($products as $key => $value){
-                                        
-                                ?>
-                                    <div class="col-4 col-md-6 col-sm-12">
-                                        <div class="product-card">
-                                            <div class="product-card-img">
-                                                <img src="images/<?=$value->get_images($con)[0]->link?>" alt="">
-                                                <img src="images/<?=$value->get_images($con)[1]->link?>" alt="">
-                                            </div>
-                                            <div class="product-card-info">
-                                                <div class="product-btn">
-                                                    <a href="./product-detail.php" class="btn-flat btn-hover btn-shop-now">shop now</a>
-                                                    <button class="btn-flat btn-hover btn-cart-add">
-                                                        <i class='bx bxs-cart-add'></i>
-                                                    </button>
-                                                    <button class="btn-flat btn-hover btn-cart-add">
-                                                        <i class='bx bxs-heart'></i>
-                                                    </button>
-                                                </div>
-                                                <div class="product-card-name">
-                                                    <?=$value->title?>
-                                                </div>
-                                                <div class="product-card-price">
-                                                    <span><del><?=$value->price?></del></span>
-                                                    <span class="curr-price"><?=$value->discount?></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <?php
-                                    }
-                                ?>
                             </div> 
                         </div>  
                         <div class="box">
@@ -295,8 +294,6 @@
                                 <li><a href="#" class="active">1</a></li>
                                 <li><a href="#">2</a></li>
                                 <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
                                 <li><a href="#"><i class='bx bxs-chevron-right'></i></a></li>
                             </ul>
                         </div>
@@ -308,7 +305,7 @@
     <!-- end products content -->
 
     <?php
-        include_once("./footer.php");
+        include_once("footer.php");
     ?>
     <!-- app js -->
     <script src="./js/app.js"></script>

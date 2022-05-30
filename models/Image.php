@@ -14,8 +14,6 @@ class Image extends Model
     $this->id = $row["image_id"];
     $this->pro_id = $row["pro_id"];
     $this->link = $row["image_link"];
-    $this->createdAt = $row["createdAt"];
-    $this->updatedAt = $row["updatedAt"];
   }
   function save($con)
   {
@@ -80,7 +78,6 @@ class Image extends Model
     ] = $queryArr;
     $query = $select . " from " . self::TABLE_NAME . " " . $where . " " . $order . " " . $limit . " " . $offset;
     $result = mysqli_query($con, $query);
-
     $images = array();
 
     if (!$result) {

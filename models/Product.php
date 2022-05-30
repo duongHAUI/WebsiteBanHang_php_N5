@@ -252,4 +252,7 @@ class Product extends Model
 
     return $product;
   }
+  public function priceDiscount(){
+    return $this->price*(1-$this->discount/100);
+  }
 }

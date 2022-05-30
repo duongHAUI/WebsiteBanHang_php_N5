@@ -1,6 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<?php
+    namespace Models;
+?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +18,10 @@
 
 <body>
     <?php
-    include("header.php");
+        include_once("models/index.php");
+        include_once("header.php");
+        include_once("./db/connectdb.php");
+        $slides = Slider::find_all($con);
     ?>
     <!-- hero section -->
     <div class="hero">
@@ -29,75 +32,54 @@
                     <div class="info">
                         <div class="info-content">
                             <h3 class="top-down">
-                                JBL TUNE 750TNC
+                                <?=$slides[0]->name?>
                             </h3>
                             <h2 class="top-down trans-delay-0-2">
-                                Next-gen design
+                                <?=$slides[0]->good?>
                             </h2>
                             <p class="top-down trans-delay-0-4">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati dolor commodi dignissimos culpa, eaque eos necessitatibus possimus veniam, cupiditate rerum deleniti? Libero, ducimus error? Beatae velit dolore sint explicabo! Fugit.
+                                <?=$slides[0]->desc?>
                             </p>
-                            <div class="top-down trans-delay-0-6">
+                            <a href= "products" class="top-down trans-delay-0-6">
                                 <button class="btn-flat btn-hover">
                                     <span>shop now</span>
                                 </button>
-                            </div>
+                            </a>
                         </div>
                     </div>
                     <div class="img top-down">
-                        <img src="./images/JBL_E55BT_KEY_RED_6063_FS_x1-1605x1605px.webp" alt="">
+                        <img src="admin_panel/slides_images/<?=$slides[0]->image?>" alt="">
                     </div>
                 </div>
                 <!-- end slide item -->
+                <?php for ($i=1; $i < sizeof($slides); $i++) { ?>
                 <!-- slide item -->
-                <div class="slide">
-                    <div class="info">
-                        <div class="info-content">
-                            <h3 class="top-down">
-                                JBL Quantum ONE
-                            </h3>
-                            <h2 class="top-down trans-delay-0-2">
-                                Ipsum dolor
-                            </h2>
-                            <p class="top-down trans-delay-0-4">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. A optio, voluptatum aperiam nobis quis maxime corporis porro alias soluta sunt quae consectetur aliquid blanditiis perspiciatis labore cumque, ullam, quam eligendi!
-                            </p>
-                            <div class="top-down trans-delay-0-6">
-                                <button class="btn-flat btn-hover">
-                                    <span>shop now</span>
-                                </button>
+                    <div class="slide">
+                        <div class="info">
+                            <div class="info-content">
+                                <h3 class="top-down">
+                                    <?=$slides[$i]->name?>
+                                </h3>
+                                <h2 class="top-down trans-delay-0-2">
+                                    <?=$slides[$i]->good?>
+                                </h2>
+                                <p class="top-down trans-delay-0-4">
+                                    <?=$slides[$i]->desc?>
+                                </p>
+                                <div class="top-down trans-delay-0-6">
+                                    <button class="btn-flat btn-hover">
+                                        <span>shop now</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
+                        <div class="img right-left">
+                            <img src="admin_panel/slides_images/<?=$slides[$i]->image?>" alt="">
+                        </div>
                     </div>
-                    <div class="img right-left">
-                        <img src="./images/JBL_E55BT_KEY_BLACK_6175_FS_x1-1605x1605px.png" alt="">
-                    </div>
-                </div>
+                <?php } ?>
                 <!-- end slide item -->
                 <!-- slide item -->
-                <div class="slide">
-                    <div class="info">
-                        <div class="info-content">
-                            <h3 class="top-down">
-                                JBL JR 310BT
-                            </h3>
-                            <h2 class="top-down trans-delay-0-2">
-                                Consectetur Elit
-                            </h2>
-                            <p class="top-down trans-delay-0-4">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo aut fugiat, libero magnam nemo inventore in tempora beatae officiis temporibus odit deserunt molestiae amet quam, asperiores, iure recusandae nulla labore!
-                            </p>
-                            <div class="top-down trans-delay-0-6">
-                                <button class="btn-flat btn-hover">
-                                    <span>shop now</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="img left-right">
-                        <img src="./images/JBL_JR 310BT_Product Image_Hero_Skyblue.png" alt="">
-                    </div>
-                </div>
                 <!-- end slide item -->
             </div>
             <!-- slider controller -->
@@ -152,38 +134,33 @@
             <div class="section-header">
                 <h2>Latest product</h2>
             </div>
-            <div class="row" id="latest-products">
-                <div class="col-3 col-md-6 col-sm-12">
-                    <div class="product-card">
-                        <a href="/WebsiteBanHang_php_N5/product-detail?id=12">
-                            <div class="product-card-img">
-                                <img src="./images/JBL_Quantum_400_Product Image_Hero 02.png" alt="">
-                                <img src="./images/JBL_Quantum_400_Product Image_Hero Mic Up.webp" alt="">
-                            </div>
-                        </a>
-                        <div class="product-card-info">
-                            <div class="product-btn">
-                                <button class="btn-flat btn-hover btn-shop-now">shop now</button>
-                                <button class="btn-flat btn-hover btn-cart-add">
-                                    <i class='bx bxs-cart-add'></i>
-                                </button>
-                                <button class="btn-flat btn-hover btn-cart-add">
-                                    <i class='bx bxs-heart'></i>
-                                </button>
-                            </div>
-                            <div class="product-card-name">
-                                JBL Quantum 400
-                            </div>
-                            <div class="product-card-price">
-                                <span><del>$300</del></span>
-                                <span class="curr-price">$200</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <script>
+                showProductLatest();
+                function showProductLatest(check = false) {
+                    var index;
+                    if(check){
+                        index = (+document.getElementById("view-more-latest-product").getAttribute("index")) + 1;
+                        console.log(index);
+                        document.getElementById("view-more-latest-product").setAttribute("index",index+"");
+                    }else{
+                        index = false;
+                    }
+                    console.log(index);
+                    var xmlhttp=new XMLHttpRequest();
+                    xmlhttp.onreadystatechange=function() {
+                         if (this.readyState==4 && this.status==200) {
+                            document.getElementById("latest-product").innerHTML=this.responseText;
+                        }
+                    }
+                    xmlhttp.open("GET","/WebsiteBanHang_php_N5/controller/product.php?latest-product="+index,true);
+                    xmlhttp.send();
+                }
+            </script>
+            <div class="row" id="latest-product">
+                
             </div>
-            <div class="section-footer">
-                <a href="./products" class="btn-flat btn-hover">view all</a>
+            <div class="section-footer" index="1" id="view-more-latest-product" onclick ="showProductLatest(true)" style="cursor: pointer;">
+                <a  class="btn-flat btn-hover" >view more</a>
             </div>
         </div>
     </div>
@@ -195,14 +172,14 @@
             <div class="row">
                 <div class="col-4 col-md-4">
                     <div class="sp-item-img">
-                        <img src="./images/kisspng-beats-electronics-headphones-apple-beats-studio-red-headphones.png" alt="">
+                        <img src="admin_panel/slides_images/<?=$slides[0]->image?>" alt="">
                     </div>
                 </div>
                 <div class="col-7 col-md-8">
                     <div class="sp-item-info">
-                        <div class="sp-item-name">JBL TUNE 750TNC</div>
+                        <div class="sp-item-name"><?=$slides[0]->name?></div>
                         <p class="sp-item-description">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore dignissimos itaque et eaque quod harum vero autem? Reprehenderit enim non voluptate! Qui provident modi est non eius ratione, debitis iure.
+                            <?=$slides[0]->desc?>
                         </p>
                         <button class="btn-flat btn-hover">shop now</button>
                     </div>
@@ -218,33 +195,45 @@
             <div class="section-header">
                 <h2>best selling</h2>
             </div>
-            <div class="row" id="best-products">
-                <div class="col-3 col-md-6 col-sm-12">
-                    <div class="product-card">
-                        <div class="product-card-img">
-                            <img src="./images/JBL_Quantum_400_Product Image_Hero 02.png" alt="">
-                            <img src="./images/JBL_Quantum_400_Product Image_Hero Mic Up.webp" alt="">
+            <?php
+
+            ?>
+            <div class="row">
+                <?php  
+                    $products = Product::find_all($con);
+                    foreach ($products as $key => $value) {
+                ?>
+                    
+                        <div class="col-3 col-md-6 col-sm-12">
+                            <div class="product-card">
+                                <a href="product-detail?pro_id=<?=$value->id?>">
+                                    <div class="product-card-img">
+                                        <img src="admin_panel/product_images/<?=$value->get_images($con)[0]->link ?>" alt="">
+                                        <img src="admin_panel/product_images/<?=$value->get_images($con)[0]->link ?>" alt="">
+                                    </div>
+                                </a>
+                                <div class="product-card-info">
+                                    <div class="product-btn">
+                                        <a href="products" class="btn-flat btn-hover btn-shop-now">shop now</a>
+                                        <button class="btn-flat btn-hover btn-cart-add">
+                                            <i class='bx bxs-cart-add'></i>
+                                        </button>
+                                        <button class="btn-flat btn-hover btn-cart-add">
+                                            <i class='bx bxs-heart'></i>
+                                        </button>
+                                    </div>
+                                    <a href="product-detail?pro_id=<?=$value->id?>" class="product-card-name">
+                                        <?= $value->title?>
+                                    </a>
+                                    <div class="product-card-price">
+                                        <span><del><?= $value->price?></del></span>
+                                        <span class="curr-price"><?= $value->priceDiscount()?></span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="product-card-info">
-                            <div class="product-btn">
-                                <button class="btn-flat btn-hover btn-shop-now">shop now</button>
-                                <button class="btn-flat btn-hover btn-cart-add">
-                                    <i class='bx bxs-cart-add'></i>
-                                </button>
-                                <button class="btn-flat btn-hover btn-cart-add">
-                                    <i class='bx bxs-heart'></i>
-                                </button>
-                            </div>
-                            <div class="product-card-name">
-                                JBL Quantum 400
-                            </div>
-                            <div class="product-card-price">
-                                <span><del>$300</del></span>
-                                <span class="curr-price">$200</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    
+                <?php } ?>
             </div>
             <div class="section-footer">
                 <a href="./products" class="btn-flat btn-hover">view all</a>
@@ -300,7 +289,6 @@
 
     <!-- app js -->
     <script src="./js/app.js"></script>
-    <script src="./js/index.js"></script>
 </body>
 
 </html>
