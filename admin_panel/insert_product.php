@@ -139,13 +139,15 @@
 		$images = $_FILES['product_images'];
 		$images_name = $images['name'];
 		foreach ($images_name as $key => $value) {
-		 	move_uploaded_file($images['tmp_name'][$key], "product_images/$value");
+		 	move_uploaded_file($images['tmp_name'][$key], "products/"."$value");
 		}
 		$insert_product = "insert into products (cat_id, brand_id, product_title, product_price, product_discount, product_desc) values ('$cat', '$brand', '$product_title', '$product_price','$discount', '$product_desc')";
 		$run_product = mysqli_query($con, $insert_product);
 		$id_pro = mysqli_insert_id($con);	
+
 		foreach ($images_name as $key => $value) {
-		 	mysqli_query($con, "insert into images(pro_id ,	image_link) values('$id_pro','$value')");
+			$value_img = mysqli_real_escape_string($con,"products/"."$value");
+		 	mysqli_query($con, "insert into images(pro_id ,	image_link) values('$id_pro','$value_img')");
 	   	}
 		if ($run_product) {
 			echo "<script>alert('Clothing product has been added successfully')</script>";

@@ -48,8 +48,8 @@
 
 <?php  
 	if (isset($_POST['submit'])) {
-		$cat_title = $_POST['cat_title'];
-		$cat_desc = $_POST['cat_desc'];
+		$cat_title = mysqli_real_escape_string($con,$_POST['cat_title']);
+		$cat_desc =  mysqli_real_escape_string($con,$_POST['cat_desc']);
 		$insert_cat = "insert into categories (cat_title, cat_desc) values ('$cat_title', '$cat_desc')";
 		$run_cat = mysqli_query($con, $insert_cat);
 		if ($run_cat) {
