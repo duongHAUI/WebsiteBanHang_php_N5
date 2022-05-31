@@ -32,7 +32,7 @@ class Customer extends Model
 
   public function set_password($password)
   {
-    $this->password = $password;
+    $this->password = md5($password);
   }
 
   function compare_password($password)
@@ -89,7 +89,7 @@ class Customer extends Model
     ] = $form;
     $query = "insert into " . self::TABLE_NAME . "(customer_name, customer_email, customer_password, customer_country, 
               customer_city, customer_phone, customer_address, customer_image)
-              values ('$name', '$email', '$password', '$country', '$city', '$phone', '$address', '$image')";
+              values ('$name', '$email', '".md5($password)."', '$country', '$city', '$phone', '$address', '$image')";
 
     if (mysqli_query($con, $query)) {
       $id = mysqli_insert_id($con);
