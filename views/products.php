@@ -24,14 +24,8 @@
 
     <?php
     include_once("models/index.php");
-<<<<<<< HEAD
     include("header.php");
     include("./db/connectdb.php");
-=======
-    include_once("header.php");
-    include_once("./db/connectdb.php");
-
->>>>>>> 4f770e2288128086447311b4fa57f514bed84a75
     ?>
 
     <!-- products content -->
@@ -82,16 +76,12 @@
                             </select>
                             <ul class="filter-list">
                                 <?php
-<<<<<<< HEAD
                                     $categories = Category::find_all($con);
                                     foreach ($categories as $key => $value) {
                                         ?>
                                         <li><a href="?cat-id=<?=$value->id?>"> <?=$value->title?></a></li>
                                         <?php
                                     }
-=======
-                                    
->>>>>>> 4f770e2288128086447311b4fa57f514bed84a75
                                 ?>
                             </ul>
                         </div>
@@ -142,16 +132,12 @@
                             </span>
                             <ul class="filter-list">
                                 <?php
-<<<<<<< HEAD
                                     $brands = Brand::find_all($con);
                                     foreach ($brands as $key => $value) {
                                         ?>
                                         <li><a href="?brand-id=<?=$value->id?>"> <?=$value->title?></a></li>
                                         <?php
                                     }
-=======
-                                    $brand = Brand::find_all($con);
->>>>>>> 4f770e2288128086447311b4fa57f514bed84a75
                                 ?>
                             </ul>
                         </div>
@@ -307,42 +293,6 @@
                         </script>
                         <div class="box">
                             <div class="row" id="products">
-<<<<<<< HEAD
-                                <?php
-                                    $prducts = Product::find_all($con);
-                                    foreach ($prducts as $key => $value) {
-                                ?>
-                                    <div class="col-4 col-md-6 col-sm-12">
-                                        <div class="product-card">
-                                            <div class="product-card-img">
-                                                <img src="../admin_panel/product_images/<?=$value->get_images()[0]->link?>" alt="">
-                                                <img src="../admin_panel/product_images/<?=$value->get_images()[0]->link?>" alt="">
-                                            </div>
-                                            <div class="product-card-info">
-                                                <div class="product-btn">
-                                                    <a href="./product-detail.php" class="btn-flat btn-hover btn-shop-now">shop now</a>
-                                                    <button class="btn-flat btn-hover btn-cart-add">
-                                                        <i class='bx bxs-cart-add'></i>
-                                                    </button>
-                                                    <button class="btn-flat btn-hover btn-cart-add">
-                                                        <i class='bx bxs-heart'></i>
-                                                    </button>
-                                                </div>
-                                                <div class="product-card-name">
-                                                    <?=$value->title?>
-                                                </div>
-                                                <div class="product-card-price">
-                                                    <span><del> <?=$value->price?></del></span>
-                                                    <span class="curr-price"><?=$value->discount?></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <?php
-                                    }
-                                ?>
-=======
->>>>>>> 4f770e2288128086447311b4fa57f514bed84a75
                             </div> 
                         </div>  
                         <div class="box">
