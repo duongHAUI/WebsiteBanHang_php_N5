@@ -109,7 +109,7 @@ class Detail extends Model
 
     $details = array();
 
-    if (!$result) {
+    if (!$result || $result->num_rows == 0) {
       return $details;
     }
 
@@ -132,7 +132,7 @@ class Detail extends Model
     $query = $select . " from " . self::TABLE_NAME . " " . $where . " " . $order . " limit 1";
     $result = mysqli_query($con, $query);
 
-    if (!$result) {
+    if (!$result || $result->num_rows == 0) {
       return null;
     }
 
@@ -166,7 +166,7 @@ class Detail extends Model
     $query = $select . " from " . self::TABLE_NAME . " " . $where . " " . $order . " " . $limit . " " . $offset;
     $result = mysqli_query($con, $query);
 
-    if (!$result) {
+    if (!$result || $result->num_rows == 0) {
       return array("count" => 0, "rows" => $details);
     }
 

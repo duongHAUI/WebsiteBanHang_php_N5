@@ -80,7 +80,7 @@ class Image extends Model
     $result = mysqli_query($con, $query);
     $images = array();
 
-    if (!$result) {
+    if (!$result || $result->num_rows == 0) {
       return $images;
     }
 
@@ -103,7 +103,7 @@ class Image extends Model
     $query = $select . " from " . self::TABLE_NAME . " " . $where . " " . $order . " limit 1";
     $result = mysqli_query($con, $query);
 
-    if (!$result) {
+    if (!$result || $result->num_rows == 0) {
       return null;
     }
 
@@ -137,7 +137,7 @@ class Image extends Model
     $query = $select . " from " . self::TABLE_NAME . " " . $where . " " . $order . " " . $limit . " " . $offset;
     $result = mysqli_query($con, $query);
 
-    if (!$result) {
+    if (!$result || $result->num_rows == 0) {
       return array("count" => 0, "rows" => $images);
     }
 

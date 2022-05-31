@@ -127,7 +127,7 @@ class Product extends Model
 
     $products = array();
 
-    if (!$result) {
+    if (!$result || $result->num_rows == 0) {
       return $products;
     }
 
@@ -150,7 +150,7 @@ class Product extends Model
     $query = $select . " from " . self::TABLE_NAME . " " . $where . " " . $order . " limit 1";
     $result = mysqli_query($con, $query);
 
-    if (!$result) {
+    if (!$result || $result->num_rows == 0) {
       return null;
     }
 
@@ -184,7 +184,7 @@ class Product extends Model
     $query = $select . " from " . self::TABLE_NAME . " " . $where . " " . $order . " " . $limit . " " . $offset;
     $result = mysqli_query($con, $query);
 
-    if (!$result) {
+    if (!$result || $result->num_rows == 0) {
       return array("count" => 0, "rows" => $products);
     }
 
@@ -252,7 +252,8 @@ class Product extends Model
 
     return $product;
   }
-  public function priceDiscount(){
-    return $this->price*(1-$this->discount/100);
+  public function priceDiscount()
+  {
+    return $this->price * (1 - $this->discount / 100);
   }
 }
