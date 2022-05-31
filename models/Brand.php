@@ -84,7 +84,7 @@ class Brand extends Model
 
     $brands = array();
 
-    if (!$result) {
+    if (!$result || $result->num_rows == 0) {
       return $brands;
     }
 
@@ -107,7 +107,7 @@ class Brand extends Model
     $query = $select . " from " . self::TABLE_NAME . " " . $where . " " . $order . " limit 1";
     $result = mysqli_query($con, $query);
 
-    if (!$result) {
+    if (!$result || $result->num_rows == 0) {
       return null;
     }
 
@@ -141,7 +141,7 @@ class Brand extends Model
     $query = $select . " from " . self::TABLE_NAME . " " . $where . " " . $order . " " . $limit . " " . $offset;
     $result = mysqli_query($con, $query);
 
-    if (!$result) {
+    if (!$result || $result->num_rows == 0) {
       return array("count" => 0, "rows" => $brands);
     }
 
