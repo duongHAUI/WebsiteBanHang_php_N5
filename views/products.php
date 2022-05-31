@@ -24,8 +24,9 @@
 
     <?php
     include_once("models/index.php");
-    include("header.php");
-    include("./db/connectdb.php");
+    include_once("header.php");
+    include_once("./db/connectdb.php");
+
     ?>
 
     <!-- products content -->

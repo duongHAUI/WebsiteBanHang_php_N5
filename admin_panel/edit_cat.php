@@ -14,8 +14,8 @@
 		$run_edit = mysqli_query($con, $edit_cat_query);
 		$row_edit = mysqli_fetch_array($run_edit);
 		$cat_id = $row_edit['cat_id'];
-		$cat_title = $row_edit['cat_title'];
-		$cat_desc = $row_edit['cat_desc'];
+		$cat_title =mysqli_real_escape_string($con, $row_edit['cat_title']);
+		$cat_desc = mysqli_real_escape_string($con,$row_edit['cat_desc']);
 	}
 ?>
 
@@ -60,8 +60,8 @@
 
 <?php  
 	if (isset($_POST['update'])) {
-		$cat_title = $_POST['cat_title'];
-		$cat_desc = $_POST['cat_desc'];
+		$cat_title = mysqli_real_escape_string($con,$_POST['cat_title']);
+		$cat_desc = mysqli_real_escape_string($con,$_POST['cat_desc']);
 		$update_cat = "update categories set cat_title = '$cat_title', cat_desc = '$cat_desc' where cat_id = '$cat_id'";
 		$run_update = mysqli_query($con, $update_cat);
 		if ($run_update) {

@@ -55,7 +55,7 @@
 							<tr>
 								<td><?php echo $i; ?></td>
 								<td><?php echo $pro_title; ?></td>
-								<td><img src="<?=$pro_img?>" width="100" height="100"></td>
+								<td><img src="../images/<?=$pro_img?>" width="100" height="100"></td>
 								<td><?php echo $pro_price; ?></td>
 								<td>
 									<?php
