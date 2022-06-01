@@ -5,10 +5,8 @@ $request = preg_replace('/\?[a-zA-Z]+\_*[a-zA-Z]*\=[a-zA-z0-9]*(&[a-zA-Z]+\_*[a-
 //$request = $_SERVER["REQUEST_URI"];
 
 switch ($request) {
-    case '/':
-        require __DIR__ . '/views/index.php';
-        break;
     case '':
+    case '/':
         require __DIR__ . '/views/index.php';
         break;
     case '/products':
@@ -25,6 +23,9 @@ switch ($request) {
         break;
     case "/login":
         require __DIR__ . '/views/login.php';
+        break;
+    case "/register":
+        require __DIR__ . '/views/register.php';
         break;
     case "/update-cart":
         require __DIR__ . '/controllers/cart/update-cart.php';
