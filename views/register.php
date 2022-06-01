@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,30 +22,35 @@
 </head>
 
 <body>
+<?php
+include "./helpers/common.php";
+?>
 <div class="auth-main d-flex align-items-center justify-content-center">
     <div class="col-3 col-md-6 col-sm-12">
         <div class="text-center auth-title">
             <h3>Register</h3>
         </div>
         <div class="pt-5">
+            <?php get_flash_message('register'); ?>
+
             <form action="./controllers/auth/register.php" id="login-form" method="post" data-validate="true">
                 <div class="form-container">
-                    <input type="text" name="customer_email" data-rule-required="true" data-msg-required="Email is required" data-rule-email="true" data-msg-email="Email is invalid" />
+                    <input type="text" name="customer_email" data-rule-required="true" data-msg-required="Email is required" data-rule-email="true" data-msg-email="Email is invalid" value="<?= old('customer_email') ?>" />
                     <label>Email</label>
                 </div>
                 <div class="form-container">
-                    <input type="text" name="customer_name" data-rule-required="true" data-msg-required="Full name is required" />
+                    <input type="text" name="customer_name" data-rule-required="true" data-msg-required="Full name is required" value="<?= old('customer_name') ?>" />
                     <label>Full name</label>
                 </div>
                 <div class="form-container">
-                    <input type="password" name="customer_password" data-rule-required="true" data-msg-required="Password is required" id="customer_password" />
+                    <input type="password" name="customer_password" data-rule-required="true" data-msg-required="Password is required" data-rule-password="true" id="customer_password" />
                     <label>Password</label>
                 </div>
                 <div class="form-container">
                     <input type="password" name="retype_password" data-rule-equalto="#customer_password" data-msg-equalto="Retype the password does not match" />
                     <label>Retype password</label>
                 </div>
-                <button class="btn-flat btn-submit mt-5" type="submit">Register</button>
+                <button class="btn-flat btn-submit mt-5" type="submit" name="register">Register</button>
                 <div class="mt-3 text-center">
                     <a href="login">Back to login</a>
                 </div>
