@@ -29,7 +29,7 @@
                 <h3>Login</h3>
             </div>
             <div class="pt-5">
-                <form action="" id="login-form">
+                <form action="" id="login-form" >
                     <div class="form-container">
                         <input type="text" name="customer_email" />
                         <label>Email</label>
