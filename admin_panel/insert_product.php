@@ -99,6 +99,18 @@
 							</div>
 						</div>
 						<div class="form-group">
+							<label class="col-md-3 control-label">Product Quantity</label>
+							<div class="col-md-6">
+								<input type="text" name="product_quantity" class="form-control" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label">Product Sold</label>
+							<div class="col-md-6">
+								<input type="text" name="product_sold" class="form-control" required>
+							</div>
+						</div>
+						<div class="form-group">
 							<label class="col-md-3 control-label">Product Discount</label>
 							<div class="col-md-6">
 								<input type="text" name="product_discount" class="form-control" required>
@@ -132,20 +144,15 @@
 		$brand = $_POST['brand'];
 		$product_price = $_POST['product_price'];
 		$discount = $_POST['product_discount'];
-<<<<<<< HEAD
 		$product_desc = $_POST['product_desc'];	
-=======
-		$product_desc = $_POST['product_desc'];
-		
-		
->>>>>>> 4f770e2288128086447311b4fa57f514bed84a75
-
+		$product_quantity = $_POST['product_quantity'];	
+		$product_sold = $_POST['product_sold'];	
 		$images = $_FILES['product_images'];
 		$images_name = $images['name'];
 		foreach ($images_name as $key => $value) {
 		 	move_uploaded_file($images['tmp_name'][$key], "products/"."$value");
 		}
-		$insert_product = "insert into products (cat_id, brand_id, product_title, product_price, product_discount, product_desc) values ('$cat', '$brand', '$product_title', '$product_price','$discount', '$product_desc')";
+		$insert_product = "insert into products (cat_id, brand_id, product_title, product_price, product_discount, product_desc,product_quantity,product_sold) values ('$cat', '$brand', '$product_title', '$product_price','$discount', '$product_desc',$product_quantity,$product_sold)";
 		$run_product = mysqli_query($con, $insert_product);
 		$id_pro = mysqli_insert_id($con);	
 

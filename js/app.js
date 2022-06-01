@@ -55,4 +55,4 @@ setInterval(() => {
     if (!slide_play) return
     nextSlide()
     showSlide()
-}, 3000);
+}, 5000);

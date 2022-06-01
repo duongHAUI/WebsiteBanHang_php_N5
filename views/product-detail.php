@@ -44,7 +44,7 @@
             <div class="row product-row">
                 <div class="col-5 col-md-12">
                     <div class="product-img" id="product-img">
-                        <img src="admin_panel/product_images/<?=$product->get_images($con)[0]->link?>" alt="">
+                        <img src="images/<?=$product->get_images($con)[0]->link?>" alt="">
                     </div>
                     <div class="box">
                         <div class="product-img-list">

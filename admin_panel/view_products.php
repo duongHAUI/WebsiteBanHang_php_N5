@@ -30,6 +30,7 @@
 								<th>Product Title</th>
 								<th>Product Image</th>
 								<th>Product Price</th>
+								<th>Product Quantity</th>
 								<th>Product Sold</th>
 								<th>Product Date</th>
 								<th>Delete</th>
@@ -45,6 +46,8 @@
 									$pro_id = $row_pro['product_id'];
 									$pro_title = $row_pro['product_title'];
 									$pro_price = $row_pro['product_price'];
+									$pro_quantity = $row_pro['product_quantity'];
+									$pro_sold = $row_pro['product_sold'];
 									$pro_date = $row_pro['createdAt'];
 									$i++;
 									$sql_imgs = "select * from images where pro_id = '$pro_id'";
@@ -57,17 +60,11 @@
 								<td><?php echo $pro_title; ?></td>
 								<td><img src="../images/<?=$pro_img?>" width="100" height="100"></td>
 								<td><?php echo $pro_price; ?></td>
-								<td>
-									<?php
-										$get_sold = "select * from order_details where pro_id = '$pro_id'";
-										$run_sold = mysqli_query($con, $get_sold);
-										$count = mysqli_num_rows($run_sold);
-										echo $count;
-									?>
-								</td>
+								<td><?php echo $pro_quantity; ?></td>
+								<td><?php echo $pro_sold; ?></td>
 								<td><?php echo $pro_date; ?></td>
 								<td>
-									<button class="btn btn-danger">
+									<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">
 										<a href="index.php?delete_product=<?php echo $pro_id; ?>"><i class="fa fa-trash"></i> Delete</a>
 									</button>
 								</td>
@@ -87,7 +84,7 @@
 		</div>
 	</div>
 </div>
-
+	<link rel="stylesheet" href="./css/style.css">
 <?php  
 	}
 ?>
