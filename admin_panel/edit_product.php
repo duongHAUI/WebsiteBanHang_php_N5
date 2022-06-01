@@ -17,6 +17,8 @@
 		$cat = $row_edit['cat_id'];
 		$brand = $row_edit['brand_id'];
 		$p_price = $row_edit['product_price'];
+		$p_quantity = $row_edit['product_quantity'];
+		$p_sold= $row_edit['product_sold'];
 		$p_discount = $row_edit['product_discount'];
 		$p_desc = $row_edit['product_desc'];
 	}
@@ -125,6 +127,18 @@
 							</div>
 						</div>
 						<div class="form-group">
+							<label class="col-md-3 control-label">Product Quantity</label>
+							<div class="col-md-6">
+								<input type="text" name="product_quantity" class="form-control" value="<?php echo $p_discount; ?>">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label">Product Sold</label>
+							<div class="col-md-6">
+								<input type="text" name="product_sold" class="form-control" value="<?php echo $p_discount; ?>">
+							</div>
+						</div>
+						<div class="form-group">
 							<label class="col-md-3 control-label">Product Description</label>
 							<div class="col-md-6">
 								<textarea name="product_desc" cols="19" rows="6" class="form-control"><?php echo $p_desc; ?></textarea>
@@ -151,9 +165,11 @@
 		$cat = $_POST['cat'];
 		$brand = $_POST['brand'];
 		$product_price = $_POST['product_price'];
+		$product_quantity = $_POST['product_quantity'];
+		$product_sold = $_POST['product_sold'];
 		$product_desc = $_POST['product_desc'];
 
-		$update_product = "update products set cat_id = '$cat', brand_id = '$brand', product_title = '$product_title', product_desc = '$product_desc', product_price = '$product_price' where product_id = '$p_id'";
+		$update_product = "update products set cat_id = '$cat', brand_id = '$brand', product_title = '$product_title', product_desc = '$product_desc', product_price = '$product_price',product_quantity = '$product_quantity',product_sold ='$product_sold' where product_id = '$p_id'";
 		$run_update = mysqli_query($con, $update_product);
 		if ($run_update) {
 			echo "<script>alert('Product has been updated successfully')</script>";

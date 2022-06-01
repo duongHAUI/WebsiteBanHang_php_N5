@@ -182,11 +182,30 @@ ul.devided > li:last-child {
 
 .user-menu {
   display: flex;
-}
 
+}
+.auth-user-1{
+  position: relative;
+}
+.auth-user-2{
+  position: absolute;
+  font-size: 14px;
+  width: 100px;
+  left: -50%;
+  background-color: aliceblue;
+}
+.user-menu > .auth-user{
+  margin-right: 15px;
+}
+.user-menu > .auth-user > span{
+  font-size: 14px;
+}
+.user-menu > li {
+  display: flex;
+  align-items: center;
+}
 .user-menu > li > a {
   font-size: 30px;
-  margin-left: 15px;
 }
 
 .bottom-header {

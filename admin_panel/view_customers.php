@@ -64,7 +64,7 @@
 								<td><?php echo $c_address; ?></td>
 								<td><?php echo $c_phone; ?></td>
 								<td>
-									<button class="btn btn-danger">
+									<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">
 										<a href="index.php?delete_customer=<?php echo $c_id; ?>"><i class="fa fa-trash"></i> Delete</a>
 									</button>
 								</td>

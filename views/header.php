@@ -10,44 +10,6 @@
         <!-- end mobile menu -->
         <!-- main header -->
         <div class="header-wrapper" id="header-wrapper">
-            <span class="mb-menu-toggle mb-menu-close" id="mb-menu-close">
-                <i class='bx bx-x'></i>
-            </span>
-            <!-- top header -->
-            <div class="bg-second">
-                <div class="top-header container">
-                    <ul class="devided">
-                        <li>
-                            <a href="#">+840123456789</a>
-                        </li>
-                        <li>
-                            <a href="#">atshop@mail.com</a>
-                        </li>
-                    </ul>
-                    <ul class="devided">
-                        <li class="dropdown">
-                            <a href="">USD</a>
-                            <i class='bx bxs-chevron-down'></i>
-                            <ul class="dropdown-content">
-                                <li><a href="#">VND</a></li>
-                                <li><a href="#">JPY</a></li>
-                                <li><a href="#">EUR</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="">ENGLISH</a>
-                            <i class='bx bxs-chevron-down'></i>
-                            <ul class="dropdown-content">
-                                <li><a href="#">VIETNAMESE</a></li>
-                                <li><a href="#">JAPANESE</a></li>
-                                <li><a href="#">FRENCH</a></li>
-                                <li><a href="#">SPANISH</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">ORDER TRACKING</a></li>
-                    </ul>
-                </div>
-            </div>
             <!-- end top header -->
             <!-- mid header -->
             <div class="bg-main">
@@ -72,8 +34,15 @@
                         <i class='bx bx-search-alt' ></i>
                     </div>
                     <ul class="user-menu">
-                        <li><a href="#"><i class='bx bx-bell'></i></a></li>
-                        <li><a href="#"><i class='bx bx-user-circle'></i></a></li>
+                        <li class="auth-user">
+                            <?php  echo (isset($user) == true?"<span>(Nguễn Văn Dương)</span>":"") ?>
+                            <a class="auth-user-1"><i class='bx bx-user-circle'></i>
+                                <ul class="auth-user-2">
+                                    <li>đăng nhập</li>
+                                    <li>đăng ký</li>
+                                </ul>
+                            </a>
+                        </li>
                         <li><a href="cart"><i class='bx bx-cart'></i></a></li>
                     </ul>
                 </div>
