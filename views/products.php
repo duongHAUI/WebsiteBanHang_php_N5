@@ -38,11 +38,11 @@
                     <span><i class='bx bxs-chevrons-right'></i></span>
                     <a href="./products.php">all products</a>
                 </div>
-                <div>
+                <!-- <div>
                     <select name="category" onchange="showProductCategory(this.value)">
                         <option value="">Select a Category:</option>
                     </select>
-                </div>
+                </div> -->
             </div>
             <div class="box">
                 <div class="row">
@@ -75,7 +75,9 @@
                                     }
                                 ?>
                             </select>
+                            
                             <ul class="filter-list">
+<<<<<<< HEAD
                                 <?php
                                     $categories = Category::find_all($con);
                                     foreach ($categories as $key => $value) {
@@ -84,7 +86,26 @@
                                         <?php
                                     }
                                 ?>
+=======
+                                <li>
+                                    <div class="group-checkbox" style="display: flex; flex-direction: column;">
+                                        
+                                        <?php 
+                                            $categories =  Category::find_all($con);
+                                            foreach($categories as $key => $value){
+                                                echo "
+                                                <input type='checkbox' id='$value->title'>
+                                                <label for='$value->title' style='margin: 12px'>$value->title
+                                                <i class='bx bx-check'></i>
+                                                </label>";
+                                            }
+                                        ?>
+                                    </div>
+                                </li>
+>>>>>>> fill-categories-and-brands
                             </ul>
+                            
+                            
                         </div>
                         <div class="box">
                             <span class="filter-header">
@@ -133,12 +154,16 @@
                             </span>
                             <ul class="filter-list">
                                 <?php
+<<<<<<< HEAD
                                     $brands = Brand::find_all($con);
                                     foreach ($brands as $key => $value) {
                                         ?>
                                         <li><a href="?brand-id=<?=$value->id?>"> <?=$value->title?></a></li>
                                         <?php
                                     }
+=======
+                                    $brand = Brand::find_all($con);
+>>>>>>> fill-categories-and-brands
                                 ?>
                             </ul>
                         </div>
