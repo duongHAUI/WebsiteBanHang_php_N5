@@ -34,16 +34,26 @@
                         <i class='bx bx-search-alt' ></i>
                     </div>
                     <ul class="user-menu">
-                        <li class="auth-user">
-                            <?php  echo (isset($user) == true?"<span>(Nguễn Văn Dương)</span>":"") ?>
-                            <a class="auth-user-1"><i class='bx bx-user-circle'></i>
-                                <ul class="auth-user-2">
-                                    <li>đăng nhập</li>
-                                    <li>đăng ký</li>
-                                </ul>
-                            </a>
+                        <li class="user-cart">
+                            <a href="cart"><i class='bx bx-cart'></i><span class="count-cart">2</span></a>
                         </li>
-                        <li><a href="cart"><i class='bx bx-cart'></i></a></li>
+                        <!-- when not login -->
+                        <!-- <li class="auth-user">
+                            <a href="login" class="auth-user-1"><i class='bx bx-user-circle'></i></a>
+                        </li> -->
+                        <!-- when login -->
+                        <li class="auth-user">
+                            <div class="auth-user-1">
+                                <p>
+                                    <img src="https://ss-images.saostar.vn/wp700/pc/1652253504015/saostar-6svcmlu1dfjww3am.jpg" alt="avatar"/>
+                                    <span style="font-size: 14px;">Minh Phương</span>
+                                </p>
+                                <ul class="auth-user-2">
+                                    <li>Settings</li>
+                                    <li>Logout</li>
+                                </ul>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
