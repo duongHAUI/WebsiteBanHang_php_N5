@@ -23,12 +23,16 @@
 </head>
 
 <body>
+<?php
+include "./helpers/common.php";
+?>
     <div class="auth-main d-flex align-items-center justify-content-center">
         <div class="col-3 col-md-6 col-sm-12">
             <div class="text-center auth-title">
                 <h3>Login</h3>
             </div>
             <div class="pt-5">
+                <?php get_flash_message('register'); ?>
                 <form action="" id="login-form" >
                     <div class="form-container">
                         <input type="text" name="customer_email" />
@@ -37,12 +41,6 @@
                     <div class="form-container">
                         <input type="password" name="customer_password" />
                         <label>Password</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="remember-me" name="remember-me">
-                        <label class="form-check-label" for="remember-me">
-                            Remember me
-                        </label>
                     </div>
                     <button class="btn-flat btn-submit mt-5" type="submit">Login</button>
                     <div class="mt-3 text-center">

@@ -1,18 +1,20 @@
+const inputSelector = $('.form-container input');
+
+function setInputActive() {
+    inputSelector.each(function () {
+        const value = $(this).val();
+        if (value.trim() !== '') {
+            $(this).parent().addClass('active');
+        } else {
+            $(this).parent().removeClass('active');
+        }
+    });
+}
+
+setInputActive();
+
 $(document).ready(function () {
     'use strict';
-
-    const inputSelector = $('.form-container input');
-
-    function setInputActive() {
-        inputSelector.each(function () {
-            const value = $(this).val();
-            if (value.trim() !== '') {
-                $(this).parent().addClass('active');
-            } else {
-                $(this).parent().removeClass('active');
-            }
-        });
-    }
 
     inputSelector.focus(function () {
         setInputActive();
