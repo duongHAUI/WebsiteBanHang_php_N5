@@ -1,8 +1,10 @@
 <?php
-    if(isset($_COOKIE['c_user'])) {
-        
-    }else{
-        header("Location: login");
-    }
+    namespace Models;
+?>
+<?php
 
+    if(!$_SESSION['c_user']){
+        $c_user = $_COOKIE('c_user');
+    }
+    
 ?>
