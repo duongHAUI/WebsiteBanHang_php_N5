@@ -35,6 +35,7 @@ include "./helpers/common.php";
             <div class="pt-5">
                 <?php get_flash_message('register'); ?>
                 <?php get_flash_message('login'); ?>
+                <?php get_flash_message('logout'); ?>
                 <form action="./controllers/auth/login.php" id="login-form" data-validate="true" method="post">
                     <div class="form-container">
                         <input type="text" name="customer_email" data-rule-required="true" data-msg-required="Email is required" data-rule-email="true" data-msg-email="Email is invalid" value="<?= old('customer_email') ?>" />
