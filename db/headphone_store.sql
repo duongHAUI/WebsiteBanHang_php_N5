@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 01, 2022 lúc 06:43 AM
+-- Thời gian đã tạo: Th6 03, 2022 lúc 08:24 AM
 -- Phiên bản máy phục vụ: 10.4.22-MariaDB
 -- Phiên bản PHP: 8.1.2
 
@@ -136,6 +136,13 @@ CREATE TABLE `customers` (
   `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Đang đổ dữ liệu cho bảng `customers`
+--
+
+INSERT INTO `customers` (`customer_id`, `customer_name`, `customer_email`, `customer_password`, `customer_country`, `customer_city`, `customer_phone`, `customer_address`, `customer_image`, `createdAt`, `updatedAt`) VALUES
+(13, 'dsadas21321', 'duongvipro2k1@gmail.com', '934162f0631c6400b5833c9c7a84547d', '', '', '', '', '', '2022-06-02 13:40:00', '2022-06-02 13:40:00');
+
 -- --------------------------------------------------------
 
 --
@@ -167,7 +174,7 @@ INSERT INTO `images` (`image_id`, `pro_id`, `image_link`) VALUES
 --
 
 CREATE TABLE `orders` (
-  `order_id` int(10) NOT NULL,
+  `order_id` int(11) NOT NULL,
   `cus_id` int(10) NOT NULL,
   `order_amount` int(100) NOT NULL,
   `order_status` text NOT NULL,
@@ -191,7 +198,6 @@ CREATE TABLE `order_details` (
   `order_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   `price` int(11) NOT NULL,
-  `size` varchar(20) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
   `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -302,8 +308,8 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `order_details`
   ADD PRIMARY KEY (`detail_id`),
-  ADD KEY `FK_Details_Orders` (`order_id`),
-  ADD KEY `FK_Detail_Products` (`pro_id`);
+  ADD KEY `FK_Detail_Products` (`pro_id`),
+  ADD KEY `FK_Details_Orders` (`order_id`);
 
 --
 -- Chỉ mục cho bảng `products`
@@ -351,13 +357,19 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT cho bảng `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `customer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `images`
 --
 ALTER TABLE `images`
   MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- AUTO_INCREMENT cho bảng `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT cho bảng `order_details`
