@@ -1,5 +1,9 @@
 <?php
     namespace Models;
+<<<<<<< HEAD
+=======
+
+>>>>>>> e03b9bcae0a0ee92f616e62fc4d3d95343fceb34
     include "models/index.php";
     include "db/connectdb.php";
     include("header.php");
@@ -10,7 +14,13 @@
     for ($i = 0; $i < count($carts); $i++) {
         $carts[$i]->populated($con, "product");
     }
+<<<<<<< HEAD
 
+=======
+?>
+
+<?php
+>>>>>>> e03b9bcae0a0ee92f616e62fc4d3d95343fceb34
     function is_email($str) {
         return (!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $str)) ? false : true;
     }
@@ -28,7 +38,10 @@
 
     $error = array();
     $fullname = $addressDetail = $phone = $email = $notes = "";
+<<<<<<< HEAD
     $status = "cash on delivery";
+=======
+>>>>>>> e03b9bcae0a0ee92f616e62fc4d3d95343fceb34
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($_POST["fullname"])) {
@@ -81,6 +94,9 @@
         ));
     } 
     
+    if(empty($error)){
+        echo $fullname.$addressDetail.$email.$phone.$notes;
+    }
 ?>
 
 <!DOCTYPE html>
