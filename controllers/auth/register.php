@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\auth;
 
 include "../../db/connectdb.php";
 include "../../models/index.php";
