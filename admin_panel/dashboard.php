@@ -122,7 +122,6 @@
 								<th>Invoice no</th>
 								<th>Product id</th>
 								<th>Product qty</th>
-								<th>Product size</th>
 								<th>Status</th>
 							</tr>
 						</thead>
@@ -156,7 +155,6 @@
 								<td><?php echo $invoice_no; ?></td>
 								<td><?php echo $product_id; ?></td>
 								<td><?php echo $qty; ?></td>
-								<td><?php echo $size; ?></td>
 								<td>
 									<?php  
 										if ($order_status=='Pending') {
