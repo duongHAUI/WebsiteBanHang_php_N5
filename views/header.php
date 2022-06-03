@@ -50,7 +50,7 @@
                                 </p>
                                 <ul class="auth-user-2">
                                     <li>Settings</li>
-                                    <li>Logout</li>
+                                    <li><a href="./controllers/auth/logout.php">Logout</a></li>
                                 </ul>
                             </div>
                         </li>
