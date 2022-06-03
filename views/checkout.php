@@ -1,6 +1,5 @@
 <?php
     namespace Models;
-
     include "models/index.php";
     include "db/connectdb.php";
     include("header.php");
@@ -11,9 +10,7 @@
     for ($i = 0; $i < count($carts); $i++) {
         $carts[$i]->populated($con, "product");
     }
-?>
 
-<?php
     function is_email($str) {
         return (!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $str)) ? false : true;
     }
@@ -31,6 +28,7 @@
 
     $error = array();
     $fullname = $addressDetail = $phone = $email = $notes = "";
+    $status = "cash on delivery";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($_POST["fullname"])) {
@@ -68,9 +66,21 @@
         $notes = $_POST["notes"];
     }
 
+    $amount = Cart::count($con, array("where" => "cus_id = $customer_id"));
+
     if(empty($error)){
-        echo $fullname.$addressDetail.$email.$phone.$notes;
-    }
+        $orders = Order::create($con, array(
+            "order_id" => +1,
+            "order_receiver" => "$fullname",
+            "order_address" => "$addressDetail",
+            "order_status" => "$status",
+            "order_amount" => "$amount",
+            "order_phone" => "$phone",
+            "order_note" => "$notes",
+            "cus_id" => "$customer_id",
+        ));
+    } 
+    
 ?>
 
 <!DOCTYPE html>
@@ -121,6 +131,15 @@
                             <label for="">Order notes (optional)</label>
                             <textarea rows="4" placeholder="Note..." name="notes"></textarea>
                         </div>
+                        <div class="cash">
+                            <div class="group-checkbox">
+                                <input type="checkbox" id="cash" name="cashOnDelivert" checked>
+                                <label for="cash">
+                                    Cash on delivery
+                                    <i class='bx bx-check'></i>
+                                </label>
+                            </div>
+                        </div>
                     </div>
                     <div class="checkout-btn">
                         <button class="back-to-cart checkout-btn-item"><a href="cart">Back to Cart</a></button>
@@ -166,15 +185,6 @@
                         <div class="total-detail line">
                             <p class="order-total__title">total</p>
                             <p class="total-money">$<?= number_format($total, 2)?></p>
-                        </div>
-                        <div class="cash">
-                            <div class="group-checkbox">
-                                <input type="checkbox" id="cash" name="cashOnDelivert" checked>
-                                <label for="cash">
-                                    Cash on delivery
-                                    <i class='bx bx-check'></i>
-                                </label>
-                            </div>
                         </div>
                     </div>
                 </div>

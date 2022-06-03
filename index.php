@@ -30,6 +30,9 @@ switch ($request) {
     case "/update-cart":
         require __DIR__ . '/controllers/cart/update-cart.php';
         break;
+    case "/order-detail":
+        require __DIR__ . '/views/order-detail.php';
+        break;
     default:
         http_response_code(404);
         require __DIR__ . '/views/404.php';
