@@ -2,7 +2,9 @@
 
 include "constants.php";
 
-session_start();
+if (session_id() == '' || !isset($_SESSION) || session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 if (!function_exists('set_flash_message')) {
     /**

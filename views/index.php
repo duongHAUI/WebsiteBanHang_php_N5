@@ -18,7 +18,7 @@
 
 <body>
     <?php
-        //include_once("controllers/authenticate.php");
+        include_once "./middleware/notAuth.php";
         include_once("models/index.php");
         include_once("header.php");
         include_once("./db/connectdb.php");
