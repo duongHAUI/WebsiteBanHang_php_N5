@@ -1,5 +1,10 @@
 <?php
 
+include_once "vendor/phpdotenv/Dotenv.php";
+
+$dotenv = new Dotenv\Dotenv(__DIR__ . '/.env');
+$dotenv->load();
+
 if (session_id() == '' || !isset($_SESSION) || session_status() === PHP_SESSION_NONE) {
     session_start();
 }
