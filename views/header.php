@@ -15,22 +15,8 @@
             <div class="bg-main">
                 <div class="mid-header container">
                     <a href="#" class="logo">ATShop</a>
-                    <Script>
-                        function showProductSearch() {
-                                var str = document.getElementById("search").value;
-                                var xmlhttp=new XMLHttpRequest();
-                                xmlhttp.onreadystatechange=function() {
-                                    if (this.readyState==4 && this.status==200) {
-                                        document.getElementById("products").innerHTML=this.responseText;
-                                    }
-                                }
-                                xmlhttp.open("GET","/WebsiteBanHang_php_N5/controllers/product.php?search="+str,true);
-                                xmlhttp.send();
-                                
-                        }
-                    </Script>
                     <div class="search">
-                        <input type="text" id="search" placeholder="Search" oninput="showProductSearch()">
+                        <input type="text" id="search" placeholder="Search" >
                         <i class='bx bx-search-alt' ></i>
                     </div>
                     <ul class="user-menu">

@@ -112,28 +112,7 @@
             <div class="section-header">
                 <h2>Latest product</h2>
             </div>
-            <script>
-                showProductLatest();
-                function showProductLatest(check = false) {
-                    var index;
-                    if(check){
-                        index = (+document.getElementById("view-more-latest-product").getAttribute("index")) + 1;
-                        console.log(index);
-                        document.getElementById("view-more-latest-product").setAttribute("index",index+"");
-                    }else{
-                        index = false;
-                    }
-                    console.log(index);
-                    var xmlhttp=new XMLHttpRequest();
-                    xmlhttp.onreadystatechange=function() {
-                         if (this.readyState==4 && this.status==200) {
-                            document.getElementById("latest-product").innerHTML=this.responseText;
-                        }
-                    }
-                    xmlhttp.open("GET","/WebsiteBanHang_php_N5/controllers/product.php?latest-product="+index,true);
-                    xmlhttp.send();
-                }
-            </script>
+            
             <div class="row" id="latest-product">
                 
             </div>
@@ -266,6 +245,7 @@
     ?>
     <!-- app js -->
     <script src="./js/app.js"></script>
+    <script src="./js/lastestProduct.js"></script>
 </body>
 
 </html>
