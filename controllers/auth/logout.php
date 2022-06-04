@@ -9,4 +9,4 @@ unset($_SESSION['c_user']);
 
 set_flash_message('logout', 'Logout successfully');
 
-header("Location: ../../login");
+header("Location: ../../");
