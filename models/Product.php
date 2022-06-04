@@ -135,7 +135,6 @@ class Product extends Model
       $product = new Product($row);
       array_push($products, $product);
     }
-
     return $products;
   }
 

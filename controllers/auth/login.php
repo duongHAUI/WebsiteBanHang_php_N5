@@ -14,7 +14,7 @@ if (isset($_POST['login'])) {
     [$email, $password] = array_values($_POST);
 
     if (empty($email) || empty($password)) {
-        set_flash_message('login', 'Missing input data', ERROR);
+        set_flash_message('login', 'Missing input data', ERimage.pngROR);
         header("Location: ../../login");
         return;
     }

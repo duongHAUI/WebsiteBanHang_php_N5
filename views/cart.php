@@ -25,7 +25,6 @@ include_once("header.php");
 //   "brand_title" => "Apple",
 //   "brand_desc" => null,
 // ));
-
 // $product = Product::create($con, array(
 //   "product_title" => "Tai nghe Bluetooth AirPods 2 Wireless",
 //   "product_price" => 5590000,
@@ -47,6 +46,7 @@ include_once("header.php");
 // ));
 
 // return;
+
 
 
 //session_start();

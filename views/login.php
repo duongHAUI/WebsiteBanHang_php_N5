@@ -24,8 +24,8 @@
 
 <body>
 <?php
-include "./middleware/auth.php";
-include "./helpers/common.php";
+    include "./middleware/auth.php";
+    include "./helpers/common.php";
 ?>
     <div class="auth-main d-flex align-items-center justify-content-center">
         <div class="col-3 col-md-6 col-sm-12">

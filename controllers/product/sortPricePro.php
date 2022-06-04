@@ -2,41 +2,15 @@
     namespace Models;
 ?>
 <?php
-    include_once("../models/index.php");
-    include_once("../db/connectdb.php");
-    if(isset($_GET['cat_id'])){
-        if($_GET['cat_id'] ==""){
-            $products = Product::find_all($con);
-            show($products);
-        }
-        else{
-            $cat_id = $_GET['cat_id'];
-            $products = Product::find_all($con, array("where" => "cat_id = '$cat_id'"));
-            show($products);
-        }
-    }
-    else if(isset($_GET['search'])){
-        
-        if($_GET['search'] ==""){
-            $products = Product::find_all($con);
-            show($products);
-            
-        }else{
-            $search = $_GET['search'];
-            $products = Product::find_all($con, array("where" => "product_title like '%$search%'"));
-            show($products);
-        }
-    }else if(isset($_GET['latest-product'])){
-        if($_GET['latest-product'] == "false"){
-            $products = Product::find_all($con,array("limit"=>4,"order" => "createdAt DESC"));
-            show($products);
-        }else{
-            $latest_product = intval($_GET['latest-product'])*4;
-            $products = Product::find_all($con,array("limit"=>$latest_product,"order" => "createdAt DESC"));
-            show($products);
-        }
-    }
-    else{
+    include_once("../../models/index.php");
+    include_once("../../db/connectdb.php");
+    if($_GET['sort-price'] == "ASC"){
+        $products = Product::find_all($con,array("limit"=>8,"order" => "product_price ASC"));
+        show($products);
+    }else if($_GET['sort-price'] == "DESC"){
+        $products = Product::find_all($con,array("limit"=>8,"order" => "product_price DESC"));
+        show($products);
+    }else{
         $products = Product::find_all($con);
         show($products);
     }
@@ -77,5 +51,3 @@
     }
     mysqli_close($con);
 ?>
-</body>
-</html>
