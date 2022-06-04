@@ -16,7 +16,9 @@
 </head>
 <body>
     <?php
+    include_once "./middleware/notAuth.php";
         include("header.php");
+        
     ?>
     <div class="checkout container">
         <h1>Checkout</h1>

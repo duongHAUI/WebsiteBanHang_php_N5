@@ -2,6 +2,7 @@
 
 namespace Models;
 
+include_once "./middleware/notAuth.php";
 include "models/index.php";
 include "db/connectdb.php";
 include_once("header.php");
@@ -50,7 +51,7 @@ include_once("header.php");
 
 
 //session_start();
-$user_id = 13;
+$user_id = $_SESSION['c_user']['id'];
 $carts = Cart::find_all($con, array("where" => "cus_id = $user_id", "order" => "createdAt DESC"));
 
 for ($i = 0; $i < count($carts); $i++) {
