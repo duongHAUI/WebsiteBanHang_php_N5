@@ -205,6 +205,11 @@ ul.devided > li:last-child {
 .auth-user-1{
   position: relative;
 }
+.auth-user-1 span{
+  margin-left: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
 .auth-user-1 i {
   cursor: pointer;
 }

@@ -32,15 +32,23 @@
     <!-- products content -->
     <div class="bg-main">
         <div class="container">
-            <div class="box">
+            <div class="box row" >
                 <div class="breadcumb">
                     <a href="./">home</a>
                     <span><i class='bx bxs-chevrons-right'></i></span>
                     <a href="./products.php">all products</a>
                 </div>
+<<<<<<< HEAD
                 <!-- <div>
                     <select name="category" onchange="showProductCategory(this.value)">
                         <option value="">Select a Category:</option>
+=======
+                <div>
+                    <select name="sort-price" id="sort-product">
+                        <option value="">Giá</option>
+                        <option value="ASC">Giá : Thấp đến cao</option>
+                        <option value="DESC">Giá : Cao đến thấp</option>
+>>>>>>> c93806be2032edb5519c99164ac86145d3ce3ea5
                     </select>
                 </div> -->
             </div>
@@ -54,6 +62,7 @@
                             <span class="filter-header">
                                 Categories
                             </span>
+<<<<<<< HEAD
                             <script>
                                 function showProductCategory(cat_id) {
                                     var xmlhttp=new XMLHttpRequest();
@@ -78,11 +87,17 @@
                             
                             <ul class="filter-list">
 <<<<<<< HEAD
+=======
+                            <ul class="filter-list" category-list="" id="list-category">
+>>>>>>> c93806be2032edb5519c99164ac86145d3ce3ea5
                                 <?php
                                     $categories = Category::find_all($con);
                                     foreach ($categories as $key => $value) {
                                         ?>
-                                        <li><a href="?cat-id=<?=$value->id?>"> <?=$value->title?></a></li>
+                                        <li>
+                                            <input type="checkbox" id="<?=$value->id?>" value="<?=$value->id?>" class="category-search" >
+                                            <label for="<?=$value->id?>"> <?=$value->title?> </label>
+                                        </li>
                                         <?php
                                     }
                                 ?>
@@ -181,7 +196,7 @@
                                             document.getElementById("products").innerHTML=this.responseText;
                                         }
                                     }
-                            xmlhttp.open("GET","/WebsiteBanHang_php_N5/controllers/product.php",true);
+                            xmlhttp.open("GET","/WebsiteBanHang_php_N5/controllers/product/productLastest.php",true);
                             xmlhttp.send();
                         </script>
                         <div class="box">
@@ -208,8 +223,9 @@
         include_once("footer.php");
     ?>
     <!-- app js -->
-    <script src="./js/app.js"></script>
-<!-- <script src="./js/products.js"></script> -->
+    <!-- <script src="./js/app.js"></script> -->
+    <script src="./js/searchCategory.js"></script>
+    <script src="./js/sortPriceProduct.js"></script>
 </body>
 
 </html>
