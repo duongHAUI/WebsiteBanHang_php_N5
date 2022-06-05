@@ -56,6 +56,7 @@
                             <span class="filter-header">
                                 Categories
                             </span>
+                            <ul class="filter-list">
                             <ul class="filter-list" category-list="" id="list-category">
                                 <?php
                                     $categories = Category::find_all($con);
@@ -69,6 +70,7 @@
                                     }
                                 ?>
                             </ul>
+
                         </div>
                         <div class="box">
                             <span class="filter-header">

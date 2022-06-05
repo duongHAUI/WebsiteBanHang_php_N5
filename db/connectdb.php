@@ -1,5 +1,9 @@
 <?php
-include_once __DIR__ . "/../helpers/loadenv.php";
+
+include_once __DIR__ . "/../vendor/phpdotenv/Dotenv.php";
+
+$dotenv = new Dotenv\Dotenv(__DIR__ . '/../.env');
+$dotenv->load();
 
 $servername = "{$_ENV['DB_HOST']}:{$_ENV['DB_PORT']}";
 $username = $_ENV['DB_USERNAME'];
