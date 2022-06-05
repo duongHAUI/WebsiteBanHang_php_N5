@@ -174,9 +174,6 @@
                                         <button class="btn-flat btn-hover btn-cart-add">
                                             <i class='bx bxs-cart-add'></i>
                                         </button>
-                                        <button class="btn-flat btn-hover btn-cart-add">
-                                            <i class='bx bxs-heart'></i>
-                                        </button>
                                     </div>
                                     <a href="product-detail?pro_id=<?=$value->id?>" class="product-card-name">
                                         <?= $value->title?>

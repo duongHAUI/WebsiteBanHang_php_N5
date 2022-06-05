@@ -10,8 +10,6 @@
 <?php  
 	if (isset($_GET['delete_product'])) {
 		$delete_id = $_GET['delete_product'];
-		$delete_imgs = "delete from images where id_product = '$delete_id'";
-		$run_delete_imgs = mysqli_query($con, $delete_imgs);
 		$delete_pro = "delete from products where product_id = '$delete_id'";
 		$run_delete = mysqli_query($con, $delete_pro);
 		if ($run_delete) {
@@ -20,7 +18,6 @@
 		}
 	}
 ?>
-
 <?php  
 	}
 ?>

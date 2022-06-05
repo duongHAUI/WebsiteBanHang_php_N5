@@ -46,7 +46,6 @@
                                             <span><a href="login">Login</a></span>
                                             <?php
                                         }
-                                        
                                     ?>
                                 </p>
                                 <ul class="auth-user-2">

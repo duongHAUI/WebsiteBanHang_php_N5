@@ -140,7 +140,7 @@
                                             document.getElementById("products").innerHTML=this.responseText;
                                         }
                                     }
-                            xmlhttp.open("GET","/WebsiteBanHang_php_N5/controllers/product/productLastest.php",true);
+                            xmlhttp.open("GET","/WebsiteBanHang_php_N5/controllers/product/sortPricePro.php",true);
                             xmlhttp.send();
                         </script>
                         <div class="box">

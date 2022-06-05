@@ -4,10 +4,10 @@
 <?php
     include_once("../../models/index.php");
     include_once("../../db/connectdb.php");
-    if($_GET['sort-price'] == "ASC"){
+    if(isset($_GET['sort-price']) && $_GET['sort-price'] == "ASC" ){
         $products = Product::find_all($con,array("limit"=>8,"order" => "product_price ASC"));
         show($products);
-    }else if($_GET['sort-price'] == "DESC"){
+    }else if(isset($_GET['sort-price']) && $_GET['sort-price'] == "DESC"){
         $products = Product::find_all($con,array("limit"=>8,"order" => "product_price DESC"));
         show($products);
     }else{
@@ -18,7 +18,7 @@
         global $con;
         foreach ($products as $key => $value) {
             ?>
-                <div class="col-3 col-md-6 col-sm-12">
+                <div class="col-4 col-md-6 col-sm-12">
                             <div class="product-card">
                                 <a href="product-detail?pro_id=<?=$value->id?>">
                                     <div class="product-card-img">
@@ -31,9 +31,6 @@
                                         <a href="products" class="btn-flat btn-hover btn-shop-now">shop now</a>
                                         <button class="btn-flat btn-hover btn-cart-add">
                                             <i class='bx bxs-cart-add'></i>
-                                        </button>
-                                        <button class="btn-flat btn-hover btn-cart-add">
-                                            <i class='bx bxs-heart'></i>
                                         </button>
                                     </div>
                                     <a href="product-detail?pro_id=<?=$value->id?>" class="product-card-name">

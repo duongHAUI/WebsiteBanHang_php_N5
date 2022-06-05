@@ -1,4 +1,6 @@
 <?php
+include_once __DIR__ . "/../helpers/loadenv.php";
+
 $servername = "{$_ENV['DB_HOST']}:{$_ENV['DB_PORT']}";
 $username = $_ENV['DB_USERNAME'];
 $password = $_ENV['DB_PASSWORD'];
