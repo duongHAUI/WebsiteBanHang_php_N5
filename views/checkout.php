@@ -11,7 +11,6 @@
     for ($i = 0; $i < count($carts); $i++) {
         $carts[$i]->populated($con, "product");
     }
-
     function is_email($str) {
         return (!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $str)) ? false : true;
     }
@@ -135,8 +134,6 @@
         mysqli_query($con, "DELETE FROM cart  where cus_id=$customer_id");
         
         header("Location: order-detail");
-
-        // delete cart
     } else {
         echo "<span style='color: red'>Error!</span>";
     }
@@ -161,7 +158,7 @@
 <body>
     <div class="checkout container">
         <h1>Checkout</h1>
-        <form action="" method="POST" mutip>
+        <form action="" method="POST">
             <div class="row">
                 <div class="col-7 col-sm-12">
                     <p class="checkout-title">billing details</p>
