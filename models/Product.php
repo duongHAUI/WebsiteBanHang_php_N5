@@ -26,13 +26,15 @@ class Product extends Model
     $this->brand_id = $row["brand_id"];
     $this->createdAt = $row["createdAt"];
     $this->updatedAt = $row["updatedAt"];
+    $this->sold = $row["product_sold"];
+    $this->quantity = $row["product_quantity"];
   }
 
   function save($con)
   {
     extract(get_object_vars($this));
     $query = "update " . self::TABLE_NAME . " set product_title='$title', product_price='$price', 
-      product_discount='$discount', product_desc='$desc', 
+      product_discount='$discount', product_desc='$desc', product_sold='$sold', product_quantity='$quantity',
       cat_id='$cat_id', brand_id='$brand_id' where product_id = $id";
 
     mysqli_query($con, $query);
@@ -95,12 +97,14 @@ class Product extends Model
       "product_price" => $price,
       "product_discount" => $discount,
       "product_desc" => $desc,
+      "product_sold" => $sold,
+      "product_quantity" => $quantity,
       "cat_id" => $cat_id,
       "brand_id" => $brand_id,
     ] = $form;
-    $query = "insert into " . self::TABLE_NAME . "(product_title, product_price, product_discount, 
+    $query = "insert into " . self::TABLE_NAME . "(product_title, product_price, product_discount, product_sold, product_quantity
               product_desc, cat_id, brand_id)
-              values ('$title', '$price', '$discount', '$desc', '$cat_id', '$brand_id')";
+              values ('$title', '$price', '$discount', '$sold', '$quantity', '$desc', '$cat_id', '$brand_id')";
 
     if (mysqli_query($con, $query)) {
       $id = mysqli_insert_id($con);
@@ -222,6 +226,8 @@ class Product extends Model
       "product_price",
       "product_discount",
       "product_desc",
+      "product_sold",
+      "product_quantity",
       "cat_id",
       "brand_id",
     ];
@@ -238,11 +244,11 @@ class Product extends Model
       }
     }
 
-    echo $set . "<br>";
+    // echo $set . "<br>";
 
     if ($set != "") {
       $query = "update " . self::TABLE_NAME . " set " . $set . " where product_id = $id";
-      echo $query . "<br>";
+      // echo $query . "<br>";
 
       mysqli_query($con, $query);
     }
