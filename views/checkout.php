@@ -158,7 +158,7 @@
 <body>
     <div class="checkout container">
         <h1>Checkout</h1>
-        <form action="" method="POST">
+        <form action="" method="POST" mutip>
             <div class="row">
                 <div class="col-7 col-sm-12">
                     <p class="checkout-title">billing details</p>
