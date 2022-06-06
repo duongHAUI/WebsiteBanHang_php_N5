@@ -1,5 +1,14 @@
 <?php
 
+include_once "vendor/phpdotenv/Dotenv.php";
+
+$dotenv = new Dotenv\Dotenv(__DIR__ . '/.env');
+$dotenv->load();
+
+if (session_id() == '' || !isset($_SESSION) || session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 $request = str_replace("/WebsiteBanHang_php_N5", "", $_SERVER['REQUEST_URI']);
 $request = preg_replace('/\?[a-zA-Z]+\_*[a-zA-Z]*\=[a-zA-z0-9]*(&[a-zA-Z]+\_*[a-zA-Z]*=[a-zA-Z0-9]*)*/', "", $request);
 //$request = $_SERVER["REQUEST_URI"];

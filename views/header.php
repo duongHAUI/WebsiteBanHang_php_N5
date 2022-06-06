@@ -15,22 +15,8 @@
             <div class="bg-main">
                 <div class="mid-header container">
                     <a href="#" class="logo">ATShop</a>
-                    <Script>
-                        function showProductSearch() {
-                                var str = document.getElementById("search").value;
-                                var xmlhttp=new XMLHttpRequest();
-                                xmlhttp.onreadystatechange=function() {
-                                    if (this.readyState==4 && this.status==200) {
-                                        document.getElementById("products").innerHTML=this.responseText;
-                                    }
-                                }
-                                xmlhttp.open("GET","/WebsiteBanHang_php_N5/controllers/product.php?search="+str,true);
-                                xmlhttp.send();
-                                
-                        }
-                    </Script>
                     <div class="search">
-                        <input type="text" id="search" placeholder="Search" oninput="showProductSearch()">
+                        <input type="text" id="search" placeholder="Search" >
                         <i class='bx bx-search-alt' ></i>
                     </div>
                     <ul class="user-menu">
@@ -44,13 +30,32 @@
                         <!-- when login -->
                         <li class="auth-user">
                             <div class="auth-user-1">
+                                <?php
+                                    if(isset($_SESSION['c_user'] ) && $_SESSION['c_user']){
+                                        $user = $_SESSION['c_user'];
+                                    }
+                                ?>
                                 <p>
-                                    <img src="https://ss-images.saostar.vn/wp700/pc/1652253504015/saostar-6svcmlu1dfjww3am.jpg" alt="avatar"/>
-                                    <span style="font-size: 14px;">Minh Phương</span>
+                                    <?php
+                                        if(isset($user)){
+                                            ?>
+                                            <span style='font-size: 14px;'><?=$user['name']?></span>
+                                            <?php
+                                        }else{
+                                            ?>
+                                            <span><a href="login">Login</a></span>
+                                            <?php
+                                        }
+                                        
+                                    ?>
                                 </p>
                                 <ul class="auth-user-2">
-                                    <li>Settings</li>
-                                    <li>Logout</li>
+                                    <?php
+                                        if(isset($user)){
+                                            echo "<li>Settings</li>";
+                                            echo "<li><a href='./controllers/auth/logout.php'>Logout</a></li>";
+                                        }
+                                    ?>
                                 </ul>
                             </div>
                         </li>

@@ -2,6 +2,7 @@
 
 namespace Models;
 
+include_once "./middleware/notAuth.php";
 include "models/index.php";
 include "db/connectdb.php";
 include_once("header.php");
@@ -25,7 +26,6 @@ include_once("header.php");
 //   "brand_title" => "Apple",
 //   "brand_desc" => null,
 // ));
-
 // $product = Product::create($con, array(
 //   "product_title" => "Tai nghe Bluetooth AirPods 2 Wireless",
 //   "product_price" => 5590000,
@@ -49,8 +49,9 @@ include_once("header.php");
 // return;
 
 
+
 //session_start();
-$user_id = 13;
+$user_id = $_SESSION['c_user']['id'];
 $carts = Cart::find_all($con, array("where" => "cus_id = $user_id", "order" => "createdAt DESC"));
 
 for ($i = 0; $i < count($carts); $i++) {

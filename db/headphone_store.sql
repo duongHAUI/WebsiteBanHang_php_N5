@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 03, 2022 lúc 08:24 AM
--- Phiên bản máy phục vụ: 10.4.22-MariaDB
--- Phiên bản PHP: 8.1.2
+-- Thời gian đã tạo: Th6 05, 2022 lúc 01:28 PM
+-- Phiên bản máy phục vụ: 10.4.24-MariaDB
+-- Phiên bản PHP: 8.0.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -74,7 +74,8 @@ INSERT INTO `brands` (`brand_id`, `brand_title`, `brand_desc`, `createdAt`, `upd
 (21, 'Monster', 'NO', '2022-05-30 15:14:30', '2022-05-30 15:14:30'),
 (22, 'Hifiman', 'NO', '2022-05-30 15:15:23', '2022-05-30 15:15:23'),
 (23, 'LG', 'NO', '2022-05-30 15:15:50', '2022-05-30 15:15:50'),
-(24, 'Shure', 'NO', '2022-05-30 15:16:17', '2022-05-30 15:16:17');
+(24, 'Shure', 'NO', '2022-05-30 15:16:17', '2022-05-30 15:16:17'),
+(25, 'Sony', 'NO', '2022-06-05 10:10:26', '2022-06-05 10:10:36');
 
 -- --------------------------------------------------------
 
@@ -141,7 +142,8 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`customer_id`, `customer_name`, `customer_email`, `customer_password`, `customer_country`, `customer_city`, `customer_phone`, `customer_address`, `customer_image`, `createdAt`, `updatedAt`) VALUES
-(13, 'dsadas21321', 'duongvipro2k1@gmail.com', '934162f0631c6400b5833c9c7a84547d', '', '', '', '', '', '2022-06-02 13:40:00', '2022-06-02 13:40:00');
+(1, 'Huong', 'huong123@gmail.com', '1234', 'VietNam', 'HaNoi', '0731', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(13, 'Thu Huong', 'huong1234@gmail.com', 'ee4f60d01bda307268367e6f4b427995', '', '', '', '', '', '2022-06-04 13:26:04', '2022-06-04 13:26:04');
 
 -- --------------------------------------------------------
 
@@ -160,12 +162,42 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`image_id`, `pro_id`, `image_link`) VALUES
-(29, 23, 'products/dj_au1.jpg'),
-(30, 23, 'products/dj_au2.jpg'),
-(31, 23, 'products/dj_au3.jpg'),
 (32, 24, 'products/dj_sh1.jpg'),
 (33, 24, 'products/dj_sh2.jpg'),
-(34, 24, 'products/dj_sh3.jpg');
+(34, 24, 'products/dj_sh3.jpg'),
+(41, 25, 'products/dj_au1.jpg'),
+(42, 25, 'products/dj_au2.jpg'),
+(43, 25, 'products/dj_au3.jpg'),
+(44, 26, 'products/blt_sn1.jpg'),
+(45, 26, 'products/blt_sn2.jpg'),
+(46, 26, 'products/blt_sn3.jpg'),
+(47, 27, 'products/nc_ap1.png'),
+(48, 27, 'products/nc_ap2.png'),
+(49, 27, 'products/nc_ap3.png'),
+(50, 28, 'products/nc_lg1.jpg'),
+(51, 28, 'products/nc_lg2.jpg'),
+(52, 28, 'products/nc_lg3.jpg'),
+(53, 29, 'products/gm_sp1.png'),
+(54, 29, 'products/gm_sp2.jpg'),
+(55, 29, 'products/gm_sp3.jpg'),
+(71, 30, 'products/co_sn1.jpg'),
+(72, 30, 'products/co_sn2.jpg'),
+(73, 30, 'products/co_sn3.jpg'),
+(74, 31, 'products/sp_mt1.jpg'),
+(75, 31, 'products/sp_mt2.jpg'),
+(76, 31, 'products/sp_mt3.jpg'),
+(77, 32, 'products/cr_ic1.jpg'),
+(78, 32, 'products/cr_ic2.jpg'),
+(79, 32, 'products/cr_ic3.jpg'),
+(80, 33, 'products/cr_ic4.jpg'),
+(81, 33, 'products/cr_ic5.jpg'),
+(82, 33, 'products/cr_ic6.jpg'),
+(83, 34, 'products/nc_hf1.jpg'),
+(84, 34, 'products/nc_hf2.jpg'),
+(85, 34, 'products/nc_hf3.jpg'),
+(86, 35, 'products/nc_sp1.jpg'),
+(87, 35, 'products/nc_sp2.jpg'),
+(88, 35, 'products/nc_sp3.jpg');
 
 -- --------------------------------------------------------
 
@@ -174,7 +206,7 @@ INSERT INTO `images` (`image_id`, `pro_id`, `image_link`) VALUES
 --
 
 CREATE TABLE `orders` (
-  `order_id` int(11) NOT NULL,
+  `order_id` int(10) NOT NULL,
   `cus_id` int(10) NOT NULL,
   `order_amount` int(100) NOT NULL,
   `order_status` text NOT NULL,
@@ -198,6 +230,7 @@ CREATE TABLE `order_details` (
   `order_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   `price` int(11) NOT NULL,
+  `size` varchar(20) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
   `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -213,7 +246,7 @@ CREATE TABLE `products` (
   `cat_id` int(10) NOT NULL,
   `brand_id` int(10) NOT NULL,
   `product_title` text NOT NULL,
-  `product_price` int(100) NOT NULL,
+  `product_price` double NOT NULL,
   `product_sold` int(11) NOT NULL DEFAULT 0,
   `product_quantity` int(11) NOT NULL,
   `product_discount` int(11) NOT NULL,
@@ -227,8 +260,18 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `cat_id`, `brand_id`, `product_title`, `product_price`, `product_sold`, `product_quantity`, `product_discount`, `product_desc`, `createdAt`, `updatedAt`) VALUES
-(23, 27, 18, 'Tai nghe Audio Technica ATH-M70X', 5990000, 0, 0, 0, '<p style=\"color: #222222; font-family: arial, Helvetica, sans-serif;\"><span style=\"font-family: arial, helvetica, sans-serif;\">M-Series của&nbsp;<strong>AudioTechnica</strong>&nbsp;l&agrave; d&ograve;ng tai nghe ph&ograve;ng thu chuy&ecirc;n nghiệp, được ch&uacute; trọng chế tạo với kiểu d&aacute;ng, thiết kế v&agrave; chất lượng &acirc;m thanh trung thực nhất. M70x hiện l&agrave; tai nghe đầu bảng thuộc d&ograve;ng M-series với tất cả những đặc điểm tuyệt vời n&ecirc;u tr&ecirc;n.&nbsp;</span></p>\r\n<div style=\"color: #222222; font-family: arial, Helvetica, sans-serif;\">\r\n<ul>\r\n<li>\r\n<p><span style=\"font-family: arial, helvetica, sans-serif;\">M70x c&oacute; chất &acirc;m ch&iacute;nh x&aacute;c, tất cả c&aacute;c chi tiết được gia c&ocirc;ng kỹ c&agrave;ng, c&aacute;c khớp nối v&agrave; headband bằng kim loại cho độ bền cao nhất.&nbsp;</span></p>\r\n</li>\r\n<li>\r\n<p><span style=\"font-family: arial, helvetica, sans-serif;\">Driver 45mm với cuộn cảm nh&ocirc;m, c&oacute; trọng lượng nhẹ, linh hoạt với c&aacute;c rung động nhanh, nhằm t&aacute;i tạo &acirc;m thanh thật tốt m&agrave; kh&ocirc;ng g&acirc;y ra hiện tượng trễ tiếng.&nbsp;</span></p>\r\n</li>\r\n<li>\r\n<p><span style=\"font-family: arial, helvetica, sans-serif;\">Chất &acirc;m c&acirc;n bằng, đều ba dải &acirc;m mang đến sự ch&iacute;nh x&aacute;c v&agrave; trung t&iacute;nh nhất</span></p>\r\n</li>\r\n<li>\r\n<p><span style=\"font-family: arial, helvetica, sans-serif;\">Thiết kế closed c&aacute;ch &acirc;m tuyệt đối, earcup xoay 90 độ để gập lại dễ d&agrave;ng, ph&ugrave; hợp cho nhu cầu di chuyển.&nbsp;</span></p>\r\n</li>\r\n<li>\r\n<p><span style=\"font-family: arial, helvetica, sans-serif;\">Earpad mềm dẻo, thoải m&aacute;i v&agrave; c&oacute; thể thay thế dễ d&agrave;ng.&nbsp;</span></p>\r\n</li>\r\n<li>\r\n<p><span style=\"font-family: arial, helvetica, sans-serif;\">Cable th&aacute;o rời, c&oacute; 1 d&acirc;y xoắn 3m, 1 d&acirc;y 1,2m v&agrave; 1 d&acirc;y 3m.&nbsp;</span></p>\r\n</li>\r\n</ul>\r\n</div>', '2022-05-30 16:19:21', '2022-05-30 16:19:21'),
-(24, 27, 24, 'Tai nghe Shure SRH440', 2255000, 0, 0, 10, '<div class=\"products--description-txt txt\" style=\"padding: 0px; margin: 0px 0px 10px; border: 0px; font-size: 16px; vertical-align: baseline; clear: both; line-height: 1.5; color: #5a5d5e; font-family: tradegothic, sans-serif; letter-spacing: 0.07px; background: transparent; text-align: justify;\"><strong><a style=\"color: #333333; text-decoration-line: none; font-size: inherit;\" href=\"https://tainghe.com.vn/tai-nghe.html\">Tai nghe</a>&nbsp;Shure SRH 440</strong>&nbsp;rất phổ biến trong studio, tai nghe với &acirc;m thanh c&acirc;n bằng, tai nghe cỡ to SRH440 c&oacute; thể gập lại dễ d&agrave;ng để mang theo.</div>\r\n<div class=\"products--description-txt txt\" style=\"padding: 0px; margin: 0px 0px 10px; border: 0px; font-size: 16px; vertical-align: baseline; clear: both; line-height: 1.5; color: #5a5d5e; font-family: tradegothic, sans-serif; letter-spacing: 0.07px; background: transparent; text-align: justify;\">Đ&acirc;y l&agrave; một trong những headphone tai nghe studio gi&aacute; hợp l&yacute; m&agrave; chất lượng nếu bạn t&igrave;m tai nghe k&iacute;n &acirc;m thanh tầm trung chất lượng</div>\r\n<div class=\"products--description-txt txt\" style=\"padding: 0px; margin: 0px 0px 10px; border: 0px; font-size: 16px; vertical-align: baseline; clear: both; line-height: 1.5; color: #5a5d5e; font-family: tradegothic, sans-serif; letter-spacing: 0.07px; background: transparent; text-align: justify;\">Tai nghe SRH440 Professional Studio từ Shure cung cấp &acirc;m thanh đặc biệt v&agrave; thoải m&aacute;i.</div>\r\n<div class=\"products--description-txt txt\" style=\"padding: 0px; margin: 0px 0px 10px; border: 0px; font-size: 16px; vertical-align: baseline; clear: both; line-height: 1.5; color: #5a5d5e; font-family: tradegothic, sans-serif; letter-spacing: 0.07px; background: transparent; text-align: justify;\">Trở kh&aacute;ng, xử l&yacute; điện năng v&agrave; độ nhạy đều được hiệu chỉnh cho c&aacute;c thiết bị &acirc;m thanh chuy&ecirc;n nghiệp như m&aacute;y trộn DJ, m&aacute;y trộn v&agrave; bộ khuếch đại tai&nbsp;nghe. Bao gồm t&uacute;i x&aacute;ch v&agrave; bộ nối mạ v&agrave;ng 1/4 \"(6.3mm)</div>\r\n<div class=\"products--description-txt txt\" style=\"padding: 0px; margin: 0px 0px 10px; border: 0px; font-size: 16px; vertical-align: baseline; clear: both; line-height: 1.5; color: #5a5d5e; font-family: tradegothic, sans-serif; letter-spacing: 0.07px; background: transparent; text-align: justify;\">T&iacute;nh năng, đặc điểm</div>\r\n<div class=\"products--description-txt txt\" style=\"padding: 0px; margin: 0px 0px 10px; border: 0px; font-size: 16px; vertical-align: baseline; clear: both; line-height: 1.5; color: #5a5d5e; font-family: tradegothic, sans-serif; letter-spacing: 0.07px; background: transparent; text-align: justify;\">Đ&aacute;p ứng tần số n&acirc;ng cao cung cấp &acirc;m thanh ch&iacute;nh x&aacute;c qua một phạm vi rộng hơn</div>\r\n<div class=\"products--description-txt txt\" style=\"padding: 0px; margin: 0px 0px 10px; border: 0px; font-size: 16px; vertical-align: baseline; clear: both; line-height: 1.5; color: #5a5d5e; font-family: tradegothic, sans-serif; letter-spacing: 0.07px; background: transparent; text-align: justify;\">Trở kh&aacute;ng v&agrave; xử l&yacute; nguồn tối ưu h&oacute;a cho hiệu suất với c&aacute;c thiết bị &acirc;m thanh chuy&ecirc;n nghiệp</div>\r\n<div class=\"products--description-txt txt\" style=\"padding: 0px; margin: 0px 0px 10px; border: 0px; font-size: 16px; vertical-align: baseline; clear: both; line-height: 1.5; color: #5a5d5e; font-family: tradegothic, sans-serif; letter-spacing: 0.07px; background: transparent; text-align: justify;\">D&acirc;y nối&nbsp;c&oacute; thể điều chỉnh được v&agrave; cấu tr&uacute;c đ&oacute;ng lại mang lại sự thoải m&aacute;i v&agrave; t&iacute;nh di động</div>', '2022-05-30 16:21:54', '2022-05-30 16:21:54');
+(24, 27, 24, 'Shure SRH440 Headphones', 110, 10, 9999, 10, '<p>Shure SRH440 Headphones are very popular in the studio, headphones with balanced sound, SRH440 oversized headphones fold up for easy carrying.</p>', '2022-05-30 16:21:54', '2022-06-04 18:20:24'),
+(25, 27, 18, 'Audio Technica ATH-M70X Headphones', 258, 7, 9999, 35, '<p><span style=\"color: #222222; font-family: arial, helvetica, sans-serif;\">M-Series của&nbsp;</span><strong style=\"color: #222222; font-family: arial, helvetica, sans-serif;\">AudioTechnica</strong><span style=\"color: #222222; font-family: arial, helvetica, sans-serif;\">&nbsp;l&agrave; d&ograve;ng tai nghe ph&ograve;ng thu chuy&ecirc;n nghiệp, được ch&uacute; trọng chế tạo với kiểu d&aacute;ng, thiết kế v&agrave; chất lượng &acirc;m thanh trung thực nhất. M70x hiện l&agrave; tai nghe đầu bảng thuộc d&ograve;ng M-series với tất cả những đặc điểm tuyệt vời n&ecirc;u tr&ecirc;n.</span></p>', '2022-06-04 18:10:28', '2022-06-04 18:23:07'),
+(26, 22, 25, 'Bluetooth Sony WH-1000XM4 Headphones', 236, 3, 9999, 15, '<p><strong>Genuine Sony WH-1000XM4 Headphones</strong></p>\r\n<p>Recently, Sony has just announced the 4th generation of high-end noise-cancelling headphones: WH1000XM4. The Sony WH-1000XM4 has the same design as its elder brother, and is also equipped with the QN1 noise-cancelling processor, which makes the Sony WH-1000XM3 one of the best wireless headphones in the segment. active noise.</p>', '2022-06-05 10:12:10', '2022-06-05 10:12:10'),
+(27, 22, 17, 'Genuine Apple AirPods Max headset ZA/A', 426.44, 6, 9999, 15, '<p><strong>Apple Airpod Max Headphones</strong></p>\r\n<p>On December 8, Apple officially announced its first over-ear headphones, the official name of this headset is AirPods Max.</p>', '2022-06-05 10:23:01', '2022-06-05 10:23:01'),
+(28, 22, 23, 'True Wireless LG Tone Free Tone-FP9 Headphones', 137.55, 0, 9999, 10, '<p><strong>LG Tone Free FP9 headphones</strong> comes with active noise cancellation, modern Bluetooth wireless connection, IPX4 water and sweat resistance, microphone for clear call quality,.. More than that, time The battery life and fast charging ability of this headset is considered to be extremely great.</p>', '2022-06-05 10:27:21', '2022-06-05 10:27:21'),
+(29, 23, 20, 'SoundPEATS G1 headset', 21.13, 6, 9999, 5, '<p>If you are looking for a companion device in bloody game battles, you can refer to the SoundPEATS G1 headset. With outstanding improvements in both sound technology and design, it will surely conquer you from the first experience.</p>', '2022-06-05 10:30:10', '2022-06-05 10:30:10'),
+(30, 22, 25, 'Sony Bluetooth Headset WH-XB900N', 110.17, 0, 9999, 12, '<p>Sony Bluetooth Headset WH-XB900N</p>', '2022-06-05 11:05:49', '2022-06-05 11:05:49'),
+(31, 25, 21, 'Monster Clarity 101 Airlinks Headphones', 85.81, 0, 9999, 12, '<p>Monster Clarity 101 Airlinks Headphones Genuine</p>\r\n<p>The market for True Wireless headphones in the popular segment is now more vibrant than ever and of course the famous American audio company - Monster will not be out of the game.</p>', '2022-06-05 11:09:10', '2022-06-05 11:09:10'),
+(32, 26, 19, 'iClever TransNova BTH16 Bluetooth Headset', 42.69, 0, 9999, 0, '<p>Recently, iClever has continuously launched shooting headsets for children such as IC-HS14 Kids, BTH13 and especially TransNova BTH16. With funny design, convenient connection, long battery life and reasonable price, .. ensures that TransNova BTH16 will bring children great experiences with impressive sound quality.</p>', '2022-06-05 11:11:41', '2022-06-05 11:11:41'),
+(33, 26, 19, 'iclever headphones BTH12', 29.75, 0, 9999, 5, '<p>Improved design, support for Bluetooth 5.0 connectivity, built-in mic, support for fast charging via USB-C and allow volume options in 3 levels of 74/85/94dB, .. iClever BTH12 headphones are definitely a Great learning and entertaining tool for modern kids.</p>', '2022-06-05 11:13:33', '2022-06-05 11:13:33'),
+(34, 22, 22, 'HiFiMan HE-R10D Headset', 1287.08, 0, 9999, 12, '<p>HiFiMan HE-R10D Headset</p>', '2022-06-05 11:16:50', '2022-06-05 11:16:50'),
+(35, 22, 20, 'SoundPeats Mini Pro Bluetooth Headset', 72.87, 5, 9999, 10, '<p>As society develops, the wants and needs of users also become more stringent. To meet the expectations of many people, the SoundPeats brand will continue to launch a new product model called SoundPeats Mini Pro. This is a completely improved version compared to the previous Mini model, promising to bring attractive features and technology to satisfy even the most discerning audiophile.</p>', '2022-06-05 11:21:49', '2022-06-05 11:21:49');
 
 -- --------------------------------------------------------
 
@@ -308,8 +351,8 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `order_details`
   ADD PRIMARY KEY (`detail_id`),
-  ADD KEY `FK_Detail_Products` (`pro_id`),
-  ADD KEY `FK_Details_Orders` (`order_id`);
+  ADD KEY `FK_Details_Orders` (`order_id`),
+  ADD KEY `FK_Detail_Products` (`pro_id`);
 
 --
 -- Chỉ mục cho bảng `products`
@@ -339,7 +382,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT cho bảng `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `brand_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `brand_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT cho bảng `cart`
@@ -363,13 +406,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT cho bảng `images`
 --
 ALTER TABLE `images`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
-
---
--- AUTO_INCREMENT cho bảng `orders`
---
-ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT cho bảng `order_details`
@@ -381,7 +418,7 @@ ALTER TABLE `order_details`
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT cho bảng `slider`

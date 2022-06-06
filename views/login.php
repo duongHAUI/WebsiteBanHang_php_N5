@@ -24,7 +24,8 @@
 
 <body>
 <?php
-include "./helpers/common.php";
+    include "./middleware/auth.php";
+    include "./helpers/common.php";
 ?>
     <div class="auth-main d-flex align-items-center justify-content-center">
         <div class="col-3 col-md-6 col-sm-12">
@@ -33,16 +34,17 @@ include "./helpers/common.php";
             </div>
             <div class="pt-5">
                 <?php get_flash_message('register'); ?>
-                <form action="" id="login-form" >
+                <?php get_flash_message('logout'); ?>
+                <form action="./controllers/auth/login.php" id="login-form" data-validate="true" method="post">
                     <div class="form-container">
-                        <input type="text" name="customer_email" />
+                        <input type="text" name="customer_email" data-rule-required="true" data-msg-required="Email is required" data-rule-email="true" data-msg-email="Email is invalid" value="<?= old('customer_email') ?>" />
                         <label>Email</label>
                     </div>
                     <div class="form-container">
-                        <input type="password" name="customer_password" />
+                        <input type="password" name="customer_password" data-rule-required="true" data-msg-required="Password is required" data-rule-password="false" />
                         <label>Password</label>
                     </div>
-                    <button class="btn-flat btn-submit mt-5" type="submit">Login</button>
+                    <button class="btn-flat btn-submit mt-5" type="submit" name="login">Login</button>
                     <div class="mt-3 text-center">
                         <a href="register">Register</a>
                     </div>
@@ -53,8 +55,7 @@ include "./helpers/common.php";
 </body>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
-</script>
 <script src="./js/authenticate.js" type="text/javascript"></script>
+<script src="./js/jquery.validate.min.js" type="text/javascript"></script>
+<script src="./js/form.js" type="text/javascript"></script>
 </html>
