@@ -229,4 +229,10 @@ class Cart extends Model
 
     return $cart;
   }
+
+  // public static function delete_cart_by_customerId($con, $cart_id, $cus_id)
+  // {
+  //   $query = "delete from " . self::TABLE_NAME . " where cart_id = $cart_id, cus_id = $cus_id";
+  //   return mysqli_query($con, $query);
+  // }
 }
