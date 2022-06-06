@@ -11,6 +11,10 @@
     for ($i = 0; $i < count($carts); $i++) {
         $carts[$i]->populated($con, "product");
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 60d66dbd48e450495852bfe6d78fa6c047fe670a
     function is_email($str) {
         return (!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $str)) ? false : true;
     }
