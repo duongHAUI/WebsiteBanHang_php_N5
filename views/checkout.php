@@ -161,7 +161,9 @@
 <body>
     <?php
     include_once "./middleware/notAuth.php";
-        include("header.php");
+    include_once("models/index.php");
+    include_once("./db/connectdb.php");
+    include("header.php");
         
     ?>
     <div class="checkout container">

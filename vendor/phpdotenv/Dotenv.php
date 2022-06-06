@@ -2,28 +2,9 @@
 
 namespace Dotenv;
 
-/**
- * Autoload environment for PHP
- *
- * @package DotEnv
- *
- * @author HuuNgoc Senior Developer <huungoc1994hd@gmail.com>
- * @date 04/06/2022
- */
 class DotEnv
 {
-    /**
-     * The directory where the .env file can be located.
-     *
-     * @var string
-     */
     protected $path;
-
-    /**
-     * Dotenv constructor
-     *
-     * @param string $path
-     */
     public function __construct(string $path)
     {
         if (!file_exists($path)) {
