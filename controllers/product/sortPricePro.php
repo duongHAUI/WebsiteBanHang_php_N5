@@ -37,8 +37,8 @@
                                         <?= $value->title?>
                                     </a>
                                     <div class="product-card-price">
-                                        <span><del><?= $value->price?></del></span>
-                                        <span class="curr-price"><?= $value->priceDiscount()?></span>
+                                        <span><del>$<?= $value->price?></del></span>
+                                        <span class="curr-price">$<?= $value->priceDiscount()?></span>
                                     </div>
                                 </div>
                             </div>

@@ -25,6 +25,9 @@
             $products = Product::find_all($con, array("where" => "cat_id IN ($cat_list_id)"));
             show($products);
         }
+    }else{
+        $products = Product::find_all($con);
+        show($products);
     }
     function show($products){
         global $con;
@@ -49,8 +52,8 @@
                                         <?= $value->title?>
                                     </a>
                                     <div class="product-card-price">
-                                        <span><del><?= $value->price?></del></span>
-                                        <span class="curr-price"><?= $value->priceDiscount()?></span>
+                                        <span><del>$<?= $value->price?></del></span>
+                                        <span class="curr-price">$<?= $value->priceDiscount()?></span>
                                     </div>
                                 </div>
                             </div>

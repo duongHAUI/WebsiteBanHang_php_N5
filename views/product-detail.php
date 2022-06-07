@@ -24,8 +24,8 @@
         
     }else{
         include_once("models/index.php");
-        include_once("header.php");
         include_once("./db/connectdb.php");
+        include_once("header.php");
         $product      = Product::find_by_pk($con,$_GET['pro_id']);
     ?>
 
@@ -38,7 +38,7 @@
                     <span><i class='bx bxs-chevrons-right'></i></span>
                     <a href="products">all products</a>
                     <span><i class='bx bxs-chevrons-right'></i></span>
-                    <a href="./product-detail.html"><?=$product->title?></a>
+                    <a href=""><?=$product->title?></a>
                 </div>
             </div>
             <div class="row product-row">
@@ -86,18 +86,24 @@
                         <p class="product-description">
                             <?= $product->desc?>
                         </p>
-                        <div class="product-info-price"><?=$product->priceDiscount()?></div>
+                        <div class="price" style="display:flex;align-items: center;">
+                            <span style="margin-right: 20px;"><del>$<?= $product->price?></del></span>
+                            <div class="product-info-price">$<?=$product->priceDiscount()?></div>
+                        </div>
+                        
                         <div class="product-quantity-wrapper">
-                            <span class="product-quantity-btn">
+                            <span class="product-quantity-btn" id="prev">
                                 <i class='bx bx-minus'></i>
                             </span>
-                            <span class="product-quantity">1</span>
-                            <span class="product-quantity-btn">
+                            <span class="product-quantity">
+                                <input type="text" value="1" style="width:30px;text-align:center" id="quantity">
+                            </span>
+                            <span class="product-quantity-btn" id="next">
                                 <i class='bx bx-plus'></i>
                             </span>
                         </div>
                         <div>
-                            <button class="btn-flat btn-hover">add to cart</button>
+                            <button id="add-to-cart-prodetail" pro_id="<?=$product->id?>" class="btn-flat btn-hover">add to cart</button>
                         </div>
                     </div>
                 </div>
@@ -143,8 +149,9 @@
     ?>
 
     <!-- app js -->
-    <script src="./js/app.js"></script>
-    <script src="./js/product-detail.js"></script>
+    <!-- <script src="./js/app.js"></script> -->
+    <!-- <script src="./js/product-detail.js"></script> -->
+    <script src="./js/addToCart.js"></script>
 </body>
 
 </html>

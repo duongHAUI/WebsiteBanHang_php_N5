@@ -24,9 +24,8 @@
 
     <?php
     include_once("models/index.php");
-    include_once("header.php");
     include_once("./db/connectdb.php");
-
+    include_once("header.php");
     ?>
 
     <!-- products content -->
@@ -39,11 +38,11 @@
                     <a href="./products.php">all products</a>
                 </div>
                 <div>
-                    <select name="sort-price" id="sort-product">
+                    <!-- <select name="sort-price" id="sort-product">
                         <option value="">Giá</option>
                         <option value="ASC">Giá : Thấp đến cao</option>
                         <option value="DESC">Giá : Cao đến thấp</option>
-                    </select>
+                    </select> -->
                 </div>
             </div>
             <div class="box">
@@ -142,7 +141,7 @@
                                             document.getElementById("products").innerHTML=this.responseText;
                                         }
                                     }
-                            xmlhttp.open("GET","/WebsiteBanHang_php_N5/controllers/product/sortPricePro.php",true);
+                            xmlhttp.open("GET","/WebsiteBanHang_php_N5/controllers/product/categoryPro.php",true);
                             xmlhttp.send();
                         </script>
                         <div class="box">

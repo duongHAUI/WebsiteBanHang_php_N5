@@ -19,8 +19,8 @@
 <body>
     <?php
         include_once("models/index.php");
-        include_once("header.php");
         include_once("./db/connectdb.php");
+        include_once("header.php");
         $slides = Slider::find_all($con);
     ?>
     <!-- hero section -->
@@ -164,8 +164,8 @@
                             <div class="product-card">
                                 <a href="product-detail?pro_id=<?=$value->id?>">
                                     <div class="product-card-img">
-                                        <img src="admin_panel/product_images/<?=$value->get_images($con)[0]->link ?>" alt="">
-                                        <img src="admin_panel/product_images/<?=$value->get_images($con)[0]->link ?>" alt="">
+                                        <img src="images/<?=$value->get_images($con)[0]->link ?>" alt="">
+                                        <img src="images/<?=$value->get_images($con)[0]->link ?>" alt="">
                                     </div>
                                 </a>
                                 <div class="product-card-info">
@@ -240,7 +240,7 @@
         include("footer.php");
     ?>
     <!-- app js -->
-    <script src="./js/app.js"></script>
+    <!-- <script src="./js/app.js"></script> -->
     <script src="./js/lastestProduct.js"></script>
 </body>
 
