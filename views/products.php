@@ -82,37 +82,6 @@
                             </div>
                         </div>
                         <div class="box">
-                            <ul class="filter-list">
-                                <li>
-                                    <div class="group-checkbox">
-                                        <input type="checkbox" id="status1">
-                                        <label for="status1">
-                                            On sale
-                                            <i class='bx bx-check'></i>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="group-checkbox">
-                                        <input type="checkbox" id="status2">
-                                        <label for="status2">
-                                            In stock
-                                            <i class='bx bx-check'></i>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="group-checkbox">
-                                        <input type="checkbox" id="status3">
-                                        <label for="status3">
-                                            Featured
-                                            <i class='bx bx-check'></i>
-                                        </label>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="box">
                             <span class="filter-header">
                                 Brands
                             </span>

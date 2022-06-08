@@ -1,10 +1,9 @@
 <?php
     namespace Models;
-
-    include "models/index.php";
-    include "db/connectdb.php";
-    include("header.php");
-
+    include_once "./middleware/notAuth.php";
+    include_once "models/index.php";
+    include_once "db/connectdb.php";
+    include_once("header.php");
     $customer_id=13;
     $carts = Cart::find_all($con, array("where" => "cus_id = $customer_id", "order" => "createdAt DESC"));
 
@@ -159,13 +158,7 @@
     <link rel="stylesheet" href="./css/checkout.css">
 </head>
 <body>
-    <?php
-    include_once "./middleware/notAuth.php";
-    include_once("models/index.php");
-    include_once("./db/connectdb.php");
-    include("header.php");
-        
-    ?>
+
     <div class="checkout container">
         <h1>Checkout</h1>
         <form action="" method="POST" mutip>
