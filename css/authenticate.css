@@ -18,42 +18,45 @@
 
 .form-container input {
   position: inherit;
-  border: 0;
-  border-bottom: 1px solid #ddd;
-  padding: 10px 0;
   outline: 0;
   z-index: 1;
-  background-color: transparent;
   width: 100%;
+  background: none;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.form-container input:focus ~ label,
+.form-container input:valid ~ label {
+  top: -20px;
+  color: #2196f3;
+}
+
+.form-container input:focus ~ .bar,
+.form-container input:valid ~ .bar {
+  width: 100%;
+  left: 0;
 }
 
 .form-container label {
   position: absolute;
-  left: 0;
-  bottom: 10px;
+  left: 5px;
+  top: 10px;
   z-index: 0;
-  transition: all 0.3s ease-in-out;
+  transition: 300ms ease all;
+  pointer-events: none;
 }
 
-.form-container.active label {
-  bottom: 100%;
-}
-
-.form-container.active::after {
-  width: 100%;
-  left: 0;
-}
-
-.form-container::after {
-  content: '';
+.form-container .bar {
   position: absolute;
   bottom: 0;
   left: 50%;
   width: 0;
-  height: 3px;
-  background: #000;
-  transition: all 0.3s ease-in-out;
-  z-index: 999;
+  height: 2px;
+  background: #2196F3;
+  transition: 300ms ease all;
 }
 
 .btn-submit {
@@ -66,11 +69,12 @@
   background: #111114;
 }
 
-.error {
-  color: #dc3545;
-  border-color: #dc3545;
+.error *,
+.error + label {
+  color: #dc3545 !important;
+  border-color: #dc3545 !important;
 }
 
-.error::after {
+.error .bar {
   background: #dc3545;
 }

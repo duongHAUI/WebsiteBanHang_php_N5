@@ -29,13 +29,12 @@ if (!function_exists('get_flash_message')) {
      * Get error from flash message
      *
      * @param string $name
-     * @param string $type
-     * @return void
+     * @return string|null
      */
-    function get_flash_message(string $name): void
+    function get_flash_message(string $name): ?string
     {
         if (!isset($_SESSION['flash'][$name])) {
-            return;
+            return null;
         }
 
         // get message from the session
@@ -45,7 +44,7 @@ if (!function_exists('get_flash_message')) {
         unset($_SESSION['flash'][$name]);
 
         // display the flash message
-        echo format_flash_message($flash_message);
+        return format_flash_message($flash_message);
     }
 }
 
@@ -104,5 +103,18 @@ if (!function_exists('remove_old_value')) {
     function remove_old_value(): void
     {
         unset($_SESSION['old_values']);
+    }
+}
+
+if (!function_exists('routeIs')) {
+    /**
+     * Check current route is active
+     *
+     * @param string $pattern
+     * @return bool
+     */
+    function routeIs(string $pattern): bool
+    {
+        return preg_match("/" . trim($pattern, "/") . "/", $_SERVER['REQUEST_URI']);
     }
 }

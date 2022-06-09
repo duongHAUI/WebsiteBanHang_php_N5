@@ -22,7 +22,7 @@
             <!-- mid header -->
             <div class="bg-main">
                 <div class="mid-header container">
-                    <a href="#" class="logo">ATShop</a>
+                    <a href="/WebsiteBanHang_php_N5" class="logo">ATShop</a>
                     <div class="search">
                         <input type="text" id="search" placeholder="Search" >
                         <i class='bx bx-search-alt' ></i>
@@ -65,7 +65,7 @@
                                 <ul class="auth-user-2">
                                     <?php
                                         if(isset($user)){
-                                            echo "<li>Settings</li>";
+                                            echo "<li><a href='orders'>Settings</a></li>";
                                             echo "<li><a href='./controllers/auth/logout.php'>Logout</a></li>";
                                         }
                                     ?>

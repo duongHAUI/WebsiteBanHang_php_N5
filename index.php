@@ -39,6 +39,9 @@ switch ($request) {
     case "/update-cart":
         require __DIR__ . '/controllers/cart/update-cart.php';
         break;
+    case "/orders":
+        require __DIR__ . '/views/orders.php';
+        break;
     case "/order-detail":
         require __DIR__ . '/views/order-detail.php';
         break;

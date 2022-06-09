@@ -15,8 +15,7 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <!-- app css -->
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/grid.css">
     <link rel="stylesheet" href="./css/app.css">
     <link rel="stylesheet" href="./css/authenticate.css">
@@ -33,16 +32,17 @@
                 <h3>Login</h3>
             </div>
             <div class="pt-5">
-                <?php get_flash_message('register'); ?>
-                <?php get_flash_message('logout'); ?>
-                <form action="./controllers/auth/login.php" id="login-form" data-validate="true" method="post">
+                <?= get_flash_message('error') ?: get_flash_message('success'); ?>
+                <form action="./controllers/auth/login.php" id="login-form" data-validate="true" method="post" autocomplete="none">
                     <div class="form-container">
-                        <input type="text" name="customer_email" data-rule-required="true" data-msg-required="Email is required" data-rule-email="true" data-msg-email="Email is invalid" value="<?= old('customer_email') ?>" />
+                        <input type="text" name="customer_email" data-rule-required="true" data-msg-required="Email is required" data-rule-email="true" data-msg-email="Email is invalid" value="<?= old('customer_email') ?>" required autocomplete="none" />
                         <label>Email</label>
+                        <div class="bar"></div>
                     </div>
                     <div class="form-container">
-                        <input type="password" name="customer_password" data-rule-required="true" data-msg-required="Password is required" data-rule-password="false" />
+                        <input type="password" name="customer_password" data-rule-required="true" data-msg-required="Password is required" data-rule-password="false" required autocomplete="none" />
                         <label>Password</label>
+                        <div class="bar"></div>
                     </div>
                     <button class="btn-flat btn-submit mt-5" type="submit" name="login">Login</button>
                     <div class="mt-3 text-center">
@@ -55,7 +55,6 @@
 </body>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="./js/authenticate.js" type="text/javascript"></script>
 <script src="./js/jquery.validate.min.js" type="text/javascript"></script>
 <script src="./js/form.js" type="text/javascript"></script>
 </html>

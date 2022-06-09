@@ -14,8 +14,7 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <!-- app css -->
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/grid.css">
     <link rel="stylesheet" href="./css/app.css">
     <link rel="stylesheet" href="./css/authenticate.css">
@@ -31,24 +30,28 @@ include "./helpers/common.php";
             <h3>Register</h3>
         </div>
         <div class="pt-5">
-            <?php get_flash_message('register'); ?>
+            <?= get_flash_message('error') ?: get_flash_message('success'); ?>
 
             <form action="./controllers/auth/register.php" id="login-form" method="post" data-validate="true">
                 <div class="form-container">
-                    <input type="text" name="customer_email" data-rule-required="true" data-msg-required="Email is required" data-rule-email="true" data-msg-email="Email is invalid" value="<?= old('customer_email') ?>" />
+                    <input type="text" name="customer_email" data-rule-required="true" data-msg-required="Email is required" data-rule-email="true" data-msg-email="Email is invalid" value="<?= old('customer_email') ?>" required />
                     <label>Email</label>
+                    <div class="bar"></div>
                 </div>
                 <div class="form-container">
-                    <input type="text" name="customer_name" data-rule-required="true" data-msg-required="Full name is required" value="<?= old('customer_name') ?>" />
+                    <input type="text" name="customer_name" data-rule-required="true" data-msg-required="Full name is required" value="<?= old('customer_name') ?>" required />
                     <label>Full name</label>
+                    <div class="bar"></div>
                 </div>
                 <div class="form-container">
-                    <input type="password" name="customer_password" data-rule-required="true" data-msg-required="Password is required" data-rule-password="true" id="customer_password" />
+                    <input type="password" name="customer_password" data-rule-required="true" data-msg-required="Password is required" data-rule-password="true" id="customer_password" required />
                     <label>Password</label>
+                    <div class="bar"></div>
                 </div>
                 <div class="form-container">
-                    <input type="password" name="retype_password" data-rule-equalto="#customer_password" data-msg-equalto="Retype the password does not match" />
+                    <input type="password" name="retype_password" data-rule-equalto="#customer_password" data-msg-equalto="Retype the password does not match" required />
                     <label>Retype password</label>
+                    <div class="bar"></div>
                 </div>
                 <button class="btn-flat btn-submit mt-5" type="submit" name="register">Register</button>
                 <div class="mt-3 text-center">
