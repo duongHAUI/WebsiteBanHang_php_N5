@@ -4,6 +4,21 @@ namespace Models;
 include_once "models/index.php";
 include_once "./db/connectdb.php";
 include_once "helpers/common.php";
+
+$id = $_GET['id'] ?? 0;
+$order = Order::find_by_pk($con, $id);
+
+if (empty($order)) {
+    http_response_code(404);
+    require __DIR__ . '/404.php';
+    return;
+}
+
+$order->populated($con, 'customer');
+$order->detail = $order->get_details($con);
+foreach ($order->detail as $item) {
+    $item->populated($con, 'product');
+}
 ?>
 
 <!DOCTYPE html>
@@ -27,68 +42,57 @@ include_once "helpers/common.php";
 <body>
 
 <?php include_once "header.php"; ?>
-<div class="bg-main mt-5">
+<div class="bg-main my-5">
     <div class="container">
         <div class="row">
             <div class="col-3">
                 <?php include_once "sidebar.php" ?>
             </div>
             <div class="col-9">
-                <h3>
-                    <i class="bx bxs-cart-alt text-danger"></i>
-                    Order detail
-                </h3>
+                <div class="row">
+                    <div class="col">
+                        <h3>
+                            <i class="bx bxs-cart-alt text-danger"></i>
+                            Order detail
+                        </h3>
+                    </div>
+                    <div class="col fs-3 text-end">
+                        <i class="bx bx-menu"></i>
+                    </div>
+                </div>
 
                 <div class="order-detail-content mt-3">
                     <div class="order-detail-header">
                         <div>
                             <div class="order-detail-header-title">Order ID:</div>
-                            <div>9001997718074513</div>
+                            <div>#<?= $order->id ?></div>
                         </div>
                         <div>
                             <div class="order-detail-header-title">Placed on:</div>
-                            <div>10 Jun, 2022</div>
+                            <div><?= date('m M, Y', strtotime($order->createdAt)) ?></div>
                         </div>
                     </div>
                     <div class="order-detail-body">
-                        <div class="order-detail-item d-flex gap-5 align-items-center my-3">
-                            <div class="order-detail-item-avatar">
-                                <img src="https://bonik-react.vercel.app/assets/images/products/Groceries/2.PremiumGroceryCollection.png" alt="avatar" />
+                        <?php foreach ($order->detail as $item): ?>
+                            <div class="order-detail-item row align-items-center">
+                                <div class="col-6">
+                                    <div class="d-flex gap-4 align-items-center">
+                                        <div class="order-detail-item-discount">-<?= $item->product->discount ?>%</div>
+                                        <img src="images/<?= $item->product->get_images($con)[0]->link ?>" alt="avatar" class="order-detail-item-avatar" />
+                                        <div>
+                                            <h6><?= $item->product->title ?></h6>
+                                            <div class="order-detail-item-price">$<?= $item->product->price ?> x <?= $item->quantity ?></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 order-detail-item-total">
+                                    Total: $<?= $item->product->priceDiscount() * $item->quantity ?>
+                                </div>
+                                <div class="col-3 text-end">
+                                    <a href="product-detail?pro_id=<?= $item->product->id ?>" class="btn-view-detail">View detail</a>
+                                </div>
                             </div>
-                            <div>
-                                <h6>Premium Grocery Collection</h6>
-                                <div class="order-detail-item-price">$250 x 1</div>
-                            </div>
-                            <div>
-                                <div>Product properties: Black, L</div>
-                            </div>
-                        </div>
-
-                        <div class="order-detail-item d-flex gap-5 align-items-center my-3">
-                            <div class="order-detail-item-avatar">
-                                <img src="https://bonik-react.vercel.app/assets/images/products/Groceries/2.PremiumGroceryCollection.png" alt="avatar" />
-                            </div>
-                            <div>
-                                <h6>Premium Grocery Collection</h6>
-                                <div class="order-detail-item-price">$250 x 1</div>
-                            </div>
-                            <div>
-                                <div>Product properties: Black, L</div>
-                            </div>
-                        </div>
-
-                        <div class="order-detail-item d-flex gap-5 align-items-center my-3">
-                            <div class="order-detail-item-avatar">
-                                <img src="https://bonik-react.vercel.app/assets/images/products/Groceries/2.PremiumGroceryCollection.png" alt="avatar" />
-                            </div>
-                            <div>
-                                <h6>Premium Grocery Collection</h6>
-                                <div class="order-detail-item-price">$250 x 1</div>
-                            </div>
-                            <div>
-                                <div>Product properties: Black, L</div>
-                            </div>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
 
@@ -97,30 +101,33 @@ include_once "helpers/common.php";
                         <div class="card order-detail-address">
                             <div class="card-body">
                                 <h5>Shipping Address</h5>
-                                <p>Kelly Williams 777 Brockton Avenue, Abington MA 2351</p>
+                                <p><?=  $order->address ?></p>
+                                <p>Note: <?= $order->note ?></p>
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="card order-detail-amount">
                             <div class="card-body">
+                                <?php
+                                    $subtotal = array_reduce($order->detail, function ($acc, $cur) {
+                                        $acc += $cur->price * $cur->quantity;
+                                        return $acc;
+                                    }, 0);
+                                ?>
                                 <h5>Total Summary</h5>
                                 <div>
                                     <div class="order-detail-amount-title">Subtotal:</div>
-                                    <h6>$335</h6>
+                                    <h6>$<?= $subtotal ?></h6>
                                 </div>
                                 <div>
                                     <div class="order-detail-amount-title">Shipping fee:</div>
-                                    <h6>$10</h6>
-                                </div>
-                                <div>
-                                    <div class="order-detail-amount-title">Discount:</div>
-                                    <h6>-$30</h6>
+                                    <h6>$0</h6>
                                 </div>
                                 <div class="divider"></div>
                                 <div>
                                     <h6>Total</h6>
-                                    <h6>$315</h6>
+                                    <h6>$<?= $order->amount ?></h6>
                                 </div>
                             </div>
                         </div>
@@ -130,5 +137,7 @@ include_once "helpers/common.php";
         </div>
     </div>
 </div>
+
+<?php include_once("footer.php"); ?>
 </body>
 </html>

@@ -130,7 +130,7 @@
 
             mysqli_query($con, "DELETE FROM cart  where cus_id=$customer_id");
 
-            header("Location: order-detail");
+            header("Location: order-detail?id=$order->id");
 
             // delete cart
         } else {

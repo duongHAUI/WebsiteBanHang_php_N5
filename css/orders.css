@@ -198,6 +198,11 @@ h6 {
     padding-bottom: 0.5rem;
 }
 
+.order-detail-item {
+    padding: 0.5rem 1rem;
+    position: relative;
+}
+
 .order-detail-item-avatar {
     display: block;
     position: relative;
@@ -209,6 +214,11 @@ h6 {
     overflow: hidden;
     width: 64px;
     height: 64px;
+}
+
+.order-detail-item-total {
+    font-size: 14px;
+    color: rgb(125, 135, 156);
 }
 
 .order-detail-item-price {
@@ -248,4 +258,67 @@ h6 {
 .order-detail-amount-title {
     font-size: 14px;
     color: rgb(125, 135, 156);
+}
+
+.btn-view-detail {
+    width: unset;
+    -webkit-box-pack: center;
+    outline: none;
+    cursor: pointer;
+    padding: 11px 1.5rem;
+    font-weight: 600;
+    background: transparent;
+    transition: all 150ms ease-in-out 0s;
+    line-height: 1;
+    border: none;
+    color: rgb(233, 69, 96) !important;
+    height: 40px;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-left: auto;
+}
+
+.btn-view-detail:hover {
+    background-color: rgb(255, 225, 230);
+}
+
+.order-detail-item-discount {
+    position: relative;
+    display: inline-block;
+    background: rgb(233, 69, 96);
+    color: white;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+    transform: rotate(-20deg);
+    animation: beat 0.3s ease infinite alternate;
+    font-size: 12px;
+}
+
+.order-detail-item-discount::before,
+.order-detail-item-discount::after {
+    content: "";
+    position: absolute;
+    background: inherit;
+    height: inherit;
+    width: inherit;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transform: rotate(30deg);
+}
+
+.order-detail-item-discount::after {
+    transform: rotate(60deg);
+}
+
+@keyframes beat {
+    from {
+        transform: rotate(-20deg) scale(1);
+    }
+    to {
+        transform: rotate(-20deg) scale(1.1);
+    }
 }
