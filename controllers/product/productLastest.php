@@ -22,8 +22,9 @@
         global $con;
         foreach ($products as $key => $value) {
             ?>
-                <div class="col-3 col-md-6 col-sm-12">
+                <div class="col-3 col-md-6 col-sm-12 cards">
                             <div class="product-card">
+                                <div class="product-discount"><?= $value->discount?>%</div>
                                 <a href="product-detail?pro_id=<?=$value->id?>">
                                     <div class="product-card-img">
                                         <img src="images/<?=$value->get_images($con)[0]->link ?>" alt="">
@@ -35,9 +36,6 @@
                                         <a href="products" class="btn-flat btn-hover btn-shop-now">shop now</a>
                                         <button class="btn-flat btn-hover btn-cart-add">
                                             <i class='bx bxs-cart-add'></i>
-                                        </button>
-                                        <button class="btn-flat btn-hover btn-cart-add">
-                                            <i class='bx bxs-heart'></i>
                                         </button>
                                     </div>
                                     <a href="product-detail?pro_id=<?=$value->id?>" class="product-card-name">

@@ -1,18 +1,16 @@
 <?php
     namespace Models;
 
-    include_once "./middleware/notAuth.php";
-    include_once("models/index.php");
-    include_once("./db/connectdb.php");
+    include "models/index.php";
+    include "db/connectdb.php";
     include("header.php");
 
-    $customer_id=$_SESSION['c_user']['id'];
-    $carts = Cart::find_all($con, array("where" => "cus_id = $customer_id", "order" => "createdAt DESC"));
+    $user_id = $_SESSION['c_user']['id'];
+    $carts = Cart::find_all($con, array("where" => "cus_id = $user_id", "order" => "createdAt DESC"));
 
-    foreach ($carts as $item) {
-        $item->populated($con, "product");
+    for ($i = 0; $i < count($carts); $i++) {
+        $carts[$i]->populated($con, "product");
     }
-
     function is_email($str) {
         return (!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $str)) ? false : true;
     }
@@ -66,76 +64,77 @@
         }
         
         $notes = $_POST["notes"];
+    }
 
-        // total cart;
-        $amount = 0;
-        $amountQuery = "SELECT cart_qty FROM cart where cus_id = $customer_id";
-        $amountResult = mysqli_query($con, $amountQuery);
-        $amountArr = [];
-        while($row = mysqli_fetch_array($amountResult)) {
-            $amountArr[]=$row;
+    // total cart;
+    $amount = 0;
+    $amountQuery = "SELECT cart_qty FROM cart where cus_id = $user_id";
+    $amountResult = mysqli_query($con, $amountQuery);
+    $amountArr = [];
+    while($row = mysqli_fetch_array($amountResult)) {
+        $amountArr[]=$row;
+    }
+
+    foreach($amountArr as $item) {
+        $amount += $item["cart_qty"];
+    }
+
+    if($fullname && $addressDetail && $phone && $email){
+        for($i=0; $i < count($carts); $i++){
+            $cartId = $carts[$i]->id;
         }
 
-        foreach($amountArr as $item) {
-            $amount += $item["cart_qty"];
+        $query = "SELECT * from cart where cus_id = $user_id";
+        $result = mysqli_query($con, $query);
+
+        while($row = mysqli_fetch_array($result)) {
+            $listCart[]=$row;
         }
 
-        if($fullname && $addressDetail && $phone && $email){
-            $query = "SELECT * from cart where cus_id = $customer_id";
-            $result = mysqli_query($con, $query);
+        $totalAmount = 0;
+        foreach ($listCart as $item) {
+            $productId = $item["pro_id"];
+            $cart_qty_item = $item["cart_qty"];
 
-            while($row = mysqli_fetch_array($result)) {
-                $listCart[]=$row;
-            }
-
-            $totalAmount = 0;
-            foreach ($listCart as $item) {
-                $productId = $item["pro_id"];
-                $cart_qty_item = $item["cart_qty"];
-
-                $product = Product::find_by_pk($con, $productId);
-                Product::update_by_pk($con, $productId, array(
-                    "product_sold"=>$product->sold + $cart_qty_item,
-                    "product_quantity"=>$product->quantity - $cart_qty_item
-                ));
-
-                $totalAmount += $product->price * $cart_qty_item * (100 - $product->discount) / 100;
-            }
-
-            // add order table
-            $order = Order::create($con, array(
-                "order_receiver" => "$fullname",
-                "order_address" => "$addressDetail",
-                "order_status" => "$status",
-                "order_amount" => "$totalAmount",
-                "order_phone" => "$phone",
-                "order_note" => "$notes",
-                "cus_id" => "$customer_id",
+            $product = Product::find_by_pk($con, $productId);
+            Product::update_by_pk($con, $productId, array(
+                "product_sold"=>$product->sold + $cart_qty_item,
+                "product_quantity"=>$product->quantity - $cart_qty_item
             ));
-
-            // add order detail
-            foreach ($listCart as $item) {
-                $productId = $item["pro_id"];
-                $cart_qty_item = $item["cart_qty"];
-
-                $product = Product::find_by_pk($con, $productId);
-
-                Detail::create($con, array(
-                    "quantity" => $cart_qty_item,
-                    "price" => $product->priceDiscount(),
-                    "pro_id" => $productId,
-                    "order_id" => $order->id
-                ));
-            }
-
-            mysqli_query($con, "DELETE FROM cart  where cus_id=$customer_id");
-
-            header("Location: order-detail?id=$order->id");
-
-            // delete cart
-        } else {
-            echo "<span style='color: red;'>Error!</span>";
+            
+            $totalAmount += $product->price * $cart_qty_item * (100 - $product->discount) / 100;
         }
+        // add order table
+        $order = Order::create($con, array(
+            "order_receiver" => "$fullname",
+            "order_address" => "$addressDetail",
+            "order_status" => "$status",
+            "order_amount" => "$totalAmount",
+            "order_phone" => "$phone",
+            "order_note" => "$notes",
+            "cus_id" => "$user_id",
+        )); 
+
+        // add order detail
+        foreach ($listCart as $item) {
+            $productId = $item["pro_id"];
+            $cart_qty_item = $item["cart_qty"];
+
+            $product = Product::find_by_pk($con, $productId);
+
+            Detail::create($con, array(
+                "quantity" => $cart_qty_item,
+                "price" => $product->price,
+                "pro_id" => $productId,
+                "order_id" => $order->id
+            ));
+        }
+
+        mysqli_query($con, "DELETE FROM cart  where cus_id=$user_id");
+
+        header("Location: order-detail?id=$order->id");
+    } else {
+        echo "<span style='color: red'>Error!</span>";
     }
 ?>
 
@@ -198,7 +197,7 @@
                         </div>
                     </div>
                     <div class="checkout-btn">
-                        <button class="back-to-cart checkout-btn-item" type="button" onclick="location.href = 'cart'">Back to Cart</button>
+                        <button class="back-to-cart checkout-btn-item" type="button"><a href="cart">Back to Cart</a></button>
                         <button class="place-order checkout-btn-item" type="submit" name="checkoutForm">Place order</button>
                     </div>
                 </div>
