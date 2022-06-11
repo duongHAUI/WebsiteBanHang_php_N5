@@ -5,16 +5,12 @@
     include "db/connectdb.php";
     include("header.php");
 
-    $customer_id=13;
-    $carts = Cart::find_all($con, array("where" => "cus_id = $customer_id", "order" => "createdAt DESC"));
+    $user_id = $_SESSION['c_user']['id'];
+    $carts = Cart::find_all($con, array("where" => "cus_id = $user_id", "order" => "createdAt DESC"));
 
     for ($i = 0; $i < count($carts); $i++) {
         $carts[$i]->populated($con, "product");
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> ac6712d7da1b4e8579831c041d1ef8078b28ef9d
     function is_email($str) {
         return (!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $str)) ? false : true;
     }
@@ -72,7 +68,7 @@
 
     // total cart;
     $amount = 0;
-    $amountQuery = "SELECT cart_qty FROM cart where cus_id = $customer_id";
+    $amountQuery = "SELECT cart_qty FROM cart where cus_id = $user_id";
     $amountResult = mysqli_query($con, $amountQuery);
     $amountArr = [];
     while($row = mysqli_fetch_array($amountResult)) {
@@ -88,7 +84,7 @@
             $cartId = $carts[$i]->id;
         }
 
-        $query = "SELECT * from cart where cus_id = $customer_id";
+        $query = "SELECT * from cart where cus_id = $user_id";
         $result = mysqli_query($con, $query);
 
         while($row = mysqli_fetch_array($result)) {
@@ -108,7 +104,6 @@
             
             $totalAmount += $product->price * $cart_qty_item * (100 - $product->discount) / 100;
         }
-
         // add order table
         $order = Order::create($con, array(
             "order_receiver" => "$fullname",
@@ -117,7 +112,7 @@
             "order_amount" => "$totalAmount",
             "order_phone" => "$phone",
             "order_note" => "$notes",
-            "cus_id" => "$customer_id",
+            "cus_id" => "$user_id",
         )); 
 
         // add order detail
@@ -135,7 +130,7 @@
             ));
         }
 
-        mysqli_query($con, "DELETE FROM cart  where cus_id=$customer_id");
+        mysqli_query($con, "DELETE FROM cart  where cus_id=$user_id");
         
         header("Location: order-detail");
     } else {
@@ -202,7 +197,7 @@
                         </div>
                     </div>
                     <div class="checkout-btn">
-                        <button class="back-to-cart checkout-btn-item"><a href="cart">Back to Cart</a></button>
+                        <button class="back-to-cart checkout-btn-item" type="button"><a href="cart">Back to Cart</a></button>
                         <button class="place-order checkout-btn-item" type="submit" name="checkoutForm">Place order</button>
                     </div>
                 </div>
