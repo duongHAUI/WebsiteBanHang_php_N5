@@ -1,8 +1,16 @@
-   <!-- header -->
+<?php
+    namespace Models;
+?>
+<?php
+    include_once("models/index.php");
+    if(isset($_SESSION['c_user'] ) && $_SESSION['c_user']){
+        $user = $_SESSION['c_user'];
+    }
+?>
    <header>
         <!-- mobile menu -->
         <div class="mobile-menu bg-second">
-            <a href="./" class="mb-logo">ATShop</a>
+            <a href="/" class="mb-logo">ATShop</a>
             <span class="mb-menu-toggle" id="mb-menu-toggle">
                 <i class='bx bx-menu'></i>
             </span>
@@ -21,7 +29,17 @@
                     </div>
                     <ul class="user-menu">
                         <li class="user-cart">
-                            <a href="cart"><i class='bx bx-cart'></i><span class="count-cart">2</span></a>
+                            <?php
+                                $count =0;
+                                if(isset($user)){
+                                    $carts = Cart::find_all($con);
+                                    
+                                    foreach ($carts as $key => $value) {
+                                        $count += $value->qty;
+                                    }
+                                }
+                            ?>
+                            <a href="cart"><i class='bx bx-cart'></i><span class="count-cart"><?=$count?></span></a>
                         </li>
                         <!-- when not login -->
                         <!-- <li class="auth-user">
@@ -30,11 +48,6 @@
                         <!-- when login -->
                         <li class="auth-user">
                             <div class="auth-user-1">
-                                <?php
-                                    if(isset($_SESSION['c_user'] ) && $_SESSION['c_user']){
-                                        $user = $_SESSION['c_user'];
-                                    }
-                                ?>
                                 <p>
                                     <?php
                                         if(isset($user)){
