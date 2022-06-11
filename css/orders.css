@@ -153,6 +153,7 @@ h6 {
     cursor: not-allowed;
     border: 1px solid rgb(255, 225, 230);
     color: rgb(255, 225, 230);
+    pointer-events: none;
 }
 
 .pagination-container .pagination .active a,
