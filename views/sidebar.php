@@ -1,0 +1,62 @@
+<?php
+namespace Models;
+
+include_once "models/index.php";
+include_once "./db/connectdb.php";
+include_once "header.php";
+include_once "helpers/common.php";
+
+$orderCount = Order::count($con);
+?>
+
+<div class="card">
+    <div class="card-body">
+        <div class="card-title">Dashboard</div>
+        <div class="card-item">
+            <ul>
+                <li class="<?= routeIs('order') ? 'active' : '' ?>">
+                    <a href="/WebsiteBanHang_php_N5/orders">
+                        <span>
+                            <i class="bx bx-cart"></i>
+                            Orders
+                        </span>
+                        <span><?= $orderCount ?></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span>
+                            <i class="bx bx-heart"></i>
+                            Wishlist
+                        </span>
+                        <span>5</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card-title">Account settings</div>
+        <div class="card-item">
+            <ul>
+                <li>
+                    <a href="">
+                        <span>
+                            <i class="bx bx-user"></i>
+                            Profile info
+                        </span>
+                        <span>5</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span>
+                            <i class="bx bx-map"></i>
+                            Addresses
+                        </span>
+                        <span>5</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
