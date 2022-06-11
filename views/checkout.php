@@ -131,8 +131,9 @@
         }
 
         mysqli_query($con, "DELETE FROM cart  where cus_id=$user_id");
-        
-        header("Location: order-detail");
+
+        echo "<script type='text/javascript'>alert('Đặt hàng thành công.')</script>";
+        echo "<script type='text/javascript'>window.open('order-detail?id=$order->id', '_self')</script>";
     } else {
         echo "<span style='color: red'>Error!</span>";
     }

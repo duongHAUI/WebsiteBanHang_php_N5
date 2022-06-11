@@ -208,7 +208,7 @@ INSERT INTO `images` (`image_id`, `pro_id`, `image_link`) VALUES
 CREATE TABLE `orders` (
   `order_id` int(10) NOT NULL,
   `cus_id` int(10) NOT NULL,
-  `order_amount` int(100) NOT NULL,
+  `order_amount` double NOT NULL,
   `order_status` text NOT NULL,
   `order_address` varchar(255) NOT NULL,
   `order_receiver` varchar(50) NOT NULL,
@@ -229,7 +229,7 @@ CREATE TABLE `order_details` (
   `pro_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `price` int(11) NOT NULL,
+  `price` double NOT NULL,
   `size` varchar(20) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
   `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -407,6 +407,12 @@ ALTER TABLE `customers`
 --
 ALTER TABLE `images`
   MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+
+--
+-- AUTO_INCREMENT cho bảng `orders`
+--
+ALTER TABLE `orders`
+    MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT cho bảng `order_details`

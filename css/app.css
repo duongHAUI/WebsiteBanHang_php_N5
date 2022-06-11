@@ -238,11 +238,14 @@ ul.devided > li:last-child {
   display: none;
   cursor: pointer;
 }
-.auth-user-2 li {
+
+.auth-user-2 li a {
+  display: block;
   padding: 10px 20px;
   transition: 0.1s ease-in;
   font-weight: 600;
 }
+
 .auth-user-2 li:hover {
   background-color: #d1d1d1;
   color: #fff;
