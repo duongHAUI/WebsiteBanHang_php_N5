@@ -130,7 +130,7 @@
             ));
         }
 
-        // mysqli_query($con, "DELETE FROM cart  where cus_id=$user_id");
+        mysqli_query($con, "DELETE FROM cart  where cus_id=$user_id");
         
         header("Location: order-detail");
     } else {
