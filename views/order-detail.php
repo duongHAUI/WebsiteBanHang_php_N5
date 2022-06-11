@@ -49,17 +49,10 @@ foreach ($order->detail as $item) {
                 <?php include_once "sidebar.php" ?>
             </div>
             <div class="col-9">
-                <div class="row">
-                    <div class="col">
-                        <h3>
-                            <i class="bx bxs-cart-alt text-danger"></i>
-                            Order detail
-                        </h3>
-                    </div>
-                    <div class="col fs-3 text-end">
-                        <i class="bx bx-menu"></i>
-                    </div>
-                </div>
+                <h3>
+                    <i class="bx bxs-cart-alt text-danger"></i>
+                    Order detail
+                </h3>
 
                 <div class="order-detail-content mt-3">
                     <div class="order-detail-header">
