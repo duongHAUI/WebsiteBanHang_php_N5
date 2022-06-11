@@ -18,7 +18,8 @@
         global $con;
         foreach ($products as $key => $value) {
             ?>
-                <div class="col-4 col-md-6 col-sm-12">
+                <div class="col-3 col-md-6 col-sm-12 cards">
+                            <div class="product-discount"><?= $value->discount?>%</div>
                             <div class="product-card">
                                 <a href="product-detail?pro_id=<?=$value->id?>">
                                     <div class="product-card-img">
