@@ -31,18 +31,18 @@
     <!-- products content -->
     <div class="bg-main">
         <div class="container">
-            <div class="box row" >
+            <div class="box row bw"  >
                 <div class="breadcumb">
                     <a href="./">home</a>
                     <span><i class='bx bxs-chevrons-right'></i></span>
-                    <a href="./products.php">all products</a>
+                    <a href="products">all products</a>
                 </div>
                 <div>
-                    <!-- <select name="sort-price" id="sort-product">
+                    <select name="sort-price" id="sort-product">
                         <option value="">Giá</option>
                         <option value="ASC">Giá : Thấp đến cao</option>
                         <option value="DESC">Giá : Cao đến thấp</option>
-                    </select> -->
+                    </select>
                 </div>
             </div>
             <div class="box">
@@ -110,7 +110,7 @@
                                             document.getElementById("products").innerHTML=this.responseText;
                                         }
                                     }
-                            xmlhttp.open("GET","/WebsiteBanHang_php_N5/controllers/product/categoryPro.php",true);
+                            xmlhttp.open("GET","/WebsiteBanHang_php_N5/controllers/product/products.php",true);
                             xmlhttp.send();
                         </script>
                         <div class="box">

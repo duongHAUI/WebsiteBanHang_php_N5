@@ -1,19 +1,4 @@
 <?php
-    namespace Models;
-?>
-<?php
-    include_once("../../models/index.php");
-    include_once("../../db/connectdb.php");
-    if(isset($_GET['sort-price']) && $_GET['sort-price'] == "ASC" ){
-        $products = Product::find_all($con,array("limit"=>8,"order" => "product_price ASC"));
-        show($products);
-    }else if(isset($_GET['sort-price']) && $_GET['sort-price'] == "DESC"){
-        $products = Product::find_all($con,array("limit"=>8,"order" => "product_price DESC"));
-        show($products);
-    }else{
-        $products = Product::find_all($con);
-        show($products);
-    }
     function show($products){
         global $con;
         foreach ($products as $key => $value) {
