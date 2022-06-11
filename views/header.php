@@ -32,7 +32,8 @@
                             <?php
                                 $count =0;
                                 if(isset($user)){
-                                    $carts = Cart::find_all($con);
+                                    $user_id = $_SESSION['c_user']['id'];
+                                    $carts = Cart::find_all($con, array("where" => "cus_id = $user_id", "order" => "createdAt DESC"));
                                     
                                     foreach ($carts as $key => $value) {
                                         $count += $value->qty;
