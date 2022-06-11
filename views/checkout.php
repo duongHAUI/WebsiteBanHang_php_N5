@@ -155,10 +155,6 @@
     <link rel="stylesheet" href="./css/checkout.css">
 </head>
 <body>
-<<<<<<< HEAD
-
-=======
->>>>>>> 84a5f487f7e0ed1d7d226cf4af9e2ac7fb99b08e
     <div class="checkout container">
         <h1>Checkout</h1>
         <form action="" method="POST" mutip>
