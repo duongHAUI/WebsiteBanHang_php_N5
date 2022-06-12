@@ -122,6 +122,7 @@ foreach ($order->detail as $item) {
                                     <h6>Thành tiền:</h6>
                                     <h6>$<?= $order->amount ?></h6>
                                 </div>
+                                <div style="font-size: 14px;" class="mt-3"><?= $order->status ?></div>
                             </div>
                         </div>
                     </div>
