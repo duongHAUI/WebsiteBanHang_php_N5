@@ -83,7 +83,7 @@
                         <li><a href="./">trang chủ</a></li>
                         <!-- mega menu -->
                         <li >
-                            <a href="products">cửa hàng</a>
+                            <a href="products">sản phẩm</a>
                         </li>
                         <!-- end mega menu -->
                         <li><a href="#">blog</a></li>
