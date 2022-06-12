@@ -230,11 +230,8 @@ class Customer extends Model
             }
         }
 
-        echo $set . "<br>";
-
         if ($set != "") {
             $query = "update " . self::TABLE_NAME . " set " . $set . " where customer_id = $id";
-            echo $query . "<br>";
 
             mysqli_query($con, $query);
         }

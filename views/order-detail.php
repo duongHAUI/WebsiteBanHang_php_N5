@@ -94,7 +94,9 @@ foreach ($order->detail as $item) {
                         <div class="card order-detail-address">
                             <div class="card-body">
                                 <h5>Địa chỉ thanh toán</h5>
-                                <p><?=  $order->address ?></p>
+                                <p>Người nhận: <?=  $order->receiver ?></p>
+                                <p>Số điện thoại: <?=  $order->phone ?></p>
+                                <p>Địa chỉ: <?=  $order->address ?></p>
                                 <p>Ghi chú: <?= $order->note ?></p>
                             </div>
                         </div>
@@ -122,6 +124,7 @@ foreach ($order->detail as $item) {
                                     <h6>Thành tiền:</h6>
                                     <h6>$<?= $order->amount ?></h6>
                                 </div>
+                                <div style="font-size: 14px;" class="mt-3"><?= $order->status ?></div>
                             </div>
                         </div>
                     </div>
