@@ -45,7 +45,7 @@
                                 </p>
                                 <div class="top-down trans-delay-0-6">
                                     <button class="btn-flat btn-hover">
-                                        <span>shop now</span>
+                                        <span>Mua ngay</span>
                                     </button>
                                 </div>
                             </div>
@@ -78,7 +78,7 @@
                 <div class="promotion-box">
                     <div class="text">
                         <h3>Headphone & Earbuds</h3>
-                        <button class="btn-flat btn-hover"><span>shop collection</span></button>
+                        <button class="btn-flat btn-hover"><span>Bộ sưu tập</span></button>
                     </div>
                     <img src="./images/JBLHorizon_001_dvHAMaster.png" alt="">
                 </div>
@@ -86,8 +86,8 @@
             <div class="col-4 col-md-12 col-sm-12">
                 <div class="promotion-box">
                     <div class="text">
-                        <h3>JBL Quantum Series</h3>
-                        <button class="btn-flat btn-hover"><span>shop collection</span></button>
+                        <h3>JBL Phone Quantum Series</h3>
+                        <button class="btn-flat btn-hover"><span>Bộ sưu tập</span></button>
                     </div>
                     <img src="./images/kisspng-beats-electronics-headphones-apple-beats-studio-red-headphones.png" alt="">
                 </div>
@@ -96,7 +96,7 @@
                 <div class="promotion-box">
                     <div class="text">
                         <h3>True Wireless Earbuds</h3>
-                        <button class="btn-flat btn-hover"><span>shop collection</span></button>
+                        <button class="btn-flat btn-hover"><span>Bộ sưu tập</span></button>
                     </div>
                     <img src="./images/JBL_TUNE220TWS_ProductImage_Pink_ChargingCaseOpen.png" alt="">
                 </div>
@@ -109,14 +109,14 @@
     <div class="section">
         <div class="container">
             <div class="section-header">
-                <h2>Latest product</h2>
+                <h2>Sản phẩm mới nhất</h2>
             </div>
             
             <div class="row" id="latest-product">
                 
             </div>
             <div class="section-footer" index="1" id="view-more-latest-product" onclick ="showProductLatest(true)" style="cursor: pointer;">
-                <a  class="btn-flat btn-hover" >view more</a>
+                <a  class="btn-flat btn-hover" >Xem thêm</a>
             </div>
         </div>
     </div>
@@ -137,7 +137,7 @@
                         <p class="sp-item-description">
                             <?=$slides[0]->desc?>
                         </p>
-                        <button class="btn-flat btn-hover">shop now</button>
+                        <button class="btn-flat btn-hover">Mua ngay</button>
                     </div>
                 </div>
             </div>
@@ -149,7 +149,7 @@
     <div class="section">
         <div class="container">
             <div class="section-header">
-                <h2>best selling</h2>
+                <h2>BÁN CHẠY NHẤT</h2>
             </div>
             <?php
 
@@ -171,7 +171,7 @@
                                 </a>
                                 <div class="product-card-info">
                                     <div class="product-btn">
-                                        <a href="products" class="btn-flat btn-hover btn-shop-now">shop now</a>
+                                        <a href="products" class="btn-flat btn-hover btn-shop-now">Mua ngay</a>
                                         <button class="btn-flat btn-hover btn-cart-add">
                                             <i class='bx bxs-cart-add'></i>
                                         </button>
@@ -190,7 +190,7 @@
                 <?php } ?>
             </div>
             <div class="section-footer">
-                <a href="./products" class="btn-flat btn-hover">view all</a>
+                <a href="./products" class="btn-flat btn-hover">Xem tất cả</a>
             </div>
         </div>
     </div>
@@ -200,7 +200,7 @@
     <div class="section">
         <div class="container">
             <div class="section-header">
-                <h2>latest blog</h2>
+                <h2>bài viết mới nhất</h2>
             </div>
             <div class="blog">
                 <div class="blog-img">
@@ -213,7 +213,7 @@
                     <div class="blog-preview">
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi, eligendi dolore. Sapiente omnis numquam mollitia asperiores animi, veritatis sint illo magnam, voluptatum labore, quam ducimus! Nisi doloremque praesentium laudantium repellat.
                     </div>
-                    <button class="btn-flat btn-hover">read more</button>
+                    <button class="btn-flat btn-hover">Xem thêm</button>
                 </div>
             </div>
             <div class="blog row-revere">
@@ -227,11 +227,11 @@
                     <div class="blog-preview">
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi, eligendi dolore. Sapiente omnis numquam mollitia asperiores animi, veritatis sint illo magnam, voluptatum labore, quam ducimus! Nisi doloremque praesentium laudantium repellat.
                     </div>
-                    <button class="btn-flat btn-hover">read more</button>
+                    <button class="btn-flat btn-hover">Xem thêm</button>
                 </div>
             </div>
             <div class="section-footer">
-                <a href="#" class="btn-flat btn-hover">view all</a>
+                <a href="#" class="btn-flat btn-hover">Xem tất cả</a>
             </div>
         </div>
     </div>

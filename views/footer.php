@@ -3,33 +3,30 @@
         <div class="container">
             <div class="row">
                 <div class="col-3 col-md-6">
-                    <h3 class="footer-head">Products</h3>
+                    <h3 class="footer-head">Sản phẩm</h3>
                     <ul class="menu">
-                        <li><a href="#">Help center</a></li>
-                        <li><a href="#">Contact us</a></li>
-                        <li><a href="#">product help</a></li>
-                        <li><a href="#">warranty</a></li>
-                        <li><a href="#">order status</a></li>
+                        <li><a href="#">Trợ giúp</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                        <li><a href="#">Bảo hành</a></li>
+                        <li><a href="#">Trạng thái đơn hàng</a></li>
                     </ul>
                 </div>
                 <div class="col-3 col-md-6">
-                    <h3 class="footer-head">services</h3>
+                    <h3 class="footer-head">Dịch vụ</h3>
                     <ul class="menu">
-                        <li><a href="#">Help center</a></li>
-                        <li><a href="#">Contact us</a></li>
-                        <li><a href="#">product help</a></li>
-                        <li><a href="#">warranty</a></li>
-                        <li><a href="#">order status</a></li>
+                        <li><a href="#">Trợ giúp</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                        <li><a href="#">Bảo hành</a></li>
+                        <li><a href="#">Trạng thái đơn hàng</a></li>
                     </ul>
                 </div>
                 <div class="col-3 col-md-6">
-                    <h3 class="footer-head">support</h3>
+                    <h3 class="footer-head">Hỗ trợ</h3>
                     <ul class="menu">
-                        <li><a href="#">Help center</a></li>
-                        <li><a href="#">Contact us</a></li>
-                        <li><a href="#">product help</a></li>
-                        <li><a href="#">warranty</a></li>
-                        <li><a href="#">order status</a></li>
+                        <li><a href="#">Trợ giúp</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                        <li><a href="#">Bảo hành</a></li>
+                        <li><a href="#">Trạng thái đơn hàng</a></li>
                     </ul>
                 </div>
                 <div class="col-3 col-md-6 col-sm-12">
@@ -53,7 +50,7 @@
                         </ul>
                     </div>
                     <div class="subscribe">
-                        <input type="email" placeholder="ENTER YOUR EMAIL">
+                        <input type="email" placeholder="Email...">
                         <button>subscribe</button>
                     </div>
                 </div>

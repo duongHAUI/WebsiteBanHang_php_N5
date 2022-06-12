@@ -1,9 +1,9 @@
 <?php
     namespace Models;
     include_once "./middleware/notAuth.php";
-    include_once "models/index.php";
-    include_once "db/connectdb.php";
-    include_once("header.php");
+    include "models/index.php";
+    include "db/connectdb.php";
+    include("header.php");
 
     $user_id = $_SESSION['c_user']['id'];
     $carts = Cart::find_all($con, array("where" => "cus_id = $user_id", "order" => "createdAt DESC"));
@@ -28,36 +28,36 @@
 
     $error = array();
     $fullname = $addressDetail = $phone = $email = $notes = "";
-    $status = "cash on delivery";
+    $status = "Thanh toán khi nhận hàng";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($_POST["fullname"])) {
-            $error["fullname"] = "Fullname is required";
+            $error["fullname"] = "Họ tên là bắt buộc";
         } else {
             $fullname = $_POST["fullname"];
         }
 
         if (empty($_POST["addressDetail"])) {
-            $error["addressDetail"] = "Address is required";
+            $error["addressDetail"] = "Địa chỉ là bắt buộc";
         } else {
             $addressDetail = $_POST["addressDetail"];
         }
         
         if (empty($_POST["email"])) {
-            $error["email"] = "Email is required";
+            $error["email"] = "Email là bắt buộc";
         } else {
             if(!is_email($_POST["email"])){
-                $error["email"] =  "Invalid email.";
+                $error["email"] =  "Email không đúng";
             } else {
                 $email = $_POST["email"];
             }
         }
 
         if (empty($_POST["phone"])) {
-            $error["phone"] = "Phone is required";
+            $error["phone"] = "Số điện thoại là bắt buộc";
         } else {
             if(!is_phone($_POST["phone"])){
-                $error["phone"] =  "Invalid phone number.";
+                $error["phone"] =  "Số điện thoại không đúng";
             } else {
                 $phone = $_POST["phone"];
             }
@@ -135,7 +135,7 @@
         echo "<script type='text/javascript'>alert('Đặt hàng thành công.')</script>";
         echo "<script type='text/javascript'>window.open('order-detail?id=$order->id', '_self')</script>";
     } else {
-        echo "<span style='color: red'>Error!</span>";
+        echo "<span style='color: red'></span>";
     }
 ?>
 
@@ -156,29 +156,25 @@
     <link rel="stylesheet" href="./css/checkout.css">
 </head>
 <body>
-<<<<<<< HEAD
-
-=======
->>>>>>> 84a5f487f7e0ed1d7d226cf4af9e2ac7fb99b08e
     <div class="checkout container">
-        <h1>Checkout</h1>
+        <h1>Thanh toán</h1>
         <form action="" method="POST" mutip>
             <div class="row">
                 <div class="col-7 col-sm-12">
-                    <p class="checkout-title">billing details</p>
+                    <p class="checkout-title">Chi tiết hóa đơn</p>
                     <div class="checkout-content">
                         <div class="field-item">
-                            <label for="">Name <span class="star-red">*</span></label>
+                            <label for="">Họ tên <span class="star-red">*</span></label>
                             <input type="text" require placeholder="Fullname" name="fullname">
                         </div>
                         <p style="margin-left: 220px"><?php form_error('fullname'); ?></p>
                         <div class="field-item">
-                            <label for="">Address Detail<span class="star-red">*</span></label>
+                            <label for="">Địa chỉ<span class="star-red">*</span></label>
                             <input type="text" placeholder="Address" name="addressDetail">
                         </div>
                         <p style="margin-left: 220px"><?php form_error('addressDetail'); ?></p>
                         <div class="field-item">
-                            <label for="">Phone<span class="star-red">*</span></label>
+                            <label for="">Điện thoại<span class="star-red">*</span></label>
                             <input type="number" require placeholder="Phone" name="phone">
                         </div>
                         <p style="margin-left: 220px"><?php form_error('phone'); ?></p>
@@ -188,26 +184,26 @@
                         </div>
                         <p style="margin-left: 220px"><?php form_error('email'); ?></p>
                         <div class="field-item">
-                            <label for="">Order notes (optional)</label>
+                            <label for="">Ghi chú</label>
                             <textarea rows="4" placeholder="Note..." name="notes"></textarea>
                         </div>
                         <div class="cash">
                             <div class="group-checkbox">
                                 <input type="checkbox" id="cash" name="cashOnDelivert" checked>
                                 <label for="cash">
-                                    Cash on delivery
+                                    Thanh toán khi nhận hàng
                                     <i class='bx bx-check'></i>
                                 </label>
                             </div>
                         </div>
                     </div>
                     <div class="checkout-btn">
-                        <button class="back-to-cart checkout-btn-item" type="button"><a href="cart">Back to Cart</a></button>
-                        <button class="place-order checkout-btn-item" type="submit" name="checkoutForm">Place order</button>
+                        <button class="back-to-cart checkout-btn-item" type="button"><a href="cart">Giỏ hàng</a></button>
+                        <button class="place-order checkout-btn-item" type="submit" name="checkoutForm">Thanh toán</button>
                     </div>
                 </div>
                 <div class="col-5 col-sm-12">
-                    <p class="checkout-title">your order</p>
+                    <p class="checkout-title">Đơn mua</p>
                     <div class="order-total">
                         <div class="order-list">
                             <?php
@@ -229,21 +225,21 @@
                             ?>
                         </div>
                         <div class="line">
-                            <p class="order-total__title">subtotal</p>
+                            <p class="order-total__title">Tổng tiền</p>
                             <p class="price">$<?= number_format($total, 2)?></p>
                         </div>
                         <div class="line">
-                            <p class="order-total__title">shipping</p>
+                            <p class="order-total__title">Phí vận chuyển</p>
                             <div class="group-checkbox">
                                 <input type="checkbox" id="shipping" checked>
                                 <label for="shipping">
-                                    Free Shipping
+                                    Miễn phí vận chuyển
                                     <i class='bx bx-check'></i>
                                 </label>
                             </div>
                         </div>
                         <div class="total-detail line">
-                            <p class="order-total__title">total</p>
+                            <p class="order-total__title">Thanh toán</p>
                             <p class="total-money">$<?= number_format($total, 2)?></p>
                         </div>
                     </div>

@@ -26,7 +26,7 @@
         include_once("models/index.php");
         include_once("./db/connectdb.php");
         include_once("header.php");
-        $product      = Product::find_by_pk($con,$_GET['pro_id']);
+        $product = Product::find_by_pk($con,$_GET['pro_id']);
     ?>
 
     <!-- product-detail content -->
@@ -34,9 +34,9 @@
         <div class="container">
             <div class="box">
                 <div class="breadcumb">
-                    <a href="/">home</a>
+                    <a href="/">Trang chủ</a>
                     <span><i class='bx bxs-chevrons-right'></i></span>
-                    <a href="products">all products</a>
+                    <a href="products">Tất cả sản phẩm</a>
                     <span><i class='bx bxs-chevrons-right'></i></span>
                     <a href=""><?=$product->title?></a>
                 </div>
@@ -66,15 +66,15 @@
                             <?=$product->title?>
                         </h1>
                         <div class="product-info-detail">
-                            <span class="product-info-detail-title">Category:</span>
+                            <span class="product-info-detail-title">Danh mục:</span>
                             <a href="#"><?=Category::find_by_pk($con,$product->cat_id)->title?></a>
                         </div>
                         <div class="product-info-detail">
-                            <span class="product-info-detail-title">Brand:</span>
+                            <span class="product-info-detail-title">Thương hiệu:</span>
                             <a href="#"><?=Brand::find_by_pk($con,$product->brand_id)->title?></a>
                         </div>
                         <div class="product-info-detail">
-                            <span class="product-info-detail-title">Rated:</span>
+                            <span class="product-info-detail-title">Đánh giá:</span>
                             <span class="rating">
                                 <i class='bx bxs-star'></i>
                                 <i class='bx bxs-star'></i>
@@ -103,18 +103,18 @@
                             </span>
                         </div>
                         <div>
-                            <button id="add-to-cart-prodetail" pro_id="<?=$product->id?>" class="btn-flat btn-hover">add to cart</button>
+                            <button id="add-to-cart-prodetail" pro_id="<?=$product->id?>" class="btn-flat btn-hover">Thêm vào giỏ hàng</button>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="box">
                 <div class="box-header">
-                    description
+                    Chi tiết sản phẩm
                 </div>
                 <div class="product-detail-description">
                     <button class="btn-flat btn-hover btn-view-description" id="view-all-description">
-                        view all
+                        Xem tất cả
                     </button>
                     <div class="product-detail-description-content">
                         <p>
@@ -135,7 +135,7 @@
             </div>
             <div class="box">
                 <div class="box-header">
-                    related products
+                    Sản phẩm liên quan
                 </div>
                 <div class="row" id="related-products"></div>
             </div>

@@ -51,24 +51,24 @@ foreach ($order->detail as $item) {
             <div class="col-9">
                 <h3>
                     <i class="bx bxs-cart-alt text-danger"></i>
-                    Order detail
+                    Chi tiết đơn hàng
                 </h3>
 
                 <div class="order-detail-content mt-3">
                     <div class="order-detail-header">
                         <div>
-                            <div class="order-detail-header-title">Order ID:</div>
+                            <div class="order-detail-header-title">Mã đơn hàng:</div>
                             <div>#<?= $order->id ?></div>
                         </div>
                         <div>
-                            <div class="order-detail-header-title">Placed on:</div>
-                            <div><?= date('m M, Y', strtotime($order->createdAt)) ?></div>
+                            <div class="order-detail-header-title">Ngày đặt:</div>
+                            <div><?= date('d M, Y', strtotime($order->createdAt)) ?></div>
                         </div>
                     </div>
                     <div class="order-detail-body">
                         <?php foreach ($order->detail as $item): ?>
                             <div class="order-detail-item row align-items-center">
-                                <div class="col-6">
+                                <div class="col-9">
                                     <div class="d-flex gap-4 align-items-center">
                                         <div class="order-detail-item-discount">-<?= $item->product->discount ?>%</div>
                                         <img src="images/<?= $item->product->get_images($con)[0]->link ?>" alt="avatar" class="order-detail-item-avatar" />
@@ -78,12 +78,12 @@ foreach ($order->detail as $item) {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-3 order-detail-item-total">
-                                    Total: $<?= $item->product->priceDiscount() * $item->quantity ?>
+                                <div class="col-3 order-detail-item-total" style="text-align: right">
+                                    Tổng tiền: $<?= $item->product->priceDiscount() * $item->quantity ?>
                                 </div>
-                                <div class="col-3 text-end">
-                                    <a href="product-detail?pro_id=<?= $item->product->id ?>" class="btn-view-detail">View detail</a>
-                                </div>
+                                <!-- <div class="col-3 text-end">
+                                    <a href="product-detail?pro_id=<?= $item->product->id ?>" class="btn-view-detail">Chi tiết</a>
+                                </div> -->
                             </div>
                         <?php endforeach; ?>
                     </div>
@@ -93,9 +93,9 @@ foreach ($order->detail as $item) {
                     <div class="col">
                         <div class="card order-detail-address">
                             <div class="card-body">
-                                <h5>Shipping Address</h5>
+                                <h5>Địa chỉ thanh toán</h5>
                                 <p><?=  $order->address ?></p>
-                                <p>Note: <?= $order->note ?></p>
+                                <p>Ghi chú: <?= $order->note ?></p>
                             </div>
                         </div>
                     </div>
@@ -108,18 +108,18 @@ foreach ($order->detail as $item) {
                                         return $acc;
                                     }, 0);
                                 ?>
-                                <h5>Total Summary</h5>
+                                <h5>Tổng thanh toán</h5>
                                 <div>
-                                    <div class="order-detail-amount-title">Subtotal:</div>
+                                    <div class="order-detail-amount-title">Tổng phụ:</div>
                                     <h6>$<?= $subtotal ?></h6>
                                 </div>
                                 <div>
-                                    <div class="order-detail-amount-title">Shipping fee:</div>
+                                    <div class="order-detail-amount-title">Phí vận chuyển:</div>
                                     <h6>$0</h6>
                                 </div>
                                 <div class="divider"></div>
                                 <div>
-                                    <h6>Total</h6>
+                                    <h6>Tổng tiền</h6>
                                     <h6>$<?= $order->amount ?></h6>
                                 </div>
                             </div>

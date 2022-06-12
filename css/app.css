@@ -959,10 +959,7 @@ footer ul li {
   align-items: center;
   justify-content: center;
 }
-.bw{
-  display: flex;
-  justify-content: space-between !important;
-}
+
 .product-img-item {
   width: 90px;
   cursor: pointer;
