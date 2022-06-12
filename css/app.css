@@ -202,10 +202,10 @@ ul.devided > li:last-child {
   justify-content: center;
   align-items: center;
 }
-.auth-user-1{
+.auth-user-1 {
   position: relative;
 }
-.auth-user-1 span{
+.auth-user-1 span {
   margin-left: 15px;
   font-weight: 600;
   cursor: pointer;
@@ -225,7 +225,7 @@ ul.devided > li:last-child {
   object-fit: cover;
   margin-right: 10px;
 }
-.auth-user-2{
+.auth-user-2 {
   position: absolute;
   font-size: 14px;
   width: 200px;
@@ -253,13 +253,13 @@ ul.devided > li:last-child {
 .auth-user-1:hover .auth-user-2 {
   display: block;
 }
-.user-menu > .auth-user{
+.user-menu > .auth-user {
   margin-right: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.user-menu > .auth-user > span{
+.user-menu > .auth-user > span {
   font-size: 14px;
 }
 .user-menu > li {
@@ -645,7 +645,7 @@ ul.devided > li:last-child {
   text-transform: capitalize;
   margin: 20px 10px;
   font-size: 16px;
-  display:-webkit-box;
+  display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
