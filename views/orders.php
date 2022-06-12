@@ -60,7 +60,7 @@ $totalPage = ceil($orderCount / $recordPerPage);
             <div class="col-9">
                 <h3>
                     <i class="bx bxs-cart-alt text-danger"></i>
-                    Đơn mua
+                    Đơn hàng
                 </h3>
 
                 <?php if (count($orderList) == 0): ?>
@@ -71,12 +71,12 @@ $totalPage = ceil($orderCount / $recordPerPage);
                         <h5>Trạng thái</h5>
                         <h5>Tổng tiền</h5>
                         <h5>Ngày mua</h5>
-                        <h5 style="margin-left">Xem</h5>
+                        <h5></h5>
                     </div>
 
                     <?php foreach ($orderList as $item): ?>
                         <div class="table-row">
-                            <h5 style="margin: 0">#<?= $item->id ?></h5>
+                            <h5>#<?= $item->id ?></h5>
                             <div>
                                 <span class="badge bg-secondary rounded-pill fw-normal">
                                     <?= ucfirst($item->status) ?>
@@ -84,7 +84,7 @@ $totalPage = ceil($orderCount / $recordPerPage);
                             </div>
                             <div>$<?= $item->amount ?></div>
                             <div><?= date('d/m/Y', strtotime($item->createdAt)) ?></div>
-                            <div style="flex: unset!important">
+                            <div class="text-end">
                                 <a href="order-detail?id=<?= $item->id ?>">
                                     Chi tiết
                                 </a>

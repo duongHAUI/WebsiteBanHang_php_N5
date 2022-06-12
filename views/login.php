@@ -29,7 +29,7 @@
     <div class="auth-main d-flex align-items-center justify-content-center">
         <div class="col-3 col-md-6 col-sm-12">
             <div class="text-center auth-title">
-                <h3>Login</h3>
+                <h3>Đăng nhập</h3>
             </div>
             <div class="pt-5">
                 <?= get_flash_message('error') ?: get_flash_message('success'); ?>
@@ -41,12 +41,12 @@
                     </div>
                     <div class="form-container">
                         <input type="password" name="customer_password" data-rule-required="true" data-msg-required="Password is required" data-rule-password="false" required autocomplete="none" />
-                        <label>Password</label>
+                        <label>Mật khẩu</label>
                         <div class="bar"></div>
                     </div>
-                    <button class="btn-flat btn-submit mt-5" type="submit" name="login">Login</button>
+                    <button class="btn-flat btn-submit mt-5" type="submit" name="login">Đăng nhập</button>
                     <div class="mt-3 text-center">
-                        <a href="register">Register</a>
+                        <a href="register">Đăng ký</a>
                     </div>
                 </form>
             </div>
