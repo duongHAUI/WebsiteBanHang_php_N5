@@ -6,7 +6,8 @@ include_once "./db/connectdb.php";
 include_once "header.php";
 include_once "helpers/common.php";
 
-$orderCount = Order::count($con);
+$user_id = $_SESSION['c_user']['id'];
+$orderCount = Order::count($con, array("where" => "cus_id=$user_id"));
 ?>
 
 <div class="card">
@@ -29,16 +30,15 @@ $orderCount = Order::count($con);
         <div class="card-title">Thông tin</div>
         <div class="card-item">
             <ul>
-                <li>
-                    <a href="">
+                <li class="<?= routeIs('profile') ? 'active' : '' ?>">
+                    <a href="/WebsiteBanHang_php_N5/profile">
                         <span>
                             <i class="bx bx-user"></i>
-                                Tài khoản của tôi
+                            Tài khoản của tôi
                         </span>
-                        <span>5</span>
                     </a>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="">
                         <span>
                             <i class="bx bx-map"></i>
@@ -46,7 +46,7 @@ $orderCount = Order::count($con);
                         </span>
                         <span>5</span>
                     </a>
-                </li>
+                </li> -->
             </ul>
         </div>
     </div>

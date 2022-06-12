@@ -5,6 +5,7 @@ include_once "models/index.php";
 include_once "./db/connectdb.php";
 include_once "helpers/common.php";
 
+$user_id = $_SESSION['c_user']['id'];
 $recordPerPage = 5;
 $currentPage = $_GET['page'] ?? 1;
 
@@ -20,6 +21,7 @@ $orderListAndCount = Order::find_all_and_count($con, [
     'count' => $orderCount
 ] = $orderListAndCount;
 
+$orderList = Order::find_all($con, array("where" => "cus_id = $user_id", "order" => "createdAt DESC"));
 foreach ($orderList as $item) {
     $item->populated($con, 'customer');
 }
@@ -46,6 +48,7 @@ $totalPage = ceil($orderCount / $recordPerPage);
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="./css/app.css">
     <link rel="stylesheet" href="./css/orders.css">
+    <link rel="stylesheet" href="./css/grid.css">
 </head>
 
 <body>
