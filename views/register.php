@@ -27,7 +27,7 @@ include "./helpers/common.php";
 <div class="auth-main d-flex align-items-center justify-content-center">
     <div class="col-3 col-md-6 col-sm-12">
         <div class="text-center auth-title">
-            <h3>Register</h3>
+            <h3>Đăng ký</h3>
         </div>
         <div class="pt-5">
             <?= get_flash_message('error') ?: get_flash_message('success'); ?>
@@ -40,22 +40,22 @@ include "./helpers/common.php";
                 </div>
                 <div class="form-container">
                     <input type="text" name="customer_name" data-rule-required="true" data-msg-required="Full name is required" value="<?= old('customer_name') ?>" required />
-                    <label>Full name</label>
+                    <label>Họ và tên</label>
                     <div class="bar"></div>
                 </div>
                 <div class="form-container">
                     <input type="password" name="customer_password" data-rule-required="true" data-msg-required="Password is required" data-rule-password="true" id="customer_password" required />
-                    <label>Password</label>
+                    <label>Mật khẩu</label>
                     <div class="bar"></div>
                 </div>
                 <div class="form-container">
                     <input type="password" name="retype_password" data-rule-equalto="#customer_password" data-msg-equalto="Retype the password does not match" required />
-                    <label>Retype password</label>
+                    <label>Nhập lại mật khẩu</label>
                     <div class="bar"></div>
                 </div>
-                <button class="btn-flat btn-submit mt-5" type="submit" name="register">Register</button>
+                <button class="btn-flat btn-submit mt-5" type="submit" name="register">Đăng ký</button>
                 <div class="mt-3 text-center">
-                    <a href="login">Back to login</a>
+                    <a href="login">Quay lại trang đăng nhập</a>
                 </div>
             </form>
         </div>
