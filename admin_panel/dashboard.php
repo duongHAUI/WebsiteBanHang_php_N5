@@ -173,7 +173,7 @@
 					</table>
 				</div>
 				<div class="text-right">
-					<a href="index.php?view_orders">View all orders</a>
+					<a href="index.php?view_orders">Tất cả đơn hàng</a>
 				</div>
 			</div>
 		</div>

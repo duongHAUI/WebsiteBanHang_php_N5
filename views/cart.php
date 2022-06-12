@@ -39,11 +39,11 @@ for ($i = 0; $i < count($carts); $i++) {
   <div class="container">
     <div class="header">
       <a href="products">
-        <i class='bx bx-chevron-left'></i> SHOP
+        <i class='bx bx-chevron-left'></i> CỬA HÀNG
       </a>
       <a href="/WebsiteBanHang_php_N5/"><i class='bx bx-x bx-rotate-90'></i></a>
     </div>
-    <h1>SHOPPING CART</h1>
+    <h1>GIỎ HÀNG</h1>
     <div class="list">
       <?php
       if (count($carts) == 0) {
@@ -77,7 +77,7 @@ for ($i = 0; $i < count($carts); $i++) {
             }
             ?>
             <div class="checkout">
-              <a href="checkout" class="btn-checkout">$<?= number_format($total, 2) ?> <span></span>Checkout</a>
+              <a href="checkout" class="btn-checkout">$<?= number_format($total, 2) ?> <span></span>Thanh toán</a>
             </div>
           </div>
         </div>

@@ -33,9 +33,9 @@
         <div class="container">
             <div class="box row" >
                 <div class="breadcumb">
-                    <a href="./">home</a>
+                    <a href="./">Trang chủ</a>
                     <span><i class='bx bxs-chevrons-right'></i></span>
-                    <a href="./products.php">all products</a>
+                    <a href="./products.php">Tất cả sản phẩm</a>
                 </div>
                 <div>
                     <!-- <select name="sort-price" id="sort-product">
