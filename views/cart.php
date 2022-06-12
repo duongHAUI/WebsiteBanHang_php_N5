@@ -39,11 +39,7 @@ for ($i = 0; $i < count($carts); $i++) {
   <div class="container">
     <div class="header">
       <a href="products">
-<<<<<<< HEAD
-        <i class='bx bx-chevron-left'></i> CỬA HÀNG
-=======
         <i class='bx bx-chevron-left'></i> SẢN PHẨM
->>>>>>> 48df48a92e219ed317284d382a36852763a4bffd
       </a>
       <a href="/WebsiteBanHang_php_N5/"><i class='bx bx-x bx-rotate-90'></i></a>
     </div>

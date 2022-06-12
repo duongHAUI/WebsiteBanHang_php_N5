@@ -110,11 +110,7 @@ foreach ($order->detail as $item) {
                                 ?>
                                 <h5>Tổng thanh toán</h5>
                                 <div>
-<<<<<<< HEAD
-                                    <div class="order-detail-amount-title">Tổng phụ:</div>
-=======
                                     <div class="order-detail-amount-title">Tạm tính:</div>
->>>>>>> 48df48a92e219ed317284d382a36852763a4bffd
                                     <h6>$<?= $subtotal ?></h6>
                                 </div>
                                 <div>
@@ -123,11 +119,7 @@ foreach ($order->detail as $item) {
                                 </div>
                                 <div class="divider"></div>
                                 <div>
-<<<<<<< HEAD
-                                    <h6>Tổng tiền</h6>
-=======
                                     <h6>Thành tiền:</h6>
->>>>>>> 48df48a92e219ed317284d382a36852763a4bffd
                                     <h6>$<?= $order->amount ?></h6>
                                 </div>
                             </div>

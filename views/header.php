@@ -83,11 +83,7 @@
                         <li><a href="./">trang chủ</a></li>
                         <!-- mega menu -->
                         <li >
-<<<<<<< HEAD
-                            <a href="products">cửa hàng</a>
-=======
                             <a href="products">sản phẩm</a>
->>>>>>> 48df48a92e219ed317284d382a36852763a4bffd
                         </li>
                         <!-- end mega menu -->
                         <li><a href="#">blog</a></li>

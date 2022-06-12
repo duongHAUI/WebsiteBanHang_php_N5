@@ -203,11 +203,7 @@
                     </div>
                 </div>
                 <div class="col-5 col-sm-12">
-<<<<<<< HEAD
                     <p class="checkout-title">Đơn mua</p>
-=======
-                    <p class="checkout-title">Đơn hàng</p>
->>>>>>> 48df48a92e219ed317284d382a36852763a4bffd
                     <div class="order-total">
                         <div class="order-list">
                             <?php

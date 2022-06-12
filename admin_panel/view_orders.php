@@ -27,7 +27,7 @@
 						<thead>
 							<tr>
 								<th>No</th>
-								<th>Customer Email</th>
+								<th>Email khách hàng</th>
 								<th>Invoice No</th>
 								<th>Product Name</th>
 								<th>Product Qty</th>

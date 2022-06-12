@@ -18,11 +18,7 @@ $orderCount = Order::count($con);
                     <a href="/WebsiteBanHang_php_N5/orders">
                         <span>
                             <i class="bx bx-cart"></i>
-<<<<<<< HEAD
-                            Đơn mua
-=======
                             Đơn hàng
->>>>>>> 48df48a92e219ed317284d382a36852763a4bffd
                         </span>
                         <span><?= $orderCount ?></span>
                     </a>
