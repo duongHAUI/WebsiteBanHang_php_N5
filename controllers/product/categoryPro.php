@@ -33,9 +33,9 @@
         global $con;
         foreach ($products as $key => $value) {
             ?>
-                <div class="col-3 col-md-6 col-sm-12 cards">
+                <div class="col-4 col-md-6 col-sm-12 cards">
                     <div class="product-card">
-                        <div class="product-discount"><?= $value->discount?>%</div>
+                        <div class="product-discount">-<?= $value->discount?>%</div>
                         <a href="product-detail?pro_id=<?=$value->id?>">
                             <div class="product-card-img">
                                 <img src="images/<?=$value->get_images($con)[0]->link ?>" alt="">

@@ -55,22 +55,24 @@
                             <span class="filter-header">
                                 Categories
                             </span>
-                            <ul class="filter-list">
+                            <div class="box">
                             <ul class="filter-list" category-list="" id="list-category">
                                 <?php
                                     $categories = Category::find_all($con);
                                     foreach ($categories as $key => $value) {
-                                        ?>
-                                        <li>
-                                            <input type="checkbox" id="<?=$value->id?>" value="<?=$value->id?>" class="category-search" >
-                                            <label for="<?=$value->id?>"> <?=$value->title?> </label>
-                                        </li>
-                                        <?php
+                                ?>
+                                    <li>
+                                        <div class="group-checkbox">
+                                            <input type="checkbox" id="<?=$value->id?>" value="<?=$value->id?>" class="category-search">
+                                            <label for="<?=$value->id?>">
+                                                <?=$value->title?>
+                                                <i class='bx bx-check'></i>
+                                            </label>
+                                        </div>
+                                <?php
                                     }
                                 ?>
                             </ul>
-
-                        </div>
                         <div class="box">
                             <span class="filter-header">
                                 Price
@@ -80,37 +82,6 @@
                                 <span>-</span>
                                 <input type="text">
                             </div>
-                        </div>
-                        <div class="box">
-                            <ul class="filter-list">
-                                <li>
-                                    <div class="group-checkbox">
-                                        <input type="checkbox" id="status1">
-                                        <label for="status1">
-                                            On sale
-                                            <i class='bx bx-check'></i>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="group-checkbox">
-                                        <input type="checkbox" id="status2">
-                                        <label for="status2">
-                                            In stock
-                                            <i class='bx bx-check'></i>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="group-checkbox">
-                                        <input type="checkbox" id="status3">
-                                        <label for="status3">
-                                            Featured
-                                            <i class='bx bx-check'></i>
-                                        </label>
-                                    </div>
-                                </li>
-                            </ul>
                         </div>
                         <div class="box">
                             <span class="filter-header">
@@ -170,7 +141,7 @@
     <!-- app js -->
     <!-- <script src="./js/app.js"></script> -->
     <script src="./js/searchCategory.js"></script>
-    <script src="./js/sortPriceProduct.js"></script>
+    <!-- <script src="./js/sortPriceProduct.js"></script> -->
 </body>
 
 </html>

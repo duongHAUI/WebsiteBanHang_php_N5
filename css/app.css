@@ -588,8 +588,8 @@ ul.devided > li:last-child {
   overflow: hidden;
   background-color: #fff;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  width: calc(100% - 4);
   position: relative;
+  width: 100%;
 }
 
 .product-discount {
