@@ -37,19 +37,19 @@
 			<div class="panel-body">
 				<form action="" class="form-horizontal" method="post" enctype="multipart/form-data">
 					<div class="form-group">
-						<label for="" class="control-label col-md-3">Slide Name</label>
+						<label for="" class="control-label col-md-3">Tên</label>
 						<div class="col-md-6">
 							<input type="text" name="slide_name" class="form-control" value="<?php echo $slide_name; ?>">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="" class="control-label col-md-3">Slide Good</label>
+						<label for="" class="control-label col-md-3">Tên (tùy chọn)</label>
 						<div class="col-md-6">
 							<input type="text" name="slide_good" class="form-control" value="<?php echo $slide_good; ?>">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="" class="control-label col-md-3">Slide Image</label>
+						<label for="" class="control-label col-md-3">Hình ảnh</label>
 						<div class="col-md-6">
 							<input type="file" name="slide_image" class="form-control">
 							<br>
@@ -57,7 +57,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="" class="control-label col-md-3">Slide Description</label>
+						<label for="" class="control-label col-md-3">Mô tả</label>
 						<div class="col-md-6">
 							<input type="text" name="slide_desc" class="form-control" value="<?php echo $slide_desc; ?>">
 						</div>

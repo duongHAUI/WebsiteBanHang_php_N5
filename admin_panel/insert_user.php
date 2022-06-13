@@ -17,20 +17,20 @@
     <script src="js/bootstrap-337.min.js"></script>
     <script src="js/tinymce/tinymce.min.js"></script>
     <script>tinymce.init({ selector:'textarea' });</script>
-	<title>Add User</title>
+	<title>Thêm người dùng</title>
 </head>
 <body>
 	<div class="row">
 		<div class="col-lg-12">
 			<ol class="breadcrumb">
-				<li class="active"><i class="fa fa-dashboard"></i> Dashboard / Add User</li>
+				<li class="active"><i class="fa fa-dashboard"></i> Dashboard / Thêm người dùng</li>
 			</ol>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-lg-12">
 			<ol class="breadcrumb">
-				<li class="active"><i class="fa fa-dashboard"></i> Dashboard / Add User</li>
+				<li class="active"><i class="fa fa-dashboard"></i> Dashboard / Thêm người dùng</li>
 			</ol>
 		</div>
 	</div>
@@ -38,12 +38,12 @@
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title"><i class="fa fa-plus"></i> Add User</h3>
+					<h3 class="panel-title"><i class="fa fa-plus"></i> Thêm người dùng</h3>
 				</div>
 				<div class="panel-body">
 					<form method="post" class="form-horizontal" enctype="multipart/form-data">
 						<div class="form-group">
-							<label class="col-md-3 control-label">User Name</label>
+							<label class="col-md-3 control-label">Họ tên</label>
 							<div class="col-md-6">
 								<input type="text" name="admin_name" class="form-control" required>
 							</div>
@@ -55,31 +55,31 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-3 control-label">Password</label>
+							<label class="col-md-3 control-label">Mật khẩu</label>
 							<div class="col-md-6">
 								<input type="password" name="admin_password" class="form-control" required>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-3 control-label">Country</label>
+							<label class="col-md-3 control-label">Quốc gia</label>
 							<div class="col-md-6">
 								<input type="text" name="admin_country" class="form-control" required>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-3 control-label">Phone Number</label>
+							<label class="col-md-3 control-label">Điện thoại</label>
 							<div class="col-md-6">
 								<input type="text" name="admin_phone" class="form-control" required>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-3 control-label">Profile Image</label>
+							<label class="col-md-3 control-label">Ảnh</label>
 							<div class="col-md-6">
 								<input type="file" name="admin_image" class="form-control" required>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-3 control-label">About Me</label>
+							<label class="col-md-3 control-label">Thông tin về tôi</label>
 							<div class="col-md-6">
 								<textarea name="admin_about" rows="6" class="form-control"></textarea>
 							</div>
@@ -87,7 +87,7 @@
 						<div class="form-group">
 							<label class="col-md-3 control-label"></label>
 							<div class="col-md-6">
-								<input type="submit" value="Add Admin User" name="submit" class="btn btn-primary form-control">
+								<input type="submit" value="Thêm" name="submit" class="btn btn-primary form-control">
 							</div>
 						</div>
 					</form>
@@ -117,7 +117,7 @@
 
 		$run_user = mysqli_query($con, $insert_user);
 		if ($run_user) {
-			echo "<script>alert('New Admin User has been added successfully')</script>";
+			echo "<script>alert('Thêm người dùng mới thành công!')</script>";
 			echo "<script>window.open('index.php?view_users', '_self')</script>";
 		}
 	}

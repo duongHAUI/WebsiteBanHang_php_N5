@@ -22,7 +22,7 @@
 <div class="row">
 	<div class="col-lg-12">
 		<ol class="breadcrumb">
-			<li class="active"><i class="fa fa-dashboard"></i> Dashboard / Edit Category</li>
+			<li class="active"><i class="fa fa-dashboard"></i> Dashboard / Cập nhật danh mục</li>
 		</ol>
 	</div>
 </div>
@@ -30,18 +30,18 @@
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title"><i class="fa fa-pencil"></i> Edit Category</h3>
+				<h3 class="panel-title"><i class="fa fa-pencil"></i> Cập nhật danh mục</h3>
 			</div>
 			<div class="panel-body">
 				<form action="" class="form-horizontal" method="post">
 					<div class="form-group">
-						<label for="" class="control-label col-md-3">Category Title</label>
+						<label for="" class="control-label col-md-3">Tiêu đề</label>
 						<div class="col-md-6">
 							<input value="<?php echo $cat_title; ?>" type="text" name="cat_title" class="form-control">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="" class="control-label col-md-3">Category Description</label>
+						<label for="" class="control-label col-md-3">Mô tả</label>
 						<div class="col-md-6">
 							<textarea type="text" name="cat_desc" cols="30" rows="10" class="form-control"><?php echo $cat_desc; ?></textarea>
 						</div>
@@ -49,7 +49,7 @@
 					<div class="form-group">
 						<label for="" class="control-label col-md-3"></label>
 						<div class="col-md-6">
-							<input type="submit" name="update" class="form-control btn btn-primary" value="Edit Category">
+							<input type="submit" name="update" class="form-control btn btn-primary" value="Cập nhật">
 						</div>
 					</div>
 				</form>
