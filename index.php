@@ -45,6 +45,9 @@ switch ($request) {
     case "/profile":
         require __DIR__ . '/views/profile.php';
         break;
+    case "/search":
+        require __DIR__ . '/views/search.php';
+        break;
     default:
         http_response_code(404);
         require __DIR__ . '/views/404.php';
