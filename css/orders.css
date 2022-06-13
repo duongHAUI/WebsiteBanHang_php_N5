@@ -1,7 +1,6 @@
 h5 {
     font-weight: 600;
     font-size: 16px;
-    margin-bottom: 14px;
     margin-top: 0;
 }
 
@@ -62,46 +61,31 @@ h6 {
 }
 
 .table-head {
-    display: flex;
-    flex-wrap: wrap;
-    -webkit-box-align: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 80px repeat(4, 1fr);
     border-radius: 10px;
     padding: 0 10px;
 }
 
 .table-head > h5 {
-    width: 50px;
     font-weight: 600;
     font-size: 16px;
     text-align: left;
-    margin: 0 6px;
     color: rgb(125, 135, 156);
-}
-
-.table-head > h5:nth-child(n+2) {
-    flex: 1 1 0;
-}
-
-.table-head > h5:last-child {
-    flex: 0 0 0 !important;
-    padding-left: 18px;
-    padding-right: 18px;
 }
 
 
 .table-row {
-    display: flex;
-    flex-wrap: wrap;
-    -webkit-box-align: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 70px repeat(4, 1fr);
     border-radius: 10px;
     box-shadow: rgb(3 0 71 / 9%) 0 1px 3px;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    padding: 6px 18px;
+    padding: 6px 10px;
     background-color: rgb(255, 255, 255);
     border: 1px solid rgba(0, 0, 0, 0.08);
+    align-items: baseline;
 }
 
 .table-row > h5 {

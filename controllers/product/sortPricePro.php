@@ -4,10 +4,10 @@
 <?php
     include_once("../../models/index.php");
     include_once("../../db/connectdb.php");
-    if($_GET['sort-price'] == "ASC"){
+    if(isset($_GET['sort-price']) && $_GET['sort-price'] == "ASC" ){
         $products = Product::find_all($con,array("limit"=>8,"order" => "product_price ASC"));
         show($products);
-    }else if($_GET['sort-price'] == "DESC"){
+    }else if(isset($_GET['sort-price']) && $_GET['sort-price'] == "DESC"){
         $products = Product::find_all($con,array("limit"=>8,"order" => "product_price DESC"));
         show($products);
     }else{
@@ -29,7 +29,7 @@
                                 </a>
                                 <div class="product-card-info">
                                     <div class="product-btn">
-                                        <a href="products" class="btn-flat btn-hover btn-shop-now">shop now</a>
+                                        <a href="products" class="btn-flat btn-hover btn-shop-now">Mua ngay</a>
                                         <button class="btn-flat btn-hover btn-cart-add">
                                             <i class='bx bxs-cart-add'></i>
                                         </button>

@@ -24,7 +24,7 @@
                 <div class="mid-header container">
                     <a href="/WebsiteBanHang_php_N5" class="logo">ATShop</a>
                     <div class="search">
-                        <input type="text" id="search" placeholder="Search" >
+                        <input type="text" id="search" placeholder="Tìm kiếm..." >
                         <i class='bx bx-search-alt' ></i>
                     </div>
                     <ul class="user-menu">
@@ -57,17 +57,16 @@
                                             <?php
                                         }else{
                                             ?>
-                                            <span><a href="login">Login</a></span>
+                                            <span><a href="login">Đăng nhập</a></span>
                                             <?php
                                         }
-                                        
                                     ?>
                                 </p>
                                 <ul class="auth-user-2">
                                     <?php
                                         if(isset($user)){
-                                            echo "<li><a href='orders'>Settings</a></li>";
-                                            echo "<li><a href='./controllers/auth/logout.php'>Logout</a></li>";
+                                            echo "<li><a href='orders'>Cài đặt</a></li>";
+                                            echo "<li><a href='./controllers/auth/logout.php'>Đăng xuất</a></li>";
                                         }
                                     ?>
                                 </ul>
@@ -81,14 +80,14 @@
             <div class="bg-second">
                 <div class="bottom-header container">
                     <ul class="main-menu">
-                        <li><a href="./">home</a></li>
+                        <li><a href="./">trang chủ</a></li>
                         <!-- mega menu -->
                         <li >
-                            <a href="products">Shop</a>
+                            <a href="products">sản phẩm</a>
                         </li>
                         <!-- end mega menu -->
                         <li><a href="#">blog</a></li>
-                        <li><a href="#">contact</a></li>
+                        <li><a href="#">liên hệ</a></li>
                     </ul>
                 </div>
             </div>

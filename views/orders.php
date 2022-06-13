@@ -5,6 +5,7 @@ include_once "models/index.php";
 include_once "./db/connectdb.php";
 include_once "helpers/common.php";
 
+$user_id = $_SESSION['c_user']['id'];
 $recordPerPage = 5;
 $currentPage = $_GET['page'] ?? 1;
 
@@ -20,6 +21,7 @@ $orderListAndCount = Order::find_all_and_count($con, [
     'count' => $orderCount
 ] = $orderListAndCount;
 
+$orderList = Order::find_all($con, array("where" => "cus_id = $user_id", "order" => "createdAt DESC"));
 foreach ($orderList as $item) {
     $item->populated($con, 'customer');
 }
@@ -46,6 +48,7 @@ $totalPage = ceil($orderCount / $recordPerPage);
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="./css/app.css">
     <link rel="stylesheet" href="./css/orders.css">
+    <link rel="stylesheet" href="./css/grid.css">
 </head>
 
 <body>
@@ -60,18 +63,17 @@ $totalPage = ceil($orderCount / $recordPerPage);
             <div class="col-9">
                 <h3>
                     <i class="bx bxs-cart-alt text-danger"></i>
-                    My orders
+                    Đơn hàng
                 </h3>
 
                 <?php if (count($orderList) == 0): ?>
-                    <p class="no-orders">No orders found.</p>
+                    <p class="no-orders">Bạn chưa có đơn hàng nào.</p>
                 <?php else: ?>
                     <div class="table-head mt-4">
                         <h5>#</h5>
-                        <h5>Status</h5>
-                        <h5>Amount</h5>
-                        <h5>Note</h5>
-                        <h5>Date purchased</h5>
+                        <h5>Trạng thái</h5>
+                        <h5>Tổng tiền</h5>
+                        <h5>Ngày mua</h5>
                         <h5></h5>
                     </div>
 
@@ -84,20 +86,10 @@ $totalPage = ceil($orderCount / $recordPerPage);
                                 </span>
                             </div>
                             <div>$<?= $item->amount ?></div>
-                            <div><?= $item->note ?></div>
                             <div><?= date('d/m/Y', strtotime($item->createdAt)) ?></div>
-                            <div>
+                            <div class="text-end">
                                 <a href="order-detail?id=<?= $item->id ?>">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
-                                         fill="none" class="injected-svg" data-src="/assets/images/icons/arrow-right.svg"
-                                         xmlns:xlink="http://www.w3.org/1999/xlink">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                              d="M3.58333 11C3.58333 10.4477 4.03104 10 4.58333 10H17.4167C17.9689 10 18.4167 10.4477 18.4167 11C18.4167 11.5523 17.9689 12 17.4167 12H4.58333C4.03104 12 3.58333 11.5523 3.58333 11Z"
-                                              fill="#0F3260"></path>
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                              d="M10.2929 3.87615C10.6834 3.48562 11.3166 3.48562 11.7071 3.87615L18.1238 10.2928C18.3113 10.4803 18.4167 10.7347 18.4167 10.9999C18.4167 11.2651 18.3113 11.5195 18.1238 11.707L11.7071 18.1237C11.3166 18.5142 10.6834 18.5142 10.2929 18.1237C9.90237 17.7332 9.90237 17.1 10.2929 16.7095L16.0025 10.9999L10.2929 5.29036C9.90237 4.89983 9.90237 4.26667 10.2929 3.87615Z"
-                                              fill="#0F3260"></path>
-                                    </svg>
+                                    Chi tiết
                                 </a>
                             </div>
                         </div>

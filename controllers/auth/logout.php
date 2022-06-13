@@ -7,6 +7,6 @@ include "../../helpers/common.php";
 unset($_SESSION['isLoggedIn']);
 unset($_SESSION['c_user']);
 
-set_flash_message('logout', 'Logout successfully');
+set_flash_message('logout', 'Đã đăng xuất!');
 
 header("Location: ../../");

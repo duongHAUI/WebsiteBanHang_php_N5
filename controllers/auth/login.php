@@ -14,13 +14,13 @@ if (isset($_POST['login'])) {
     [$email, $password] = array_values($_POST);
 
     if (empty($email) || empty($password)) {
-        set_flash_message('error', 'Missing input data', ERROR);
+        set_flash_message('error', 'Thiếu dữ liệu truyền vào.', ERROR);
         header("Location: ../../login");
         return;
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        set_flash_message('error', 'The email is invalid.', ERROR);
+        set_flash_message('error', 'Email không đúng định dạng.', ERROR);
         header("Location: ../../login");
         return;
     }
@@ -31,7 +31,7 @@ if (isset($_POST['login'])) {
     ]);
 
     if (empty($user)) {
-        set_flash_message('error', 'User does not exist.', ERROR);
+        set_flash_message('error', 'Người dùng không tồn tại.', ERROR);
         header("Location: ../../login");
         return;
     }
@@ -39,7 +39,7 @@ if (isset($_POST['login'])) {
     $_SESSION['isLoggedIn'] = true;
     $_SESSION['c_user'] = (array)$user;
 
-    set_flash_message('succcess', 'Login successfully', SUCCESS);
+    set_flash_message('succcess', 'Đăng nhập thành công', SUCCESS);
     remove_old_value();
     header("Location: ../../");
 } else {
