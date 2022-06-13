@@ -1320,3 +1320,10 @@ footer ul li {
         height: unset;
     }
 }
+
+.no-product {
+    text-align: center;
+    font-size: 20px;
+    color: rgba(63, 63, 63, 0.76);
+    margin-bottom: 60px;
+}

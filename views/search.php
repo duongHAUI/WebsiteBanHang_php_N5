@@ -11,12 +11,19 @@ if (empty($keywords)) {
     return;
 }
 
-$recordPerPage = 4;
+$recordPerPage = 8;
 
-$data = Product::find_all($con, [
+$data = Product::find_all_and_count($con, [
     'where' => "product_title LIKE '%$keywords%'",
     'limit' => $recordPerPage
 ]);
+
+[
+    'rows' => $productList,
+    'count' => $productCount
+] = $data;
+
+$totalPage = ceil($productCount / $recordPerPage);
 ?>
 
 <!DOCTYPE html>
@@ -55,42 +62,50 @@ include_once("header.php");
             </div>
         </div>
         <div class="box">
-            <div class="row" id="search-container">
-                <?php foreach ($data as $item): ?>
-                    <div class="col-3 col-md-6 col-sm-12 cards" data-id="<?= $item->id ?>">
-                        <div class="product-card">
-                            <div class="product-discount"><?= $item->discount ?>%</div>
-                            <a href="product-detail?pro_id=<?= $item->id ?>">
-                                <div class="product-card-img">
-                                    <img src="images/<?= $item->get_images($con)[0]->link ?>" alt="<?= $item->title ?>">
-                                    <img src="images/<?= $item->get_images($con)[0]->link ?>" alt="<?= $item->title ?>">
-                                </div>
-                            </a>
-                            <div class="product-card-info">
-                                <div class="product-btn">
-                                    <a href="products" class="btn-flat btn-hover btn-shop-now">Mua ngay</a>
-                                    <button class="btn-flat btn-hover btn-cart-add">
-                                        <i class='bx bxs-cart-add'></i>
-                                    </button>
-                                </div>
-                                <a href="product-detail?pro_id=<?= $item->id ?>" class="product-card-name">
-                                    <?= $item->title ?>
+            <?php if ($productCount > 0): ?>
+
+                <div class="row" id="search-container">
+                    <?php foreach ($productList as $item): ?>
+                        <div class="col-3 col-md-6 col-sm-12 cards" data-id="<?= $item->id ?>">
+                            <div class="product-card">
+                                <div class="product-discount"><?= $item->discount ?>%</div>
+                                <a href="product-detail?pro_id=<?= $item->id ?>">
+                                    <div class="product-card-img">
+                                        <img src="images/<?= $item->get_images($con)[0]->link ?>" alt="<?= $item->title ?>">
+                                        <img src="images/<?= $item->get_images($con)[0]->link ?>" alt="<?= $item->title ?>">
+                                    </div>
                                 </a>
-                                <div class="product-card-price">
-                                    <span><del>$<?= $item->price ?></del></span>
-                                    <span class="curr-price">$<?= $item->priceDiscount() ?></span>
+                                <div class="product-card-info">
+                                    <div class="product-btn">
+                                        <a href="products" class="btn-flat btn-hover btn-shop-now">Mua ngay</a>
+                                        <button class="btn-flat btn-hover btn-cart-add">
+                                            <i class='bx bxs-cart-add'></i>
+                                        </button>
+                                    </div>
+                                    <a href="product-detail?pro_id=<?= $item->id ?>" class="product-card-name">
+                                        <?= $item->title ?>
+                                    </a>
+                                    <div class="product-card-price">
+                                        <span><del>$<?= $item->price ?></del></span>
+                                        <span class="curr-price">$<?= $item->priceDiscount() ?></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
+                    <?php endforeach; ?>
+                </div>
 
-            <div style="text-align: center;">
-                <button class="btn-flat mt-5" type="button" id="btn-view-more">
-                    Xem thêm
-                </button>
-            </div>
+                <?php if ($totalPage > 1): ?>
+                    <div style="text-align: center;">
+                        <button class="btn-flat mt-5" type="button" id="btn-view-more">
+                            <i class="fa fa-spin fa-spinner" style="margin-right: 5px; display: none;"></i>
+                            Xem thêm
+                        </button>
+                    </div>
+                <?php endif; ?>
+            <?php else: ?>
+                <p class="no-product">Không tìm thấy sản phẩm nào.</p>
+            <?php endif; ?>
         </div>
     </div>
 </div>
@@ -114,18 +129,20 @@ include_once("footer.php");
             $.ajax({
                 url: './controllers/product/search.php',
                 method: 'post',
-                data: {page: currentPage, limit: <?= $recordPerPage ?>},
+                data: {page: currentPage, limit: <?= $recordPerPage ?>, keywords: '<?= $keywords ?>'},
                 beforeSend: function () {
-                    const loading = '<i class="fa fa-spin fa-spinner" style="margin-right: 5px;"></i>';
-                    btnViewMore.prop('disabled', true).prepend(loading);
+                    btnViewMore.prop('disabled', true).find('.fa-spinner').show();
                 }
-            }).done(result => {
-                $('#search-container').append(result);
+            }).done(response => {
+                response = JSON.parse(response);
+                $('#search-container').append(response.data);
+                if (currentPage === response.totalPage) {
+                    btnViewMore.hide();
+                }
             }).fail(error => {
                 console.log(error)
             }).always(() => {
-                btnViewMore.prop('disabled', false);
-                btnViewMore.find('.fa-spin').remove();
+                btnViewMore.prop('disabled', false).find('.fa-spinner').hide();
             })
         });
     });

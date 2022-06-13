@@ -8,20 +8,29 @@ include_once("../../db/connectdb.php");
 sleep(1.5);
 
 [
+    'keywords' => $keywords,
     'page' => $page,
     'limit' => $limit
 ] = $_POST;
 
 $start = ($page - 1) * $limit;
 
-$products = Product::find_all($con, [
+$products = Product::find_all_and_count($con, [
+    'where' => "product_title LIKE '%$keywords%'",
     'offset' => $start,
     'limit' => $limit
 ]);
 
+[
+    'rows' => $productList,
+    'count' => $productCount
+] = $products;
+
+$totalPage = ceil($productCount / $limit);
+
 $result = '';
 
-foreach ($products as $item) {
+foreach ($productList as $item) {
     $result .= "
         <div class='col-3 col-md-6 col-sm-12 cards' data-id='$item->id'>
             <div class='product-card'>
@@ -52,4 +61,7 @@ foreach ($products as $item) {
     ";
 }
 
-echo $result;
+echo json_encode([
+    'data' => $result,
+    'totalPage' => $totalPage
+]);
