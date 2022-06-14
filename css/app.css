@@ -189,7 +189,45 @@ ul.devided > li:last-child {
     position: relative;
     margin-right: 10px;
 }
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+.bw{
+    position: relative;
+}
+.sort-price-right{
+    position: absolute;
+    right: 0;
+}
+.sort-price-right select{
+    height: 25px;
+    background-color: rgb(232, 252, 245);
+    text-align: center;
+    border: 1px  solid black;
+    border-radius: 5px;
+    outline: none;
+    font-weight: bold;
 
+}
+#price-range,#un-price-range{
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 0px;
+    background-color: aqua;
+    border: none;
+    outline: none;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 5px;
+}
+#un-price-range{
+    background-color: #f0887c !important;
+}
 .count-cart {
     position: absolute;
     top: 0;

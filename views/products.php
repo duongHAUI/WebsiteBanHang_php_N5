@@ -37,13 +37,13 @@
                     <span><i class='bx bxs-chevrons-right'></i></span>
                     <a href="products">Tất cả sản phẩm</a>
                 </div>
-                <!-- <div>
+                <div class="sort-price-right">
                     <select name="sort-price" id="sort-product">
-                        <option value="">Giá</option>
-                        <option value="ASC">Giá : Thấp đến cao</option>
-                        <option value="DESC">Giá : Cao đến thấp</option>
+                        <option value="ALL">-----Giá-----</option>
+                        <option value="ASC">Thấp đến cao</option>
+                        <option value="DESC">Cao đến thấp</option>
                     </select>
-                </div> -->
+                </div>
             </div>
             <div class="box">
                 <div class="row">
@@ -78,12 +78,18 @@
                         </div>
                         <div class="box">
                             <span class="filter-header">
-                                Price
+                                Khoảng Giá
                             </span>
                             <div class="price-range">
-                                <input type="text">
+                                <input type="number" placeholder="₫ TỪ" id="price-range-min">
                                 <span>-</span>
-                                <input type="text">
+                                <input type="number" placeholder="₫ ĐẾN" id="price-range-max">
+                            </div>
+                            <div >
+                                <button id="price-range">Áp dụng</button>
+                            </div>
+                            <div>
+                                <button id="un-price-range">Hủy bỏ</button>
                             </div>
                         </div>
                         <div class="box">

@@ -13,9 +13,6 @@ next.onclick = ()=>{
 }
 
 quantity.onchange = ()=>{
-    if(!Number.isInteger(+quantity.value)){
-        quantity.value = 1;
-    }
     if(+quantity.value <= 0){
         quantity.value = 1;
     }
