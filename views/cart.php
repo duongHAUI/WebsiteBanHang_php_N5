@@ -57,8 +57,8 @@ for ($i = 0; $i < count($carts); $i++) {
                 $thumb = $product->get_images($con)[0]->link;
                 $name = $product->title;
                 $quantity = $cart->qty;
-                $total += $product->price * $quantity * (100 - $product->discount) / 100;
-                $price = number_format($product->price * (100 - $product->discount) / 100, 2);
+                $price = $product->priceDiscount();
+                $total += $price * $quantity;
               ?>
                 <div class="item <?= $last_item ?>">
                   <div class="item_img">

@@ -116,12 +116,6 @@
                                 <input type="text" name="product_discount" class="form-control" required>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-3">
-                                <input type="checkbox" value="1" id="apply_discount_for_all_product" name="apply_discount_for_all_product" />
-                                <label for="apply_discount_for_all_product">Áp dụng cho tất cả sản phẩm</label>
-                            </div>
-                        </div>
 						<div class="form-group">
 							<label class="col-md-3 control-label">Mô tả</label>
 							<div class="col-md-6">
@@ -161,10 +155,6 @@
 		$insert_product = "insert into products (cat_id, brand_id, product_title, product_price, product_discount, product_desc,product_quantity,product_sold) values ('$cat', '$brand', '$product_title', '$product_price','$discount', '$product_desc',$product_quantity,$product_sold)";
 		$run_product = mysqli_query($con, $insert_product);
 		$id_pro = mysqli_insert_id($con);
-
-        if (!empty($_POST['apply_discount_for_all_product'])) {
-            mysqli_query($con, "UPDATE products SET product_discount = '$discount'");
-        }
 
 		foreach ($images_name as $key => $value) {
 			$value_img = mysqli_real_escape_string($con,"products/"."$value");
