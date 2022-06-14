@@ -1,9 +1,10 @@
 const checkbox = document.querySelectorAll(".category-search");
 checkbox.forEach((item, index, arr)=>{
     item.onclick = (e)=>{
-        let list = document.getElementById("list-category").getAttribute("category-list");
-        let newlist = check(list,item.value);
-        document.getElementById("list-category").setAttribute("category-list",newlist);
+        let list = document.getElementById("list-category").getAttribute("list-id-input");
+        // let newlist = check(list,item.value);
+        console.log(list);
+        document.getElementById("list-category").setAttribute("list-id-input",newlist);
         var xmlhttp=new XMLHttpRequest();
         xmlhttp.onreadystatechange=function() {
             if (this.readyState==4 && this.status==200) {
@@ -15,10 +16,10 @@ checkbox.forEach((item, index, arr)=>{
     }
 })
 
-function check(list,value){
-    var listArr = list.trim().split(" ").filter(item => item !== value);
-    if(list.trim().split(" ").length == listArr.length){
-        listArr.push(value);
-    }
-    return listArr.join(" ");
-}
+// function check(list,value){
+//     var listArr = list.trim().split(" ").filter(item => item !== value);
+//     if(list.trim().split(" ").length == listArr.length){
+//         listArr.push(value);
+//     }
+//     return listArr.join(" ");
+// }

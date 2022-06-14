@@ -55,24 +55,27 @@
                             <span class="filter-header">
                                 Categories
                             </span>
-                            <div class="box">
-                            <ul class="filter-list" category-list="" id="list-category">
+                            <ul class="filter-list">
+                            <ul class="filter-list" list-id-input="" id="list-category">
                                 <?php
                                     $categories = Category::find_all($con);
                                     foreach ($categories as $key => $value) {
-                                ?>
-                                    <li>
+                                        ?>
+                                        <li>
                                         <div class="group-checkbox">
-                                            <input type="checkbox" id="<?=$value->id?>" value="<?=$value->id?>" class="category-search">
+                                            <input type="checkbox" id="<?=$value->id?>" value="<?=$value->id?>" class="category-search" >
                                             <label for="<?=$value->id?>">
-                                                <?=$value->title?>
+                                                <?=$value->title?> 
                                                 <i class='bx bx-check'></i>
                                             </label>
                                         </div>
-                                <?php
+                                        </li>
+                                        <?php
                                     }
                                 ?>
                             </ul>
+
+                        </div>
                         <div class="box">
                             <span class="filter-header">
                                 Price
