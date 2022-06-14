@@ -87,8 +87,8 @@
                             <?= $product->desc?>
                         </p>
                         <div class="price" style="display:flex;align-items: center;">
-                            <span style="margin-right: 20px;"><del>$<?= $product->price?></del></span>
-                            <div class="product-info-price">$<?=$product->priceDiscount()?></div>
+                            <span style="margin-right: 20px;"><del><?= $product->price?></del></span>
+                            <div class="product-info-price"><?=$product->priceDiscount()?></div>
                         </div>
                         
                         <div class="product-quantity-wrapper">

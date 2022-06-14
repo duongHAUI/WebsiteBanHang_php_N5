@@ -26,6 +26,7 @@
     include_once("models/index.php");
     include_once("./db/connectdb.php");
     include_once("header.php");
+    
     ?>
 
     <!-- products content -->
@@ -53,7 +54,7 @@
                         </div>
                         <div class="box">
                             <span class="filter-header">
-                                Categories
+                                Danh mục sản phẩm
                             </span>
                             <ul class="filter-list">
                             <ul class="filter-list"  id="list-category">
@@ -94,7 +95,7 @@
                         </div>
                         <div class="box">
                             <span class="filter-header">
-                                Brands
+                                Thương hiệu
                             </span>
                             <ul class="filter-list" id="list-brand">
                                 <?php
