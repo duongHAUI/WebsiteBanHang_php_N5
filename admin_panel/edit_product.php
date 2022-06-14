@@ -45,20 +45,20 @@
     <script src="js/bootstrap-337.min.js"></script>
     <script src="js/tinymce/tinymce.min.js"></script>
     <script>tinymce.init({ selector:'textarea' });</script>
-	<title>Insert product</title>
+	<title>Cập nhật thông tin sản phẩm</title>
 </head>
 <body>
 	<div class="row">
 		<div class="col-lg-12">
 			<ol class="breadcrumb">
-				<li class="active"><i class="fa fa-dashboard"></i> Dashboard / Edit Product</li>
+				<li class="active"><i class="fa fa-dashboard"></i> Dashboard / Cập nhật thông tin sản phẩm</li>
 			</ol>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-lg-12">
 			<ol class="breadcrumb">
-				<li class="active"><i class="fa fa-dashboard"></i> Dashboard / Edit Product</li>
+				<li class="active"><i class="fa fa-dashboard"></i> Dashboard / Cập nhật thông tin sản phẩm</li>
 			</ol>
 		</div>
 	</div>
@@ -66,18 +66,18 @@
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title"><i class="fa fa-pencil"></i> Edit Product</h3>
+					<h3 class="panel-title"><i class="fa fa-pencil"></i> Cập nhật thông tin sản phẩm</h3>
 				</div>
 				<div class="panel-body">
 					<form method="post" class="form-horizontal" enctype="multipart/form-data">
 						<div class="form-group">
-							<label class="col-md-3 control-label">Product Title</label>
+							<label class="col-md-3 control-label">Tiêu đề</label>
 							<div class="col-md-6">
 								<input type="text" name="product_title" class="form-control" value="<?php echo $p_title; ?>">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-3 control-label">Category</label>
+							<label class="col-md-3 control-label">Danh mục</label>
 							<div class="col-md-6">
 								<select name="cat" class="form-control">
 									<option value="<?php echo $cat; ?>"><?php echo $cat_title; ?></option>
@@ -96,7 +96,7 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-3 control-label">Brand</label>
+							<label class="col-md-3 control-label">Thương hiệu</label>
 							<div class="col-md-6">
 								<select name="brand" class="form-control">
 									<option value="<?php echo $brand; ?>"><?php echo $brand_title; ?></option>
@@ -115,31 +115,31 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-3 control-label">Product Price</label>
+							<label class="col-md-3 control-label">Giá bán</label>
 							<div class="col-md-6">
 								<input type="text" name="product_price" class="form-control" value="<?php echo $p_price; ?>">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-3 control-label">Product Discount</label>
+							<label class="col-md-3 control-label">Giảm giá</label>
 							<div class="col-md-6">
 								<input type="text" name="product_discount" class="form-control" value="<?php echo $p_discount; ?>">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-3 control-label">Product Quantity</label>
+							<label class="col-md-3 control-label">Số lượng</label>
 							<div class="col-md-6">
 								<input type="text" name="product_quantity" class="form-control" value="<?php echo $p_discount; ?>">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-3 control-label">Product Sold</label>
+							<label class="col-md-3 control-label">Sản phẩm đã bán</label>
 							<div class="col-md-6">
 								<input type="text" name="product_sold" class="form-control" value="<?php echo $p_discount; ?>">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-3 control-label">Product Description</label>
+							<label class="col-md-3 control-label">Mô tả</label>
 							<div class="col-md-6">
 								<textarea name="product_desc" cols="19" rows="6" class="form-control"><?php echo $p_desc; ?></textarea>
 							</div>
@@ -147,7 +147,7 @@
 						<div class="form-group">
 							<label class="col-md-3 control-label"></label>
 							<div class="col-md-6">
-								<input type="submit" value="Edit Product" name="update" class="btn btn-primary form-control">
+								<input type="submit" value="Cập nhật" name="update" class="btn btn-primary form-control">
 							</div>
 						</div>
 					</form>
@@ -172,7 +172,7 @@
 		$update_product = "update products set cat_id = '$cat', brand_id = '$brand', product_title = '$product_title', product_desc = '$product_desc', product_price = '$product_price',product_quantity = '$product_quantity',product_sold ='$product_sold' where product_id = '$p_id'";
 		$run_update = mysqli_query($con, $update_product);
 		if ($run_update) {
-			echo "<script>alert('Product has been updated successfully')</script>";
+			echo "<script>alert('Cập nhật thông tin sản phẩm thành công!')</script>";
 			echo "<script>window.open('index.php?view_products', '_self')</script>";
 		}
 	}

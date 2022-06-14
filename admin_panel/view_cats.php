@@ -10,8 +10,8 @@
 <div class="row">
 	<div class="col-lg-12">
 		<ol class="breadcrumb">
-			<li class="active"><i class="fa fa-dashboard"></i> Dashboard / View Categories</li>
-			<input type="text" name="search" id="user_query" placeholder="Search category" style="float: right;">
+			<li class="active"><i class="fa fa-dashboard"></i> Dashboard / Danh sách danh mục</li>
+			<input type="text" name="search" id="user_query" placeholder="Tìm kiếm danh mục" style="float: right;">
 		</ol>
 	</div>
 </div>
@@ -19,18 +19,18 @@
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title"><i class="fa fa-eye"></i> View Categories</h3>
+				<h3 class="panel-title"><i class="fa fa-eye"></i> Danh sách danh mục</h3>
 			</div>
 			<div class="panel-body">
 				<div class="table-responsive">
 					<table class="table table-hover table-striped table-bordered">
 						<thead>
 							<tr>
-								<th>Category ID</th>
-								<th>Category Title</th>
-								<th>Category Description</th>
-								<th>Edit</th>
-								<th>Delete</th>
+								<th>Mã danh mục</th>
+								<th>Tiêu đề</th>
+								<th>Mô tả</th>
+								<th>Sửa</th>
+								<th>Xóa</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -51,12 +51,12 @@
 								<td width="300"><?php echo $cat_desc; ?></td>
 								<td>
 									<button class="btn btn-success">
-										<a href="index.php?edit_cat=<?php echo $cat_id; ?>"><i class="fa fa-pencil"></i> Edit</a>
+										<a href="index.php?edit_cat=<?php echo $cat_id; ?>"><i class="fa fa-pencil"></i> Sửa</a>
 									</button>
 								</td>
 								<td>
 									<button class="btn btn-danger">
-										<a href="index.php?delete_cat=<?php echo $cat_id; ?>"><i class="fa fa-trash"></i> Delete</a>
+										<a href="index.php?delete_cat=<?php echo $cat_id; ?>"><i class="fa fa-trash"></i> Xóa</a>
 									</button>
 								</td>
 							</tr>
