@@ -96,7 +96,7 @@
                                 <i class='bx bx-minus'></i>
                             </span>
                             <span class="product-quantity">
-                                <input type="text" value="1" style="width:30px;text-align:center" id="quantity">
+                                <input type="number" value="1" style="width:30px;text-align:center" id="quantity">
                             </span>
                             <span class="product-quantity-btn" id="next">
                                 <i class='bx bx-plus'></i>

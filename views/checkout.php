@@ -203,7 +203,7 @@
                     </div>
                 </div>
                 <div class="col-5 col-sm-12">
-                    <p class="checkout-title">Đơn hàng</p>
+                    <p class="checkout-title">Đơn mua</p>
                     <div class="order-total">
                         <div class="order-list">
                             <?php

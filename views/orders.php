@@ -74,12 +74,12 @@ $totalPage = ceil($orderCount / $recordPerPage);
                         <h5>Trạng thái</h5>
                         <h5>Tổng tiền</h5>
                         <h5>Ngày mua</h5>
-                        <h5></h5>
+                        <h5 ></h5>
                     </div>
 
                     <?php foreach ($orderList as $item): ?>
                         <div class="table-row">
-                            <h5>#<?= $item->id ?></h5>
+                            <h5 style="margin: 0">#<?= $item->id ?></h5>
                             <div>
                                 <span class="badge bg-secondary rounded-pill fw-normal">
                                     <?= ucfirst($item->status) ?>

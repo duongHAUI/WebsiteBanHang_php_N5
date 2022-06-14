@@ -132,11 +132,10 @@
 								$run_order = mysqli_query($con, $get_order);
 								while ($row_order=mysqli_fetch_array($run_order)) {
 									$order_id = $row_order['order_id'];
-									$c_id = $row_order['customer_id'];
-									$invoice_no = $row_order['invoice_no'];
-									$product_id = $row_order['product_id'];
-									$qty = $row_order['qty'];
-									$size = $row_order['size'];
+									$c_id = $row_order['cus_id'];
+									$order_amount = $row_order['order_amount'];
+									$order_address = $row_order['order_address'];
+									$order_receiver = $row_order['order_receiver'];
 									$order_status = $row_order['order_status'];
 									$i++;
 									
@@ -152,17 +151,12 @@
 										echo $customer_email;
 									?>
 								</td>
-								<td><?php echo $invoice_no; ?></td>
-								<td><?php echo $product_id; ?></td>
-								<td><?php echo $qty; ?></td>
+								<td style="text-align: left;"><?php echo "$".$order_amount; ?></td>
+								<td><?php echo $order_receiver; ?></td>
+								<td><?php echo $order_address; ?></td>
 								<td>
 									<?php  
-										if ($order_status=='Pending') {
-											echo $order_status = 'Pending';
-										}
-										else{
-											echo $order_status = 'Completed';
-										}
+										echo $order_status;
 									?>
 								</td>
 							</tr>
