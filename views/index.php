@@ -162,7 +162,7 @@
                     
                         <div class="col-3 col-md-6 col-sm-12 cards">
                             <div class="product-card">
-                                <div class="product-discount"><?= $value->discount?>%</div>
+                                <div class="product-discount">-<?= $value->discount?>%</div>
                                 <a href="product-detail?pro_id=<?=$value->id?>">
                                     <div class="product-card-img">
                                         <img src="images/<?=$value->get_images($con)[0]->link ?>" alt="">
@@ -208,10 +208,12 @@
                 </div>
                 <div class="blog-info">
                     <div class="blog-title">
-                        Lorem ipsum dolor sit amet
+                        Tai nghe JBL Ultra 360
                     </div>
                     <div class="blog-preview">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi, eligendi dolore. Sapiente omnis numquam mollitia asperiores animi, veritatis sint illo magnam, voluptatum labore, quam ducimus! Nisi doloremque praesentium laudantium repellat.
+                    Thay vì sử dụng dây nối như dòng tai nghe truyền thống, thiết bị âm thanh này đã đem đến cho người dùng những trải nghiệm hoàn toàn mới ngay từ “ngoại hình” ấn tương,
+                    tiện ích của nó. Không còn những chiếc dây nối rắc rối, phức tạp. Giớ đây, bạn sẽ được tận hưởng những công nghệ âm thanh chất lượng, hiện đại với sự tối ưu hoàn toàn trong thiết kế. 
+                    Ngoài ra, các phím chức năng đều được tích hợp đầy đủ giúp người dùng dễ dàng thao tác khi dùng.
                     </div>
                     <button class="btn-flat btn-hover">Xem thêm</button>
                 </div>
@@ -222,10 +224,12 @@
                 </div>
                 <div class="blog-info">
                     <div class="blog-title">
-                        Lorem ipsum dolor sit amet
+                        Tai nghe không dây Samsung 2022
                     </div>
                     <div class="blog-preview">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi, eligendi dolore. Sapiente omnis numquam mollitia asperiores animi, veritatis sint illo magnam, voluptatum labore, quam ducimus! Nisi doloremque praesentium laudantium repellat.
+                        Thay vì sử dụng dây nối như dòng tai nghe truyền thống, thiết bị âm thanh này đã đem đến cho người dùng những trải nghiệm hoàn toàn mới ngay từ “ngoại hình” ấn tương,
+                        tiện ích của nó. Không còn những chiếc dây nối rắc rối, phức tạp. Giớ đây, bạn sẽ được tận hưởng những công nghệ âm thanh chất lượng, hiện đại với sự tối ưu hoàn toàn trong thiết kế. 
+                        Ngoài ra, các phím chức năng đều được tích hợp đầy đủ giúp người dùng dễ dàng thao tác khi dùng.
                     </div>
                     <button class="btn-flat btn-hover">Xem thêm</button>
                 </div>

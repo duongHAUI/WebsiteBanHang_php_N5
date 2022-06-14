@@ -95,20 +95,20 @@
 			<div class="avatar">
 				<img src="admin_images/avatar.png" alt="Avatar">
 			</div>
-			<h2 class="text-center">Admin Login</h2>   
+			<h2 class="text-center" style="font-weight: 600;">Chào mừng bạn đến với ATShop</h2>   
 			<div class="form-group">
 				<input type="text" class="form-control" placeholder="Email" name="admin_email" value="<?php if(isset($_COOKIE["admin_email"])) { echo $_COOKIE["admin_email"]; } ?>" required="required">
 			</div>
 			<div class="form-group">
-				<input type="password" class="form-control" placeholder="Password" name="admin_password" value="<?php if(isset($_COOKIE["admin_password"])) { echo $_COOKIE["admin_password"]; } ?>" required="required">
+				<input type="password" class="form-control" placeholder="Mật khẩu" name="admin_password" value="<?php if(isset($_COOKIE["admin_password"])) { echo $_COOKIE["admin_password"]; } ?>" required="required">
 			</div>
 			<div class="form-group">
-				<input type="checkbox" name="remember"> Remember me
+				<input type="checkbox" name="remember"> Ghi nhớ
 			</div>        
 			<div class="form-group">
-				<button type="submit" class="btn btn-primary btn-lg btn-block" name="admin_login">Sign in</button>
+				<button type="submit" class="btn btn-primary btn-lg btn-block" name="admin_login">Đăng nhập</button>
 			</div>
-			<p class="text-center">Don't have an account? <a href="admin_register.php">Sign up here!</a></p>
+			<p class="text-center">Bạn chưa có tài khoản? <a href="admin_register.php">Đăng ký ngay tại đây!</a></p>
 		</form>
 	</div>
 </body>
@@ -123,11 +123,11 @@
 		$count = mysqli_num_rows($run_admin);
 		if ($count == 1) {
 			$_SESSION['admin_email'] = $admin_email;
-			echo "<script>alert('You have logged in successfully')</script>";
+			echo "<script>alert('Đăng nhập thành công!')</script>";
 			echo "<script>window.open('index.php?dashboard', '_self')</script>";
 		}
 		else{
-			echo "<script>alert('Email or Password is incorrect!')</script>";
+			echo "<script>alert('Email hoặc mật khẩu không đúng!')</script>";
 		}
 	}
 

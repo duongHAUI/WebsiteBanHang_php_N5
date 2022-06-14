@@ -22,7 +22,7 @@
 <div class="row">
 	<div class="col-lg-12">
 		<ol class="breadcrumb">
-			<li class="active"><i class="fa fa-dashboard"></i> Dashboard / Edit Brand</li>
+			<li class="active"><i class="fa fa-dashboard"></i> Dashboard / Cập nhật thương hiệu</li>
 		</ol>
 	</div>
 </div>
@@ -30,18 +30,18 @@
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title"><i class="fa fa-pencil"></i> Edit Brand</h3>
+				<h3 class="panel-title"><i class="fa fa-pencil"></i> Cập nhật thương hiệu</h3>
 			</div>
 			<div class="panel-body">
 				<form action="" class="form-horizontal" method="post">
 					<div class="form-group">
-						<label for="" class="control-label col-md-3">Brand Title</label>
+						<label for="" class="control-label col-md-3">Tiêu đề</label>
 						<div class="col-md-6">
 							<input value="<?php echo $brand_title; ?>" type="text" name="brand_title" class="form-control">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="" class="control-label col-md-3">Brand Description</label>
+						<label for="" class="control-label col-md-3">Mô tả</label>
 						<div class="col-md-6">
 							<textarea type="text" name="brand_desc" cols="30" rows="10" class="form-control"><?php echo $brand_desc; ?></textarea>
 						</div>
@@ -49,7 +49,7 @@
 					<div class="form-group">
 						<label for="" class="control-label col-md-3"></label>
 						<div class="col-md-6">
-							<input type="submit" name="update" class="form-control btn btn-primary" value="Edit Brand">
+							<input type="submit" name="update" class="form-control btn btn-primary" value="Cập nhật">
 						</div>
 					</div>
 				</form>
