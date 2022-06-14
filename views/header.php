@@ -23,10 +23,12 @@
             <div class="bg-main">
                 <div class="mid-header container">
                     <a href="/WebsiteBanHang_php_N5" class="logo">ATShop</a>
-                    <div class="search">
-                        <input type="text" id="search" placeholder="Tìm kiếm..." >
-                        <i class='bx bx-search-alt' ></i>
-                    </div>
+                    <form action="search">
+                        <div class="search">
+                            <input type="text" name="keywords" id="search" placeholder="Tìm kiếm..." value="<?= $_GET['keywords'] ?? '' ?>" />
+                            <button type="submit"><i class='bx bx-search-alt'></i></button>
+                        </div>
+                    </form>
                     <ul class="user-menu">
                         <li class="user-cart">
                             <?php

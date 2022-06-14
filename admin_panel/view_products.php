@@ -4,6 +4,13 @@
 		echo "<script>window.open('login.php', '_self')</script>";
 	}
 	else{
+        if (isset($_POST['mass_update_discount'])) {
+            $discount = $_POST['apply_discount_for_all_product'];
+            $sql = "UPDATE products SET product_discount = '$discount'";
+            mysqli_query($con, $sql);
+            echo "<script type='text/javascript'>alert('Update successfully')</script>";
+            echo "<script type='text/javascript'>window.open('index.php?view_products', '_self')</script>";
+        }
 	
 ?>
 
@@ -19,7 +26,37 @@
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title"><i class="fa fa-eye"></i>Danh sách sản phẩm</h3>
+				<div class="row">
+                    <div class="col-md-6">
+                        <h3 class="panel-title"><i class="fa fa-eye"></i> View Products</h3>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#apply_discount_for_all_product_modal">Apply discount for all product</button>
+                    </div>
+                </div>
+                <div class="modal fade" tabindex="-1" role="dialog" id="apply_discount_for_all_product_modal">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <form method="post" action="">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Apply discount for all product</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="apply_discount_for_all_product">Discount</label>
+                                        <input type="number" min="0" class="form-control" id="apply_discount_for_all_product" name="apply_discount_for_all_product" required />
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary" name="mass_update_discount">Save changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
 			</div>
 			<div class="panel-body">
 				<div class="table-responsive">
