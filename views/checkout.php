@@ -4,6 +4,7 @@
     include "models/index.php";
     include "db/connectdb.php";
     include("header.php");
+    include_once "./controllers/formatCurrency.php";
     include "helpers/common.php";
 
     $user_id = $_SESSION['c_user']['id'];
@@ -221,7 +222,7 @@
                                 <div class="order-item">
                                     <p class="order-item__name"><?= $title?></p>
                                     <p class="count">x <?= $quantity?></p>
-                                    <p class="order-price">$<?= $price?></p>
+                                    <p class="order-price"><?= currency_format($price)?></p>
                                 </div>
                             <?php
                                 }
@@ -229,7 +230,7 @@
                         </div>
                         <div class="line">
                             <p class="order-total__title">Tổng tiền</p>
-                            <p class="price">$<?= number_format($total, 2)?></p>
+                            <p class="price"><?= currency_format($total)?></p>
                         </div>
                         <div class="line">
                             <p class="order-total__title">Phí vận chuyển</p>
@@ -243,7 +244,7 @@
                         </div>
                         <div class="total-detail line">
                             <p class="order-total__title">Thanh toán</p>
-                            <p class="total-money">$<?= number_format($total, 2)?></p>
+                            <p class="total-money"><?= currency_format($total)?></p>
                         </div>
                     </div>
                 </div>

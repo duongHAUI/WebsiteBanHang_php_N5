@@ -1,5 +1,5 @@
 <?php
-
+include_once "../controllers/formatCurrency.php";
 if (!isset($_SESSION['admin_email'])) {
     echo "<script>window.open('login.php', '_self')</script>";
 } else {
@@ -92,7 +92,7 @@ if (!isset($_SESSION['admin_email'])) {
                                     <td><?php echo $i; ?></td>
                                     <td><?php echo $pro_title; ?></td>
                                     <td><img src="../images/<?= $pro_img ?>" width="100" height="100"></td>
-                                    <td><?php echo $pro_price; ?></td>
+                                    <td><?php echo currency_format($pro_price); ?></td>
                                     <td><?php echo $pro_quantity; ?></td>
                                     <td><?php echo $pro_sold; ?></td>
                                     <td><?php echo $pro_date; ?></td>

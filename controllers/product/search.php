@@ -4,7 +4,7 @@ namespace Models;
 
 include_once("../../models/index.php");
 include_once("../../db/connectdb.php");
-
+include_once "../formatCurrency.php";
 sleep(1.5);
 
 [
@@ -52,8 +52,8 @@ foreach ($productList as $item) {
                         $item->title
                     </a>
                     <div class='product-card-price'>
-                        <span><del>$$item->price</del></span>
-                        <span class='curr-price'>$" . $item->priceDiscount() . "</span>
+                        <span><del>" . currency_format($item->price) . "</del></span>
+                        <span class='curr-price'>" . currency_format($item->priceDiscount()) . "</span>
                     </div>
                 </div>
             </div>
