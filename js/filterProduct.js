@@ -45,7 +45,7 @@ btnPriceRange.onclick = ()=>{
         request(queryString);
     }
 }
-document.getElementById("price-range-un").onclick = ()=>{
+document.getElementById("un-price-range").onclick = ()=>{
     document.getElementById("minPrice").value = "";
     document.getElementById("maxPrice").value = "";
     priceMin.value = "";
