@@ -70,7 +70,7 @@ foreach ($order->detail as $item) {
                             <div class="order-detail-item row align-items-center">
                                 <div class="col-9">
                                     <div class="d-flex gap-4 align-items-center">
-                                        <div class="order-detail-item-discount">-<?= $item->product->discount ?>%</div>
+                                        <div class="order-detail-item-discount">-<?= $item->product->getDiscount() ?>%</div>
                                         <img src="images/<?= $item->product->get_images($con)[0]->link ?>" alt="avatar" class="order-detail-item-avatar" />
                                         <div>
                                             <h6><?= $item->product->title ?></h6>
@@ -79,11 +79,8 @@ foreach ($order->detail as $item) {
                                     </div>
                                 </div>
                                 <div class="col-3 order-detail-item-total" style="text-align: right">
-                                    Tổng tiền: $<?= $item->product->priceDiscount() * $item->quantity ?>
+                                    Tổng tiền: $<?= $item->product->price * $item->quantity ?>
                                 </div>
-                                <!-- <div class="col-3 text-end">
-                                    <a href="product-detail?pro_id=<?= $item->product->id ?>" class="btn-view-detail">Chi tiết</a>
-                                </div> -->
                             </div>
                         <?php endforeach; ?>
                     </div>

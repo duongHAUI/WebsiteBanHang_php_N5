@@ -126,12 +126,6 @@
 								<input type="text" name="product_discount" class="form-control" value="<?php echo $p_discount; ?>">
 							</div>
 						</div>
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-3">
-                                <input type="checkbox" value="1" id="apply_discount_for_all_product" name="apply_discount_for_all_product" />
-                                <label for="apply_discount_for_all_product">Áp dụng cho tất cả sản phẩm</label>
-                            </div>
-                        </div>
 						<div class="form-group">
 							<label class="col-md-3 control-label">Số lượng</label>
 							<div class="col-md-6">
@@ -178,10 +172,6 @@
 
 		$update_product = "update products set cat_id = '$cat', brand_id = '$brand', product_title = '$product_title', product_desc = '$product_desc', product_price = '$product_price', product_discount = '$product_discount', product_quantity = '$product_quantity',product_sold ='$product_sold' where product_id = '$p_id'";
 		$run_update = mysqli_query($con, $update_product);
-        if (!empty($_POST['apply_discount_for_all_product'])) {
-            mysqli_query($con, "UPDATE products SET product_discount = '$product_discount'");
-        }
-
 
         if ($run_update) {
 			echo "<script>alert('Product has been updated successfully')</script>";

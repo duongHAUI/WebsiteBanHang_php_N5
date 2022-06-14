@@ -4,6 +4,7 @@
     include "models/index.php";
     include "db/connectdb.php";
     include("header.php");
+    include "helpers/common.php";
 
     $user_id = $_SESSION['c_user']['id'];
     $carts = Cart::find_all($con, array("where" => "cus_id = $user_id", "order" => "createdAt DESC"));
@@ -31,6 +32,8 @@
     $status = "Thanh toán khi nhận hàng";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        set_old_value($_POST);
+
         if (empty($_POST["fullname"])) {
             $error["fullname"] = "Họ tên là bắt buộc";
         } else {
@@ -102,7 +105,7 @@
                 "product_quantity"=>$product->quantity - $cart_qty_item
             ));
             
-            $totalAmount += $product->price * $cart_qty_item * (100 - $product->discount) / 100;
+            $totalAmount += $product->priceDiscount() * $cart_qty_item;
         }
         // add order table
         $order = Order::create($con, array(
@@ -165,27 +168,27 @@
                     <div class="checkout-content">
                         <div class="field-item">
                             <label for="">Họ tên <span class="star-red">*</span></label>
-                            <input type="text" require placeholder="Fullname" name="fullname">
+                            <input type="text" require placeholder="Fullname" name="fullname" value="<?= old('fullname') ?>">
                         </div>
                         <p style="margin-left: 220px"><?php form_error('fullname'); ?></p>
                         <div class="field-item">
                             <label for="">Địa chỉ<span class="star-red">*</span></label>
-                            <input type="text" placeholder="Address" name="addressDetail">
+                            <input type="text" placeholder="Address" name="addressDetail" value="<?= old('addressDetail') ?>">
                         </div>
                         <p style="margin-left: 220px"><?php form_error('addressDetail'); ?></p>
                         <div class="field-item">
                             <label for="">Điện thoại<span class="star-red">*</span></label>
-                            <input type="number" require placeholder="Phone" name="phone">
+                            <input type="number" require placeholder="Phone" name="phone" value="<?= old('phone') ?>">
                         </div>
                         <p style="margin-left: 220px"><?php form_error('phone'); ?></p>
                         <div class="field-item">
                             <label for="">Email<span class="star-red">*</span></label>
-                            <input type="email" require placeholder="Email" name="email">
+                            <input type="email" require placeholder="Email" name="email" value="<?= old('email') ?>">
                         </div>
                         <p style="margin-left: 220px"><?php form_error('email'); ?></p>
                         <div class="field-item">
                             <label for="">Ghi chú</label>
-                            <textarea rows="4" placeholder="Note..." name="notes"></textarea>
+                            <textarea rows="4" placeholder="Note..." name="notes"><?= old('notes') ?></textarea>
                         </div>
                         <div class="cash">
                             <div class="group-checkbox">
@@ -212,9 +215,9 @@
                                     $product = $item->product;
                                     $title = $product->title;
                                     $quantity = $item->qty;
-                                    $total += $product->price * $quantity * (100 - $product->discount) / 100;
-                                    $price = number_format($product->price * (100 - $product->discount) / 100, 2);
-                            ?>
+                                    $price = $product->priceDiscount();
+                                    $total += $price * $quantity;
+                                    ?>
                                 <div class="order-item">
                                     <p class="order-item__name"><?= $title?></p>
                                     <p class="count">x <?= $quantity?></p>
