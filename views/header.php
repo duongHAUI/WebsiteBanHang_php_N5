@@ -38,7 +38,7 @@
                                     $carts = Cart::find_all($con, array("where" => "cus_id = $user_id", "order" => "createdAt DESC"));
                                     
                                     foreach ($carts as $key => $value) {
-                                        $count += $value->qty;
+                                        $count += 1;
                                     }
                                 }
                             ?>

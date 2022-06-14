@@ -26,6 +26,7 @@
     include_once("models/index.php");
     include_once("./db/connectdb.php");
     include_once("header.php");
+    
     ?>
 
     <!-- products content -->
@@ -53,10 +54,10 @@
                         </div>
                         <div class="box">
                             <span class="filter-header">
-                                Categories
+                                Danh mục sản phẩm
                             </span>
                             <ul class="filter-list">
-                            <ul class="filter-list" list-id-input="" id="list-category">
+                            <ul class="filter-list"  id="list-category">
                                 <?php
                                     $categories = Category::find_all($con);
                                     foreach ($categories as $key => $value) {
@@ -94,7 +95,7 @@
                         </div>
                         <div class="box">
                             <span class="filter-header">
-                                Brands
+                                Thương hiệu
                             </span>
                             <ul class="filter-list" id="list-brand">
                                 <?php
@@ -154,8 +155,6 @@
     ?>
     <!-- app js -->
     <!-- <script src="./js/app.js"></script> -->
-    <!-- <script src="./js/searchCategory.js"></script> -->
-    <!-- <script src="./js/sortPriceProduct.js"></script> -->
     <script src="./js/filterProduct.js"></script>
 </body>
 

@@ -6,7 +6,7 @@ include_once "./middleware/notAuth.php";
 include "models/index.php";
 include "db/connectdb.php";
 include_once("header.php");
-
+include_once "./controllers/formatCurrency.php";
 
 $user_id = $_SESSION['c_user']['id'];
 $carts = Cart::find_all($con, array("where" => "cus_id = $user_id", "order" => "createdAt DESC"));
@@ -70,14 +70,14 @@ for ($i = 0; $i < count($carts); $i++) {
                     <input type="text" oninput="handleInput(event)" onchange="handleChange(event, <?= $cart->id ?>)" value="<?= $quantity ?>" />
                     <a href="update-cart?cart_id=<?= $cart->id ?>&cart_qty=<?= $quantity + 1 ?>"><i class='bx bx-plus'></i></a>
                   </div>
-                  <div class="item_price">$<?= $price ?></div>
+                  <div class="item_price"><?= currency_format($price) ?></div>
                   <a href="update-cart?cart_id=<?= $cart->id ?>&cart_qty=0"><i class='bx bx-x bx-rotate-90'></i></a>
                 </div>
               <?php
             }
             ?>
             <div class="checkout">
-              <a href="checkout" class="btn-checkout">$<?= number_format($total, 2) ?> <span></span>Thanh toán</a>
+              <a href="checkout" class="btn-checkout"><?= currency_format($total) ?> <span></span>Thanh toán</a>
             </div>
           </div>
         </div>

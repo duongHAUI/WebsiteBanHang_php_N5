@@ -4,6 +4,7 @@
 <?php
     include_once("../../models/index.php");
     include_once("../../db/connectdb.php");
+    include_once "../formatCurrency.php";
     $arrQuery = array("where"=>"","order"=>"");
     if(!empty($_GET['categories'])){
         $str = str_replace(" ",",",trim($_GET['categories']));
@@ -68,8 +69,8 @@
                                         <?= $value->title?>
                                     </a>
                                     <div class="product-card-price">
-                                        <span><del>$<?= $value->price?></del></span>
-                                        <span class="curr-price">$<?= $value->priceDiscount()?></span>
+                                        <span><del><?= currency_format($value->price)?></del></span>
+                                        <span class="curr-price"><?=currency_format($value->priceDiscount())?></span>
                                     </div>
                                 </div>
                             </div>
