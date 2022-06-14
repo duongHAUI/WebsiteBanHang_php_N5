@@ -4,14 +4,21 @@
 		echo "<script>window.open('login.php', '_self')</script>";
 	}
 	else{
+        if (isset($_POST['mass_update_discount'])) {
+            $discount = $_POST['apply_discount_for_all_product'];
+            $sql = "UPDATE products SET product_discount = '$discount'";
+            mysqli_query($con, $sql);
+            echo "<script type='text/javascript'>alert('Update successfully')</script>";
+            echo "<script type='text/javascript'>window.open('index.php?view_products', '_self')</script>";
+        }
 	
 ?>
 
 <div class="row">
 	<div class="col-lg-12">
 		<ol class="breadcrumb">
-			<li class="active"><i class="fa fa-dashboard"></i> Dashboard / View Products</li>
-			<input type="text" name="search" id="user_query" placeholder="Search clothes" style="float: right;">
+			<li class="active"><i class="fa fa-dashboard"></i> Dashboard / Danh sách sản phẩm</li>
+			<input type="text" name="search" id="user_query" placeholder="Tìm kiếm sản phẩm..." style="float: right;">
 		</ol>
 	</div>
 </div>
@@ -19,22 +26,52 @@
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title"><i class="fa fa-eye"></i> View Products</h3>
+				<div class="row">
+                    <div class="col-md-6">
+                        <h3 class="panel-title"><i class="fa fa-eye"></i> View Products</h3>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#apply_discount_for_all_product_modal">Apply discount for all product</button>
+                    </div>
+                </div>
+                <div class="modal fade" tabindex="-1" role="dialog" id="apply_discount_for_all_product_modal">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <form method="post" action="">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Apply discount for all product</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="apply_discount_for_all_product">Discount</label>
+                                        <input type="number" min="0" class="form-control" id="apply_discount_for_all_product" name="apply_discount_for_all_product" required />
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary" name="mass_update_discount">Save changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
 			</div>
 			<div class="panel-body">
 				<div class="table-responsive">
 					<table class="table table-striped table-bordered table-hover">
 						<thead>
 							<tr>
-								<th>Product ID</th>
-								<th>Product Title</th>
-								<th>Product Image</th>
-								<th>Product Price</th>
-								<th>Product Quantity</th>
-								<th>Product Sold</th>
-								<th>Product Date</th>
-								<th>Delete</th>
-								<th>Edit</th>
+								<th>Mã sản phẩm</th>
+								<th>Tiêu đề</th>
+								<th>Ảnh</th>
+								<th>Giá bán</th>
+								<th>Số lượng</th>
+								<th>Sản phẩm đã bán</th>
+								<th>Ngày sản xuất</th>
+								<th>Xóa</th>
+								<th>Sửa</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -65,12 +102,12 @@
 								<td><?php echo $pro_date; ?></td>
 								<td>
 									<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">
-										<a href="index.php?delete_product=<?php echo $pro_id; ?>"><i class="fa fa-trash"></i> Delete</a>
+										<a href="index.php?delete_product=<?php echo $pro_id; ?>"><i class="fa fa-trash"></i> Xóa</a>
 									</button>
 								</td>
 								<td>
 									<button class="btn btn-success">
-										<a href="index.php?edit_product=<?php echo $pro_id; ?>"><i class="fa fa-pencil"></i> Edit</a>
+										<a href="index.php?edit_product=<?php echo $pro_id; ?>"><i class="fa fa-pencil"></i> Sửa</a>
 									</button>
 								</td>
 							</tr>

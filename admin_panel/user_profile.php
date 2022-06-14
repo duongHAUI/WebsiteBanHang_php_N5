@@ -35,20 +35,13 @@
     <script src="js/bootstrap-337.min.js"></script>
     <script src="js/tinymce/tinymce.min.js"></script>
     <script>tinymce.init({ selector:'textarea' });</script>
-	<title>Edit User Profile</title>
+	<title>Sửa thông tin</title>
 </head>
 <body>
 	<div class="row">
 		<div class="col-lg-12">
 			<ol class="breadcrumb">
-				<li class="active"><i class="fa fa-dashboard"></i> Dashboard / Edit User Profile</li>
-			</ol>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-lg-12">
-			<ol class="breadcrumb">
-				<li class="active"><i class="fa fa-dashboard"></i> Dashboard / Edit User Profile</li>
+				<li class="active"><i class="fa fa-dashboard"></i> Dashboard / Sửa thông tin</li>
 			</ol>
 		</div>
 	</div>
@@ -56,12 +49,12 @@
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title"><i class="fa fa-pencil"></i> Edit User Profile</h3>
+					<h3 class="panel-title"><i class="fa fa-pencil"></i> Sửa thông tin</h3>
 				</div>
 				<div class="panel-body">
 					<form method="post" class="form-horizontal" enctype="multipart/form-data">
 						<div class="form-group">
-							<label class="col-md-3 control-label">User Name</label>
+							<label class="col-md-3 control-label">Họ tên</label>
 							<div class="col-md-6">
 								<input value="<?php echo $user_name; ?>" type="text" name="admin_name" class="form-control">
 							</div>
@@ -73,32 +66,32 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-3 control-label">Password</label>
+							<label class="col-md-3 control-label">Mật khẩu</label>
 							<div class="col-md-6">
 								<input value="<?php echo $user_password; ?>" type="text" name="admin_password" class="form-control">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-3 control-label">Country</label>
+							<label class="col-md-3 control-label">Quốc gia</label>
 							<div class="col-md-6">
 								<input value="<?php echo $user_country; ?>" type="text" name="admin_country" class="form-control">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-3 control-label">Phone Number</label>
+							<label class="col-md-3 control-label">Điện thoại</label>
 							<div class="col-md-6">
 								<input value="<?php echo $user_phone; ?>" type="text" name="admin_phone" class="form-control">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-3 control-label">Profile Image</label>
+							<label class="col-md-3 control-label">Hình ảnh</label>
 							<div class="col-md-6">
 								<input type="file" name="admin_image" class="form-control">
 								<img src="admin_images/<?php echo $user_image; ?>" alt="<?php echo $user_name; ?>" width="500" height="300">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-3 control-label">About Me</label>
+							<label class="col-md-3 control-label">Thông tin về tôi</label>
 							<div class="col-md-6">
 								<textarea name="admin_about" rows="6" class="form-control"><?php echo $user_about; ?></textarea>
 							</div>
@@ -106,7 +99,7 @@
 						<div class="form-group">
 							<label class="col-md-3 control-label"></label>
 							<div class="col-md-6">
-								<input type="submit" value="Edit Admin User" name="update" class="btn btn-primary form-control">
+								<input type="submit" value="Cập nhật" name="update" class="btn btn-primary form-control">
 							</div>
 						</div>
 					</form>
@@ -133,7 +126,7 @@
 		$update_user = "update admins set admin_name = '$user_name', admin_email = '$user_email', admin_password = '$user_password', admin_country = '$user_country', admin_phone = '$user_phone', admin_about = '$user_about', admin_image = '$user_image' where admin_id = '$user_id'";
 		$run_update_user = mysqli_query($con, $update_user);
 		if ($run_update_user) {
-			echo "<script>alert('Admin User Information has been updated successfully')</script>";
+			echo "<script>alert('Cập nhật thông tin thành công!')</script>";
 			echo "<script>window.open('login.php', '_self')</script>";
 			session_destroy();
 		}

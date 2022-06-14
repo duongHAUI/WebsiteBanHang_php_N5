@@ -10,7 +10,7 @@
 <div class="row">
 	<div class="col-lg-12">
 		<ol class="breadcrumb">
-			<li class="active"><i class="fa fa-dashboard"></i> Dashboard / Add Brand</li>
+			<li class="active"><i class="fa fa-dashboard"></i> Dashboard / Thêm thương hiệu</li>
 		</ol>
 	</div>
 </div>
@@ -18,18 +18,18 @@
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title"><i class="fa fa-plus"></i> Add Brand</h3>
+				<h3 class="panel-title"><i class="fa fa-plus"></i> Thêm thương hiệu</h3>
 			</div>
 			<div class="panel-body">
 				<form action="" class="form-horizontal" method="post">
 					<div class="form-group">
-						<label for="" class="control-label col-md-3">Brand Title</label>
+						<label for="" class="control-label col-md-3">Tiêu đề</label>
 						<div class="col-md-6">
 							<input type="text" name="brand_title" class="form-control">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="" class="control-label col-md-3">Brand Description</label>
+						<label for="" class="control-label col-md-3">Mô tả</label>
 						<div class="col-md-6">
 							<textarea type="text" name="brand_desc" id="" cols="30" rows="10" class="form-control"></textarea>
 						</div>
@@ -37,7 +37,7 @@
 					<div class="form-group">
 						<label for="" class="control-label col-md-3"></label>
 						<div class="col-md-6">
-							<input type="submit" name="submit" class="form-control btn btn-primary" value="Add Brand">
+							<input type="submit" name="submit" class="form-control btn btn-primary" value="Thêm thương hiệu">
 						</div>
 					</div>
 				</form>
@@ -53,7 +53,7 @@
 		$insert_brand = "insert into brands (brand_title, brand_desc) values ('$brand_title', '$brand_desc')";
 		$run_brand = mysqli_query($con, $insert_brand);
 		if ($run_brand) {
-			echo "<script>alert('Brand has been added successfully')</script>";
+			echo "<script>alert('Thêm thương hiệu thành công!')</script>";
 			echo "<script>window.open('index.php?view_brands', '_self')</script>";
 		}
 	}

@@ -10,7 +10,7 @@
 <div class="row">
 	<div class="col-lg-12">
 		<ol class="breadcrumb">
-			<li class="active"><i class="fa fa-dashboard"></i> Dashboard / View Orders</li>
+			<li class="active"><i class="fa fa-dashboard"></i> Dashboard / Danh sách đơn hàng</li>
 			<input type="text" name="search" id="user_query" placeholder="Search order" style="float: right;">
 		</ol>
 	</div>
@@ -19,7 +19,7 @@
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title"><i class="fa fa-eye"></i> View Orders</h3>
+				<h3 class="panel-title"><i class="fa fa-eye"></i> Danh sách đơn hàng</h3>
 			</div>
 			<div class="panel-body">
 				<div class="table-responsive">
@@ -27,14 +27,14 @@
 						<thead>
 							<tr>
 								<th>No</th>
-								<th>Email khách hàng</th>
-								<th>Invoice No</th>
-								<th>Product Name</th>
-								<th>Product Qty</th>
-								<th>Order Date</th>
-								<th>Total</th>
-								<th>Status</th>
-								<th>Delete</th>
+								<th>Email</th>
+								<th>Mã hóa đơn</th>
+								<th>Tên sản phẩm</th>
+								<th>Số lượng</th>
+								<th>Ngày đặt</th>
+								<th>Tổng tiền</th>
+								<th>Trạng thái đơn hàng</th>
+								<th>Xóa</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -85,7 +85,7 @@
 								</td>
 								<td>
 									<button class="btn btn-danger">
-										<a href="index.php?delete_order=<?php echo $order_id; ?>"><i class="fa fa-trash"></i> Delete</a>
+										<a href="index.php?delete_order=<?php echo $order_id; ?>"><i class="fa fa-trash"></i> Xóa</a>
 									</button>
 								</td>
 							</tr>

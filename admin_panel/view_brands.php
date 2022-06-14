@@ -10,8 +10,8 @@
 <div class="row">
 	<div class="col-lg-12">
 		<ol class="breadcrumb">
-			<li class="active"><i class="fa fa-dashboard"></i> Dashboard / View Brands</li>
-			<input type="text" name="search" id="user_query" placeholder="Search brand" style="float: right;">
+			<li class="active"><i class="fa fa-dashboard"></i> Dashboard / Danh sách thương hiệu</li>
+			<input type="text" name="search" id="user_query" placeholder="Tìm kiếm thương hiệu" style="float: right;">
 		</ol>
 	</div>
 </div>
@@ -19,18 +19,18 @@
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title"><i class="fa fa-eye"></i> View Brands</h3>
+				<h3 class="panel-title"><i class="fa fa-eye"></i> Danh sách thương hiệu</h3>
 			</div>
 			<div class="panel-body">
 				<div class="table-responsive">
 					<table class="table table-hover table-striped table-bordered">
 						<thead>
 							<tr>
-								<th>Brand ID</th>
-								<th>Brand Title</th>
-								<th>Brand Description</th>
-								<th>Edit</th>
-								<th>Delete</th>
+								<th>Mã thương hiệu</th>
+								<th>Tiêu đề</th>
+								<th>Mô tả</th>
+								<th>Sửa</th>
+								<th>Xóa</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -51,12 +51,12 @@
 								<td width="300"><?php echo $brand_desc; ?></td>
 								<td>
 									<button class="btn btn-success">
-										<a href="index.php?edit_brand=<?php echo $brand_id; ?>"><i class="fa fa-pencil"></i> Edit</a>
+										<a href="index.php?edit_brand=<?php echo $brand_id; ?>"><i class="fa fa-pencil"></i> Sửa</a>
 									</button>
 								</td>
 								<td>
 									<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">
-										<a href="index.php?delete_brand=<?php echo $brand_id; ?>"><i class="fa fa-trash"></i> Delete</a>
+										<a href="index.php?delete_brand=<?php echo $brand_id; ?>"><i class="fa fa-trash"></i> Xóa</a>
 									</button>
 								</td>
 							</tr>

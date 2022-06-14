@@ -10,8 +10,8 @@
 <div class="row">
 	<div class="col-lg-12">
 		<ol class="breadcrumb">
-			<li class="active"><i class="fa fa-dashboard"></i> Dashboard / View Customers</li>
-			<input type="text" name="search" id="user_query" placeholder="Search customer" style="float: right;">
+			<li class="active"><i class="fa fa-dashboard"></i> Dashboard / Danh sách khách hàng</li>
+			<input type="text" name="search" id="user_query" placeholder="Tìm kiếm khách hàng" style="float: right;">
 		</ol>
 	</div>
 </div>
@@ -19,7 +19,7 @@
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title"><i class="fa fa-eye"></i> View Customers</h3>
+				<h3 class="panel-title"><i class="fa fa-eye"></i> Danh sách khách hàng</h3>
 			</div>
 			<div class="panel-body">
 				<div class="table-responsive">
@@ -27,14 +27,14 @@
 						<thead>
 							<tr>
 								<th>No</th>
-								<th>Customer Name</th>
-								<th>Customer Image</th>
+								<th>Họ tên</th>
+								<th>Ảnh</th>
 								<th>Email</th>
-								<th>Country</th>
-								<th>City</th>
-								<th>Address</th>
-								<th>Phone Number</th>
-								<th>Delete</th>
+								<th>Quốc gia</th>
+								<th>Thành phố</th>
+								<th>Địa chỉ</th>
+								<th>Số điện thoại</th>
+								<th>Xóa</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -65,7 +65,7 @@
 								<td><?php echo $c_phone; ?></td>
 								<td>
 									<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">
-										<a href="index.php?delete_customer=<?php echo $c_id; ?>"><i class="fa fa-trash"></i> Delete</a>
+										<a href="index.php?delete_customer=<?php echo $c_id; ?>"><i class="fa fa-trash"></i> Xóa</a>
 									</button>
 								</td>
 							</tr>
