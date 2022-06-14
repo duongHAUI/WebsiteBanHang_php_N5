@@ -9,7 +9,7 @@
 
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="text-center">Welcome Back <?php echo $admin_name; ?></h1>
+		<h1 class="text-center">Chào mừng <?php echo $admin_name; ?></h1>
 		<h1 class="page-header">Dashboard</h1>
 		<ol class="breadcrumb">
 			<li class="active"><i class="fa fa-dashboard"></i> Dashboard</li>
@@ -26,13 +26,13 @@
 					</div>
 					<div class="col-xs-9 text-right">
 						<div class="huge"><?php echo $count_products; ?></div>
-						<div>Products</div>
+						<div>Sản phẩm</div>
 					</div>
 				</div>
 			</div>
 			<a href="index.php?view_products">
 				<div class="panel-footer">
-					<span class="pull-left">Detail</span>
+					<span class="pull-left">Xem chi tiết</span>
 					<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 					<div class="clearfix"></div>
 				</div>
@@ -48,13 +48,13 @@
 					</div>
 					<div class="col-xs-9 text-right">
 						<div class="huge"><?php echo $count_customers; ?></div>
-						<div>Customers</div>
+						<div>Khách hàng</div>
 					</div>
 				</div>
 			</div>
 			<a href="index.php?view_customers">
 				<div class="panel-footer">
-					<span class="pull-left">Detail</span>
+					<span class="pull-left">Xem chi tiết</span>
 					<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 					<div class="clearfix"></div>
 				</div>
@@ -70,13 +70,13 @@
 					</div>
 					<div class="col-xs-9 text-right">
 						<div class="huge"><?php echo $count_categories; ?></div>
-						<div>Categories</div>
+						<div>Danh mục</div>
 					</div>
 				</div>
 			</div>
 			<a href="index.php?view_cats">
 				<div class="panel-footer">
-					<span class="pull-left">Detail</span>
+					<span class="pull-left">Xem chi tiết</span>
 					<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 					<div class="clearfix"></div>
 				</div>
@@ -92,13 +92,13 @@
 					</div>
 					<div class="col-xs-9 text-right">
 						<div class="huge"><?php echo $count_pending_orders; ?></div>
-						<div>Orders</div>
+						<div>Đơn hàng</div>
 					</div>
 				</div>
 			</div>
 			<a href="index.php?view_orders">
 				<div class="panel-footer">
-					<span class="pull-left">Detail</span>
+					<span class="pull-left">Xem chi tiết</span>
 					<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 					<div class="clearfix"></div>
 				</div>
@@ -110,19 +110,19 @@
 	<div class="col-lg-9">
 		<div class="panel panel-success">
 			<div class="panel-heading">
-				<h3 class="panel-title"><i class="fa fa-money fa-fw"></i> New Orders</h3>
+				<h3 class="panel-title"><i class="fa fa-money fa-fw"></i>Đơn hàng mới</h3>
 			</div>
 			<div class="panel-body">
 				<div class="table-responsive">
 					<table class="table table-hover table-striped table-bordered">
 						<thead>
 							<tr>
-								<th>Order no</th>
-								<th>Customer email</th>
-								<th>Invoice no</th>
-								<th>Product id</th>
-								<th>Product qty</th>
-								<th>Status</th>
+								<th>Mã đơn hàng</th>
+								<th>Email</th>
+								<th>Mã hóa đơn</th>
+								<th>Mã sản phẩm</th>
+								<th>Số lượng sản phẩm/th>
+								<th>Trạng thái</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -132,11 +132,10 @@
 								$run_order = mysqli_query($con, $get_order);
 								while ($row_order=mysqli_fetch_array($run_order)) {
 									$order_id = $row_order['order_id'];
-									$c_id = $row_order['customer_id'];
-									$invoice_no = $row_order['invoice_no'];
-									$product_id = $row_order['product_id'];
-									$qty = $row_order['qty'];
-									$size = $row_order['size'];
+									$c_id = $row_order['cus_id'];
+									$order_amount = $row_order['order_amount'];
+									$order_address = $row_order['order_address'];
+									$order_receiver = $row_order['order_receiver'];
 									$order_status = $row_order['order_status'];
 									$i++;
 									
@@ -152,17 +151,12 @@
 										echo $customer_email;
 									?>
 								</td>
-								<td><?php echo $invoice_no; ?></td>
-								<td><?php echo $product_id; ?></td>
-								<td><?php echo $qty; ?></td>
+								<td style="text-align: left;"><?php echo "$".$order_amount; ?></td>
+								<td><?php echo $order_receiver; ?></td>
+								<td><?php echo $order_address; ?></td>
 								<td>
 									<?php  
-										if ($order_status=='Pending') {
-											echo $order_status = 'Pending';
-										}
-										else{
-											echo $order_status = 'Completed';
-										}
+										echo $order_status;
 									?>
 								</td>
 							</tr>
@@ -193,11 +187,11 @@
 				<div class="mb-md">
 					<div class="widget-content-expanded">
 						<i class="fa fa-envelope"></i> <span>Email:</span> <?php echo $admin_email; ?><br>
-						<i class="fa fa-flag"></i> <span>Country:</span> <?php echo $admin_country; ?><br>
-						<i class="fa fa-phone"></i> <span>Phone number:</span> <?php echo $admin_phone; ?><br>
+						<i class="fa fa-flag"></i> <span>Quốc gia:</span> <?php echo $admin_country; ?><br>
+						<i class="fa fa-phone"></i> <span>Điện thoại:</span> <?php echo $admin_phone; ?><br>
 					</div>
 					<hr class="dotted short">
-					<h5 class="text-muted">About me</h5>
+					<h5 class="text-muted">Thông tin của tôi</h5>
 					<p><?php echo $admin_about; ?></p>
 				</div>
 			</div>

@@ -10,7 +10,7 @@
 <div class="row">
 	<div class="col-lg-12">
 		<ol class="breadcrumb">
-			<li class="active"><i class="fa fa-dashboard"></i> Dashboard / View Slides</li>
+			<li class="active"><i class="fa fa-dashboard"></i> Dashboard / Danh sách hình ảnh</li>
 		</ol>
 	</div>
 </div>
@@ -18,7 +18,7 @@
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title"><i class="fa fa-eye"></i> View Slides</h3>
+				<h3 class="panel-title"><i class="fa fa-eye"></i> Danh sách hình ảnh</h3>
 			</div>
 			<div class="panel-body">
 				<?php  
@@ -44,10 +44,10 @@
 						<div class="panel-footer">
 							<center>
 								<button class="btn btn-danger" style="float: left;">
-									<a href="index.php?delete_slide=<?php echo $slide_id; ?>" class="pull-right"><i class="fa fa-trash"></i> Delete</a>
+									<a href="index.php?delete_slide=<?php echo $slide_id; ?>" class="pull-right"><i class="fa fa-trash"></i> Xóa</a>
 								</button>
 								<button class="btn btn-success" style="float: right;">
-									<a href="index.php?edit_slide=<?php echo $slide_id; ?>" class="pull-left"><i class="fa fa-pencil"></i> Edit</a>
+									<a href="index.php?edit_slide=<?php echo $slide_id; ?>" class="pull-left"><i class="fa fa-pencil"></i> Sửa</a>
 								</button>
 								<div class="clearfix"></div>
 							</center>

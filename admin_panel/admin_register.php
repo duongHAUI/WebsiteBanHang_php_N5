@@ -82,41 +82,43 @@
 	</style>
 	<div class="login-form">
 		<form action="admin_register.php" method="post" enctype="multipart/form-data">
+			<h2 style="text-align: center; margin-top: -10px; font-weight: 600;">Đăng ký</h2>
 			<div class="form-group">
-				<label>Enter Name</label>
+				<label>Họ tên</label>
 				<input type="text" class="form-control" name="ad_name" required>
 			</div>
 			<div class="form-group">
-				<label>Enter Email</label>
+				<label>Email</label>
 				<input type="email" class="form-control" name="ad_email" required>
 			</div>
 			<div class="form-group">
-				<label>Enter Password</label>
+				<label>mật khẩu</label>
 				<input type="password" class="form-control" name="ad_password" required>
 			</div>
 			<div class="form-group">
-				<label>Country</label>
+				<label>Quốc gia</label>
 				<input type="text" class="form-control" name="ad_country" required>
 			</div>
 			<div class="form-group">
-				<label>Phone Number</label>
+				<label>Số điện thoại</label>
 				<input type="text" class="form-control" name="ad_phone" required>
 			</div>
 			<div class="form-group">
-				<label>Job</label>
+				<label>Nghề nghiệp</label>
 				<input type="text" class="form-control" name="ad_job" required>
 			</div>
 			<div class="form-group">
-				<label>About You</label>
+				<label>Thông tin về bạn</label>
 				<input type="text" class="form-control" name="ad_about" required>
 			</div>
 			<div class="form-group">
-				<label>Profile Picture</label>
+				<label>Ảnh</label>
 				<input type="file" class="form-control" name="ad_image" required>
 			</div>
 			<div class="form-group">
-				<button type="submit" name="register" class="btn btn-primary btn-lg btn-block">Sign Up</button>
+				<button type="submit" name="register" class="btn btn-primary btn-lg btn-block">Đăng ký</button>
 			</div>
+			<p class="text-center">Bạn đã có tài khoản? <a href="login.php">Đăng nhập ngay!</a></p>
 		</form>
 	</div>
 </body>
@@ -142,7 +144,7 @@
 		$run_ad = mysqli_query($con, $insert_ad);
 		if ($run_ad) {
 			$_SESSION['admin_email'] = $ad_email;
-			echo "<script>alert('New Admin Account has been created successfully')</script>";
+			echo "<script>alert('Tài khoản quản trị đã được tạo thành công!')</script>";
 			echo "<script>window.open('login.php', '_self')</script>";
 		}
 	}

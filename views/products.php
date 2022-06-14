@@ -31,18 +31,18 @@
     <!-- products content -->
     <div class="bg-main">
         <div class="container">
-            <div class="box row" >
+            <div class="box row bw"  >
                 <div class="breadcumb">
                     <a href="./">Trang chủ</a>
                     <span><i class='bx bxs-chevrons-right'></i></span>
-                    <a href="./products.php">Tất cả sản phẩm</a>
+                    <a href="products">Tất cả sản phẩm</a>
                 </div>
-                <div>
-                    <!-- <select name="sort-price" id="sort-product">
-                        <option value="">Giá</option>
-                        <option value="ASC">Giá : Thấp đến cao</option>
-                        <option value="DESC">Giá : Cao đến thấp</option>
-                    </select> -->
+                <div class="sort-price-right">
+                    <select name="sort-price" id="sort-product">
+                        <option value="ALL">-----Giá-----</option>
+                        <option value="ASC">Thấp đến cao</option>
+                        <option value="DESC">Cao đến thấp</option>
+                    </select>
                 </div>
             </div>
             <div class="box">
@@ -56,19 +56,19 @@
                                 Categories
                             </span>
                             <ul class="filter-list">
-                            <ul class="filter-list" list-id-input="" id="list-category">
+                            <ul class="filter-list"  id="list-category">
                                 <?php
                                     $categories = Category::find_all($con);
                                     foreach ($categories as $key => $value) {
                                         ?>
                                         <li>
-                                        <div class="group-checkbox">
-                                            <input type="checkbox" id="<?=$value->id?>" value="<?=$value->id?>" class="category-search" >
-                                            <label for="<?=$value->id?>">
-                                                <?=$value->title?> 
-                                                <i class='bx bx-check'></i>
-                                            </label>
-                                        </div>
+                                            <div class="group-checkbox">
+                                                <input type="checkbox" id="<?=$value->id?>" value="<?=$value->id?>" class="category-search" >
+                                                <label for="<?=$value->id?>" >
+                                                    <?=$value->title?>
+                                                    <i class='bx bx-check'></i>
+                                                </label>
+                                            </div>
                                         </li>
                                         <?php
                                     }
@@ -78,24 +78,38 @@
                         </div>
                         <div class="box">
                             <span class="filter-header">
-                                Price
+                                Khoảng Giá
                             </span>
                             <div class="price-range">
-                                <input type="text">
+                                <input type="number" placeholder="₫ TỪ" id="price-range-min">
                                 <span>-</span>
-                                <input type="text">
+                                <input type="number" placeholder="₫ ĐẾN" id="price-range-max">
+                            </div>
+                            <div >
+                                <button id="price-range">Áp dụng</button>
+                            </div>
+                            <div>
+                                <button id="un-price-range">Hủy bỏ</button>
                             </div>
                         </div>
                         <div class="box">
                             <span class="filter-header">
                                 Brands
                             </span>
-                            <ul class="filter-list">
+                            <ul class="filter-list" id="list-brand">
                                 <?php
-                                    $brands = Brand::find_all($con);
-                                    foreach ($brands as $key => $value) {
+                                    $categories = Brand::find_all($con);
+                                    foreach ($categories as $key => $value) {
                                         ?>
-                                        <li><a href="?brand-id=<?=$value->id?>"> <?=$value->title?></a></li>
+                                        <li>
+                                            <div class="group-checkbox">
+                                                <input type="checkbox" id="<?=$value->id?>" value="<?=$value->id?>" class="brand-search" >
+                                                <label for="<?=$value->id?>" >
+                                                    <?=$value->title?>
+                                                    <i class='bx bx-check'></i>
+                                                </label>
+                                            </div>
+                                        </li>
                                         <?php
                                     }
                                 ?>
@@ -108,16 +122,6 @@
                             <button class="btn-flat btn-hover" id="filter-toggle">filter</button>
                         </div>
                         <!-- L -->
-                        <script>
-                            var xmlhttp=new XMLHttpRequest();
-                            xmlhttp.onreadystatechange=function() {
-                                        if (this.readyState==4 && this.status==200) {
-                                            document.getElementById("products").innerHTML=this.responseText;
-                                        }
-                                    }
-                            xmlhttp.open("GET","/WebsiteBanHang_php_N5/controllers/product/categoryPro.php",true);
-                            xmlhttp.send();
-                        </script>
                         <div class="box">
                             <div class="row" id="products">
                             </div> 
@@ -137,14 +141,20 @@
         </div>
     </div>
     <!-- end products content -->
+    <form id="form-request" method = "POST" >
+        <input type="hidden" id="categories" name="categories" value="">
+        <input type="hidden" id="brands" name="brands" value="">              
+        <input type="hidden"  id="sortPrice" name="sortPrice" value="">
+        <input type="hidden" id="maxPrice" name="maxPrice" value="">   
+        <input type="hidden" id="minPrice" name="minPrice" value="">               
+    </form>
 
     <?php
         include_once("footer.php");
     ?>
     <!-- app js -->
     <!-- <script src="./js/app.js"></script> -->
-    <script src="./js/searchCategory.js"></script>
-    <!-- <script src="./js/sortPriceProduct.js"></script> -->
+    <script src="./js/filterProduct.js"></script>
 </body>
 
 </html>

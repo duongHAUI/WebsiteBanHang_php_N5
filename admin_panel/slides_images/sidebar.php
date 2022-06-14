@@ -32,7 +32,7 @@
 				</li>
 				<li>
 					<a href="index.php?view_customers">
-						<i class="fa fa-fw fa-users"></i> View Customers
+						<i class="fa fa-fw fa-users"></i> Danh sách khách hàng
 						<span class="badge"><?php echo $count_customers; ?></span>
 					</a>
 				</li>
@@ -79,7 +79,7 @@
 				</a>
 				<ul id="cat" class="collapse">
 					<li>
-						<a href="index.php?insert_cat">Add Category</a>
+						<a href="index.php?insert_cat">Thêm danh mục</a>
 					</li>
 					<li>
 						<a href="index.php?view_cats">View Categories</a>
@@ -93,7 +93,7 @@
 				</a>
 				<ul id="brand" class="collapse">
 					<li>
-						<a href="index.php?insert_brand">Add Brand</a>
+						<a href="index.php?insert_brand">Thêm thương hiệu</a>
 					</li>
 					<li>
 						<a href="index.php?view_brands">View Brands</a>
@@ -107,7 +107,7 @@
 				</a>
 				<ul id="slides" class="collapse">
 					<li>
-						<a href="index.php?insert_slide">Add Slide</a>
+						<a href="index.php?insert_slide">Thêm hình ảnh</a>
 					</li>
 					<li>
 						<a href="index.php?view_slides">View Slides</a>
@@ -116,12 +116,12 @@
 			</li>
 			<li>
 				<a href="index.php?view_customers">
-					<i class="fa fa-fw fa-users"></i> View Customers
+					<i class="fa fa-fw fa-users"></i> Danh sách khách hàng
 				</a>
 			</li>
 			<li>
 				<a href="index.php?view_orders">
-					<i class="fa fa-fw fa-edit"></i> View Orders
+					<i class="fa fa-fw fa-edit"></i> Danh sách đơn hàng
 				</a>
 			</li>
 			<li>
@@ -136,13 +136,13 @@
 				</a>
 				<ul id="users" class="collapse">
 					<li>
-						<a href="index.php?insert_user">Add User</a>
+						<a href="index.php?insert_user">Thêm người dùng</a>
 					</li>
 					<li>
 						<a href="index.php?view_users">View Users</a>
 					</li>
 					<li>
-						<a href="index.php?user_profile=<?php echo $admin_id; ?>">Edit User Profile</a>
+						<a href="index.php?user_profile=<?php echo $admin_id; ?>">Sửa thông tin</a>
 					</li>
 				</ul>
 			</li>

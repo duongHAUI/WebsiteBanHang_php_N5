@@ -10,7 +10,7 @@
 <div class="row">
 	<div class="col-lg-12">
 		<ol class="breadcrumb">
-			<li class="active"><i class="fa fa-dashboard"></i> Dashboard / Add Category</li>
+			<li class="active"><i class="fa fa-dashboard"></i> Dashboard / Thêm danh mục</li>
 		</ol>
 	</div>
 </div>
@@ -18,18 +18,18 @@
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title"><i class="fa fa-plus"></i> Add Category</h3>
+				<h3 class="panel-title"><i class="fa fa-plus"></i> Thêm danh mục</h3>
 			</div>
 			<div class="panel-body">
 				<form action="" class="form-horizontal" method="post">
 					<div class="form-group">
-						<label for="" class="control-label col-md-3">Category Title</label>
+						<label for="" class="control-label col-md-3">Tiêu đề</label>
 						<div class="col-md-6">
 							<input type="text" name="cat_title" class="form-control" required>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="" class="control-label col-md-3">Category Description</label>
+						<label for="" class="control-label col-md-3">Mô tả</label>
 						<div class="col-md-6">
 							<textarea type="text" name="cat_desc" id="" cols="30" rows="10" class="form-control"></textarea>
 						</div>
@@ -37,7 +37,7 @@
 					<div class="form-group">
 						<label for="" class="control-label col-md-3"></label>
 						<div class="col-md-6">
-							<input type="submit" name="submit" class="form-control btn btn-primary" value="Add Category">
+							<input type="submit" name="submit" class="form-control btn btn-primary" value="Thêm danh mục">
 						</div>
 					</div>
 				</form>

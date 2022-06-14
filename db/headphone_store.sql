@@ -250,6 +250,8 @@ CREATE TABLE `products` (
   `product_sold` int(11) NOT NULL DEFAULT 0,
   `product_quantity` int(11) NOT NULL,
   `product_discount` int(11) NOT NULL,
+  `product_mass_discount` int(11),
+  `is_mass_discount` tinyint DEFAULT 0,
   `product_desc` text NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
   `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()

@@ -10,7 +10,7 @@
 <div class="row">
 	<div class="col-lg-12">
 		<ol class="breadcrumb">
-			<li class="active"><i class="fa fa-dashboard"></i> Dashboard / Add Slide</li>
+			<li class="active"><i class="fa fa-dashboard"></i> Dashboard / Thêm hình ảnh</li>
 		</ol>
 	</div>
 </div>
@@ -18,30 +18,30 @@
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title"><i class="fa fa-plus"></i> Add Slide</h3>
+				<h3 class="panel-title"><i class="fa fa-plus"></i> Thêm hình ảnh</h3>
 			</div>
 			<div class="panel-body">
 				<form action="" class="form-horizontal" method="post" enctype="multipart/form-data">
 					<div class="form-group">
-						<label for="" class="control-label col-md-3">Slide Name</label>
+						<label for="" class="control-label col-md-3">Tên</label>
 						<div class="col-md-6">
 							<input type="text" name="slide_name" class="form-control">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="" class="control-label col-md-3">Slide Good</label>
+						<label for="" class="control-label col-md-3">Tên (tùy chọn)</label>
 						<div class="col-md-6">
 							<input type="text" name="slide_good" class="form-control">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="" class="control-label col-md-3">Slide Image</label>
+						<label for="" class="control-label col-md-3">Hình ảnh</label>
 						<div class="col-md-6">
 							<input type="file" name="slide_image" class="form-control">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="" class="control-label col-md-3">Slide Description</label>
+						<label for="" class="control-label col-md-3">Mô tả</label>
 						<div class="col-md-6">
 							<input type="text" name="slide_desc" class="form-control">
 						</div>
@@ -49,7 +49,7 @@
 					<div class="form-group">
 						<label for="" class="control-label col-md-3"></label>
 						<div class="col-md-6">
-							<input type="submit" name="submit" class="form-control btn btn-primary" value="Add Slide">
+							<input type="submit" name="submit" class="form-control btn btn-primary" value="Thêm hình ảnh">
 						</div>
 					</div>
 				</form>
