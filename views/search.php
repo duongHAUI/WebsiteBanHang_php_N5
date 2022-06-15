@@ -58,7 +58,9 @@ include_once("header.php");
             <div class="breadcumb">
                 <a href="./">Trang chủ</a>
                 <span><i class='bx bxs-chevrons-right'></i></span>
-                <a href="./products.php" style="text-transform: none;">Tìm kiếm với từ khóa "<?= $keywords ?>"</a>
+                <a href="products" style="text-transform: none;">Tất cả sản phẩm</a>
+                <span><i class='bx bxs-chevrons-right'></i></span>
+                <span style="text-transform: none;">Tìm kiếm với từ khóa "<?= $keywords ?>"</span>
             </div>
         </div>
         <div class="box">

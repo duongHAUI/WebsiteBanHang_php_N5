@@ -44,11 +44,11 @@ if (!isset($_SESSION['admin_email'])) {
                         </div>
                         <div class="col-md-6 text-right">
                             <button type="button" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">
-                                <a href="index.php?view_products&handle_remove_discount">Remove discount on products</a>
+                                <a href="index.php?view_products&handle_remove_discount">Hủy bỏ giảm giá cho nhiều sản phẩm</a>
                             </button>
-                            <button type="button" class="btn btn-primary">
-                                <a href="#" data-toggle="modal" data-target="#apply_discount_on_products_modal">
-                                    Apply discount on products
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#apply_discount_on_products_modal">
+                                <a href="#">
+                                    Áp dụng giảm giá cho nhiều sản phẩm
                                 </a>
                             </button>
                         </div>
@@ -124,12 +124,12 @@ if (!isset($_SESSION['admin_email'])) {
     <div class="modal fade" tabindex="-1" role="dialog" id="apply_discount_on_products_modal">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <form method="post" action="">
+                <form method="post" action="" id="apply_discount_on_products_form" data-validate="true">
                     <div class="modal-header">
                         <div class="row">
                             <div class="col-xs-6">
                                 <h4 class="modal-title">
-                                    <strong>Apply discount on products</strong>
+                                    <strong>Áp dụng giảm giá cho nhiều sản phẩm</strong>
                                 </h4>
                             </div>
                             <div class="col-xs-6">
@@ -141,19 +141,19 @@ if (!isset($_SESSION['admin_email'])) {
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="apply_discount_on_products">Discount</label>
+                            <label for="apply_discount_on_products">Giảm giá</label>
                             <input type="number" min="0" max="100" class="form-control" id="apply_discount_on_products"
-                                   name="apply_discount_on_products" required/>
+                                   name="apply_discount_on_products" data-rule-required="true" data-msg-required="Đây là trường bắt buộc" />
                         </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-3" style="line-height: 40px;">
-                                    <label for="select_applicable_products">Select applicable products</label>
+                                    <label for="select_applicable_products">Chọn ít nhất 1 sản phẩm</label>
                                 </div>
                                 <div class="col-md-9">
                                     <div class="checkbox">
                                         <label style="font-weight: bold;">
-                                            <input type="checkbox" id="select-all"> Select all
+                                            <input type="checkbox" id="select-all"> Chọn tất cả
                                         </label>
                                     </div>
                                 </div>
@@ -175,7 +175,10 @@ if (!isset($_SESSION['admin_email'])) {
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" name="mass_update_discount">Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">
+                            <a href="#">Hủy bỏ</a>
+                        </button>
+                        <button type="submit" class="btn btn-primary" name="mass_update_discount">Lưu thay đổi</button>
                     </div>
                 </form>
             </div>
@@ -186,12 +189,31 @@ if (!isset($_SESSION['admin_email'])) {
 }
 ?>
 
+<script src="./js/jquery.validate.min.js" type="text/javascript"></script>
+
 <script type="text/javascript">
+    function isEmpty(str) {
+        str = str.trim();
+        return !str || str.length === 0;
+    }
+
     $(document).ready(function () {
         'use strict';
 
         $('#select-all').change(function () {
-            $("#select-product-container input:checkbox").attr('checked', +$(this).is(':checked'));
+            $("#select-product-container input:checkbox").attr('checked', $(this).is(':checked'));
         });
+    });
+
+    $('form[data-validate="true"]').validate({
+        submitHandler: function (form) {
+            const formData = $(form).serializeArray();
+            const flag = formData.some(item => item.name === 'selected-products[]' && !isEmpty(item.value))
+            if (!flag) {
+                return alert("Vui lòng chọn ít nhất 1 sản phẩm");
+            }
+
+            form.submit();
+        }
     });
 </script>

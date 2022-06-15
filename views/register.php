@@ -63,7 +63,6 @@ include "./helpers/common.php";
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="./js/authenticate.js" type="text/javascript"></script>
 <script src="./js/jquery.validate.min.js" type="text/javascript"></script>
 <script src="./js/form.js" type="text/javascript"></script>
 </html>
