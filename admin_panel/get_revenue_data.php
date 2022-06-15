@@ -7,17 +7,45 @@ if (empty($_POST['unit'])) {
     return;
 }
 
-sleep(1.5);
-
 $unit = $_POST['unit'];
 
 switch ($unit) {
     case 'month':
+        $sql = "SELECT order_amount, createdAt FROM orders WHERE" . " YEAR(createdAt) = " . date('Y');
+        $query = mysqli_query($con, $sql);
+        $row = mysqli_fetch_all($query);
 
+        $result = [];
+
+        for ($i = 1; $i <= 12; $i++) {
+            $amountByMonth = array_filter($row, fn($item) => date('m', strtotime($item[1])) == $i);
+            $result[$i] = array_reduce($amountByMonth, function ($acc, $cur) {
+                $acc += $cur[0];
+                return $acc;
+            },0);
+        }
+
+        echo json_encode($result);
         break;
 
     case 'year':
+        $currentYear = date('Y');
 
+        $sql = "SELECT order_amount, createdAt FROM orders WHERE" . " YEAR(createdAt) >= " . ($currentYear - 10) . " AND YEAR(createdAt) <= $currentYear";
+        $query = mysqli_query($con, $sql);
+        $row = mysqli_fetch_all($query);
+
+        $result = [];
+
+        for ($i = $currentYear - 10; $i <= $currentYear; $i++) {
+            $amountByYear = array_filter($row, fn($item) => date('Y', strtotime($item[1])) == $i);
+            $result[$i] = array_reduce($amountByYear, function ($acc, $cur) {
+                $acc += $cur[0];
+                return $acc;
+            },0);
+        }
+
+        echo json_encode($result);
         break;
 
     default:

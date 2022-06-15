@@ -106,7 +106,7 @@
 </div>
 
 <div style="display: grid; grid-template-columns: 2.5fr 1fr; gap: 15px;">
-    <div class="panel chart-loading" style="min-height: 400px;" id="chart-container">
+    <div class="panel loading" style="min-height: 400px;" id="chart-container">
         <div class="panel-body">
             <div class="row" style="margin-bottom: 20px;">
                 <div class="col-md-6">
@@ -122,9 +122,9 @@
                     </div>
                 </div>
             </div>
-            <canvas id="revenueChart" style="height: 350px; width: 100%;"></canvas>
+            <canvas id="revenueChart"></canvas>
         </div>
-        <i class="fa fa-spinner fa-spin" style="display: none;"></i>
+        <i class="fa fa-spinner fa-spin"></i>
     </div>
 
     <div class="panel">
@@ -162,7 +162,7 @@
                     <th>Email</th>
                     <th>Mã hóa đơn</th>
                     <th>Mã sản phẩm</th>
-                    <th>Số lượng sản phẩm/th>
+                    <th>Số lượng sản phẩm</th>
                     <th>Trạng thái</th>
                 </tr>
                 </thead>
@@ -214,6 +214,7 @@
 </div>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 <script type="text/javascript" src="./js/dashboard.js"></script>
 
 <?php endif; ?>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 14, 2022 lúc 07:35 PM
--- Phiên bản máy phục vụ: 10.4.24-MariaDB
--- Phiên bản PHP: 8.0.19
+-- Host: 127.0.0.1
+-- Generation Time: Jun 15, 2022 at 06:16 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `headphone_store`
+-- Database: `headphone_store`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `admins`
+-- Table structure for table `admins`
 --
 
 CREATE TABLE `admins` (
@@ -41,7 +41,7 @@ CREATE TABLE `admins` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `admins`
+-- Dumping data for table `admins`
 --
 
 INSERT INTO `admins` (`admin_id`, `admin_name`, `admin_email`, `admin_password`, `admin_image`, `admin_country`, `admin_about`, `admin_phone`, `createdAt`, `updatedAt`) VALUES
@@ -51,7 +51,7 @@ INSERT INTO `admins` (`admin_id`, `admin_name`, `admin_email`, `admin_password`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `brands`
+-- Table structure for table `brands`
 --
 
 CREATE TABLE `brands` (
@@ -63,7 +63,7 @@ CREATE TABLE `brands` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `brands`
+-- Dumping data for table `brands`
 --
 
 INSERT INTO `brands` (`brand_id`, `brand_title`, `brand_desc`, `createdAt`, `updatedAt`) VALUES
@@ -80,7 +80,7 @@ INSERT INTO `brands` (`brand_id`, `brand_title`, `brand_desc`, `createdAt`, `upd
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `cart`
+-- Table structure for table `cart`
 --
 
 CREATE TABLE `cart` (
@@ -92,19 +92,10 @@ CREATE TABLE `cart` (
   `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Đang đổ dữ liệu cho bảng `cart`
---
-
-INSERT INTO `cart` (`cart_id`, `cus_id`, `pro_id`, `cart_qty`, `createdAt`, `updatedAt`) VALUES
-(11, 13, 33, 3, '2022-06-14 16:12:55', '2022-06-14 16:12:58'),
-(12, 13, 24, 2, '2022-06-14 16:13:09', '2022-06-14 16:17:59'),
-(13, 13, 26, 3, '2022-06-14 16:17:54', '2022-06-14 16:17:54');
-
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `categories`
+-- Table structure for table `categories`
 --
 
 CREATE TABLE `categories` (
@@ -116,7 +107,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `categories`
+-- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`cat_id`, `cat_title`, `cat_desc`, `createdAt`, `updatedAt`) VALUES
@@ -129,7 +120,7 @@ INSERT INTO `categories` (`cat_id`, `cat_title`, `cat_desc`, `createdAt`, `updat
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `customers`
+-- Table structure for table `customers`
 --
 
 CREATE TABLE `customers` (
@@ -147,17 +138,18 @@ CREATE TABLE `customers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `customers`
+-- Dumping data for table `customers`
 --
 
 INSERT INTO `customers` (`customer_id`, `customer_name`, `customer_email`, `customer_password`, `customer_country`, `customer_city`, `customer_phone`, `customer_address`, `customer_image`, `createdAt`, `updatedAt`) VALUES
 (1, 'Huong', 'huong123@gmail.com', '1234', 'VietNam', 'HaNoi', '0731', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(13, 'Thu Huong', 'huong1234@gmail.com', 'ee4f60d01bda307268367e6f4b427995', '', '', '', '', '', '2022-06-04 13:26:04', '2022-06-04 13:26:04');
+(13, 'Thu Huong', 'huong1234@gmail.com', 'ee4f60d01bda307268367e6f4b427995', '', '', '', '', '', '2022-06-04 13:26:04', '2022-06-04 13:26:04'),
+(14, 'Nguyen Mai Phuong', 'phuongsapphire2209hn@gmail.com', 'fea370856fe9651c7c0e628146d43410', 'Vietnam', 'Ha Noi', '0123456789', 'Ha Noi', '', '2022-06-15 12:25:19', '2022-06-15 14:54:33');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `images`
+-- Table structure for table `images`
 --
 
 CREATE TABLE `images` (
@@ -167,7 +159,7 @@ CREATE TABLE `images` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `images`
+-- Dumping data for table `images`
 --
 
 INSERT INTO `images` (`image_id`, `pro_id`, `image_link`) VALUES
@@ -211,7 +203,7 @@ INSERT INTO `images` (`image_id`, `pro_id`, `image_link`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `orders`
+-- Table structure for table `orders`
 --
 
 CREATE TABLE `orders` (
@@ -227,10 +219,67 @@ CREATE TABLE `orders` (
   `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `cus_id`, `order_amount`, `order_status`, `order_address`, `order_receiver`, `order_phone`, `order_note`, `createdAt`, `updatedAt`) VALUES
+(1, 14, 670.8, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2012-01-01 12:25:30', '2022-06-15 15:41:34'),
+(2, 14, 258, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2013-02-02 12:25:30', '2022-06-15 15:41:34'),
+(3, 14, 97.9, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2014-06-03 14:49:24', '2022-06-15 15:41:34'),
+(4, 14, 167.7, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2015-06-04 14:49:37', '2022-06-15 15:41:34'),
+(5, 14, 200.6, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2016-06-05 14:49:49', '2022-06-15 15:41:35'),
+(6, 14, 1087.422, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2017-06-06 14:50:00', '2022-06-15 15:41:35'),
+(7, 14, 60.2205, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2018-06-06 14:50:14', '2022-06-15 15:41:35'),
+(8, 14, 211.2461, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2019-06-07 14:50:33', '2022-06-15 15:41:35'),
+(9, 14, 128.07, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2020-06-08 14:50:45', '2022-06-15 15:41:34'),
+(10, 14, 193.8992, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2021-06-09 14:50:59', '2022-06-15 15:41:35'),
+(11, 14, 1132.63, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-01-10 14:51:09', '2022-06-15 15:44:04'),
+(12, 14, 131.166, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-02-11 14:51:21', '2022-06-15 15:44:04'),
+(13, 14, 113.05, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-03-12 14:51:44', '2022-06-15 15:44:04'),
+(14, 14, 84.788, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-04-13 14:52:05', '2022-06-15 15:44:04'),
+(15, 14, 123.795, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-05-14 14:52:15', '2022-06-15 15:41:35'),
+(16, 14, 167.7, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-01 14:52:29', '2022-06-15 15:41:35'),
+(17, 14, 128.07, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-02 14:53:00', '2022-06-15 15:41:34'),
+(18, 14, 1132.6304, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-03 14:53:27', '2022-06-15 15:41:34'),
+(19, 14, 724.948, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-04 14:53:38', '2022-06-15 15:41:35'),
+(20, 14, 468.0924, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-05 14:57:16', '2022-06-15 15:41:34'),
+(21, 14, 715.47, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-06 14:57:51', '2022-06-15 15:41:34'),
+(22, 14, 368.3, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-07 15:07:41', '2022-06-15 15:41:35'),
+(23, 14, 123.795, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-08 15:07:53', '2022-06-15 15:41:35'),
+(24, 14, 362.474, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-09 15:08:02', '2022-06-15 15:41:34'),
+(25, 14, 170.76, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-10 15:08:33', '2022-06-15 15:41:35'),
+(26, 14, 96.9496, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-11 15:08:43', '2022-06-15 15:41:35'),
+(27, 14, 140.5145, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-12 15:09:33', '2022-06-15 15:41:34'),
+(28, 14, 302.0512, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-13 15:09:45', '2022-06-15 15:41:35'),
+(29, 14, 387.7984, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-14 15:09:56', '2022-06-15 15:41:34'),
+(30, 14, 200.735, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', '2022-06-15 15:44:24', '2022-06-15 15:49:58'),
+(31, 14, 2174.844, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', '2022-06-16 15:44:38', '2022-06-15 15:49:58'),
+(32, 14, 226.1, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', '2022-06-17 15:44:53', '2022-06-15 15:49:58'),
+(33, 14, 128.07, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-18 14:53:00', '2022-06-15 15:41:34'),
+(34, 14, 1132.6304, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-19 14:53:27', '2022-06-15 15:41:34'),
+(35, 14, 724.948, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-20 14:53:38', '2022-06-15 15:41:35'),
+(36, 14, 468.0924, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-21 14:57:16', '2022-06-15 15:41:34'),
+(37, 14, 715.47, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-22 14:57:51', '2022-06-15 15:41:34'),
+(38, 14, 368.3, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-23 15:07:41', '2022-06-15 15:41:35'),
+(39, 14, 123.795, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-24 15:07:53', '2022-06-15 15:41:35'),
+(40, 14, 170.76, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-25 15:08:33', '2022-06-15 15:41:35'),
+(41, 14, 96.9496, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-26 15:08:43', '2022-06-15 15:41:35'),
+(42, 14, 140.5145, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-27 15:09:33', '2022-06-15 15:41:34'),
+(43, 14, 302.0512, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-28 15:09:45', '2022-06-15 15:41:35'),
+(44, 14, 387.7984, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-29 15:09:56', '2022-06-15 15:41:34'),
+(45, 14, 200.735, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', '2022-06-30 15:44:24', '2022-06-15 15:49:58'),
+(46, 14, 2174.844, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', '2022-07-18 15:44:38', '2022-06-15 15:49:58'),
+(47, 14, 226.1, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', '2022-08-17 15:44:53', '2022-06-15 15:49:58'),
+(48, 14, 388, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-09-29 15:09:56', '2022-06-15 15:41:34'),
+(49, 14, 201, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', '2022-10-30 15:44:24', '2022-06-15 15:49:58'),
+(50, 14, 2175, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', '2022-11-18 15:44:38', '2022-06-15 15:49:58'),
+(51, 14, 226, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', '2022-12-17 15:44:53', '2022-06-15 15:49:58');
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `order_details`
+-- Table structure for table `order_details`
 --
 
 CREATE TABLE `order_details` (
@@ -244,10 +293,71 @@ CREATE TABLE `order_details` (
   `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `order_details`
+--
+
+INSERT INTO `order_details` (`detail_id`, `pro_id`, `order_id`, `quantity`, `price`, `size`, `createdAt`, `updatedAt`) VALUES
+(1, 25, 1, 4, 258, '', '2022-06-15 12:25:30', '2022-06-15 12:25:30'),
+(2, 25, 1, 1, 258, '', '2022-06-15 12:25:30', '2022-06-15 12:25:30'),
+(3, 24, 3, 1, 110, '', '2022-06-15 14:49:24', '2022-06-15 14:49:24'),
+(4, 25, 4, 1, 258, '', '2022-06-15 14:49:37', '2022-06-15 14:49:37'),
+(5, 26, 5, 1, 236, '', '2022-06-15 14:49:49', '2022-06-15 14:49:49'),
+(6, 27, 6, 3, 426.44, '', '2022-06-15 14:50:00', '2022-06-15 14:50:00'),
+(7, 29, 7, 3, 21.13, '', '2022-06-15 14:50:14', '2022-06-15 14:50:14'),
+(8, 29, 8, 3, 21.13, '', '2022-06-15 14:50:33', '2022-06-15 14:50:33'),
+(9, 31, 8, 2, 85.81, '', '2022-06-15 14:50:33', '2022-06-15 14:50:33'),
+(10, 32, 9, 3, 42.69, '', '2022-06-15 14:50:45', '2022-06-15 14:50:45'),
+(11, 30, 10, 2, 110.17, '', '2022-06-15 14:50:59', '2022-06-15 14:50:59'),
+(12, 34, 11, 1, 1287.08, '', '2022-06-15 14:51:09', '2022-06-15 14:51:09'),
+(13, 35, 12, 2, 72.87, '', '2022-06-15 14:51:21', '2022-06-15 14:51:21'),
+(14, 33, 13, 4, 29.75, '', '2022-06-15 14:51:44', '2022-06-15 14:51:44'),
+(15, 33, 14, 3, 29.75, '', '2022-06-15 14:52:05', '2022-06-15 14:52:05'),
+(16, 28, 15, 1, 137.55, '', '2022-06-15 14:52:15', '2022-06-15 14:52:15'),
+(17, 25, 16, 1, 258, '', '2022-06-15 14:52:29', '2022-06-15 14:52:29'),
+(18, 32, 17, 3, 42.69, '', '2022-06-15 14:53:00', '2022-06-15 14:53:00'),
+(19, 34, 18, 1, 1287.08, '', '2022-06-15 14:53:27', '2022-06-15 14:53:27'),
+(20, 27, 19, 2, 426.44, '', '2022-06-15 14:53:38', '2022-06-15 14:53:38'),
+(21, 30, 20, 4, 110.17, '', '2022-06-15 14:57:16', '2022-06-15 14:57:16'),
+(22, 29, 20, 4, 21.13, '', '2022-06-15 14:57:16', '2022-06-15 14:57:16'),
+(23, 24, 21, 6, 110, '', '2022-06-15 14:57:51', '2022-06-15 14:57:51'),
+(24, 32, 21, 3, 42.69, '', '2022-06-15 14:57:51', '2022-06-15 14:57:51'),
+(25, 26, 22, 1, 236, '', '2022-06-15 15:07:41', '2022-06-15 15:07:41'),
+(26, 25, 22, 1, 258, '', '2022-06-15 15:07:41', '2022-06-15 15:07:41'),
+(27, 28, 23, 1, 137.55, '', '2022-06-15 15:07:53', '2022-06-15 15:07:53'),
+(28, 27, 24, 1, 426.44, '', '2022-06-15 15:08:02', '2022-06-15 15:08:02'),
+(29, 32, 25, 4, 42.69, '', '2022-06-15 15:08:33', '2022-06-15 15:08:33'),
+(30, 30, 26, 1, 110.17, '', '2022-06-15 15:08:43', '2022-06-15 15:08:43'),
+(31, 29, 27, 7, 21.13, '', '2022-06-15 15:09:33', '2022-06-15 15:09:33'),
+(32, 31, 28, 4, 85.81, '', '2022-06-15 15:09:45', '2022-06-15 15:09:45'),
+(33, 30, 29, 4, 110.17, '', '2022-06-15 15:09:56', '2022-06-15 15:09:56'),
+(34, 29, 30, 10, 21.13, '', '2022-06-15 15:44:24', '2022-06-15 15:44:24'),
+(35, 27, 31, 6, 426.44, '', '2022-06-15 15:44:38', '2022-06-15 15:44:38'),
+(36, 33, 32, 8, 29.75, '', '2022-06-15 15:44:53', '2022-06-15 15:44:53'),
+(37, 29, 20, 4, 21, '', '2022-06-15 14:57:16', '2022-06-15 14:57:16'),
+(38, 24, 21, 6, 110, '', '2022-06-15 14:57:51', '2022-06-15 14:57:51'),
+(39, 32, 21, 3, 43, '', '2022-06-15 14:57:51', '2022-06-15 14:57:51'),
+(40, 26, 22, 1, 236, '', '2022-06-15 15:07:41', '2022-06-15 15:07:41'),
+(41, 25, 22, 1, 258, '', '2022-06-15 15:07:41', '2022-06-15 15:07:41'),
+(42, 28, 23, 1, 138, '', '2022-06-15 15:07:53', '2022-06-15 15:07:53'),
+(43, 27, 24, 1, 426, '', '2022-06-15 15:08:02', '2022-06-15 15:08:02'),
+(44, 32, 25, 4, 43, '', '2022-06-15 15:08:33', '2022-06-15 15:08:33'),
+(45, 30, 26, 1, 110, '', '2022-06-15 15:08:43', '2022-06-15 15:08:43'),
+(46, 29, 27, 7, 21, '', '2022-06-15 15:09:33', '2022-06-15 15:09:33'),
+(47, 31, 28, 4, 86, '', '2022-06-15 15:09:45', '2022-06-15 15:09:45'),
+(48, 30, 29, 4, 110, '', '2022-06-15 15:09:56', '2022-06-15 15:09:56'),
+(49, 29, 30, 10, 21, '', '2022-06-15 15:44:24', '2022-06-15 15:44:24'),
+(50, 27, 31, 6, 426, '', '2022-06-15 15:44:38', '2022-06-15 15:44:38'),
+(51, 33, 32, 8, 30, '', '2022-06-15 15:44:53', '2022-06-15 15:44:53'),
+(52, 30, 29, 4, 110, '', '2022-06-15 15:09:56', '2022-06-15 15:09:56'),
+(53, 29, 30, 10, 21, '', '2022-06-15 15:44:24', '2022-06-15 15:44:24'),
+(54, 27, 31, 6, 426, '', '2022-06-15 15:44:38', '2022-06-15 15:44:38'),
+(55, 33, 32, 8, 30, '', '2022-06-15 15:44:53', '2022-06-15 15:44:53');
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `products`
+-- Table structure for table `products`
 --
 
 CREATE TABLE `products` (
@@ -267,7 +377,7 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `products`
+-- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`product_id`, `cat_id`, `brand_id`, `product_title`, `product_price`, `product_sold`, `product_quantity`, `product_discount`, `product_mass_discount`, `is_mass_discount`, `product_desc`, `createdAt`, `updatedAt`) VALUES
@@ -287,7 +397,7 @@ INSERT INTO `products` (`product_id`, `cat_id`, `brand_id`, `product_title`, `pr
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `slider`
+-- Table structure for table `slider`
 --
 
 CREATE TABLE `slider` (
@@ -299,7 +409,7 @@ CREATE TABLE `slider` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `slider`
+-- Dumping data for table `slider`
 --
 
 INSERT INTO `slider` (`slide_id`, `slide_name`, `slide_good`, `slide_image`, `slide_desc`) VALUES
@@ -308,23 +418,23 @@ INSERT INTO `slider` (`slide_id`, `slide_name`, `slide_good`, `slide_image`, `sl
 (8, 'JBL TUNE 750TNC', 'Next-gen design', 'JBL_E55BT_KEY_RED_6063_FS_x1-1605x1605px.webp', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati dolor commodi dignissimos culpa, eaque eos necessitatibus possimus veniam, cupiditate rerum deleniti? Libero, ducimus error? Beatae velit dolore sint explicabo! Fugit.');
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `admins`
+-- Indexes for table `admins`
 --
 ALTER TABLE `admins`
   ADD PRIMARY KEY (`admin_id`);
 
 --
--- Chỉ mục cho bảng `brands`
+-- Indexes for table `brands`
 --
 ALTER TABLE `brands`
   ADD PRIMARY KEY (`brand_id`);
 
 --
--- Chỉ mục cho bảng `cart`
+-- Indexes for table `cart`
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`cart_id`),
@@ -332,33 +442,33 @@ ALTER TABLE `cart`
   ADD KEY `FK_Cart_Pro` (`pro_id`);
 
 --
--- Chỉ mục cho bảng `categories`
+-- Indexes for table `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`cat_id`);
 
 --
--- Chỉ mục cho bảng `customers`
+-- Indexes for table `customers`
 --
 ALTER TABLE `customers`
   ADD PRIMARY KEY (`customer_id`);
 
 --
--- Chỉ mục cho bảng `images`
+-- Indexes for table `images`
 --
 ALTER TABLE `images`
   ADD PRIMARY KEY (`image_id`),
   ADD KEY `fk_img_pro` (`pro_id`);
 
 --
--- Chỉ mục cho bảng `orders`
+-- Indexes for table `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`order_id`),
   ADD KEY `FK_Oders_Customers` (`cus_id`);
 
 --
--- Chỉ mục cho bảng `order_details`
+-- Indexes for table `order_details`
 --
 ALTER TABLE `order_details`
   ADD PRIMARY KEY (`detail_id`),
@@ -366,7 +476,7 @@ ALTER TABLE `order_details`
   ADD KEY `FK_Detail_Products` (`pro_id`);
 
 --
--- Chỉ mục cho bảng `products`
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`product_id`),
@@ -374,107 +484,107 @@ ALTER TABLE `products`
   ADD KEY `fk_pro_brand` (`brand_id`);
 
 --
--- Chỉ mục cho bảng `slider`
+-- Indexes for table `slider`
 --
 ALTER TABLE `slider`
   ADD PRIMARY KEY (`slide_id`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `admins`
+-- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
   MODIFY `admin_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT cho bảng `brands`
+-- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
   MODIFY `brand_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT cho bảng `cart`
+-- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `cart_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
--- AUTO_INCREMENT cho bảng `categories`
+-- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `cat_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT cho bảng `customers`
+-- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `customer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT cho bảng `images`
+-- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
   MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
--- AUTO_INCREMENT cho bảng `orders`
+-- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
--- AUTO_INCREMENT cho bảng `order_details`
+-- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
--- AUTO_INCREMENT cho bảng `products`
+-- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
--- AUTO_INCREMENT cho bảng `slider`
+-- AUTO_INCREMENT for table `slider`
 --
 ALTER TABLE `slider`
   MODIFY `slide_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `cart`
+-- Constraints for table `cart`
 --
 ALTER TABLE `cart`
   ADD CONSTRAINT `FK_Cart_Cus` FOREIGN KEY (`cus_id`) REFERENCES `customers` (`customer_id`),
   ADD CONSTRAINT `FK_Cart_Pro` FOREIGN KEY (`pro_id`) REFERENCES `products` (`product_id`);
 
 --
--- Các ràng buộc cho bảng `images`
+-- Constraints for table `images`
 --
 ALTER TABLE `images`
   ADD CONSTRAINT `fk_img_pro` FOREIGN KEY (`pro_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE;
 
 --
--- Các ràng buộc cho bảng `orders`
+-- Constraints for table `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `FK_Oders_Customers` FOREIGN KEY (`cus_id`) REFERENCES `customers` (`customer_id`);
 
 --
--- Các ràng buộc cho bảng `order_details`
+-- Constraints for table `order_details`
 --
 ALTER TABLE `order_details`
   ADD CONSTRAINT `FK_Detail_Products` FOREIGN KEY (`pro_id`) REFERENCES `products` (`product_id`),
   ADD CONSTRAINT `FK_Details_Orders` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`);
 
 --
--- Các ràng buộc cho bảng `products`
+-- Constraints for table `products`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `fk_pro_brand` FOREIGN KEY (`brand_id`) REFERENCES `brands` (`brand_id`) ON DELETE CASCADE,
