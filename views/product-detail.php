@@ -21,11 +21,12 @@
     <?php
     
     if(!isset($_GET['pro_id'])){
-        
+        header('Location: ./');
     }else{
         include_once("models/index.php");
         include_once("./db/connectdb.php");
         include_once("header.php");
+        include_once "./controllers/formatCurrency.php";
         $product = Product::find_by_pk($con,$_GET['pro_id']);
     ?>
 
@@ -87,8 +88,8 @@
                             <?= $product->desc?>
                         </p>
                         <div class="price" style="display:flex;align-items: center;">
-                            <span style="margin-right: 20px;"><del><?= $product->price?></del></span>
-                            <div class="product-info-price"><?=$product->priceDiscount()?></div>
+                            <span style="margin-right: 20px;"><del><?= currency_format($product->price)?></del></span>
+                            <div class="product-info-price"><?=currency_format($product->priceDiscount())?></div>
                         </div>
                         
                         <div class="product-quantity-wrapper">
@@ -108,7 +109,7 @@
                     </div>
                 </div>
             </div>
-            <div class="box">
+            <!-- <div class="box">
                 <div class="box-header">
                     Chi tiết sản phẩm
                 </div>
@@ -132,12 +133,46 @@
                         </p>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="box">
                 <div class="box-header">
                     Sản phẩm liên quan
                 </div>
-                <div class="row" id="related-products"></div>
+                <div class="row" id="related-products">
+                <?php  
+                    $products = Product::find_all($con,array("where"=>"cat_id = ".$product->cat_id." or brand_id = ".$product->brand_id));
+                    foreach ($products as $key => $value) {
+                ?>
+                    
+                        <div class="col-3 col-md-6 col-sm-12 cards">
+                            <div class="product-card">
+                                <div class="product-discount">-<?= $value->discount?>%</div>
+                                <a href="product-detail?pro_id=<?=$value->id?>">
+                                    <div class="product-card-img">
+                                        <img src="images/<?=$value->get_images($con)[0]->link ?>" alt="">
+                                        <img src="images/<?=$value->get_images($con)[0]->link ?>" alt="">
+                                    </div>
+                                </a>
+                                <div class="product-card-info">
+                                    <div class="product-btn">
+                                        <a href="product-detail?pro_id=<?=$value->id?>" class="btn-flat btn-hover btn-shop-now">Mua ngay</a>
+                                        <button class="btn-flat btn-hover btn-cart-add">
+                                            <i class='bx bxs-cart-add'></i>
+                                        </button>
+                                    </div>
+                                    <a href="product-detail?pro_id=<?=$value->id?>" class="product-card-name">
+                                        <?= $value->title?>
+                                    </a>
+                                    <div class="product-card-price">
+                                        <span><del><?= currency_format($value->price)?></del></span>
+                                        <span class="curr-price"><?= currency_format($value->priceDiscount())?></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                <?php } ?>
+            </div>
             </div>
         </div>
     </div>

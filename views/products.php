@@ -53,11 +53,7 @@
                                 Danh mục sản phẩm
                             </span>
                             <ul class="filter-list">
-<<<<<<< HEAD
                             <ul class="filter-list"  id="list-category">
-=======
-                            <ul class="filter-list" list-id-input="" id="list-category">
->>>>>>> 164a9a5 (filter-price-cat-brand-priceRange---products-1)
                                 <?php
                                     $categories = Category::find_all($con);
                                     foreach ($categories as $key => $value) {
