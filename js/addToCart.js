@@ -1,4 +1,5 @@
 let prev = document.querySelector("#prev");
+console.log(prev);
 let next = document.querySelector("#next");
 let quantity = document.querySelector("#quantity");
 let addCart = document.querySelector("#add-to-cart-prodetail");

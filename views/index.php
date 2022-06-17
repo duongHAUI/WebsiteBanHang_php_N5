@@ -174,7 +174,7 @@
                                     <div class="product-btn">
                                         <a href="product-detail?pro_id=<?=$value->id?>" class="btn-flat btn-hover btn-shop-now">Mua ngay</a>
                                         <button class="btn-flat btn-hover btn-cart-add">
-                                            <i class='bx bxs-cart-add'></i>
+                                            <i class='bx bxs-cart-add' value="<?=$value->id?>"></i>
                                         </button>
                                     </div>
                                     <a href="product-detail?pro_id=<?=$value->id?>" class="product-card-name">
@@ -248,6 +248,6 @@
     <!-- app js -->
     <!-- <script src="./js/app.js"></script> -->
     <script src="./js/lastestProduct.js"></script>
+    <script src="./js/addCartHeader.js"></script>
 </body>
-
 </html>

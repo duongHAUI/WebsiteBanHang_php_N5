@@ -19,16 +19,12 @@
     <link rel="stylesheet" href="./css/grid.css">
     <link rel="stylesheet" href="./css/app.css">
 </head>
-
 <body>
-
     <?php
     include_once("models/index.php");
     include_once("./db/connectdb.php");
     include_once("header.php");
-    
     ?>
-
     <!-- products content -->
     <div class="bg-main">
         <div class="container">
@@ -149,13 +145,13 @@
         <input type="hidden" id="maxPrice" name="maxPrice" value="">   
         <input type="hidden" id="minPrice" name="minPrice" value="">               
     </form>
-
     <?php
         include_once("footer.php");
     ?>
     <!-- app js -->
     <!-- <script src="./js/app.js"></script> -->
     <script src="./js/filterProduct.js"></script>
+    <script src="./js/addCartHeader.js"></script>
 </body>
 
 </html>

@@ -156,7 +156,7 @@
                                 <div class="product-card-info">
                                     <div class="product-btn">
                                         <a href="product-detail?pro_id=<?=$value->id?>" class="btn-flat btn-hover btn-shop-now">Mua ngay</a>
-                                        <button class="btn-flat btn-hover btn-cart-add">
+                                        <button class="btn-flat btn-hover btn-cart-add" onclick = "addToCart(<?=$value->id?>)">
                                             <i class='bx bxs-cart-add'></i>
                                         </button>
                                     </div>
@@ -183,9 +183,6 @@
     }
     ?>
 
-    <!-- app js -->
-    <!-- <script src="./js/app.js"></script> -->
-    <!-- <script src="./js/product-detail.js"></script> -->
     <script src="./js/addToCart.js"></script>
 </body>
 
