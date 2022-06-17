@@ -42,7 +42,7 @@
                                     }
                                 }
                             ?>
-                            <a href="cart"><i class='bx bx-cart'></i><span class="count-cart"><?=$count?></span></a>
+                            <a href="cart"><i class='bx bx-cart'></i><span class="count-cart" id="countCart"><?=$count?></span></a>
                         </li>
                         <!-- when not login -->
                         <!-- <li class="auth-user">

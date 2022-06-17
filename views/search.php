@@ -81,7 +81,7 @@ include_once("header.php");
                                     <div class="product-btn">
                                         <a href="products" class="btn-flat btn-hover btn-shop-now">Mua ngay</a>
                                         <button class="btn-flat btn-hover btn-cart-add">
-                                            <i class='bx bxs-cart-add'></i>
+                                            <i class='bx bxs-cart-add' value="<?=$value->id?>"></i>
                                         </button>
                                     </div>
                                     <a href="product-detail?pro_id=<?= $item->id ?>" class="product-card-name">

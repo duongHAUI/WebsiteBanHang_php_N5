@@ -148,9 +148,6 @@
     }
     ?>
 
-    <!-- app js -->
-    <!-- <script src="./js/app.js"></script> -->
-    <!-- <script src="./js/product-detail.js"></script> -->
     <script src="./js/addToCart.js"></script>
 </body>
 
