@@ -26,13 +26,13 @@
 					<table class="table table-striped table-bordered table-hover">
 						<thead>
 							<tr>
-								<th>No</th>
-								<th>Email</th>
-								<th>Mã hóa đơn</th>
-								<th>Tên sản phẩm</th>
-								<th>Số lượng</th>
-								<th>Ngày đặt</th>
+								<th>Mã đơn hàng</th>
+								<th>Khách hàng</th>
+								<th>Số điện thoại</th>
 								<th>Tổng tiền</th>
+								<th>Người lấy hàng</th>
+								<th>Nơi giao</th>
+								<th>Ngày đặt</th>
 								<th>Trạng thái đơn hàng</th>
 								<th>Xóa</th>
 							</tr>
@@ -44,45 +44,29 @@
 								$run_orders = mysqli_query($con, $get_orders);
 								while ($row_orders=mysqli_fetch_array($run_orders)) {
 									$order_id = $row_orders['order_id'];
-									$c_id = $row_orders['customer_id'];
-									$invoice_no = $row_orders['invoice_no'];
-									$product_id = $row_orders['product_id'];
-									$qty = $row_orders['qty'];
-									$order_status = $row_orders['order_status'];
-									$get_products = "select * from products where product_id = '$product_id'";
-									$run_products = mysqli_query($con, $get_products);
-									$row_products = mysqli_fetch_array($run_products);
-									$product_title = $row_products['product_title'];
+									$c_id = $row_orders['cus_id'];
 									$get_customer = "select * from customers where customer_id = '$c_id'";
 									$run_customer = mysqli_query($con, $get_customer);
-									$row_customer = mysqli_fetch_array($run_customer);
-									$customer_email = $row_customer['customer_email'];
-									$get_c_order = "select * from orders where order_id = '$order_id'";
-									$run_c_order = mysqli_query($con, $get_c_order);
-									$row_c_order = mysqli_fetch_array($run_c_order);
-									$order_date = $row_c_order['order_date'];
-									$order_amount = $row_c_order['amount'];
+									$order_customer = mysqli_fetch_array($run_customer)['customer_name'];
+									$order_amount = $row_orders['order_amount'];
+									$order_address = $row_orders['order_address'];
+									$order_receiver = $row_orders['order_receiver'];
+									$order_phone = $row_orders['order_phone'];
+									$order_status = $row_orders['order_status'];
+									$createAt = $row_orders['createdAt'];
 									$i++;
 								
 							?>
 							<tr>
-								<td><?php echo $i; ?></td>
-								<td><?php echo $customer_email; ?></td>
-								<td><?php echo $invoice_no; ?></td>
-								<td><?php echo $product_title; ?></td>
-								<td><?php echo $qty; ?></td>
-								<td><?php echo $order_date; ?></td>
+								<td><?php echo $order_id; ?></td>
+								<td><?php echo $order_customer; ?></td>
+								<td><?php echo $order_phone; ?></td>
 								<td><?php echo $order_amount; ?></td>
-								<td>
-									<?php 
-										if ($order_status=='Pending') {
-											echo $order_status = 'Pending';
-										}
-										else{
-											echo $order_status = 'Completed';
-										}
-									?>	
-								</td>
+								<td><?php echo $order_receiver; ?></td>
+								<td><?php echo $order_address; ?></td>
+								<td><?php echo $createAt; ?></td>
+								<td><?php echo $order_status; ?></td>
+								
 								<td>
 									<button class="btn btn-danger">
 										<a href="index.php?delete_order=<?php echo $order_id; ?>"><i class="fa fa-trash"></i> Xóa</a>
