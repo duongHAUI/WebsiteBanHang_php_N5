@@ -21,6 +21,7 @@
         include_once("models/index.php");
         include_once("./db/connectdb.php");
         include_once("header.php");
+        include_once "./controllers/formatCurrency.php";
         $slides = Slider::find_all($con);
     ?>
     <!-- hero section -->
@@ -171,7 +172,7 @@
                                 </a>
                                 <div class="product-card-info">
                                     <div class="product-btn">
-                                        <a href="products" class="btn-flat btn-hover btn-shop-now">Mua ngay</a>
+                                        <a href="product-detail?pro_id=<?=$value->id?>" class="btn-flat btn-hover btn-shop-now">Mua ngay</a>
                                         <button class="btn-flat btn-hover btn-cart-add">
                                             <i class='bx bxs-cart-add'></i>
                                         </button>
@@ -180,8 +181,8 @@
                                         <?= $value->title?>
                                     </a>
                                     <div class="product-card-price">
-                                        <span><del>$<?= $value->price?></del></span>
-                                        <span class="curr-price">$<?= $value->priceDiscount()?></span>
+                                        <span><del><?= currency_format($value->price)?></del></span>
+                                        <span class="curr-price"><?= currency_format($value->priceDiscount())?></span>
                                     </div>
                                 </div>
                             </div>

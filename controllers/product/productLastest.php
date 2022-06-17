@@ -34,7 +34,7 @@
                                 </a>
                                 <div class="product-card-info">
                                     <div class="product-btn">
-                                        <a href="products" class="btn-flat btn-hover btn-shop-now">Mua ngay</a>
+                                        <a href="product-detail?pro_id=<?=$value->id?>" class="btn-flat btn-hover btn-shop-now">Mua ngay</a>
                                         <button class="btn-flat btn-hover btn-cart-add">
                                             <i class='bx bxs-cart-add'></i>
                                         </button>
