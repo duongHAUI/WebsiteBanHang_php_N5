@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Đăng nhập</title>
     <!-- google font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
@@ -35,12 +35,12 @@
                 <?= get_flash_message('error') ?: get_flash_message('success'); ?>
                 <form action="./controllers/auth/login.php" id="login-form" data-validate="true" method="post" autocomplete="none">
                     <div class="form-container">
-                        <input type="text" name="customer_email" data-rule-required="true" data-msg-required="Email is required" data-rule-email="true" data-msg-email="Email is invalid" value="<?= old('customer_email') ?>" required autocomplete="none" />
+                        <input type="text" name="customer_email" data-rule-required="true" data-msg-required="Email không được để trống" data-rule-email="true" data-msg-email="Email không hợp lệ" value="<?= old('customer_email') ?>" required autocomplete="none" />
                         <label>Email</label>
                         <div class="bar"></div>
                     </div>
                     <div class="form-container">
-                        <input type="password" name="customer_password" data-rule-required="true" data-msg-required="Password is required" data-rule-password="false" required autocomplete="none" />
+                        <input type="password" name="customer_password" data-rule-required="true" data-msg-required="Mật khẩu không được để trống" data-rule-password="false" required autocomplete="none" />
                         <label>Mật khẩu</label>
                         <div class="bar"></div>
                     </div>

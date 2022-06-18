@@ -15,7 +15,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a href="index.php?dashboard" class="navbar-brand">ATShop</a>
+		<a href="index.php?dashboard" class="navbar-brand">MoonShop</a>
 	</div>
 	<ul class="nav navbar-right top-nav">
 		<li class="dropdown">
@@ -122,11 +122,6 @@
 			<li>
 				<a href="index.php?view_orders">
 					<i class="fa fa-fw fa-edit"></i> Đơn hàng
-				</a>
-			</li>
-			<li>
-				<a href="index.php?view_payments">
-					<i class="fa fa-fw fa-money"></i> Thanh toán
 				</a>
 			</li>
 			<li>

@@ -95,7 +95,7 @@
 			<div class="avatar">
 				<img src="admin_images/avatar.png" alt="Avatar">
 			</div>
-			<h2 class="text-center" style="font-weight: 600;">Chào mừng bạn đến với ATShop</h2>   
+			<h2 class="text-center" style="font-weight: 600;">Chào mừng bạn đến với MoonShop</h2>   
 			<div class="form-group">
 				<input type="text" class="form-control" placeholder="Email" name="admin_email" value="<?php if(isset($_COOKIE["admin_email"])) { echo $_COOKIE["admin_email"]; } ?>" required="required">
 			</div>
@@ -108,7 +108,6 @@
 			<div class="form-group">
 				<button type="submit" class="btn btn-primary btn-lg btn-block" name="admin_login">Đăng nhập</button>
 			</div>
-			<p class="text-center">Bạn chưa có tài khoản? <a href="admin_register.php">Đăng ký ngay tại đây!</a></p>
 		</form>
 	</div>
 </body>

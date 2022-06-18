@@ -9,6 +9,7 @@
 
     $user_id = $_SESSION['c_user']['id'];
     $carts = Cart::find_all($con, array("where" => "cus_id = $user_id", "order" => "createdAt DESC"));
+    $customer = Customer::find_by_pk($con, $user_id);
 
     for ($i = 0; $i < count($carts); $i++) {
         $carts[$i]->populated($con, "product");
@@ -149,7 +150,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATShop</title>
+    <title>MoonShop</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap" rel="stylesheet">
     <!-- boxicons -->
@@ -169,27 +170,27 @@
                     <div class="checkout-content">
                         <div class="field-item">
                             <label for="">Họ tên <span class="star-red">*</span></label>
-                            <input type="text" require placeholder="Fullname" name="fullname" value="<?= old('fullname') ?>">
+                            <input type="text" require placeholder="Họ tên" name="fullname" value="<?= $customer->name?>">
                         </div>
                         <p style="margin-left: 220px"><?php form_error('fullname'); ?></p>
                         <div class="field-item">
                             <label for="">Địa chỉ<span class="star-red">*</span></label>
-                            <input type="text" placeholder="Address" name="addressDetail" value="<?= old('addressDetail') ?>">
+                            <input type="text" placeholder="Địa chỉ" name="addressDetail" value="<?= $customer->address?>">
                         </div>
                         <p style="margin-left: 220px"><?php form_error('addressDetail'); ?></p>
                         <div class="field-item">
                             <label for="">Điện thoại<span class="star-red">*</span></label>
-                            <input type="number" require placeholder="Phone" name="phone" value="<?= old('phone') ?>">
+                            <input type="number" require placeholder="Số điện thoại" name="phone" value="<?= $customer->phone ?>">
                         </div>
                         <p style="margin-left: 220px"><?php form_error('phone'); ?></p>
                         <div class="field-item">
                             <label for="">Email<span class="star-red">*</span></label>
-                            <input type="email" require placeholder="Email" name="email" value="<?= old('email') ?>">
+                            <input type="email" require placeholder="Email" name="email" value="<?= $customer->email ?>">
                         </div>
                         <p style="margin-left: 220px"><?php form_error('email'); ?></p>
                         <div class="field-item">
                             <label for="">Ghi chú</label>
-                            <textarea rows="4" placeholder="Note..." name="notes"><?= old('notes') ?></textarea>
+                            <textarea rows="4" placeholder="Ghi chú..." name="notes"><?= old('notes') ?></textarea>
                         </div>
                         <div class="cash">
                             <div class="group-checkbox">
