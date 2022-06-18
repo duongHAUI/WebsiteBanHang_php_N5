@@ -1,4 +1,5 @@
 function addToCart(id){
+
     var xmlhttp=new XMLHttpRequest();
     xmlhttp.onreadystatechange=function() {
         if (this.readyState==4 && this.status==200) {
@@ -7,4 +8,5 @@ function addToCart(id){
     }
     xmlhttp.open("GET","/WebsiteBanHang_php_N5/controllers/cart/addCart.php?noNavigate=true&quantity=1&pro_id="+id,true);
     xmlhttp.send();
+    
 }

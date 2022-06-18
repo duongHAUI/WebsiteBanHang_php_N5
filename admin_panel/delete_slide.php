@@ -13,7 +13,7 @@
 		$delete_slide = "delete from slider where slide_id = '$delete_slide_id'";
 		$run_delete = mysqli_query($con, $delete_slide);
 		if ($run_delete) {
-			echo "<script>alert('Slide has been deleted successfully')</script>";
+			echo "<script>alert('Xóa thành công! ')</script>";
 			echo "<script>window.open('index.php?view_slides', '_self')</script>";
 		}
 	}

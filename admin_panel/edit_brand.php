@@ -65,7 +65,7 @@
 		$update_brand = "update brands set brand_title = '$brand_title', brand_desc = '$brand_desc' where brand_id = '$brand_id'";
 		$run_update = mysqli_query($con, $update_brand);
 		if ($run_update) {
-			echo "<script>alert('Brand has been updated successfully')</script>";
+			echo "<script>alert('Sửa nhãn hàng thành công!')</script>";
 			echo "<script>window.open('index.php?view_brands', '_self')</script>";
 		}
 	}

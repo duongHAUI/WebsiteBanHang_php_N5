@@ -13,7 +13,7 @@
 		$delete_order = "delete from pending_orders where order_id = '$delete_id'";
 		$run_delete = mysqli_query($con, $delete_order);
 		if ($run_delete) {
-			echo "<script>alert('Customer order information has been deleted successfully')</script>";
+			echo "<script>alert('Xóa thành công')</script>";
 			echo "<script>window.open('index.php?view_orders', '_self')</script>";
 		}
 	}

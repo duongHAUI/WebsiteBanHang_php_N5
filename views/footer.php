@@ -51,7 +51,7 @@
                     </div>
                     <div class="subscribe">
                         <input type="email" placeholder="Email...">
-                        <button>subscribe</button>
+                        <button>Theo dõi</button>
                     </div>
                 </div>
             </div>

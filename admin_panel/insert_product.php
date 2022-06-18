@@ -104,12 +104,6 @@
 								<input type="text" name="product_quantity" class="form-control" required>
 							</div>
 						</div>
-						<div class="form-group">
-							<label class="col-md-3 control-label">Sản phẩm đã bán</label>
-							<div class="col-md-6">
-								<input type="text" name="product_sold" class="form-control" required>
-							</div>
-						</div>
                         <div class="form-group">
                             <label class="col-md-3 control-label">Product Discount</label>
                             <div class="col-md-6">
@@ -146,13 +140,12 @@
 		$discount = $_POST['product_discount'];
 		$product_desc = $_POST['product_desc'];	
 		$product_quantity = $_POST['product_quantity'];	
-		$product_sold = $_POST['product_sold'];	
 		$images = $_FILES['product_images'];
 		$images_name = $images['name'];
 		foreach ($images_name as $key => $value) {
-		 	move_uploaded_file($images['tmp_name'][$key], "products/"."$value");
+		 	move_uploaded_file($images['tmp_name'][$key], "../images/products/"."$value");
 		}
-		$insert_product = "insert into products (cat_id, brand_id, product_title, product_price, product_discount, product_desc,product_quantity,product_sold) values ('$cat', '$brand', '$product_title', '$product_price','$discount', '$product_desc',$product_quantity,$product_sold)";
+		$insert_product = "insert into products (cat_id, brand_id, product_title, product_price, product_discount, product_desc,product_quantity) values ('$cat', '$brand', '$product_title', '$product_price','$discount', '$product_desc',$product_quantity)";
 		$run_product = mysqli_query($con, $insert_product);
 		$id_pro = mysqli_insert_id($con);
 

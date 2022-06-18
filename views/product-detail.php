@@ -184,6 +184,7 @@
     ?>
 
     <script src="./js/addToCart.js"></script>
+    <script src="./js/addCartHeader.js"></script>
 </body>
 
 </html>

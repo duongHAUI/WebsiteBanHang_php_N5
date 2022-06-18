@@ -65,7 +65,7 @@
 		$update_cat = "update categories set cat_title = '$cat_title', cat_desc = '$cat_desc' where cat_id = '$cat_id'";
 		$run_update = mysqli_query($con, $update_cat);
 		if ($run_update) {
-			echo "<script>alert('Category has been updated successfully')</script>";
+			echo "<script>alert('Sửa danh mục thành công!')</script>";
 			echo "<script>window.open('index.php?view_cats', '_self')</script>";
 		}
 	}

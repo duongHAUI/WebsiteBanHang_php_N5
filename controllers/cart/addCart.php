@@ -1,9 +1,7 @@
 <?php
     namespace Models;
-
     include "../../db/connectdb.php";
     include "../../models/index.php";
-    
     session_start();
     if(!isset($_SESSION['c_user'])){
         header("Location: ../../login");
@@ -28,6 +26,5 @@
             $count += 1;
         }
         echo $count;
-        
     }
 ?>

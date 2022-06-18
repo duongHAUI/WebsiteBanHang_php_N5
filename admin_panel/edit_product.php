@@ -129,13 +129,13 @@
 						<div class="form-group">
 							<label class="col-md-3 control-label">Số lượng</label>
 							<div class="col-md-6">
-								<input type="text" name="product_quantity" class="form-control" value="<?php echo $p_discount; ?>">
+								<input type="text" name="product_quantity" class="form-control" value="<?php echo $p_quantity; ?>">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-md-3 control-label">Sản phẩm đã bán</label>
 							<div class="col-md-6">
-								<input type="text" name="product_sold" class="form-control" value="<?php echo $p_discount; ?>">
+								<input type="text" name="product_sold" class="form-control" value="<?php echo $p_sold; ?>">
 							</div>
 						</div>
 						<div class="form-group">
@@ -174,7 +174,7 @@
 		$run_update = mysqli_query($con, $update_product);
 
         if ($run_update) {
-			echo "<script>alert('Product has been updated successfully')</script>";
+			echo "<script>alert('Sửa sản phẩm thành công!')</script>";
 			echo "<script>window.open('index.php?view_products', '_self')</script>";
 		}
 	}

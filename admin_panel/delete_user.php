@@ -13,7 +13,7 @@
 		$delete_user = "delete from admins where admin_id = '$delete_user_id'";
 		$run_delete = mysqli_query($con, $delete_user);
 		if ($run_delete) {
-			echo "<script>alert('Admin user information has been deleted successfully')</script>";
+			echo "<script>alert('Xóa thành công!')</script>";
 			echo "<script>window.open('index.php?view_users', '_self')</script>";
 		}
 	}

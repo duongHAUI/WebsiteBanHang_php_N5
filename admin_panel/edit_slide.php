@@ -85,7 +85,7 @@
 		$update_slide = "update slider set slide_name = '$slide_name',slide_good = '$slide_good', slide_desc = '$slide_desc', slide_image = '$slide_image' where slide_id = '$slide_id'";
 		$run_update_slide = mysqli_query($con, $update_slide);
 		if ($run_update_slide) {
-			echo "<script>alert('Slide has been updated successfully')</script>";
+			echo "<script>alert('Sửa thành công')</script>";
 			echo "<script>window.open('index.php?view_slides', '_self')</script>";
 		}
 	}
