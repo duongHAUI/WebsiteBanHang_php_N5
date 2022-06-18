@@ -74,6 +74,12 @@ class Product extends Model
     return $images;
   }
 
+  function get_price_discount()
+  {
+    $price_discount = $this->price * (100 - $this->discount) / 100;
+    return  $price_discount;
+  }
+
   // static func
   public static function find_by_pk($con, $id)
   {
