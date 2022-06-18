@@ -49,6 +49,7 @@ for ($i = 0; $i < count($carts); $i++) {
       <?php
       if (count($carts) == 0) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         echo '<p class="no-product">Không có sản phẩm nào trong giỏ hàng.</p>';
       }else{
             $total = 0;
@@ -97,6 +98,24 @@ for ($i = 0; $i < count($carts); $i++) {
           $last_item = $index == count($carts) - 1 ? "last-item" : "";
           $product = $cart->product;
 
+=======
+        echo '<p class="no-product">No products in your cart.</p>';
+      } else {
+        $total = 0;
+      ?>
+        <div class="item-header">
+          <p style="width: calc(100px + 35%);">Sản phẩm</p>
+          <p style="flex: 1; text-align: center;">Đơn giá</p>
+          <p style="flex: 1; text-align: center;">Số lượng</p>
+          <p style="flex: 1; text-align: center;">Tổng tiền</p>
+          <p>Thao tác</p>
+        </div>
+        <?php
+        foreach ($carts as $index => $cart) {
+          $last_item = $index == count($carts) - 1 ? "last-item" : "";
+          $product = $cart->product;
+
+>>>>>>> 0858c81c2ef788c2e657454506cf2aebdf5b6967
           $thumb = $product->get_images($con)[0]->link;
           $name = $product->title;
           $quantity = $cart->qty;
@@ -108,18 +127,30 @@ for ($i = 0; $i < count($carts); $i++) {
           <div class="item <?= $last_item ?>">
             <div class="item_img">
               <img src="images/<?= $thumb ?>" alt="">
+<<<<<<< HEAD
 >>>>>>> 0858c81 (update ui cart)
+=======
+>>>>>>> 0858c81c2ef788c2e657454506cf2aebdf5b6967
             </div>
             <p class="item_name"><?= $name ?></p>
             <div class="item-price">
               <span class="price-not-discount"><?= $price ?></span>
               <span class="price-discount"><?= $price_discount ?></span>
+<<<<<<< HEAD
             </div>
             <div class="item_qty">
               <a href="update-cart?cart_id=<?= $cart->id ?>&cart_qty=<?= $quantity - 1 ?>"><i class='bx bx-minus'></i></a>
               <input type="text" oninput="handleInput(event)" onchange="handleChange(event, <?= $cart->id ?>)" value="<?= $quantity ?>" />
               <a href="update-cart?cart_id=<?= $cart->id ?>&cart_qty=<?= $quantity + 1 ?>"><i class='bx bx-plus'></i></a>
             </div>
+=======
+            </div>
+            <div class="item_qty">
+              <a href="update-cart?cart_id=<?= $cart->id ?>&cart_qty=<?= $quantity - 1 ?>"><i class='bx bx-minus'></i></a>
+              <input type="text" oninput="handleInput(event)" onchange="handleChange(event, <?= $cart->id ?>)" value="<?= $quantity ?>" />
+              <a href="update-cart?cart_id=<?= $cart->id ?>&cart_qty=<?= $quantity + 1 ?>"><i class='bx bx-plus'></i></a>
+            </div>
+>>>>>>> 0858c81c2ef788c2e657454506cf2aebdf5b6967
             <div class="item-total">$<?= $item_total ?></div>
             <a href="update-cart?cart_id=<?= $cart->id ?>&cart_qty=0"><i class='bx bx-x bx-rotate-90'></i> Xóa</a>
           </div>

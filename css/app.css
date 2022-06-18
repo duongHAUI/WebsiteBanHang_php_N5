@@ -274,7 +274,6 @@ input[type="number"]::-webkit-outer-spin-button {
   object-fit: cover;
   margin-right: 10px;
 }
-
 .auth-user-2 {
   position: absolute;
   font-size: 14px;
@@ -304,15 +303,22 @@ input[type="number"]::-webkit-outer-spin-button {
 .auth-user-1:hover .auth-user-2 {
   display: block;
 }
-
-.user-menu > .auth-user {
+<<<<<<<
+  HEAD
+  =======>>>>>>>0858c81c2ef788c2e657454506cf2aebdf5b6967
+  .user-menu
+  > .auth-user {
   margin-right: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
-.user-menu > .auth-user > span {
+<<<<<<<
+  HEAD
+  =======>>>>>>>0858c81c2ef788c2e657454506cf2aebdf5b6967
+  .user-menu
+  > .auth-user
+  > span {
   font-size: 14px;
 }
 
