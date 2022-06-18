@@ -78,22 +78,22 @@ for ($i = 0; $i < count($carts); $i++) {
             </div>
             <p class="item_name"><?= $name ?></p>
             <div class="item-price">
-              <span class="price-not-discount"><?= $price ?></span>
-              <span class="price-discount"><?= $price_discount ?></span>
+              <span class="price-not-discount"><?= currency_format($price) ?></span>
+              <span class="price-discount"><?= currency_format($price_discount) ?></span>
             </div>
             <div class="item_qty">
               <a href="update-cart?cart_id=<?= $cart->id ?>&cart_qty=<?= $quantity - 1 ?>"><i class='bx bx-minus'></i></a>
               <input type="text" oninput="handleInput(event)" onchange="handleChange(event, <?= $cart->id ?>)" value="<?= $quantity ?>" />
               <a href="update-cart?cart_id=<?= $cart->id ?>&cart_qty=<?= $quantity + 1 ?>"><i class='bx bx-plus'></i></a>
             </div>
-            <div class="item-total">$<?= $item_total ?></div>
+            <div class="item-total"><?= currency_format($item_total) ?></div>
             <a href="update-cart?cart_id=<?= $cart->id ?>&cart_qty=0"><i class='bx bx-x bx-rotate-90'></i> Xóa</a>
           </div>
         <?php
         }
         ?>
         <div class="checkout">
-          <a href="checkout" class="btn-checkout">$<?= number_format($total, 2) ?> <span></span>Checkout</a>
+          <a href="checkout" class="btn-checkout"><?= currency_format($total) ?> <span></span>Thanh toán</a>
         </div>
     </div>
   </div>
