@@ -9,6 +9,45 @@
     $user_id = $_SESSION['c_user']['id'];
     $customer = Customer::find_by_pk($con, $user_id);
 
+    function stdName ($astr) {
+        // Chuẩn hóa xâu $astr theo định dạng tên người, tên địa danh
+        $retval = $astr;
+        //$retval = mb_convert_case($astr, MB_CASE_TITLE, "UTF-8");
+        // $astr ==> $retval
+        //xoa dau cach o dau
+        $length = strlen($retval);
+        while(substr($retval,0,1)==' ')
+        {
+        $retval = substr($retval,1,$length);
+        $length--;
+        }
+        //viết hoa kí tự đầu
+        $retval = ucfirst($retval);
+        //xóa dấu cách ở cuỗi
+        $length = strlen($retval);
+        while(substr($retval,-1,1)=='')
+        
+        {
+        $retval = substr($retval,0,$length-1);
+        $length--;
+        }
+        //Xóa dấu cách ở giữa
+        
+        $length = strlen($retval);
+        for($i=0;$i< $length; $i ++){
+        $length = strlen($retval);
+        if(substr($retval,$i,1)==' '){
+        $flag = $i;
+        while(substr($retval,$flag,1)==' ')
+        $flag ++;
+        $retval = substr($retval,0,$i)." ".ucfirst(substr($retval,$flag,$length)) ;
+        }//end if
+        
+        }//end for
+        $retval = mb_convert_case($retval,MB_CASE_TITLE,"UTF-8");
+        return $retval;
+        }
+
     function is_phone($str) {
         return (!preg_match("/^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/", $str)) ? false : true;
     }
@@ -43,13 +82,13 @@
         $address = $_POST["address"];
     }
 
-    if($fullname && $phone && $city && $country && $address) {
+    if($fullname && $phone) {
         $data = Customer::update_by_pk($con, $user_id, array(
-            "customer_name" => $fullname,
-            "customer_country" => $country,
-            "customer_city" => $city,
+            "customer_name" => stdName($fullname),
+            "customer_country" => stdName($country),
+            "customer_city" => stdName($city),
             "customer_phone" => $phone,
-            "customer_address" => $address
+            "customer_address" => stdName($address)
         ));
         echo "<script type='text/javascript'>alert('Cập nhật thông tin thành công.')</script>";
         echo "<script type='text/javascript'>window.open('profile', '_self')</script>";
@@ -62,7 +101,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATShop</title>
+    <title>MoonShop</title>
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css"
           integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w=="
@@ -82,7 +121,7 @@
                 <div class="col-9">
                     <div class="card">
                         <div class="card-body">
-                            <h4 style="padding: 20px 0 0 20px; font-weight: 600">Profile</h4>
+                            <h4 style="padding: 20px 0 0 20px; font-weight: 600">Thông tin tài khoản</h4>
                             <form style="padding: 0 20px" method="POST" action=""> 
                                 <div class="row">
                                     <div class="col-6">

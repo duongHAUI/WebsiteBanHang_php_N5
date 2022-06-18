@@ -49,7 +49,7 @@ include "./helpers/common.php";
                     <div class="bar"></div>
                 </div>
                 <div class="form-container">
-                    <input type="password" name="retype_password" data-rule-equalto="#customer_password" data-msg-equalto="Retype the password does not match" required />
+                    <input type="password" name="retype_password" data-rule-equalto="#customer_password" data-msg-equalto="Mật khẩu không trùng khớp" required />
                     <label>Nhập lại mật khẩu</label>
                     <div class="bar"></div>
                 </div>

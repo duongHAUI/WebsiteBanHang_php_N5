@@ -33,8 +33,8 @@
 								<th>Người lấy hàng</th>
 								<th>Nơi giao</th>
 								<th>Ngày đặt</th>
+								<th>Hình thức thanh toán</th>
 								<th>Trạng thái đơn hàng</th>
-								<th>Xóa</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -66,12 +66,7 @@
 								<td><?php echo $order_address; ?></td>
 								<td><?php echo $createAt; ?></td>
 								<td><?php echo $order_status; ?></td>
-								
-								<td>
-									<button class="btn btn-danger">
-										<a href="index.php?delete_order=<?php echo $order_id; ?>"><i class="fa fa-trash"></i> Xóa</a>
-									</button>
-								</td>
+								<td>Chưa hoàn thành</td>
 							</tr>
 							<?php 
 								}
