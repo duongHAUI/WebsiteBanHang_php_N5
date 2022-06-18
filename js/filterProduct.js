@@ -6,8 +6,6 @@ let queryString = new URLSearchParams(data).toString();
 request(queryString);
     
 
-
-
 function request(queryString){
     var xmlhttp=new XMLHttpRequest();
     xmlhttp.onreadystatechange=function() {
@@ -15,6 +13,7 @@ function request(queryString){
             document.getElementById("products").innerHTML=this.responseText;
         }
     }
+    console.log(12321);
     xmlhttp.open("GET","/WebsiteBanHang_php_N5/controllers/product/filterProduct.php?"+queryString,true);
     xmlhttp.send();
 }

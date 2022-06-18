@@ -60,7 +60,7 @@ if (isset($_SESSION['c_user']) && $_SESSION['c_user']) {
                                 <?php
                                 } else {
                                 ?>
-                                    <span><a href="login">Login</a></span>
+                                    <span><a href="login">Đăng nhập</a></span>
                                 <?php
                                 }
 
@@ -84,14 +84,14 @@ if (isset($_SESSION['c_user']) && $_SESSION['c_user']) {
         <div class="bg-second">
             <div class="bottom-header container">
                 <ul class="main-menu">
-                    <li><a href="./">home</a></li>
+                    <li><a href="./">TRANG CHỦ</a></li>
                     <!-- mega menu -->
                     <li>
-                        <a href="products">Shop</a>
+                        <a href="products">CỬA HÀNG</a>
                     </li>
                     <!-- end mega menu -->
-                    <li><a href="#">blog</a></li>
-                    <li><a href="#">contact</a></li>
+                    <li><a href="#">BLOG</a></li>
+                    <li><a href="#">TIN TỨC</a></li>
                 </ul>
             </div>
         </div>

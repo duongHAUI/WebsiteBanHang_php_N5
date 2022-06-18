@@ -246,7 +246,7 @@
         include("footer.php");
     ?>
     <!-- app js -->
-    <script src="./js/app.js"></script>
+    <!-- <script src="./js/app.js"></script> -->
     <script src="./js/lastestProduct.js"></script>
     <script src="./js/addCartHeader.js"></script>
 </body>
