@@ -38,7 +38,7 @@ foreach ($productList as $item) {
                 <a href='product-detail?pro_id=$item->id'>
                     <div class='product-card-img'>
                         <img src='images/{$item->get_images($con)[0]->link}' alt='$item->title'>
-                        <img src='images/{$item->get_images($con)[0]->link}' alt='$item->title'>
+                        <img src='images/{$item->get_images($con)[1]->link}' alt='$item->title'>
                     </div>
                 </a>
                 <div class='product-card-info'>

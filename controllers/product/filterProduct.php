@@ -67,7 +67,7 @@
                                 <a href="product-detail?pro_id=<?=$value->id?>">
                                     <div class="product-card-img">
                                         <img src="images/<?=$value->get_images($con)[0]->link ?>" alt="">
-                                        <img src="images/<?=$value->get_images($con)[0]->link ?>" alt="">
+                                        <img src="images/<?=$value->get_images($con)[1]->link ?>" alt="">
                                     </div>
                                 </a>
                                 <div class="product-card-info">
