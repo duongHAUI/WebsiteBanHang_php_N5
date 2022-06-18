@@ -4,12 +4,7 @@ namespace Models;
 include_once("models/index.php");
 include_once("./db/connectdb.php");
 
-$keywords = $_GET['keywords'] ?? '';
-if (empty($keywords)) {
-    http_response_code(404);
-    require __DIR__ . '/404.php';
-    return;
-}
+$keywords = htmlspecialchars(trim($_GET['keywords'] ?? ''), ENT_COMPAT);
 
 $recordPerPage = 8;
 
@@ -80,8 +75,8 @@ include_once("header.php");
                                 <div class="product-card-info">
                                     <div class="product-btn">
                                         <a href="products" class="btn-flat btn-hover btn-shop-now">Mua ngay</a>
-                                        <button class="btn-flat btn-hover btn-cart-add">
-                                            <i class='bx bxs-cart-add' value="<?=$value->id?>"></i>
+                                        <button class="btn-flat btn-hover btn-cart-add" onclick="addToCart(<?= $item->id ?>)">
+                                            <i class='bx bxs-cart-add' value="<?=$item->id?>"></i>
                                         </button>
                                     </div>
                                     <a href="product-detail?pro_id=<?= $item->id ?>" class="product-card-name">
@@ -118,6 +113,7 @@ include_once("footer.php");
 ?>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="./js/addCartHeader.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         'use strict';
@@ -146,7 +142,7 @@ include_once("footer.php");
             }).always(() => {
                 btnViewMore.prop('disabled', false).find('.fa-spinner').hide();
             })
-        });
+        })
     });
 </script>
 </body>
