@@ -23,12 +23,21 @@
     if(!empty($_GET['maxPrice']) && !empty($_GET['minPrice'])){
         $min = $_GET['minPrice'];
         $max = $_GET['maxPrice'];
-
-        if($arrQuery["where"] != ""){
-            $arrQuery["where"] .= " and (product_price - product_price* product_discount*0.01) BETWEEN $min and $max ";
+        $products = Product::find_all($con,$arrQuery);
+        if($products->is_mass_discount == 1){
+            if($arrQuery["where"] != ""){
+                $arrQuery["where"] .= " and (product_price - product_price* product_mass_discount*0.01) BETWEEN $min and $max ";
+            }else{
+                $arrQuery["where"] = " (product_price - product_price* product_mass_discount*0.01) BETWEEN $min and $max ";
+            }
         }else{
-            $arrQuery["where"] = " (product_price - product_price* product_discount*0.01) BETWEEN $min and $max ";
+            if($arrQuery["where"] != ""){
+                $arrQuery["where"] .= " and (product_price - product_price* product_discount*0.01) BETWEEN $min and $max ";
+            }else{
+                $arrQuery["where"] = " (product_price - product_price* product_discount*0.01) BETWEEN $min and $max ";
+            }
         }
+        
     }
     if(!empty($_GET['sortPrice'])){
         $sort = $_GET['sortPrice'];
@@ -54,7 +63,7 @@
             ?>
                 <div class="col-4 col-md-6 col-sm-12 cards">
                             <div class="product-card">
-                                <div class="product-discount">-<?= $value->is_mass_discount ? $value->mass_discount : $value->discount ?>%</div>
+                                <div class="product-discount">-<?=$value->getDiscount() ?>%</div>
                                 <a href="product-detail?pro_id=<?=$value->id?>">
                                     <div class="product-card-img">
                                         <img src="images/<?=$value->get_images($con)[0]->link ?>" alt="">

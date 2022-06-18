@@ -49,15 +49,16 @@
                     </div>
                     <div class="box">
                         <div class="product-img-list">
-                            <div class="product-img-item">
-                                <img src="images/<?=$product->get_images($con)[0]->link?>" alt="">
+                            <?php
+                                $images = $product->get_images($con);
+                                foreach ($images  as $k => $v) {
+                            ?>
+                            <div class="product-img-item" >
+                                <img src="images/<?=$v->link?>" alt="">
                             </div>
-                            <div class="product-img-item">
-                                <img src="images/<?=$product->get_images($con)[1]->link?>" alt="">
-                            </div>
-                            <div class="product-img-item">
-                                <img src="images/<?=$product->get_images($con)[1]->link?>" alt="">
-                            </div>
+                            <?php
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -109,31 +110,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="box">
-                <div class="box-header">
-                    Chi tiết sản phẩm
-                </div>
-                <div class="product-detail-description">
-                    <button class="btn-flat btn-hover btn-view-description" id="view-all-description">
-                        Xem tất cả
-                    </button>
-                    <div class="product-detail-description-content">
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit laudantium obcaecati odit dolorem, doloremque accusamus esse neque ipsa dignissimos saepe quisquam tempore perferendis deserunt sapiente! Recusandae illum totam earum ratione.
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam incidunt maxime rerum reprehenderit voluptas asperiores ipsam quas consequuntur maiores, at odit obcaecati vero sunt! Reiciendis aperiam perferendis consequuntur odio quas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut quaerat eum veniam doloremque nihil repudiandae odio ratione culpa libero tempora. Expedita, quo molestias. Minus illo quis dignissimos aliquid sapiente error!
-                        </p>
-                        <img src="./images/JBL_Quantum_400_Product Image_Hero 02.png" alt="">
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis accusantium officia, quae fuga in exercitationem aliquam labore ex doloribus repellendus beatae facilis ipsam. Veritatis vero obcaecati iste atque aspernatur ducimus.
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat quam praesentium id sit amet magnam ad, dolorum, cumque iste optio itaque expedita eius similique, ab adipisci dicta. Quod, quibusdam quas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, in corrupti ipsam sint error possimus commodi incidunt suscipit sit voluptatum quibusdam enim eligendi animi deserunt recusandae earum natus voluptas blanditiis?
-                        </p>
-                        <img src="./images/kisspng-beats-electronics-headphones-apple-beats-studio-red-headphones.png" alt="">
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi ullam quam fugit veniam ipsum recusandae incidunt, ex ratione, magnam labore ad tenetur officia! In, totam. Molestias sapiente deserunt animi porro?
-                        </p>
-                    </div>
-                </div>
-            </div> -->
             <div class="box">
                 <div class="box-header">
                     Sản phẩm liên quan
@@ -146,7 +122,7 @@
                     
                         <div class="col-3 col-md-6 col-sm-12 cards">
                             <div class="product-card">
-                                <div class="product-discount">-<?= $value->discount?>%</div>
+                                <div class="product-discount">-<?= $value->getDiscount() ?>%</div>
                                 <a href="product-detail?pro_id=<?=$value->id?>">
                                     <div class="product-card-img">
                                         <img src="images/<?=$value->get_images($con)[0]->link ?>" alt="">
