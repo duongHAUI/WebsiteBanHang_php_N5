@@ -116,7 +116,7 @@
                     </div>
                     <div class="col-9 col-md-12">
                         <div class="box filter-toggle-box">
-                            <button class="btn-flat btn-hover" id="filter-toggle">filter</button>
+                            <button class="btn-flat btn-hover" id="filter-toggle">Lọc</button>
                         </div>
                         <!-- L -->
                         <div class="box">

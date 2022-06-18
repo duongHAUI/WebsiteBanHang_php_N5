@@ -19,19 +19,18 @@ if (!isset($_SESSION['admin_email'])) {
 
                     mysqli_query($con, $sql);
 
-                    echo "<script type='text/javascript'>alert('Update successfully')</script>";
+                    echo "<script type='text/javascript'>alert('Sửa thành công')</script>";
                     echo "<script type='text/javascript'>window.open('index.php?view_products', '_self')</script>";
                 }
                 break;
             case 'remove_mass_discount':
                 mysqli_query($con, "UPDATE products SET product_mass_discount = NULL, is_mass_discount = 0");
-                echo "<script type='text/javascript'>alert('Update successfully')</script>";
+                echo "<script type='text/javascript'>alert('Hủy thành công')</script>";
                 echo "<script type='text/javascript'>window.open('index.php?view_products', '_self')</script>";
                 break;
         }
     }
     ?>
-
     <div class="row">
         <div class="col-lg-12">
             <ol class="breadcrumb">
