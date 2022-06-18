@@ -11,7 +11,7 @@ if (isset($_SESSION['c_user']) && $_SESSION['c_user']) {
    <header>
         <!-- mobile menu -->
         <div class="mobile-menu bg-second">
-            <a href="/" class="mb-logo">ATShop</a>
+            <a href="/" class="mb-logo">MoonShop</a>
             <span class="mb-menu-toggle" id="mb-menu-toggle">
                 <i class='bx bx-menu'></i>
             </span>
@@ -23,7 +23,7 @@ if (isset($_SESSION['c_user']) && $_SESSION['c_user']) {
             <!-- mid header -->
             <div class="bg-main">
                 <div class="mid-header container">
-                    <a href="/WebsiteBanHang_php_N5" class="logo">ATShop</a>
+                    <a href="/WebsiteBanHang_php_N5" class="logo">MoonShop</a>
                     <form action="search">
                         <div class="search">
                             <input type="search" name="keywords" id="search" placeholder="Tìm kiếm..." value="<?= trim($_GET['keywords'] ?? '') ?>" />
@@ -49,20 +49,56 @@ if (isset($_SESSION['c_user']) && $_SESSION['c_user']) {
                         <!-- <li class="auth-user">
                             <a href="login" class="auth-user-1"><i class='bx bx-user-circle'></i></a>
                         </li> -->
-                    <!-- when login -->
-                    <li class="auth-user">
-                        <div class="auth-user-1">
-                            <p>
-                                <?php
-                                if (isset($user)) {
-                                ?>
-                                    <span style='font-size: 14px;'><?= $user['name'] ?></span>
-                                <?php
-                                } else {
-                                ?>
-                                    <span><a href="login">Login</a></span>
-                                <?php
-                                }
+                        <!-- when login -->
+                        <li class="auth-user">
+                            <div class="auth-user-1">
+                                <p>
+                                    <?php
+                                        if(isset($user)){
+                                            ?>
+                                            <span style='font-size: 14px;'><?=$user['name']?></span>
+                                            <?php
+                                        }else{
+                                            ?>
+                                            <span><a href="login">Đăng nhập</a></span>
+                                            <?php
+                                        }
+                                    ?>
+                                </p>
+                                <ul class="auth-user-2">
+                                    <?php
+                                        if(isset($user)){
+                                            echo "<li><a href='orders'>Cài đặt</a></li>";
+                                            echo "<li><a href='./controllers/auth/logout.php'>Đăng xuất</a></li>";
+                                        }
+                                    ?>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- end mid header -->
+            <!-- bottom header -->
+            <div class="bg-second">
+                <div class="bottom-header container">
+                    <ul class="main-menu">
+                        <li><a href="./">trang chủ</a></li>
+                        <!-- mega menu -->
+                        <li >
+                            <a href="products">sản phẩm</a>
+                        </li>
+                        <!-- end mega menu -->
+                        <li><a href="blog">blog</a></li>
+                        <li><a href="#">liên hệ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- end bottom header -->
+        </div>
+        <!-- end main header -->
+    </header>
+    <!-- end header -->
 
                                 ?>
                             </p>
