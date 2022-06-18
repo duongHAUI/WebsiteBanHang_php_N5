@@ -5,7 +5,9 @@
     include_once("../../models/index.php");
     include_once("../../db/connectdb.php");
     include_once "../formatCurrency.php";
-    $arrQuery = array("where"=>"","order"=>"");
+    $limit = 6;
+    $offset = ((int)$_GET['offset'] -1) *$limit;
+    $arrQuery = array("where"=>"","order"=>"","offset"=>$offset ,"limit"=>$limit);
     if(!empty($_GET['categories'])){
         $str = str_replace(" ",",",trim($_GET['categories']));
         $arrQuery["where"] = "cat_id IN ($str) ";
@@ -36,6 +38,7 @@
             $arrQuery["order"] = "";
         }
     }
+    
     if($arrQuery['order'] == ""){
         unset($arrQuery['order']);
     }

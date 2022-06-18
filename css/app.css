@@ -213,6 +213,9 @@ input[type=number]::-webkit-outer-spin-button {
     font-weight: bold;
 
 }
+.pagination > li{
+    cursor: pointer;
+}
 #price-range,#un-price-range{
     width: 100%;
     margin-top: 10px;

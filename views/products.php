@@ -125,11 +125,11 @@
                         </div>  
                         <div class="box">
                             <ul class="pagination">
-                                <li><a href="#"><i class='bx bxs-chevron-left'></i></a></li>
-                                <li><a href="#" class="active">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#"><i class='bx bxs-chevron-right'></i></a></li>
+                                <li><a class="page-pro-left"><i class='bx bxs-chevron-left'></i></a></li>
+                                <li><a class="page-pro active">1</a></li>
+                                <li><a class="page-pro">2</a></li>
+                                <li><a class="page-pro">3</a></li>
+                                <li><a class="page-pro-right"><i class='bx bxs-chevron-right'></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -144,6 +144,7 @@
         <input type="hidden"  id="sortPrice" name="sortPrice" value="">
         <input type="hidden" id="maxPrice" name="maxPrice" value="">   
         <input type="hidden" id="minPrice" name="minPrice" value="">               
+        <input type="hidden" id="offset" name="offset" value="1">             
     </form>
     <?php
         include_once("footer.php");
