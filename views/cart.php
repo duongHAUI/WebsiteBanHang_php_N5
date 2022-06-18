@@ -48,7 +48,7 @@ for ($i = 0; $i < count($carts); $i++) {
 
       <?php
       if (count($carts) == 0) {
-        echo '<p class="no-product">No products in your cart.</p>';
+        echo '<p class="no-product">Không có sản phẩm nào trong giỏ hàng.</p>';
       } else {
         $total = 0;
       ?>
