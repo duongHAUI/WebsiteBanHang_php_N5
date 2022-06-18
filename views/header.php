@@ -25,7 +25,7 @@
                     <a href="/WebsiteBanHang_php_N5" class="logo">ATShop</a>
                     <form action="search">
                         <div class="search">
-                            <input type="text" name="keywords" id="search" placeholder="Tìm kiếm..." value="<?= $_GET['keywords'] ?? '' ?>" />
+                            <input type="search" name="keywords" id="search" placeholder="Tìm kiếm..." value="<?= trim($_GET['keywords'] ?? '') ?>" />
                             <button type="submit"><i class='bx bx-search-alt'></i></button>
                         </div>
                     </form>
