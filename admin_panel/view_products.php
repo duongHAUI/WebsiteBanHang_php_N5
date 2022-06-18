@@ -3,26 +3,33 @@ include_once "../controllers/formatCurrency.php";
 if (!isset($_SESSION['admin_email'])) {
     echo "<script>window.open('login.php', '_self')</script>";
 } else {
-    if (isset($_POST['mass_update_discount'])) {
-        $discount = $_POST['apply_discount_on_products'];
-        $sql = "UPDATE products SET product_mass_discount = '$discount', is_mass_discount = 1";
-        if (!empty($_POST['selected-products'])) {
-            $selectedProducts = implode(',', $_POST['selected-products']);
+    if (isset($_GET['action'])) {
+        switch ($_GET['action']) {
+            case 'active_mass_discount':
+                if (isset($_POST['mass_update_discount'])) {
+                    $discount = $_POST['apply_discount_on_products'];
+                    $sql = "UPDATE products SET product_mass_discount = '$discount', is_mass_discount = 1";
+                    if (!empty($_POST['selected-products'])) {
+                        $selectedProducts = implode(',', $_POST['selected-products']);
 
-            mysqli_query($con, "UPDATE products SET product_mass_discount = NULL, is_mass_discount = 0 WHERE product_id NOT IN ($selectedProducts)");
+                        mysqli_query($con, "UPDATE products SET product_mass_discount = NULL, is_mass_discount = 0 WHERE product_id NOT IN ($selectedProducts)");
 
-            $sql .= " WHERE product_id IN ($selectedProducts)";
+                        $sql .= " WHERE product_id IN ($selectedProducts)";
+                    }
+
+                    mysqli_query($con, $sql);
+
+                    echo "<script type='text/javascript'>alert('Update successfully')</script>";
+                    echo "<script type='text/javascript'>window.open('index.php?view_products', '_self')</script>";
+                }
+                break;
+            case 'remove_mass_discount':
+                mysqli_query($con, "UPDATE products SET product_mass_discount = NULL, is_mass_discount = 0");
+                echo "<script type='text/javascript'>alert('Update successfully')</script>";
+                echo "<script type='text/javascript'>window.open('index.php?view_products', '_self')</script>";
+                break;
         }
-
-        mysqli_query($con, $sql);
-        echo "<script type='text/javascript'>alert('Update successfully')</script>";
-        echo "<script type='text/javascript'>window.open('index.php?view_products', '_self')</script>";
     }
-
-     if (isset($_GET['handle_remove_discount'])) {
-         mysqli_query($con, "UPDATE products SET product_mass_discount = NULL, is_mass_discount = 0");
-     }
-
     ?>
 
     <div class="row">
@@ -44,7 +51,7 @@ if (!isset($_SESSION['admin_email'])) {
                         </div>
                         <div class="col-md-6 text-right">
                             <button type="button" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">
-                                <a href="index.php?view_products&handle_remove_discount">Hủy bỏ giảm giá cho nhiều sản phẩm</a>
+                                <a href="index.php?view_products&action=remove_mass_discount">Hủy bỏ giảm giá cho nhiều sản phẩm</a>
                             </button>
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#apply_discount_on_products_modal">
                                 <a href="#">
@@ -124,7 +131,7 @@ if (!isset($_SESSION['admin_email'])) {
     <div class="modal fade" tabindex="-1" role="dialog" id="apply_discount_on_products_modal">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <form method="post" action="" id="apply_discount_on_products_form" data-validate="true">
+                <form method="post" action="index.php?view_products&&action=active_mass_discount" id="apply_discount_on_products_form" data-validate="true">
                     <div class="modal-header">
                         <div class="row">
                             <div class="col-xs-6">
