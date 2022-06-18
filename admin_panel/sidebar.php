@@ -136,9 +136,6 @@
 					<li>
 						<a href="index.php?view_users">Danh sách người dùng</a>
 					</li>
-					<li>
-						<a href="index.php?user_profile=<?php echo $admin_id; ?>">Sửa thông tin</a>
-					</li>
 				</ul>
 			</li>
 			<li>

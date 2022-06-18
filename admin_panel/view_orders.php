@@ -4,7 +4,7 @@
 		echo "<script>window.open('login.php', '_self')</script>";
 	}
 	else{
-	
+		include_once "../controllers/formatCurrency.php";
 ?>
 
 <div class="row">
@@ -48,7 +48,7 @@
 									$get_customer = "select * from customers where customer_id = '$c_id'";
 									$run_customer = mysqli_query($con, $get_customer);
 									$order_customer = mysqli_fetch_array($run_customer)['customer_name'];
-									$order_amount = $row_orders['order_amount'];
+									$order_amount = (int)$row_orders['order_amount'];
 									$order_address = $row_orders['order_address'];
 									$order_receiver = $row_orders['order_receiver'];
 									$order_phone = $row_orders['order_phone'];
@@ -61,7 +61,7 @@
 								<td><?php echo $order_id; ?></td>
 								<td><?php echo $order_customer; ?></td>
 								<td><?php echo $order_phone; ?></td>
-								<td><?php echo $order_amount; ?></td>
+								<td><?php echo currency_format($order_amount); ?></td>
 								<td><?php echo $order_receiver; ?></td>
 								<td><?php echo $order_address; ?></td>
 								<td><?php echo $createAt; ?></td>

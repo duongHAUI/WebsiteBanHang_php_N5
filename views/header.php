@@ -9,14 +9,6 @@ if (isset($_SESSION['c_user']) && $_SESSION['c_user']) {
 }
 ?>
    <header>
-        <!-- mobile menu -->
-        <div class="mobile-menu bg-second">
-            <a href="/" class="mb-logo">MoonShop</a>
-            <span class="mb-menu-toggle" id="mb-menu-toggle">
-                <i class='bx bx-menu'></i>
-            </span>
-        </div>
-        <!-- end mobile menu -->
         <!-- main header -->
         <div class="header-wrapper" id="header-wrapper">
             <!-- end top header -->
@@ -99,38 +91,8 @@ if (isset($_SESSION['c_user']) && $_SESSION['c_user']) {
         <!-- end main header -->
     </header>
     <!-- end header -->
-
-                                ?>
-                            </p>
-                            <ul class="auth-user-2">
-                                <?php
-                                if (isset($user)) {
-                                    echo "<li><a href='orders'>Settings</a></li>";
-                                    echo "<li><a href='./controllers/auth/logout.php'>Logout</a></li>";
-                                }
-                                ?>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
         <!-- end mid header -->
         <!-- bottom header -->
-        <div class="bg-second">
-            <div class="bottom-header container">
-                <ul class="main-menu">
-                    <li><a href="./">TRANG CHỦ</a></li>
-                    <!-- mega menu -->
-                    <li>
-                        <a href="products">CỬA HÀNG</a>
-                    </li>
-                    <!-- end mega menu -->
-                    <li><a href="#">BLOG</a></li>
-                    <li><a href="#">TIN TỨC</a></li>
-                </ul>
-            </div>
-        </div>
         <!-- end bottom header -->
     </div>
     <!-- end main header -->

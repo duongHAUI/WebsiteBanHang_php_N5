@@ -3,6 +3,7 @@
 	if (!isset($_SESSION['admin_email'])):
 		echo "<script>window.open('login.php', '_self')</script>";
 	else:
+        include_once "../controllers/formatCurrency.php";
 ?>
 
 <div class="row">
@@ -163,7 +164,6 @@
                     <th>Mã hóa đơn</th>
                     <th>Mã sản phẩm</th>
                     <th>Số lượng sản phẩm</th>
-                    <th>Trạng thái</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -192,14 +192,9 @@
                             echo $customer_email;
                             ?>
                         </td>
-                        <td style="text-align: left;"><?php echo "$".$order_amount; ?></td>
+                        <td style="text-align: left;"><?php echo currency_format($order_amount); ?></td>
                         <td><?php echo $order_receiver; ?></td>
                         <td><?php echo $order_address; ?></td>
-                        <td>
-                            <?php
-                            echo $order_status;
-                            ?>
-                        </td>
                     </tr>
                     <?php
                 }
