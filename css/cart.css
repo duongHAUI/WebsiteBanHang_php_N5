@@ -33,6 +33,12 @@ h1 {
   margin-bottom: 40px;
 }
 
+.item-header {
+  display: flex;
+  color: rgba(77, 77, 77, 0.699);
+  margin-bottom: 20px;
+}
+
 .item {
   display: flex;
   align-items: center;
@@ -55,7 +61,7 @@ h1 {
 }
 
 .item_name {
-  flex-basis: 45%;
+  flex-basis: 35%;
 }
 
 .item_qty {
@@ -87,13 +93,29 @@ h1 {
   transition: ease-out 0.2s all;
 }
 
+.item > a {
+  display: flex;
+  align-items: center;
+}
+
+.item > a:hover i {
+  color: rgba(0, 0, 0, 0.85);
+}
+
 .item i:hover {
   color: rgba(0, 0, 0, 0.85);
 }
 
-.item_price {
+.item_price,
+.item-total {
   flex: 1;
   text-align: center;
+}
+
+.price-not-discount {
+  color: rgba(73, 73, 73, 0.616);
+  text-decoration: line-through;
+  margin-right: 20px;
 }
 
 .checkout {
