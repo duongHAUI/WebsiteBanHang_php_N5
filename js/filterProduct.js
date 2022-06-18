@@ -1,10 +1,5 @@
 
 
-
-
-
-
-
 let form = document.querySelector('#form-request');
 var data = new FormData(form);
 let queryString = new URLSearchParams(data).toString();
@@ -23,6 +18,10 @@ function request(queryString){
     xmlhttp.open("GET","/WebsiteBanHang_php_N5/controllers/product/filterProduct.php?"+queryString,true);
     xmlhttp.send();
 }
+
+
+
+
 //------------------Sort giá --------------
 document.getElementById("sort-product").onchange = ()=>{
     document.getElementById("sortPrice").value = document.getElementById("sort-product").value;
@@ -83,4 +82,53 @@ function check(list,value){
     }
     return listArr.join(" ");
 }
-
+//----------------Phân trang--------------------
+let pages = document.querySelectorAll(".page-pro");
+function requestPage() {
+    document.getElementById("offset").value = document.querySelector(".page-pro.active").textContent;
+    var data = new FormData(form);
+    let queryString = new URLSearchParams(data).toString();
+    request(queryString);
+}
+pages.forEach(item=>{
+    item.onclick = ()=>{
+        document.querySelector(".page-pro.active").classList.remove("active");
+        item.classList.add("active");
+        requestPage();
+    }
+})
+document.querySelector(".page-pro-left").onclick = ()=>{
+    if(+document.querySelector(".page-pro.active").textContent % 3 == 1 && +document.querySelector(".page-pro.active").textContent !=1 ){
+        nextPages(-1);
+        document.querySelector(".page-pro.active").classList.remove("active");
+        pages[2].classList.add("active");
+        requestPage();
+    }
+    else if(+document.querySelector(".page-pro.active").textContent !=1){
+        var index = +document.querySelector(".page-pro.active").textContent % 3;
+        document.querySelector(".page-pro.active").classList.remove("active");
+        ( index== 0 ? pages[1].classList.add("active"): pages[0].classList.add("active"))
+        requestPage();
+    }
+}
+document.querySelector(".page-pro-right").onclick = ()=>{
+    if(+document.querySelector(".page-pro.active").textContent % 3 == 0 ){
+        nextPages(1);
+        document.querySelector(".page-pro.active").classList.remove("active");
+        pages[0].classList.add("active");
+        requestPage();
+        
+    }else{
+        var index = +document.querySelector(".page-pro.active").textContent % 3;
+        document.querySelector(".page-pro.active").classList.remove("active");
+        ( index== 1 ? pages[1].classList.add("active"): pages[2].classList.add("active"))
+        requestPage();
+    }
+}
+function nextPages(index){
+    pages.forEach(item=>{
+        var i = 3*index;
+        item.textContent = +item.textContent + i;
+        i = index > 0 ? i--:i++ ;
+    })
+}

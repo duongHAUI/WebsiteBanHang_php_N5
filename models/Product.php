@@ -95,6 +95,13 @@ class Product extends Model
         return $product;
     }
 
+    function get_price_discount()
+    {
+        $price_discount = $this->price * (100 - $this->discount) / 100;
+        return  $price_discount;
+    }
+
+    // static func
     public static function create($con, $form)
     {
         [

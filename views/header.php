@@ -1,11 +1,12 @@
 <?php
-    namespace Models;
+
+namespace Models;
 ?>
 <?php
-    include_once("models/index.php");
-    if(isset($_SESSION['c_user'] ) && $_SESSION['c_user']){
-        $user = $_SESSION['c_user'];
-    }
+include_once("models/index.php");
+if (isset($_SESSION['c_user']) && $_SESSION['c_user']) {
+    $user = $_SESSION['c_user'];
+}
 ?>
    <header>
         <!-- mobile menu -->
@@ -48,54 +49,54 @@
                         <!-- <li class="auth-user">
                             <a href="login" class="auth-user-1"><i class='bx bx-user-circle'></i></a>
                         </li> -->
-                        <!-- when login -->
-                        <li class="auth-user">
-                            <div class="auth-user-1">
-                                <p>
-                                    <?php
-                                        if(isset($user)){
-                                            ?>
-                                            <span style='font-size: 14px;'><?=$user['name']?></span>
-                                            <?php
-                                        }else{
-                                            ?>
-                                            <span><a href="login">Đăng nhập</a></span>
-                                            <?php
-                                        }
-                                    ?>
-                                </p>
-                                <ul class="auth-user-2">
-                                    <?php
-                                        if(isset($user)){
-                                            echo "<li><a href='orders'>Cài đặt</a></li>";
-                                            echo "<li><a href='./controllers/auth/logout.php'>Đăng xuất</a></li>";
-                                        }
-                                    ?>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- end mid header -->
-            <!-- bottom header -->
-            <div class="bg-second">
-                <div class="bottom-header container">
-                    <ul class="main-menu">
-                        <li><a href="./">trang chủ</a></li>
-                        <!-- mega menu -->
-                        <li >
-                            <a href="products">sản phẩm</a>
-                        </li>
-                        <!-- end mega menu -->
-                        <li><a href="#">blog</a></li>
-                        <li><a href="#">liên hệ</a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- end bottom header -->
-        </div>
-        <!-- end main header -->
-    </header>
-    <!-- end header -->
+                    <!-- when login -->
+                    <li class="auth-user">
+                        <div class="auth-user-1">
+                            <p>
+                                <?php
+                                if (isset($user)) {
+                                ?>
+                                    <span style='font-size: 14px;'><?= $user['name'] ?></span>
+                                <?php
+                                } else {
+                                ?>
+                                    <span><a href="login">Login</a></span>
+                                <?php
+                                }
 
+                                ?>
+                            </p>
+                            <ul class="auth-user-2">
+                                <?php
+                                if (isset($user)) {
+                                    echo "<li><a href='orders'>Settings</a></li>";
+                                    echo "<li><a href='./controllers/auth/logout.php'>Logout</a></li>";
+                                }
+                                ?>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- end mid header -->
+        <!-- bottom header -->
+        <div class="bg-second">
+            <div class="bottom-header container">
+                <ul class="main-menu">
+                    <li><a href="./">home</a></li>
+                    <!-- mega menu -->
+                    <li>
+                        <a href="products">Shop</a>
+                    </li>
+                    <!-- end mega menu -->
+                    <li><a href="#">blog</a></li>
+                    <li><a href="#">contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- end bottom header -->
+    </div>
+    <!-- end main header -->
+</header>
+<!-- end header -->
