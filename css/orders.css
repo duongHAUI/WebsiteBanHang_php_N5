@@ -11,6 +11,10 @@ h6 {
     margin-top: 0;
 }
 
+a:hover {
+    color: unset;
+}
+
 .no-orders {
     text-align: center;
     font-size: 20px;
@@ -148,7 +152,6 @@ h6 {
 
 .order-detail-content {
     background-color: rgb(255, 255, 255);
-    box-shadow: rgb(3 0 71 / 9%) 0 1px 3px;
     border-radius: 8px;
     padding: 0;
     margin-bottom: 30px;
@@ -223,6 +226,7 @@ h6 {
     box-shadow: rgb(3 0 71 / 9%) 0 1px 3px;
     border-radius: 8px;
     padding: 20px 30px;
+    height: 100%;
 }
 
 .order-detail-address p {
@@ -313,4 +317,118 @@ h6 {
     to {
         transform: rotate(-20deg) scale(1.1);
     }
+}
+
+.order-detail-status {
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    padding: 4rem 1.5rem;
+    margin-bottom: 30px;
+}
+
+.order-detail-status-item {
+    box-shadow: none;
+    cursor: unset;
+    position: relative;
+}
+
+.order-detail-status-item-icon {
+    position: relative;
+    text-align: center;
+    font-weight: 600;
+    font-size: 32px;
+    border-radius: 64px;
+    min-width: 64px;
+    overflow: hidden;
+    background-color: rgb(227, 233, 239);
+    color: rgb(233, 69, 96);
+    width: 64px;
+    height: 64px;
+}
+
+.order-detail-status-item .order-detail-status-item-text {
+    position: absolute;
+    top: 100%;
+    margin-top: 15px;
+    white-space: nowrap;
+    font-size: 14px;
+}
+
+.order-detail-status-item:first-child .order-detail-status-item-text {
+    left: 0;
+    right: auto;
+}
+
+.order-detail-status-item:last-child .order-detail-status-item-text {
+    left: auto;
+    right: 0;
+}
+
+.order-detail-status-item.current .order-detail-status-item-icon {
+    background-color: rgb(233, 69, 96);
+    color: rgb(255, 255, 255);
+}
+
+.order-detail-status-item.current .order-detail-status-item-icon path {
+    fill: white
+}
+
+.order-detail-status-item-icon > *,
+.order-detail-status-item-check > * {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 0;
+}
+
+.order-detail-status-item-check {
+    box-shadow: none;
+    cursor: unset;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: center;
+    font-weight: 600;
+    font-size: 11px;
+    border-radius: 22px;
+    min-width: 22px;
+    overflow: hidden;
+    background-color: rgb(243, 245, 249);
+    color: rgb(51, 208, 103);
+    width: 22px;
+    height: 22px;
+}
+
+.order-detail-status-divider {
+    box-shadow: none;
+    cursor: unset;
+    flex: 1 1 0;
+    height: 4px;
+    min-width: 50px;
+    background-color: rgb(227, 233, 239);
+}
+
+.order-detail-status-divider.current {
+    background-color: rgb(233, 69, 96);
+}
+
+.btn-custom {
+    width: unset;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    padding: 11px 2rem;
+    font-weight: 600;
+    color: rgb(233, 69, 96);
+    background: rgb(255, 225, 230);
+    transition: all 150ms ease-in-out 0s;
+    line-height: 1;
+    height: 40px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.btn-custom:focus {
+    box-shadow: rgb(0 0 0 / 6%) 0 3px 3px -2px, rgb(0 0 0 / 4%) 0 3px 4px 0, rgb(0 0 0 / 4%) 0 1px 8px 0;
 }

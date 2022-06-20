@@ -5,6 +5,7 @@ include_once "models/index.php";
 include_once "./db/connectdb.php";
 include_once "helpers/common.php";
 include_once "./controllers/formatCurrency.php";
+include_once "helpers/constants.php";
 
 $id = $_GET['id'] ?? 0;
 $order = Order::find_by_pk($con, $id);
@@ -50,12 +51,24 @@ foreach ($order->detail as $item) {
                 <?php include_once "sidebar.php" ?>
             </div>
             <div class="col-9">
-                <h3>
-                    <i class="bx bxs-cart-alt text-danger"></i>
-                    Chi tiết đơn hàng
-                </h3>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <h3>
+                            <i class="bx bxs-cart-alt text-danger"></i>
+                            Chi tiết đơn hàng
+                        </h3>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <button class="btn-custom">Đặt hàng lại</button>
+                    </div>
+                </div>
 
-                <div class="order-detail-content mt-3">
+                <?php include "order-detail-tabbar.php"; ?>
+
+                <div class="text-end">
+                    <button class="btn-custom">Hủy đơn hàng</button>
+                </div>
+                <div class="order-detail-content card mt-3">
                     <div class="order-detail-header">
                         <div>
                             <div class="order-detail-header-title">Mã đơn hàng:</div>
@@ -91,11 +104,11 @@ foreach ($order->detail as $item) {
                     <div class="col">
                         <div class="card order-detail-address">
                             <div class="card-body">
-                                <h5>Địa chỉ thanh toán</h5>
-                                <p><h6>Người nhận:</h6> <?=  $order->receiver ?></p>
-                                <p><h6>Số điện thoại:</h6> <?=  $order->phone ?></p>
-                                <p><h6>Địa chỉ:</h6> <?=  $order->address ?></p>
-                                <p><h6>Ghi chú:</h6> <?= $order->note ?></p>
+                                <h5>Địa chỉ giao hàng</h5>
+                                <p><strong>Người nhận:</strong> <?= $order->receiver ?></p>
+                                <p><strong>Số điện thoại:</strong> <?= $order->phone ?></p>
+                                <p><strong>Địa chỉ:</strong> <?= $order->address ?></p>
+                                <p><strong>Ghi chú:</strong> <?= $order->note ?></p>
                             </div>
                         </div>
                     </div>
@@ -122,7 +135,7 @@ foreach ($order->detail as $item) {
                                     <h6>Thành tiền:</h6>
                                     <h6><?= currency_format($order->amount) ?></h6>
                                 </div>
-                                <div style="font-size: 14px;" class="mt-3"><?= $order->status ?></div>
+                                <div style="font-size: 14px;" class="mt-3"><?= $order->payment_methods ?></div>
                             </div>
                         </div>
                     </div>

@@ -5,7 +5,12 @@
 	}
 	else{
 		include_once "../controllers/formatCurrency.php";
+        include "../helpers/config.php";
 ?>
+
+<div class="page-loading">
+    <i class="fa fa-spin fa-spinner fa-5x"></i>
+</div>
 
 <div class="row">
 	<div class="col-lg-12">
@@ -34,13 +39,12 @@
 								<th>Nơi giao</th>
 								<th>Ngày đặt</th>
 								<th>Hình thức thanh toán</th>
-								<th>Trạng thái đơn hàng</th>
+								<th width="255">Trạng thái đơn hàng</th>
 							</tr>
 						</thead>
 						<tbody>
 							<?php
-								$i=0;  
-								$get_orders = "select * from orders";
+								$get_orders = "SELECT * FROM orders ORDER BY order_id DESC";
 								$run_orders = mysqli_query($con, $get_orders);
 								while ($row_orders=mysqli_fetch_array($run_orders)) {
 									$order_id = $row_orders['order_id'];
@@ -52,12 +56,12 @@
 									$order_address = $row_orders['order_address'];
 									$order_receiver = $row_orders['order_receiver'];
 									$order_phone = $row_orders['order_phone'];
+									$order_payment_methods = $row_orders['order_payment_methods'];
 									$order_status = $row_orders['order_status'];
 									$createAt = $row_orders['createdAt'];
-									$i++;
-								
+
 							?>
-							<tr>
+							<tr data-id="<?php echo $order_id; ?>">
 								<td><?php echo $order_id; ?></td>
 								<td><?php echo $order_customer; ?></td>
 								<td><?php echo $order_phone; ?></td>
@@ -65,8 +69,20 @@
 								<td><?php echo $order_receiver; ?></td>
 								<td><?php echo $order_address; ?></td>
 								<td><?php echo $createAt; ?></td>
-								<td><?php echo $order_status; ?></td>
-								<td>Chưa hoàn thành</td>
+								<td><?php echo $order_payment_methods; ?></td>
+								<td class="status-column" height="52">
+                                    <span class="badge badge-<?= $orderStatus[$order_status]['variant'] ?>">
+                                        <?= $orderStatus[$order_status]['label'] ?>
+                                    </span>
+                                    <select name="order-status" class="form-control" style="display: none;">
+                                        <option value="" selected disabled>--- Chọn trạng thái ---</option>
+                                        <?php foreach ($orderStatus as $key => $status): ?>
+                                            <option value="<?= $key ?>" <?= $order_status == $key ? 'selected' : '' ?>>
+                                                <?= $status['label'] ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </td>
 							</tr>
 							<?php 
 								}
@@ -82,3 +98,45 @@
 <?php  
 	}
 ?>
+
+<script type="text/javascript" src="js/notify.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        'use strict';
+
+        $('.status-column').dblclick(function () {
+            $(this).parents('tr').siblings().find('span').show();
+            $(this).parents('tr').siblings().find('select').hide();
+
+            $(this).find('span').hide();
+            $(this).find('select').show();
+        });
+
+        $("select[name='order-status']").change(function () {
+            const _this = $(this);
+
+            const status = _this.val();
+            const order_id = _this.parents('tr').data('id');
+
+            $.ajax({
+                url: 'update-order-status.php',
+                method: 'post',
+                data: {status, order_id},
+                beforeSend: function () {
+                    $('.page-loading').show();
+                },
+                dataType: 'json'
+            }).done(result => {
+                if (result.status === 200) {
+                    _this.siblings('span').replaceWith(`<span class="badge badge-${result.data.variant}">${result.data.label}</span>`).show();
+                    _this.hide();
+                    $.notify(result.message, 'success');
+                }
+            }).fail(error => {
+                console.log(error)
+            }).always(() => {
+                $('.page-loading').hide();
+            })
+        })
+    });
+</script>

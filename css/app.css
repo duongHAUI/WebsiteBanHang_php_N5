@@ -26,7 +26,6 @@ body {
   overflow-x: hidden;
   position: relative;
   background-color: var(--main-bg-color);
-  overflow-x: hidden;
 }
 
 button {
@@ -162,6 +161,7 @@ ul.devided > li:last-child {
 }
 
 .search input {
+  font-family: sans-serif;
   height: 100%;
   width: 100%;
   font-size: 16px;
@@ -172,17 +172,22 @@ ul.devided > li:last-child {
   background-color: var(--second-bg-color);
 }
 
-.search i {
+.search button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   right: 20px;
   cursor: pointer;
   font-size: 25px;
+  line-height: 25px;
+  border: 0;
+  background: none;
 }
 
 .user-menu {
   display: flex;
+  margin-bottom: 0;
+  padding-left: 0;
 }
 
 .user-cart {
@@ -265,6 +270,7 @@ input[type="number"]::-webkit-outer-spin-button {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 0;
 }
 
 .auth-user-1 img {
@@ -287,6 +293,7 @@ input[type="number"]::-webkit-outer-spin-button {
   z-index: 100;
   display: none;
   cursor: pointer;
+  padding-left: 0;
 }
 
 .auth-user-2 li a {
@@ -335,6 +342,8 @@ input[type="number"]::-webkit-outer-spin-button {
 .main-menu {
   display: flex;
   height: var(--bottom-header-size);
+  margin-bottom: 0;
+  padding-left: 0;
 }
 
 .main-menu > li > a {

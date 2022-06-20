@@ -31,7 +31,7 @@
 
     $error = array();
     $fullname = $addressDetail = $phone = $email = $notes = "";
-    $status = "Thanh toán khi nhận hàng";
+    $payment_methods = "Thanh toán khi nhận hàng";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         set_old_value($_POST);
@@ -113,7 +113,7 @@
         $order = Order::create($con, array(
             "order_receiver" => "$fullname",
             "order_address" => "$addressDetail",
-            "order_status" => "$status",
+            "order_payment_methods" => "$payment_methods",
             "order_amount" => "$totalAmount",
             "order_phone" => "$phone",
             "order_note" => "$notes",
