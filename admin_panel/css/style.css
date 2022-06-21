@@ -90,3 +90,18 @@ input.error {
 .btn-close-form:focus {
     text-decoration: none;
 }
+
+.chart-filter {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.chart-filter .form-group {
+    margin-bottom: 0;
+}
+
+.chart-filter i {
+    display: inline-block;
+}
