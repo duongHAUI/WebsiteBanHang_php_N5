@@ -131,10 +131,10 @@
 				</a>
 				<ul id="users" class="collapse">
 					<li>
-						<a href="index.php?insert_user">Thêm người dùng</a>
+						<a href="index.php?insert_user">Thêm người quản trị</a>
 					</li>
 					<li>
-						<a href="index.php?view_users">Danh sách người dùng</a>
+						<a href="index.php?view_users">Danh sách người quản trị</a>
 					</li>
 				</ul>
 			</li>

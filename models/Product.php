@@ -14,6 +14,7 @@ class Product extends Model
     public $brand_id;
     public $category;
     public $brand;
+    public $quantity;
     const TABLE_NAME = "products";
 
     // entity function

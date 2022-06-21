@@ -1,5 +1,5 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
@@ -75,7 +75,7 @@ INSERT INTO `brands` (`brand_id`, `brand_title`, `brand_desc`, `createdAt`, `upd
 (22, 'Hifiman', 'NO', '2022-05-30 15:15:23', '2022-05-30 15:15:23'),
 (23, 'LG', 'NO', '2022-05-30 15:15:50', '2022-05-30 15:15:50'),
 (24, 'Shure', 'NO', '2022-05-30 15:16:17', '2022-05-30 15:16:17'),
-(25, 'Sony', 'NO', '2022-06-05 10:10:26', '2022-06-05 10:10:36');
+(25, 'Sony', 'NO', '2022-06-05 10:10:26', '2022-06-18 16:55:05');
 
 -- --------------------------------------------------------
 
@@ -91,6 +91,18 @@ CREATE TABLE `cart` (
   `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
   `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `cart`
+--
+
+INSERT INTO `cart` (`cart_id`, `cus_id`, `pro_id`, `cart_qty`, `createdAt`, `updatedAt`) VALUES
+(115, 16, 24, 2, '2022-06-18 17:07:31', '2022-06-18 18:18:05'),
+(116, 16, 25, 3, '2022-06-18 17:07:35', '2022-06-18 18:17:55'),
+(117, 16, 30, 4, '2022-06-18 17:10:13', '2022-06-18 18:18:30'),
+(118, 16, 26, 1, '2022-06-18 18:17:28', '2022-06-18 18:17:28'),
+(119, 16, 39, 1, '2022-06-18 18:18:00', '2022-06-18 18:18:00'),
+(120, 16, 35, 1, '2022-06-18 18:18:45', '2022-06-18 18:18:45');
 
 -- --------------------------------------------------------
 
@@ -143,8 +155,9 @@ CREATE TABLE `customers` (
 
 INSERT INTO `customers` (`customer_id`, `customer_name`, `customer_email`, `customer_password`, `customer_country`, `customer_city`, `customer_phone`, `customer_address`, `customer_image`, `createdAt`, `updatedAt`) VALUES
 (1, 'Huong', 'huong123@gmail.com', '1234', 'VietNam', 'HaNoi', '0731', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(13, 'Thu Huong', 'huong1234@gmail.com', 'ee4f60d01bda307268367e6f4b427995', '', '', '', '', '', '2022-06-04 13:26:04', '2022-06-04 13:26:04'),
-(14, 'Nguyen Mai Phuong', 'phuongsapphire2209hn@gmail.com', 'fea370856fe9651c7c0e628146d43410', 'Vietnam', 'Ha Noi', '0123456789', 'Ha Noi', '', '2022-06-15 12:25:19', '2022-06-15 14:54:33');
+(14, 'Nguyen Mai Phuong', 'phuongsapphire2209hn@gmail.com', 'fea370856fe9651c7c0e628146d43410', 'Vietnam', 'Ha Noi', '0123456789', 'Ha Noi', '', '2022-06-15 12:25:19', '2022-06-15 14:54:33'),
+(15, 'Min', 'minmin@gmail.com', 'b5d5bcaf6a476613f3ec7c80bbd5aa92', 'Việt Nam', 'Thanh Hóa', '0328558612', 'Hải Lộc', '', '2022-06-17 05:38:59', '2022-06-18 13:52:35'),
+(16, 'Nguyễn Văn Dương', 'duongvipro2k1@gmail.com', '2b97561866618930d8ea0a2f18c9eb67', 'Việt Nam', 'Thanh Hóa', '0328558614', 'Hải Lộc', '', '2022-06-18 13:52:57', '2022-06-18 15:51:33');
 
 -- --------------------------------------------------------
 
@@ -198,7 +211,19 @@ INSERT INTO `images` (`image_id`, `pro_id`, `image_link`) VALUES
 (85, 34, 'products/nc_hf3.jpg'),
 (86, 35, 'products/nc_sp1.jpg'),
 (87, 35, 'products/nc_sp2.jpg'),
-(88, 35, 'products/nc_sp3.jpg');
+(88, 35, 'products/nc_sp3.jpg'),
+(98, 39, 'products/775_studio_2_0_black.jpg'),
+(99, 39, 'products/775_studio_2_0_red.jpg'),
+(100, 39, 'products/775_studio_2_0_white.jpg'),
+(101, 40, 'products/4493_tai_nghe_denon_ah_c160w_xuan_vu_3.jpg'),
+(102, 40, 'products/4493_tai_nghe_denon_ah_c160w_xuan_vu_4.jpg'),
+(103, 40, 'products/4493_tai_nghe_denon_ah_c160w_xuan_vu_7.jpg'),
+(104, 41, 'products/anh1.jpg'),
+(105, 41, 'products/anh2.jpg'),
+(106, 41, 'products/anh3.jpg'),
+(107, 42, 'products/anh4.jpg'),
+(108, 42, 'products/anh5.jpg'),
+(109, 42, 'products/anh6.jpg');
 
 -- --------------------------------------------------------
 
@@ -224,51 +249,59 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`order_id`, `cus_id`, `order_amount`, `order_payment_methods`, `order_address`, `order_receiver`, `order_phone`, `order_note`, `order_status`, `createdAt`, `updatedAt`) VALUES
-(1, 14, 19467500, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2012-01-01 12:25:30', '2022-06-20 03:02:12'),
-(2, 14, 0, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2013-02-02 12:25:30', '2022-06-20 03:02:12'),
-(3, 14, 2029500, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2014-06-03 14:49:24', '2022-06-20 03:02:12'),
-(4, 14, 3893500, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2015-06-04 14:49:37', '2022-06-20 03:02:12'),
-(5, 14, 4666500, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2016-06-05 14:49:49', '2022-06-20 03:02:12'),
-(6, 14, 32767500, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2017-06-06 14:50:00', '2022-06-20 03:02:12'),
-(7, 14, 1681500, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2018-06-06 14:50:14', '2022-06-20 03:02:12'),
-(8, 14, 5183900, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2019-06-07 14:50:33', '2022-06-20 03:02:12'),
-(9, 14, 2970000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2020-06-08 14:50:45', '2022-06-20 03:02:12'),
-(10, 14, 10190400, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2021-06-09 14:50:59', '2022-06-20 03:02:12'),
-(11, 14, 26268000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2022-01-10 14:51:09', '2022-06-20 03:02:12'),
-(12, 14, 2610000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2022-02-11 14:51:21', '2022-06-20 03:02:12'),
-(13, 14, 2622000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2022-03-12 14:51:44', '2022-06-20 03:02:12'),
-(14, 14, 1966500, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2022-04-13 14:52:05', '2022-06-20 03:02:12'),
-(15, 14, 4221000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2022-05-14 14:52:15', '2022-06-20 03:02:12'),
-(16, 14, 3893500, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2022-06-01 14:52:29', '2022-06-20 03:02:12'),
-(17, 14, 2970000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2022-06-02 14:53:00', '2022-06-20 03:02:12'),
-(18, 14, 26268000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2022-06-03 14:53:27', '2022-06-20 03:02:12'),
-(19, 14, 21845000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2022-06-04 14:53:38', '2022-06-20 03:02:12'),
-(20, 14, 24864800, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2022-06-05 14:57:16', '2022-06-20 03:02:12'),
-(21, 14, 30294000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2022-06-06 14:57:51', '2022-06-20 03:02:12'),
-(22, 14, 17120000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2022-06-07 15:07:41', '2022-06-20 03:02:12'),
-(23, 14, 8442000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2022-06-08 15:07:53', '2022-06-20 03:02:12'),
-(24, 14, 21845000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2022-06-09 15:08:02', '2022-06-20 03:02:12'),
-(25, 14, 7920000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2022-06-10 15:08:33', '2022-06-20 03:02:12'),
-(26, 14, 10190400, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2022-06-11 15:08:43', '2022-06-20 03:02:12'),
-(27, 14, 7847000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2022-06-12 15:09:33', '2022-06-20 03:02:12'),
-(28, 14, 14009600, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2022-06-13 15:09:45', '2022-06-20 03:02:12'),
-(29, 14, 61142400, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2022-06-14 15:09:56', '2022-06-20 03:02:12'),
-(30, 14, 16815000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', 0, '2022-06-15 15:44:24', '2022-06-20 03:02:12'),
-(31, 14, 196605000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', 0, '2022-06-16 15:44:38', '2022-06-20 03:02:12'),
-(32, 14, 15732000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', 0, '2022-06-17 15:44:53', '2022-06-20 03:02:12'),
-(52, 14, 7920000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2022-06-18 15:08:33', '2022-06-20 03:02:12'),
-(53, 14, 10190400, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2022-06-19 15:08:43', '2022-06-20 03:02:12'),
-(54, 14, 7847000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2022-06-20 15:09:33', '2022-06-20 03:02:12'),
-(55, 14, 14009600, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2022-06-21 15:09:45', '2022-06-20 03:02:12'),
-(56, 14, 61142400, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2022-06-22 15:09:56', '2022-06-20 03:02:12'),
-(57, 14, 16815000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', 0, '2022-06-23 15:44:24', '2022-06-20 03:02:12'),
-(58, 14, 196605000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', 0, '2022-06-24 15:44:38', '2022-06-20 03:02:12'),
-(59, 14, 15732000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', 0, '2022-06-25 15:44:53', '2022-06-20 03:02:12'),
-(60, 14, 1966500, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2022-06-27 14:52:05', '2022-06-20 03:02:12'),
-(61, 14, 4221000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2022-06-28 14:52:15', '2022-06-20 03:02:12'),
-(62, 14, 3893500, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2022-06-29 14:52:29', '2022-06-20 03:02:12'),
-(63, 14, 2970000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '2022-06-30 14:53:00', '2022-06-20 03:02:12');
+INSERT INTO `orders` (`order_id`, `cus_id`, `order_amount`, `order_payment_methods`, `order_address`, `order_receiver`, `order_phone`, `order_note`, `createdAt`, `updatedAt`) VALUES
+(1, 14, 15428400, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2012-01-01 12:25:30', '2022-06-18 15:59:24'),
+(2, 14, 5934000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2013-02-02 12:25:30', '2022-06-18 15:59:24'),
+(3, 14, 2251700, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2014-06-03 14:49:24', '2022-06-18 15:59:24'),
+(4, 14, 3857100, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2015-06-04 14:49:37', '2022-06-18 15:59:24'),
+(5, 14, 4613800, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2016-06-05 14:49:49', '2022-06-18 15:59:24'),
+(6, 14, 25010706, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2017-06-06 14:50:00', '2022-06-18 15:59:24'),
+(7, 14, 1385072, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2018-06-06 14:50:14', '2022-06-18 15:59:24'),
+(8, 14, 4858660, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2019-06-07 14:50:33', '2022-06-18 15:59:24'),
+(9, 14, 2945610, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2020-06-08 14:50:45', '2022-06-18 15:59:24'),
+(10, 14, 4459682, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2021-06-09 14:50:59', '2022-06-18 15:59:24'),
+(11, 14, 26050490, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-01-10 14:51:09', '2022-06-18 15:59:24'),
+(12, 14, 3016818, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-02-11 14:51:21', '2022-06-18 15:59:24'),
+(13, 14, 2600150, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-03-12 14:51:44', '2022-06-18 15:59:24'),
+(14, 14, 1950124, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-04-13 14:52:05', '2022-06-18 15:59:24'),
+(15, 14, 2847285, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-05-14 14:52:15', '2022-06-18 15:59:24'),
+(16, 14, 3857100, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-01 14:52:29', '2022-06-18 15:59:24'),
+(17, 14, 2945610, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-02 14:53:00', '2022-06-18 15:59:24'),
+(18, 14, 26050499, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-03 14:53:27', '2022-06-18 15:59:24'),
+(19, 14, 16673804, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-04 14:53:38', '2022-06-18 15:59:24'),
+(20, 14, 10766125, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-05 14:57:16', '2022-06-18 15:59:24'),
+(21, 14, 16455810, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-06 14:57:51', '2022-06-18 15:59:24'),
+(22, 14, 8470900, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-07 15:07:41', '2022-06-18 15:59:24'),
+(23, 14, 2847285, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-08 15:07:53', '2022-06-18 15:59:24'),
+(24, 14, 8336902, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-09 15:08:02', '2022-06-18 15:59:24'),
+(25, 14, 3927480, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-10 15:08:33', '2022-06-18 15:59:24'),
+(26, 14, 2229841, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-11 15:08:43', '2022-06-18 15:59:24'),
+(27, 14, 3231834, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-12 15:09:33', '2022-06-18 15:59:24'),
+(28, 14, 6947178, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-13 15:09:45', '2022-06-18 15:59:24'),
+(29, 14, 8919363, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-14 15:09:56', '2022-06-18 15:59:24'),
+(30, 14, 4616905, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', '2022-06-15 15:44:24', '2022-06-18 15:59:24'),
+(31, 14, 50021412, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', '2022-06-16 15:44:38', '2022-06-18 15:59:24'),
+(32, 14, 5200300, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', '2022-06-17 15:44:53', '2022-06-18 15:59:24'),
+(33, 14, 2945610, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-18 14:53:00', '2022-06-18 15:59:24'),
+(34, 14, 26050499, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-19 14:53:27', '2022-06-18 15:59:24'),
+(35, 14, 16673804, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-20 14:53:38', '2022-06-18 15:59:24'),
+(36, 14, 10766125, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-21 14:57:16', '2022-06-18 15:59:24'),
+(37, 14, 16455810, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-22 14:57:51', '2022-06-18 15:59:24'),
+(38, 14, 8470900, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-23 15:07:41', '2022-06-18 15:59:24'),
+(39, 14, 2847285, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-24 15:07:53', '2022-06-18 15:59:24'),
+(40, 14, 3927480, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-25 15:08:33', '2022-06-18 15:59:24'),
+(41, 14, 2229841, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-26 15:08:43', '2022-06-18 15:59:24'),
+(42, 14, 3231834, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-27 15:09:33', '2022-06-18 15:59:24'),
+(43, 14, 6947178, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-28 15:09:45', '2022-06-18 15:59:24'),
+(44, 14, 8919363, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-29 15:09:56', '2022-06-18 15:59:24'),
+(45, 14, 4616905, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', '2022-06-30 15:44:24', '2022-06-18 15:59:24'),
+(46, 14, 50021412, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', '2022-05-12 15:44:38', '2022-06-18 16:11:26'),
+(47, 14, 5200300, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', '2022-06-01 15:44:53', '2022-06-18 16:12:03'),
+(48, 14, 8924000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2021-08-24 15:09:56', '2022-06-18 16:12:26'),
+(49, 14, 4623000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', '2021-10-27 15:44:24', '2022-06-18 16:12:38'),
+(50, 14, 50025000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', '2021-11-11 15:44:38', '2022-06-18 16:12:55'),
+(51, 14, 5198000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', '2022-06-15 15:44:53', '2022-06-18 16:11:45'),
+(54, 16, 9816500, 'Thanh toán khi nhận hàng', 'Hải Lộc', 'Nguyễn Văn Dương', '0328558614', 'laafn 2', '2022-06-18 16:24:10', '2022-06-18 16:24:10');
 
 -- --------------------------------------------------------
 
@@ -292,73 +325,63 @@ CREATE TABLE `order_details` (
 --
 
 INSERT INTO `order_details` (`detail_id`, `pro_id`, `order_id`, `quantity`, `price`, `size`, `createdAt`, `updatedAt`) VALUES
-(1, 25, 1, 4, 3893500, '', '2022-06-15 12:25:30', '2022-06-20 02:57:24'),
-(2, 25, 1, 1, 3893500, '', '2022-06-15 12:25:30', '2022-06-20 02:57:24'),
-(3, 24, 3, 1, 2029500, '', '2022-06-15 14:49:24', '2022-06-20 02:57:24'),
-(4, 25, 4, 1, 3893500, '', '2022-06-15 14:49:37', '2022-06-20 02:57:24'),
-(5, 26, 5, 1, 4666500, '', '2022-06-15 14:49:49', '2022-06-20 02:57:24'),
-(6, 27, 6, 3, 10922500, '', '2022-06-15 14:50:00', '2022-06-20 02:57:24'),
-(7, 29, 7, 3, 560500, '', '2022-06-15 14:50:14', '2022-06-20 02:57:24'),
-(8, 29, 8, 3, 560500, '', '2022-06-15 14:50:33', '2022-06-20 02:57:24'),
-(9, 31, 8, 2, 1751200, '', '2022-06-15 14:50:33', '2022-06-20 02:57:24'),
-(10, 32, 9, 3, 990000, '', '2022-06-15 14:50:45', '2022-06-20 02:57:24'),
-(11, 30, 10, 2, 5095200, '', '2022-06-15 14:50:59', '2022-06-20 02:57:24'),
-(12, 34, 11, 1, 26268000, '', '2022-06-15 14:51:09', '2022-06-20 02:57:24'),
-(13, 35, 12, 2, 1305000, '', '2022-06-15 14:51:21', '2022-06-20 02:57:24'),
-(14, 33, 13, 4, 655500, '', '2022-06-15 14:51:44', '2022-06-20 02:57:24'),
-(15, 33, 14, 3, 655500, '', '2022-06-15 14:52:05', '2022-06-20 02:57:24'),
-(16, 28, 15, 1, 4221000, '', '2022-06-15 14:52:15', '2022-06-20 02:57:24'),
-(17, 25, 16, 1, 3893500, '', '2022-06-15 14:52:29', '2022-06-20 02:57:24'),
-(18, 32, 17, 3, 990000, '', '2022-06-15 14:53:00', '2022-06-20 02:57:24'),
-(19, 34, 18, 1, 26268000, '', '2022-06-15 14:53:27', '2022-06-20 02:57:24'),
-(20, 27, 19, 2, 10922500, '', '2022-06-15 14:53:38', '2022-06-20 02:57:24'),
-(21, 30, 20, 4, 5095200, '', '2022-06-15 14:57:16', '2022-06-20 02:57:24'),
-(22, 29, 20, 4, 560500, '', '2022-06-15 14:57:16', '2022-06-20 02:57:24'),
-(23, 24, 21, 6, 2029500, '', '2022-06-15 14:57:51', '2022-06-20 02:57:24'),
-(24, 32, 21, 3, 990000, '', '2022-06-15 14:57:51', '2022-06-20 02:57:24'),
-(25, 26, 22, 1, 4666500, '', '2022-06-15 15:07:41', '2022-06-20 02:57:24'),
-(26, 25, 22, 1, 3893500, '', '2022-06-15 15:07:41', '2022-06-20 02:57:24'),
-(27, 28, 23, 1, 4221000, '', '2022-06-15 15:07:53', '2022-06-20 02:57:24'),
-(28, 27, 24, 1, 10922500, '', '2022-06-15 15:08:02', '2022-06-20 02:57:24'),
-(29, 32, 25, 4, 990000, '', '2022-06-15 15:08:33', '2022-06-20 02:57:24'),
-(30, 30, 26, 1, 5095200, '', '2022-06-15 15:08:43', '2022-06-20 02:57:24'),
-(31, 29, 27, 7, 560500, '', '2022-06-15 15:09:33', '2022-06-20 02:57:24'),
-(32, 31, 28, 4, 1751200, '', '2022-06-15 15:09:45', '2022-06-20 02:57:24'),
-(33, 30, 29, 4, 5095200, '', '2022-06-15 15:09:56', '2022-06-20 02:57:24'),
-(34, 29, 30, 10, 560500, '', '2022-06-15 15:44:24', '2022-06-20 02:57:24'),
-(35, 27, 31, 6, 10922500, '', '2022-06-15 15:44:38', '2022-06-20 02:57:24'),
-(36, 33, 32, 8, 655500, '', '2022-06-15 15:44:53', '2022-06-20 02:57:24'),
-(37, 29, 20, 4, 560500, '', '2022-06-15 14:57:16', '2022-06-20 02:57:24'),
-(38, 24, 21, 6, 2029500, '', '2022-06-15 14:57:51', '2022-06-20 02:57:24'),
-(39, 32, 21, 3, 990000, '', '2022-06-15 14:57:51', '2022-06-20 02:57:24'),
-(40, 26, 22, 1, 4666500, '', '2022-06-15 15:07:41', '2022-06-20 02:57:24'),
-(41, 25, 22, 1, 3893500, '', '2022-06-15 15:07:41', '2022-06-20 02:57:24'),
-(42, 28, 23, 1, 4221000, '', '2022-06-15 15:07:53', '2022-06-20 02:57:24'),
-(43, 27, 24, 1, 10922500, '', '2022-06-15 15:08:02', '2022-06-20 02:57:24'),
-(44, 32, 25, 4, 990000, '', '2022-06-15 15:08:33', '2022-06-20 02:57:24'),
-(45, 30, 26, 1, 5095200, '', '2022-06-15 15:08:43', '2022-06-20 02:57:24'),
-(46, 29, 27, 7, 560500, '', '2022-06-15 15:09:33', '2022-06-20 02:57:24'),
-(47, 31, 28, 4, 1751200, '', '2022-06-15 15:09:45', '2022-06-20 02:57:24'),
-(48, 30, 29, 4, 5095200, '', '2022-06-15 15:09:56', '2022-06-20 02:57:24'),
-(49, 29, 30, 10, 560500, '', '2022-06-15 15:44:24', '2022-06-20 02:57:24'),
-(50, 27, 31, 6, 10922500, '', '2022-06-15 15:44:38', '2022-06-20 02:57:24'),
-(51, 33, 32, 8, 655500, '', '2022-06-15 15:44:53', '2022-06-20 02:57:24'),
-(52, 30, 29, 4, 5095200, '', '2022-06-15 15:09:56', '2022-06-20 02:57:24'),
-(53, 29, 30, 10, 560500, '', '2022-06-15 15:44:24', '2022-06-20 02:57:24'),
-(54, 27, 31, 6, 10922500, '', '2022-06-15 15:44:38', '2022-06-20 02:57:24'),
-(55, 33, 32, 8, 655500, '', '2022-06-15 15:44:53', '2022-06-20 02:57:24'),
-(56, 30, 52, 4, 5095200, '', '2022-06-15 15:09:56', '2022-06-20 02:57:24'),
-(57, 29, 53, 10, 560500, '', '2022-06-15 15:44:24', '2022-06-20 02:57:24'),
-(58, 27, 54, 6, 10922500, '', '2022-06-15 15:44:38', '2022-06-20 02:57:24'),
-(59, 33, 55, 8, 655500, '', '2022-06-15 15:44:53', '2022-06-20 02:57:24'),
-(60, 30, 56, 4, 5095200, '', '2022-06-15 15:09:56', '2022-06-20 02:57:24'),
-(61, 29, 57, 10, 560500, '', '2022-06-15 15:44:24', '2022-06-20 02:57:24'),
-(62, 27, 58, 6, 10922500, '', '2022-06-15 15:44:38', '2022-06-20 02:57:24'),
-(63, 33, 59, 8, 655500, '', '2022-06-15 15:44:53', '2022-06-20 02:57:24'),
-(64, 33, 60, 3, 655500, '', '2022-06-15 14:52:05', '2022-06-20 02:57:24'),
-(65, 28, 61, 1, 4221000, '', '2022-06-15 14:52:15', '2022-06-20 02:57:24'),
-(66, 25, 62, 1, 3893500, '', '2022-06-15 14:52:29', '2022-06-20 02:57:24'),
-(67, 32, 63, 3, 990000, '', '2022-06-15 14:53:00', '2022-06-20 02:57:24');
+(1, 25, 1, 4, 5934000, '', '2022-06-15 12:25:30', '2022-06-18 16:04:02'),
+(2, 25, 1, 1, 5934000, '', '2022-06-15 12:25:30', '2022-06-18 16:04:02'),
+(3, 24, 3, 1, 2530000, '', '2022-06-15 14:49:24', '2022-06-18 16:04:02'),
+(4, 25, 4, 1, 5934000, '', '2022-06-15 14:49:37', '2022-06-18 16:04:02'),
+(5, 26, 5, 1, 5428000, '', '2022-06-15 14:49:49', '2022-06-18 16:04:02'),
+(6, 27, 6, 3, 9808120, '', '2022-06-15 14:50:00', '2022-06-18 16:04:02'),
+(7, 29, 7, 3, 485990, '', '2022-06-15 14:50:14', '2022-06-18 16:04:02'),
+(8, 29, 8, 3, 485990, '', '2022-06-15 14:50:33', '2022-06-18 16:04:02'),
+(9, 31, 8, 2, 1973630, '', '2022-06-15 14:50:33', '2022-06-18 16:04:02'),
+(10, 32, 9, 3, 981870, '', '2022-06-15 14:50:45', '2022-06-18 16:04:02'),
+(11, 30, 10, 2, 2533910, '', '2022-06-15 14:50:59', '2022-06-18 16:04:02'),
+(12, 34, 11, 1, 29602840, '', '2022-06-15 14:51:09', '2022-06-18 16:04:02'),
+(13, 35, 12, 2, 1676010, '', '2022-06-15 14:51:21', '2022-06-18 16:04:02'),
+(14, 33, 13, 4, 684250, '', '2022-06-15 14:51:44', '2022-06-18 16:04:02'),
+(15, 33, 14, 3, 684250, '', '2022-06-15 14:52:05', '2022-06-18 16:04:02'),
+(16, 28, 15, 1, 3163650.0000000005, '', '2022-06-15 14:52:15', '2022-06-18 16:04:02'),
+(17, 25, 16, 1, 5934000, '', '2022-06-15 14:52:29', '2022-06-18 16:04:02'),
+(18, 32, 17, 3, 981870, '', '2022-06-15 14:53:00', '2022-06-18 16:04:02'),
+(19, 34, 18, 1, 29602840, '', '2022-06-15 14:53:27', '2022-06-18 16:04:02'),
+(20, 27, 19, 2, 9808120, '', '2022-06-15 14:53:38', '2022-06-18 16:04:02'),
+(21, 30, 20, 4, 2533910, '', '2022-06-15 14:57:16', '2022-06-18 16:04:02'),
+(22, 29, 20, 4, 485990, '', '2022-06-15 14:57:16', '2022-06-18 16:04:02'),
+(23, 24, 21, 6, 2530000, '', '2022-06-15 14:57:51', '2022-06-18 16:04:02'),
+(24, 32, 21, 3, 981870, '', '2022-06-15 14:57:51', '2022-06-18 16:04:02'),
+(25, 26, 22, 1, 5428000, '', '2022-06-15 15:07:41', '2022-06-18 16:04:02'),
+(26, 25, 22, 1, 5934000, '', '2022-06-15 15:07:41', '2022-06-18 16:04:02'),
+(27, 28, 23, 1, 3163650.0000000005, '', '2022-06-15 15:07:53', '2022-06-18 16:04:02'),
+(28, 27, 24, 1, 9808120, '', '2022-06-15 15:08:02', '2022-06-18 16:04:02'),
+(29, 32, 25, 4, 981870, '', '2022-06-15 15:08:33', '2022-06-18 16:04:02'),
+(30, 30, 26, 1, 2533910, '', '2022-06-15 15:08:43', '2022-06-18 16:04:02'),
+(31, 29, 27, 7, 485990, '', '2022-06-15 15:09:33', '2022-06-18 16:04:02'),
+(32, 31, 28, 4, 1973630, '', '2022-06-15 15:09:45', '2022-06-18 16:04:02'),
+(33, 30, 29, 4, 2533910, '', '2022-06-15 15:09:56', '2022-06-18 16:04:02'),
+(34, 29, 30, 10, 485990, '', '2022-06-15 15:44:24', '2022-06-18 16:04:02'),
+(35, 27, 31, 6, 9808120, '', '2022-06-15 15:44:38', '2022-06-18 16:04:02'),
+(36, 33, 32, 8, 684250, '', '2022-06-15 15:44:53', '2022-06-18 16:04:02'),
+(37, 29, 20, 4, 483000, '', '2022-06-15 14:57:16', '2022-06-18 16:04:02'),
+(38, 24, 21, 6, 2530000, '', '2022-06-15 14:57:51', '2022-06-18 16:04:02'),
+(39, 32, 21, 3, 989000, '', '2022-06-15 14:57:51', '2022-06-18 16:04:02'),
+(40, 26, 22, 1, 5428000, '', '2022-06-15 15:07:41', '2022-06-18 16:04:02'),
+(41, 25, 22, 1, 5934000, '', '2022-06-15 15:07:41', '2022-06-18 16:04:02'),
+(42, 28, 23, 1, 3174000, '', '2022-06-15 15:07:53', '2022-06-18 16:04:02'),
+(43, 27, 24, 1, 9798000, '', '2022-06-15 15:08:02', '2022-06-18 16:04:02'),
+(44, 32, 25, 4, 989000, '', '2022-06-15 15:08:33', '2022-06-18 16:04:02'),
+(45, 30, 26, 1, 2530000, '', '2022-06-15 15:08:43', '2022-06-18 16:04:02'),
+(46, 29, 27, 7, 483000, '', '2022-06-15 15:09:33', '2022-06-18 16:04:02'),
+(47, 31, 28, 4, 1978000, '', '2022-06-15 15:09:45', '2022-06-18 16:04:02'),
+(48, 30, 29, 4, 2530000, '', '2022-06-15 15:09:56', '2022-06-18 16:04:02'),
+(49, 29, 30, 10, 483000, '', '2022-06-15 15:44:24', '2022-06-18 16:04:02'),
+(50, 27, 31, 6, 9798000, '', '2022-06-15 15:44:38', '2022-06-18 16:04:02'),
+(51, 33, 32, 8, 690000, '', '2022-06-15 15:44:53', '2022-06-18 16:04:02'),
+(52, 30, 29, 4, 2530000, '', '2022-06-15 15:09:56', '2022-06-18 16:04:02'),
+(53, 29, 30, 10, 483000, '', '2022-06-15 15:44:24', '2022-06-18 16:04:02'),
+(54, 27, 31, 6, 9798000, '', '2022-06-15 15:44:38', '2022-06-18 16:04:02'),
+(55, 33, 32, 8, 690000, '', '2022-06-15 15:44:53', '2022-06-18 16:04:02'),
+(61, 24, 54, 1, 2255000, '', '2022-06-18 16:24:10', '2022-06-18 16:24:10'),
+(62, 25, 54, 2, 5990000, '', '2022-06-18 16:24:10', '2022-06-18 16:24:10');
 
 -- --------------------------------------------------------
 
@@ -387,18 +410,22 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `cat_id`, `brand_id`, `product_title`, `product_price`, `product_sold`, `product_quantity`, `product_discount`, `product_mass_discount`, `is_mass_discount`, `product_desc`, `createdAt`, `updatedAt`) VALUES
-(24, 27, 24, 'Tai nghe Shure SRH440', 2255000, 10, 9999, 10, NULL, 0, 'Tai nghe Shure SRH 440 rất phổ biến trong studio, tai nghe với âm thanh cân bằng, tai nghe cỡ to SRH440 có thể gập lại dễ dàng để mang theo.\r\nĐây là một trong những headphone tai nghe studio giá hợp lý mà chất lượng nếu bạn tìm tai nghe kín âm thanh tầm trung chất lượng\r\nTai nghe SRH440 Professional Studio từ Shure cung cấp âm thanh đặc biệt và thoải mái.', '2022-05-30 16:21:54', '2022-06-14 16:30:35'),
-(25, 27, 18, 'Tai nghe Audio Technica ATH-M70X', 5990000, 7, 9999, 35, NULL, 0, 'M-Series của AudioTechnica là dòng tai nghe phòng thu chuyên nghiệp, được chú trọng chế tạo với kiểu dáng, thiết kế và chất lượng âm thanh trung thực nhất. M70x hiện là tai nghe đầu bảng thuộc dòng M-series với tất cả những đặc điểm tuyệt vời nêu trên. \r\n\r\nM70x có chất âm chính xác, tất cả các chi tiết được gia công kỹ càng, các khớp nối và headband bằng kim loại cho độ bền cao nhất. \r\n\r\nDriver 45mm với cuộn cảm nhôm, có trọng lượng nhẹ, linh hoạt với các rung động nhanh, nhằm tái tạo âm thanh thật tốt mà không gây ra hiện tượng trễ tiếng. ', '2022-06-04 18:10:28', '2022-06-14 16:32:08'),
-(26, 22, 25, 'Tai nghe Bluetooth Sony WH-1000XM4', 5490000, 3, 9999, 15, NULL, 0, 'Tai nghe Sony WH-1000XM4 chính hãng\r\nMới đây, Sony vừa công bố thế hệ thứ 4 của dòng tai nghe chụp đầu chống ồn cao cấp: WH1000XM4. Sony WH-1000XM4 có thiết kế tương tự như người đàn anh của mình, và cũng được trang bị bộ xử lý chống ồn QN1, thứ giúp cho Sony WH-1000XM3 trở thành một trong những tai nghe không dây tốt nhất trong phân khúc chống ồn chủ động.', '2022-06-05 10:12:10', '2022-06-14 16:32:55'),
-(27, 22, 17, 'Tai nghe Apple AirPods Max chính hãng ZA/A', 12850000, 6, 9999, 15, NULL, 0, '<p><strong>Tai nghe Apple Airpod Max</strong></p>\r\n<p>Vào ngày 08/12, Apple đã chính thức công bố chiếc tai nghe trùm đầu (Over-ear) đầu tiên của mình, tên gọi chính thức của chiếc tai nghe này là AirPods Max.</p>', '2022-06-05 10:23:01', '2022-06-14 16:34:27'),
-(28, 22, 23, 'Tai nghe True Wireless LG Tone Free Tone-FP9', 4690000, 0, 9999, 10, NULL, 0, '<p><strong>Tai nghe True Wireless LG Tone Free Tone-FP9s</strong> đi kèm với tính năng chống ồn chủ động, kết nối không dây qua Bluetooth hiện đại, chống nước và mồ hôi đạt tiêu chuẩn IPX4, micro cho chất lượng cuộc gọi rõ ràng,.. Hơn thế, thời lượng pin và khả năng sạc nhanh của chiếc tai nghe này được đánh giá là vô cùng tuyệt vời.</p>', '2022-06-05 10:27:21', '2022-06-14 16:35:45'),
-(29, 23, 20, 'Tai nghe Chơi Game SoundPEATS G1', 590000, 6, 9999, 5, NULL, 0, '<p>Nếu bạn đang tìm kiếm một thiết bị đồng hành trong các trận chiến game máu lửa thì có thể tham khảo tai nghe SoundPEATS G1. Với những cải tiến vượt trội cả về công nghệ âm thanh lẫn thiết kế, chắc chắn sẽ chinh phục bạn ngay từ lần trải nghiệm đầu tiên.</p>', '2022-06-05 10:30:10', '2022-06-14 16:36:32'),
-(30, 22, 25, 'Tai nghe Bluetooth Sony WH-XB900N', 5790000, 0, 9999, 12, NULL, 0, '<p>Tai nghe Bluetooth Sony WH-XB900N</p>\r\nKhả năng chống ồn đỉnh cao, âm thanh tinh tế, cân bằng là những gì mà chúng ta đã quá quen thuộc với dòng sản phẩm Sony WH-1000X của Sony. Nhưng mới đây những công nghệ tiên tiến bao gồm cả tính năng chống ồn đã được hãng mang xuống dòng sản phẩm Extra Bass của mình qua sản phẩm Sony WH-XB900N.', '2022-06-05 11:05:49', '2022-06-14 16:37:33'),
-(31, 25, 21, 'Tai nghe True Wireless Monster Clarity 101 Airlinks', 1990000, 0, 9999, 12, NULL, 0, '<p>Tai nghe Monster Clarity 101 Airlinks chính hãng</p>\r\n<p>Thị trường tai nghe True Wireless trong phân khúc phổ thông hiện nay đã và đang sôi động hơn bao giờ hết và tất nhiên hãng âm thanh nổi tiếng của Mỹ - Monster sẽ không đứng ngoài cuộc chơi.</p>', '2022-06-05 11:09:10', '2022-06-14 16:38:32'),
-(32, 26, 19, 'Tai nghe Bluetooth iClever TransNova BTH16', 990000, 0, 9999, 0, NULL, 0, 'iClever – một thương hiệu điện tử tiêu dùng được thành lập vào năm 2010. Tới nay, thương hiệu này đã mở rộng thị trường ra 8 quốc ra trên khắp 3 châu lục. Với mong muốn cải thiện cuộc sống hàng ngày của nhiều người, iClever luôn nỗ lực không ngừng để tạo ra các sản phẩm mới, chất lượng và sáng tạo hơn.   ', '2022-06-05 11:11:41', '2022-06-14 16:39:24'),
-(33, 26, 19, 'Tai nghe iclever BTH12', 690000, 0, 9999, 5, NULL, 0, '<p>Thiết kế cải tiến, hỗ trợ kết nối Bluetooth 5.0, tích hợp mic, hỗ trợ sạc nhanh qua USB-C và cho phép tùy chọn âm lượng theo 3 mức 74/85 / 94dB,.. Tai nghe iClever BTH12 chắc chắn là một công cụ học tập, giải trí tuyệt vời dành cho trẻ em thời hiện đại.</p>', '2022-06-05 11:13:33', '2022-06-14 16:40:12'),
-(34, 22, 22, 'Tai nghe HiFiMan HE-R10D', 29850000, 0, 9999, 12, NULL, 0, '<p>Tai nghe HiFiMan HE-R10D</p>', '2022-06-05 11:16:50', '2022-06-14 16:40:54'),
-(35, 22, 20, 'Tai nghe Bluetooth SoundPeats Mini Pro', 1450000, 5, 9999, 10, NULL, 0, '<p>Xã hội phát triển kéo theo mong muốn và nhu cầu của người dùng cũng trở lên khắt khe hơn. Để đáp ứng kỳ vọng của nhiều người, thương hiệu SoundPeats sẽ tiếp tục trình làng mẫu sản phẩm mới mang tên SoundPeats Mini Pro. Đây là phiên bản cải tiến hoàn toàn so với mẫu Mini trước đó, hứa hẹn sẽ mang tới những tính năng và công nghệ hấp dẫn để làm hài lòng cả những tín đồ audiophile khó tính nhất.</p>', '2022-06-05 11:21:49', '2022-06-14 16:41:44');
+(24, 27, 24, 'Tai nghe Shure SRH440', 2255000, 13, 9996, 10, 22, 1, 'Tai nghe Shure SRH 440 rất phổ biến trong studio, tai nghe với âm thanh cân bằng, tai nghe cỡ to SRH440 có thể gập lại dễ dàng để mang theo.\r\nĐây là một trong những headphone tai nghe studio giá hợp lý mà chất lượng nếu bạn tìm tai nghe kín âm thanh tầm trung chất lượng\r\nTai nghe SRH440 Professional Studio từ Shure cung cấp âm thanh đặc biệt và thoải mái.', '2022-05-30 16:21:54', '2022-06-18 17:56:48'),
+(25, 27, 18, 'Tai nghe Audio Technica ATH-M70X', 5990000, 10, 9996, 35, 22, 1, '<p>M-Series của AudioTechnica l&agrave; d&ograve;ng tai nghe ph&ograve;ng thu chuy&ecirc;n nghiệp, được ch&uacute; trọng chế tạo với kiểu d&aacute;ng, thiết kế v&agrave; chất lượng &acirc;m thanh trung thực nhất. M70x hiện l&agrave; tai nghe đầu bảng thuộc d&ograve;ng M-series với tất cả những đặc điểm tuyệt vời n&ecirc;u tr&ecirc;n. M70x c&oacute; chất &acirc;m ch&iacute;nh x&aacute;c, tất cả c&aacute;c chi tiết được gia c&ocirc;ng kỹ c&agrave;ng, c&aacute;c khớp nối v&agrave; headband bằng kim loại cho độ bền cao nhất. Driver 45mm với cuộn cảm nh&ocirc;m, c&oacute; trọng lượng nhẹ, linh hoạt với c&aacute;c rung động nhanh, nhằm t&aacute;i tạo &acirc;m thanh thật tốt m&agrave; kh&ocirc;ng g&acirc;y ra hiện tượng trễ tiếng.</p>', '2022-06-04 18:10:28', '2022-06-18 17:56:48'),
+(26, 22, 25, 'Tai nghe Bluetooth Sony WH-1000XM4', 5490000, 3, 9999, 15, 22, 1, 'Tai nghe Sony WH-1000XM4 chính hãng\r\nMới đây, Sony vừa công bố thế hệ thứ 4 của dòng tai nghe chụp đầu chống ồn cao cấp: WH1000XM4. Sony WH-1000XM4 có thiết kế tương tự như người đàn anh của mình, và cũng được trang bị bộ xử lý chống ồn QN1, thứ giúp cho Sony WH-1000XM3 trở thành một trong những tai nghe không dây tốt nhất trong phân khúc chống ồn chủ động.', '2022-06-05 10:12:10', '2022-06-18 17:56:48'),
+(27, 22, 17, 'Tai nghe Apple AirPods Max chính hãng ZA/A', 12850000, 6, 9999, 15, 22, 1, '<p><strong>Tai nghe Apple Airpod Max</strong></p>\r\n<p>Vào ngày 08/12, Apple đã chính thức công bố chiếc tai nghe trùm đầu (Over-ear) đầu tiên của mình, tên gọi chính thức của chiếc tai nghe này là AirPods Max.</p>', '2022-06-05 10:23:01', '2022-06-18 17:56:48'),
+(28, 22, 23, 'Tai nghe True Wireless LG Tone Free Tone-FP9', 4690000, 0, 9999, 10, 22, 1, '<p><strong>Tai nghe True Wireless LG Tone Free Tone-FP9s</strong> đi kèm với tính năng chống ồn chủ động, kết nối không dây qua Bluetooth hiện đại, chống nước và mồ hôi đạt tiêu chuẩn IPX4, micro cho chất lượng cuộc gọi rõ ràng,.. Hơn thế, thời lượng pin và khả năng sạc nhanh của chiếc tai nghe này được đánh giá là vô cùng tuyệt vời.</p>', '2022-06-05 10:27:21', '2022-06-18 17:56:48'),
+(29, 23, 20, 'Tai nghe Chơi Game SoundPEATS G1', 590000, 6, 9999, 5, 22, 1, '<p>Nếu bạn đang tìm kiếm một thiết bị đồng hành trong các trận chiến game máu lửa thì có thể tham khảo tai nghe SoundPEATS G1. Với những cải tiến vượt trội cả về công nghệ âm thanh lẫn thiết kế, chắc chắn sẽ chinh phục bạn ngay từ lần trải nghiệm đầu tiên.</p>', '2022-06-05 10:30:10', '2022-06-18 17:56:48'),
+(30, 22, 25, 'Tai nghe Bluetooth Sony WH-XB900N', 5790000, 0, 9999, 12, 22, 1, '<p>Tai nghe Bluetooth Sony WH-XB900N</p>\r\nKhả năng chống ồn đỉnh cao, âm thanh tinh tế, cân bằng là những gì mà chúng ta đã quá quen thuộc với dòng sản phẩm Sony WH-1000X của Sony. Nhưng mới đây những công nghệ tiên tiến bao gồm cả tính năng chống ồn đã được hãng mang xuống dòng sản phẩm Extra Bass của mình qua sản phẩm Sony WH-XB900N.', '2022-06-05 11:05:49', '2022-06-18 17:56:48'),
+(31, 25, 21, 'Tai nghe True Wireless Monster Clarity 101 Airlinks', 1990000, 0, 9999, 12, 22, 1, '<p>Tai nghe Monster Clarity 101 Airlinks chính hãng</p>\r\n<p>Thị trường tai nghe True Wireless trong phân khúc phổ thông hiện nay đã và đang sôi động hơn bao giờ hết và tất nhiên hãng âm thanh nổi tiếng của Mỹ - Monster sẽ không đứng ngoài cuộc chơi.</p>', '2022-06-05 11:09:10', '2022-06-18 17:56:48'),
+(32, 26, 19, 'Tai nghe Bluetooth iClever TransNova BTH16', 990000, 0, 9999, 0, 22, 1, 'iClever – một thương hiệu điện tử tiêu dùng được thành lập vào năm 2010. Tới nay, thương hiệu này đã mở rộng thị trường ra 8 quốc ra trên khắp 3 châu lục. Với mong muốn cải thiện cuộc sống hàng ngày của nhiều người, iClever luôn nỗ lực không ngừng để tạo ra các sản phẩm mới, chất lượng và sáng tạo hơn.   ', '2022-06-05 11:11:41', '2022-06-18 17:56:48'),
+(33, 26, 19, 'Tai nghe iclever BTH12', 690000, 0, 9999, 5, 22, 1, '<p>Thiết kế cải tiến, hỗ trợ kết nối Bluetooth 5.0, tích hợp mic, hỗ trợ sạc nhanh qua USB-C và cho phép tùy chọn âm lượng theo 3 mức 74/85 / 94dB,.. Tai nghe iClever BTH12 chắc chắn là một công cụ học tập, giải trí tuyệt vời dành cho trẻ em thời hiện đại.</p>', '2022-06-05 11:13:33', '2022-06-18 17:56:48'),
+(34, 22, 22, 'Tai nghe HiFiMan HE-R10D', 29850000, 2, 9997, 12, 22, 1, '<p>Tai nghe HiFiMan HE-R10D</p>', '2022-06-05 11:16:50', '2022-06-18 17:56:48'),
+(35, 22, 20, 'Tai nghe Bluetooth SoundPeats Mini Pro', 1450000, 10, 9994, 10, 22, 1, '<p>Xã hội phát triển kéo theo mong muốn và nhu cầu của người dùng cũng trở lên khắt khe hơn. Để đáp ứng kỳ vọng của nhiều người, thương hiệu SoundPeats sẽ tiếp tục trình làng mẫu sản phẩm mới mang tên SoundPeats Mini Pro. Đây là phiên bản cải tiến hoàn toàn so với mẫu Mini trước đó, hứa hẹn sẽ mang tới những tính năng và công nghệ hấp dẫn để làm hài lòng cả những tín đồ audiophile khó tính nhất.</p>', '2022-06-05 11:21:49', '2022-06-18 17:56:48'),
+(39, 27, 22, 'Tai nghe Beats Studio 2.0', 5990000, 0, 75, 10, NULL, 0, '<h2 style=\"color: #222222; font-family: arial, Helvetica, sans-serif; line-height: 1.38; text-align: justify; margin-top: 0pt; margin-bottom: 8pt;\"><span style=\"font-family: arial, helvetica, sans-serif; font-size: 18pt;\"><strong><span style=\"background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;\">Tai nghe Beats Studio 2.0</span></strong></span></h2>\r\n<p style=\"color: #222222; font-family: arial, Helvetica, sans-serif; line-height: 1.38; text-align: justify; margin-top: 0pt; margin-bottom: 0pt;\"><span style=\"font-size: 12pt; font-family: arial, helvetica, sans-serif; color: #000000; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;\"><strong>Beats Studio 2.0</strong> l&agrave; một trong những mẫu tai nghe được rất nhiều người d&ugrave;ng ưa th&iacute;ch của h&atilde;ng &acirc;m thanh Mỹ. <a style=\"color: #333333; text-decoration-line: none; font-size: inherit;\" href=\"https://tainghe.com.vn/beats-studio-2-0.html\"><strong>Beats Studio 2.0</strong></a> nổi bật với thiết kế đẹp mắt c&ugrave;ng với đ&oacute; l&agrave; một chất lượng &acirc;m thanh c&oacute; thể gi&uacute;p bạn trải nghiệm nhiều thể loại nhạc kh&aacute;c nhau.&nbsp;</span></p>', '2022-06-18 18:09:13', '2022-06-18 18:09:13'),
+(40, 25, 20, 'Tai nghe Denon AH-C160W', 3100000, 0, 99, 0, NULL, 0, '<h2 style=\"font-size: 20px; color: #222222; font-family: arial, Helvetica, sans-serif; margin: 0px; font-weight: 300;\">Đặc điểm nổi bật của Tai nghe Denon AH-C160W</h2>', '2022-06-18 18:12:03', '2022-06-18 18:12:03'),
+(41, 25, 23, 'Tai nghe True Wireless Jabra Elite 4 Active', 3150000, 0, 99, 15, NULL, 0, '<h2 style=\"font-size: 20px; color: #222222; font-family: arial, Helvetica, sans-serif; margin: 0px; font-weight: 300;\">Đặc điểm nổi bật của Tai nghe True Wireless Jabra Elite 4 Active</h2>', '2022-06-18 18:13:54', '2022-06-18 18:13:54'),
+(42, 23, 21, 'Tai nghe Skullcandy Crusher ANC', 8600000, 0, 99, 30, NULL, 0, '<h2 style=\"color: #222222; font-family: arial, Helvetica, sans-serif;\"><span style=\"font-size: 12pt;\">Tai nghe Skullcandy Crusher ANC ch&iacute;nh h&atilde;ng</span></h2>\r\n<p style=\"color: #222222; font-family: arial, Helvetica, sans-serif;\"><span style=\"font-size: 12pt;\">Mới đ&acirc;y&nbsp;<a style=\"color: #333333; text-decoration-line: none; font-size: inherit;\" href=\"https://tainghe.com.vn/brand/skullcandy\" target=\"_blank\" rel=\"noopener\">Skullcandy</a>&nbsp;đ&atilde; tung ra một loạt sản phẩm mới nhất , để giới thiệu đến với người ti&ecirc;u d&ugrave;ng những t&iacute;nh năng mới , c&ocirc;ng nghệ mới v&agrave; những cải thiện về chất &acirc;m v&ocirc; c&ugrave;ng đ&aacute;ng sở hữu trong cuối năm 2019 n&agrave;y. Trong đ&oacute; sản phẩm mang nhiều t&iacute;nh năng mới mẻ nhất, đột ph&aacute; nhất của&nbsp;<a style=\"color: #333333; text-decoration-line: none; font-size: inherit;\" href=\"https://tainghe.com.vn/brand/skullcandy\" target=\"_blank\" rel=\"noopener\">Skullcandy</a>&nbsp;l&agrave; tai nghe&nbsp;<a style=\"color: #333333; text-decoration-line: none; font-size: inherit;\" href=\"https://tainghe.com.vn/tai-nghe-skullcandy-crusher-anc.html\" target=\"_blank\" rel=\"noopener\">Skullcandy Crusher ANC</a>.</span></p>', '2022-06-18 18:16:05', '2022-06-18 18:16:05');
 
 -- --------------------------------------------------------
 
@@ -419,9 +446,9 @@ CREATE TABLE `slider` (
 --
 
 INSERT INTO `slider` (`slide_id`, `slide_name`, `slide_good`, `slide_image`, `slide_desc`) VALUES
-(6, 'JBL Quantum ONE', 'Ipsum dolor', 'JBL_E55BT_KEY_BLACK_6175_FS_x1-1605x1605px.png', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A optio, voluptatum aperiam nobis quis maxime corporis porro alias soluta sunt quae consectetur aliquid blanditiis perspiciatis labore cumque, ullam, quam eligendi!'),
-(7, 'JBL JR 310BT', 'Consectetur Elit', 'JBL_JR 310BT_Product Image_Hero_Skyblue.png', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo aut fugiat, libero magnam nemo inventore in tempora beatae officiis temporibus odit deserunt molestiae amet quam, asperiores, iure recusandae nulla labore!'),
-(8, 'JBL TUNE 750TNC', 'Next-gen design', 'JBL_E55BT_KEY_RED_6063_FS_x1-1605x1605px.webp', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati dolor commodi dignissimos culpa, eaque eos necessitatibus possimus veniam, cupiditate rerum deleniti? Libero, ducimus error? Beatae velit dolore sint explicabo! Fugit.');
+(6, 'Tai nghe', 'TIpsum dolor', 'JBL_E55BT_KEY_BLACK_6175_FS_x1-1605x1605px.png', 'Thay vì sử dụng dây nối như dòng tai nghe truyền thống, thiết bị âm thanh này đã đem đến cho người dùng những trải nghiệm hoàn toàn mới ngay từ “ngoại hình” ấn tương, tiện ích của nó. Không còn những chiếc dây nối rắc rối, phức tạp'),
+(7, 'Tai nghe', 'Consectetur Elit', 'JBL_JR 310BT_Product Image_Hero_Skyblue.png', 'Giớ đây, bạn sẽ được tận hưởng những công nghệ âm thanh chất lượng, hiện đại với sự tối ưu hoàn toàn trong thiết kế. Ngoài ra, các phím chức năng đều được tích hợp đầy đủ giúp người dùng dễ dàng thao tác khi dùng.'),
+(8, 'Tai nghe', 'Next-gen design', 'JBL_E55BT_KEY_RED_6063_FS_x1-1605x1605px.webp', ' Không còn những chiếc dây nối rắc rối, phức tạp. Giớ đây, bạn sẽ được tận hưởng những công nghệ âm thanh chất lượng.');
 
 --
 -- Indexes for dumped tables
@@ -460,7 +487,7 @@ ALTER TABLE `customers`
   ADD PRIMARY KEY (`customer_id`);
 
 --
--- Indexes for table `images`
+-- Chỉ mục cho bảng `images`
 --
 ALTER TABLE `images`
   ADD PRIMARY KEY (`image_id`),
@@ -509,49 +536,49 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `brand_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `brand_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `cart_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `cat_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `cat_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `customer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `slider`
@@ -560,7 +587,7 @@ ALTER TABLE `slider`
   MODIFY `slide_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --

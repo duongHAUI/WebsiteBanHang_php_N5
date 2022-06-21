@@ -12,7 +12,10 @@
     function stdName ($astr) {
         // Chuẩn hóa xâu $astr theo định dạng tên người, tên địa danh
         $retval = $astr;
-        //$retval = mb_convert_case($astr, MB_CASE_TITLE, "UTF-8");
+        if($retval==""){
+            return $retval;
+        }else{
+            //$retval = mb_convert_case($astr, MB_CASE_TITLE, "UTF-8");
         // $astr ==> $retval
         //xoa dau cach o dau
         $length = strlen($retval);
@@ -46,6 +49,8 @@
         }//end for
         $retval = mb_convert_case($retval,MB_CASE_TITLE,"UTF-8");
         return $retval;
+        }
+        
         }
 
     function is_phone($str) {

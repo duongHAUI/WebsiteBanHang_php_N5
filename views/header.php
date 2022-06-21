@@ -91,10 +91,3 @@ if (isset($_SESSION['c_user']) && $_SESSION['c_user']) {
         <!-- end main header -->
     </header>
     <!-- end header -->
-        <!-- end mid header -->
-        <!-- bottom header -->
-        <!-- end bottom header -->
-    </div>
-    <!-- end main header -->
-</header>
-<!-- end header -->

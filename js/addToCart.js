@@ -18,7 +18,15 @@ quantity.onchange = ()=>{
         quantity.value = 1;
     }
 }
+
 addCart.onclick  =()=>{
-    var pro_id = addCart.getAttribute("pro_id");
-    window.location="./controllers/cart/addCart.php?quantity="+quantity.value+"&pro_id="+pro_id;
+
+    if(quantity.value > addCart.getAttribute('quantity')){
+        alert("Số lượng không đủ!");
+    }
+    else{
+        var pro_id = addCart.getAttribute("pro_id");
+        window.location="./controllers/cart/addCart.php?quantity="+quantity.value+"&pro_id="+pro_id;
+    }
+    
 }
