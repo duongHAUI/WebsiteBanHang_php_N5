@@ -13,6 +13,8 @@ class Order extends Model
     public $cus_id;
     public $customer;
     public $status;
+    public $cancel_reason;
+    public $detail;
     const TABLE_NAME = "orders";
 
     // entity function
@@ -26,6 +28,7 @@ class Order extends Model
         $this->phone = $row["order_phone"];
         $this->note = $row["order_note"];
         $this->status = $row["order_status"];
+        $this->cancel_reason = $row["order_cancel_reason"];
         $this->cus_id = $row["cus_id"];
         $this->createdAt = $row["createdAt"];
         $this->updatedAt = $row["updatedAt"];
@@ -55,6 +58,12 @@ class Order extends Model
         if (gettype($model) == "string") {
             if ($model == "Customer" || $model == "customer") {
                 $this->customer = Customer::find_by_pk($con, $this->cus_id);
+            }
+
+            if (strtolower($model) == 'detail') {
+                $this->detail = Detail::find_all($con, [
+                    'where' => "order_id=$this->id"
+                ]);
             }
         }
 
@@ -250,5 +259,11 @@ class Order extends Model
         }
         $order = self::find_by_pk($con, $id);
         return $order;
+    }
+
+    public static function update_cancel_reason($con, int $order_id, string $cancel_reason): \mysqli_result|bool
+    {
+        $query = "UPDATE " . self::TABLE_NAME . " SET order_cancel_reason = '$cancel_reason', order_status=".CANCELLED_STATUS." WHERE order_id = $order_id";
+        return mysqli_query($con, $query);
     }
 }

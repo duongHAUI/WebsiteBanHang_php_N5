@@ -22,7 +22,7 @@
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Open Sans", Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   overflow-x: hidden;
   position: relative;
   background-color: var(--main-bg-color);

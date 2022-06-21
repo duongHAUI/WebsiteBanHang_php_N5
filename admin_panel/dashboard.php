@@ -170,7 +170,7 @@
                 </thead>
                 <tbody>
                 <?php
-                $get_order = "select * from orders order by 1 DESC LIMIT 0,5";
+                $get_order = "select * from orders where order_status = " . WAIT_CONFIRM_STATUS . " order by order_id DESC LIMIT 0, 10";
                 $run_order = mysqli_query($con, $get_order);
                 while ($row_order=mysqli_fetch_array($run_order)) {
                     $get_customer = "select * from customers where customer_id = {$row_order['cus_id']}";
@@ -183,7 +183,14 @@
                         <td><?= $row_customer['customer_phone'] ?></td>
                         <td><?= date('d/m/Y', strtotime($row_order['createdAt'])) ?></td>
                         <td><?= number_format($row_order['order_amount']) ?>đ</td>
-                        <td><?= $orderStatus[$row_order['order_status']]['label'] ?></td>
+                        <td>
+                            <span class="badge badge-<?= $orderStatus[$row_order['order_status']]['variant'] ?>">
+                                <?= $orderStatus[$row_order['order_status']]['label'] ?>
+                            </span>
+                            <?php if ($row_order['order_status'] == CANCELLED_STATUS): ?>
+                                <br /><strong>Lý do: </strong> <?= $row_order['order_cancel_reason'] ?>
+                            <?php endif; ?>
+                        </td>
                     </tr>
                     <?php
                 }

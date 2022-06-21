@@ -5,7 +5,7 @@ include_once "models/index.php";
 include_once "./db/connectdb.php";
 include_once "helpers/common.php";
 include_once "./controllers/formatCurrency.php";
-include_once "helpers/constants.php";
+include_once "helpers/config.php";
 
 $id = $_GET['id'] ?? 0;
 $order = Order::find_by_pk($con, $id);
@@ -59,15 +59,66 @@ foreach ($order->detail as $item) {
                         </h3>
                     </div>
                     <div class="col-md-6 text-end">
-                        <button class="btn-custom">Đặt hàng lại</button>
+                        <form action="./controllers/product/order-again.php" method="post">
+                            <input type="hidden" name="order_id" value="<?= $_GET['id'] ?? 0 ?>" />
+                            <button type="submit" class="btn-custom" name="order-again-submit">Đặt hàng lại</button>
+                        </form>
                     </div>
                 </div>
 
                 <?php include "order-detail-tabbar.php"; ?>
 
-                <div class="text-end">
-                    <button class="btn-custom">Hủy đơn hàng</button>
-                </div>
+                <?php if ($order->status == 0): ?>
+                    <div class="text-end">
+                        <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#cancel-order-modal">Hủy đơn hàng</button>
+                    </div>
+
+                    <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" id="cancel-order-modal">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <form action="./controllers/product/cancel-order.php" method="post" data-validate="true">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Hủy đơn hàng</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="cancel_reason" class="form-label">Vui lòng chọn lý do hủy</label>
+
+                                            <?php foreach ($cancelReason as $key => $item): ?>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="cancel_reason" id="cancel_reason_<?= $key ?>" value="<?= $item ?>" data-rule-required="true" data-msg-required="Vui lòng chọn 1 lý do">
+                                                    <label class="form-check-label" for="cancel_reason_<?= $key ?>">
+                                                        <?= $item ?>
+                                                    </label>
+                                                </div>
+                                            <?php endforeach; ?>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" id="cancel_reason_other" name="cancel_reason" value="other" data-rule-required="true" data-msg-required="Vui lòng chọn 1 lý do">
+                                                <label class="form-check-label" for="cancel_reason_other">
+                                                    Khác
+                                                </label>
+                                            </div>
+
+                                            <div class="form-group mt-2" id="cancel_reason_input" style="display: none;">
+                                                <input type="text" name="cancel_reason_text" placeholder="Vui lòng cho biết lý do" class="form-control" data-rule-required="true" data-msg-required="Vui lòng nhập lý do hủy" />
+                                            </div>
+
+                                            <input type="hidden" value="<?= $_GET['id'] ?? 0 ?>" name="order_id" />
+
+                                            <label for="cancel_reason" class="error"></label>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy bỏ</button>
+                                        <button type="submit" class="btn btn-danger" name="submit-cancel-order">Đồng ý</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
                 <div class="order-detail-content card mt-3">
                     <div class="order-detail-header">
                         <div>
@@ -146,5 +197,28 @@ foreach ($order->detail as $item) {
 </div>
 
 <?php include_once("footer.php"); ?>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+<script src="./js/jquery.validate.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        'use strict';
+
+        $("form[data-validate='true']").validate();
+
+        $("#cancel-order-modal input[name='cancel_reason']").change(function () {
+            const _this = $(this);
+
+            const value = _this.val();
+            if (value === 'other') {
+                _this.parents('form').find('#cancel_reason_input').show();
+            } else {
+                _this.parents('form').find('#cancel_reason_input').hide();
+            }
+        });
+    });
+</script>
 </body>
 </html>
