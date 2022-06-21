@@ -119,6 +119,8 @@ foreach ($order->detail as $item) {
                         </div>
                     </div>
                 <?php endif; ?>
+
+                <?php $subtotal = 0; ?>
                 <div class="order-detail-content card mt-3">
                     <div class="order-detail-header">
                         <div>
@@ -144,7 +146,12 @@ foreach ($order->detail as $item) {
                                     </div>
                                 </div>
                                 <div class="col-3 order-detail-item-total" style="text-align: right">
-                                    Tổng tiền: <?= currency_format($item->product->price * $item->quantity) ?>
+                                    Tổng tiền:
+                                    <?php
+                                        $price = $item->product->price * $item->quantity;
+                                        $subtotal += $price;
+                                        echo currency_format($price)
+                                    ?>
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -166,12 +173,6 @@ foreach ($order->detail as $item) {
                     <div class="col">
                         <div class="card order-detail-amount">
                             <div class="card-body">
-                                <?php
-                                    $subtotal = array_reduce($order->detail, function ($acc, $cur) {
-                                        $acc += $cur->price * $cur->quantity;
-                                        return $acc;
-                                    }, 0);
-                                ?>
                                 <h5>Tổng thanh toán</h5>
                                 <div>
                                     <div class="order-detail-amount-title">Tạm tính:</div>
