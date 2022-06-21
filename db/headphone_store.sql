@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2022 at 08:43 AM
+-- Generation Time: Jun 21, 2022 at 10:00 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.0.19
 
@@ -93,7 +93,7 @@ CREATE TABLE `cart` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `cart`
+-- Dumping data for table `cart`
 --
 
 INSERT INTO `cart` (`cart_id`, `cus_id`, `pro_id`, `cart_qty`, `createdAt`, `updatedAt`) VALUES
@@ -241,6 +241,7 @@ CREATE TABLE `orders` (
   `order_phone` varchar(10) NOT NULL,
   `order_note` text DEFAULT NULL,
   `order_status` tinyint(4) NOT NULL DEFAULT 0,
+  `order_cancel_reason` varchar(255) DEFAULT NULL,
   `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
   `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -249,59 +250,59 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`order_id`, `cus_id`, `order_amount`, `order_payment_methods`, `order_address`, `order_receiver`, `order_phone`, `order_note`, `createdAt`, `updatedAt`) VALUES
-(1, 14, 15428400, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2012-01-01 12:25:30', '2022-06-18 15:59:24'),
-(2, 14, 5934000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2013-02-02 12:25:30', '2022-06-18 15:59:24'),
-(3, 14, 2251700, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2014-06-03 14:49:24', '2022-06-18 15:59:24'),
-(4, 14, 3857100, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2015-06-04 14:49:37', '2022-06-18 15:59:24'),
-(5, 14, 4613800, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2016-06-05 14:49:49', '2022-06-18 15:59:24'),
-(6, 14, 25010706, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2017-06-06 14:50:00', '2022-06-18 15:59:24'),
-(7, 14, 1385072, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2018-06-06 14:50:14', '2022-06-18 15:59:24'),
-(8, 14, 4858660, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2019-06-07 14:50:33', '2022-06-18 15:59:24'),
-(9, 14, 2945610, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2020-06-08 14:50:45', '2022-06-18 15:59:24'),
-(10, 14, 4459682, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2021-06-09 14:50:59', '2022-06-18 15:59:24'),
-(11, 14, 26050490, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-01-10 14:51:09', '2022-06-18 15:59:24'),
-(12, 14, 3016818, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-02-11 14:51:21', '2022-06-18 15:59:24'),
-(13, 14, 2600150, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-03-12 14:51:44', '2022-06-18 15:59:24'),
-(14, 14, 1950124, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-04-13 14:52:05', '2022-06-18 15:59:24'),
-(15, 14, 2847285, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-05-14 14:52:15', '2022-06-18 15:59:24'),
-(16, 14, 3857100, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-01 14:52:29', '2022-06-18 15:59:24'),
-(17, 14, 2945610, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-02 14:53:00', '2022-06-18 15:59:24'),
-(18, 14, 26050499, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-03 14:53:27', '2022-06-18 15:59:24'),
-(19, 14, 16673804, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-04 14:53:38', '2022-06-18 15:59:24'),
-(20, 14, 10766125, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-05 14:57:16', '2022-06-18 15:59:24'),
-(21, 14, 16455810, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-06 14:57:51', '2022-06-18 15:59:24'),
-(22, 14, 8470900, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-07 15:07:41', '2022-06-18 15:59:24'),
-(23, 14, 2847285, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-08 15:07:53', '2022-06-18 15:59:24'),
-(24, 14, 8336902, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-09 15:08:02', '2022-06-18 15:59:24'),
-(25, 14, 3927480, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-10 15:08:33', '2022-06-18 15:59:24'),
-(26, 14, 2229841, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-11 15:08:43', '2022-06-18 15:59:24'),
-(27, 14, 3231834, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-12 15:09:33', '2022-06-18 15:59:24'),
-(28, 14, 6947178, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-13 15:09:45', '2022-06-18 15:59:24'),
-(29, 14, 8919363, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-14 15:09:56', '2022-06-18 15:59:24'),
-(30, 14, 4616905, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', '2022-06-15 15:44:24', '2022-06-18 15:59:24'),
-(31, 14, 50021412, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', '2022-06-16 15:44:38', '2022-06-18 15:59:24'),
-(32, 14, 5200300, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', '2022-06-17 15:44:53', '2022-06-18 15:59:24'),
-(33, 14, 2945610, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-18 14:53:00', '2022-06-18 15:59:24'),
-(34, 14, 26050499, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-19 14:53:27', '2022-06-18 15:59:24'),
-(35, 14, 16673804, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-20 14:53:38', '2022-06-18 15:59:24'),
-(36, 14, 10766125, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-21 14:57:16', '2022-06-18 15:59:24'),
-(37, 14, 16455810, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-22 14:57:51', '2022-06-18 15:59:24'),
-(38, 14, 8470900, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-23 15:07:41', '2022-06-18 15:59:24'),
-(39, 14, 2847285, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-24 15:07:53', '2022-06-18 15:59:24'),
-(40, 14, 3927480, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-25 15:08:33', '2022-06-18 15:59:24'),
-(41, 14, 2229841, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-26 15:08:43', '2022-06-18 15:59:24'),
-(42, 14, 3231834, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-27 15:09:33', '2022-06-18 15:59:24'),
-(43, 14, 6947178, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-28 15:09:45', '2022-06-18 15:59:24'),
-(44, 14, 8919363, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2022-06-29 15:09:56', '2022-06-18 15:59:24'),
-(45, 14, 4616905, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', '2022-06-30 15:44:24', '2022-06-18 15:59:24'),
-(46, 14, 50021412, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', '2022-05-12 15:44:38', '2022-06-18 16:11:26'),
-(47, 14, 5200300, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', '2022-06-01 15:44:53', '2022-06-18 16:12:03'),
-(48, 14, 8924000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', '2021-08-24 15:09:56', '2022-06-18 16:12:26'),
-(49, 14, 4623000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', '2021-10-27 15:44:24', '2022-06-18 16:12:38'),
-(50, 14, 50025000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', '2021-11-11 15:44:38', '2022-06-18 16:12:55'),
-(51, 14, 5198000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', '2022-06-15 15:44:53', '2022-06-18 16:11:45'),
-(54, 16, 9816500, 'Thanh toán khi nhận hàng', 'Hải Lộc', 'Nguyễn Văn Dương', '0328558614', 'laafn 2', '2022-06-18 16:24:10', '2022-06-18 16:24:10');
+INSERT INTO `orders` (`order_id`, `cus_id`, `order_amount`, `order_payment_methods`, `order_address`, `order_receiver`, `order_phone`, `order_note`, `order_status`, `order_cancel_reason`, `createdAt`, `updatedAt`) VALUES
+(1, 14, 15428400, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2012-01-01 12:25:30', '2022-06-18 15:59:24'),
+(2, 14, 5934000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2013-02-02 12:25:30', '2022-06-18 15:59:24'),
+(3, 14, 2251700, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2014-06-03 14:49:24', '2022-06-18 15:59:24'),
+(4, 14, 3857100, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2015-06-04 14:49:37', '2022-06-18 15:59:24'),
+(5, 14, 4613800, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2016-06-05 14:49:49', '2022-06-18 15:59:24'),
+(6, 14, 25010706, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2017-06-06 14:50:00', '2022-06-18 15:59:24'),
+(7, 14, 1385072, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2018-06-06 14:50:14', '2022-06-18 15:59:24'),
+(8, 14, 4858660, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2019-06-07 14:50:33', '2022-06-18 15:59:24'),
+(9, 14, 2945610, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2020-06-08 14:50:45', '2022-06-18 15:59:24'),
+(10, 14, 4459682, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2021-06-09 14:50:59', '2022-06-18 15:59:24'),
+(11, 14, 26050490, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-01-10 14:51:09', '2022-06-18 15:59:24'),
+(12, 14, 3016818, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-02-11 14:51:21', '2022-06-18 15:59:24'),
+(13, 14, 2600150, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-03-12 14:51:44', '2022-06-18 15:59:24'),
+(14, 14, 1950124, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-04-13 14:52:05', '2022-06-18 15:59:24'),
+(15, 14, 2847285, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-05-14 14:52:15', '2022-06-18 15:59:24'),
+(16, 14, 3857100, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-06-01 14:52:29', '2022-06-18 15:59:24'),
+(17, 14, 2945610, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-06-02 14:53:00', '2022-06-18 15:59:24'),
+(18, 14, 26050499, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-06-03 14:53:27', '2022-06-18 15:59:24'),
+(19, 14, 16673804, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-06-04 14:53:38', '2022-06-18 15:59:24'),
+(20, 14, 10766125, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-06-05 14:57:16', '2022-06-18 15:59:24'),
+(21, 14, 16455810, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-06-06 14:57:51', '2022-06-18 15:59:24'),
+(22, 14, 8470900, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-06-07 15:07:41', '2022-06-18 15:59:24'),
+(23, 14, 2847285, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-06-08 15:07:53', '2022-06-18 15:59:24'),
+(24, 14, 8336902, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-06-09 15:08:02', '2022-06-18 15:59:24'),
+(25, 14, 3927480, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-06-10 15:08:33', '2022-06-18 15:59:24'),
+(26, 14, 2229841, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-06-11 15:08:43', '2022-06-18 15:59:24'),
+(27, 14, 3231834, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-06-12 15:09:33', '2022-06-18 15:59:24'),
+(28, 14, 6947178, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-06-13 15:09:45', '2022-06-18 15:59:24'),
+(29, 14, 8919363, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-06-14 15:09:56', '2022-06-18 15:59:24'),
+(30, 14, 4616905, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', 0, '', '2022-06-15 15:44:24', '2022-06-18 15:59:24'),
+(31, 14, 50021412, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', 0, '', '2022-06-16 15:44:38', '2022-06-18 15:59:24'),
+(32, 14, 5200300, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', 0, '', '2022-06-17 15:44:53', '2022-06-18 15:59:24'),
+(33, 14, 2945610, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-06-18 14:53:00', '2022-06-18 15:59:24'),
+(34, 14, 26050499, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-06-19 14:53:27', '2022-06-18 15:59:24'),
+(35, 14, 16673804, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-06-20 14:53:38', '2022-06-18 15:59:24'),
+(36, 14, 10766125, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-06-21 14:57:16', '2022-06-18 15:59:24'),
+(37, 14, 16455810, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-06-22 14:57:51', '2022-06-18 15:59:24'),
+(38, 14, 8470900, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-06-23 15:07:41', '2022-06-18 15:59:24'),
+(39, 14, 2847285, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-06-24 15:07:53', '2022-06-18 15:59:24'),
+(40, 14, 3927480, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-06-25 15:08:33', '2022-06-18 15:59:24'),
+(41, 14, 2229841, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-06-26 15:08:43', '2022-06-18 15:59:24'),
+(42, 14, 3231834, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-06-27 15:09:33', '2022-06-18 15:59:24'),
+(43, 14, 6947178, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-06-28 15:09:45', '2022-06-18 15:59:24'),
+(44, 14, 8919363, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2022-06-29 15:09:56', '2022-06-18 15:59:24'),
+(45, 14, 4616905, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', 0, '', '2022-06-30 15:44:24', '2022-06-18 15:59:24'),
+(46, 14, 50021412, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', 0, '', '2022-05-12 15:44:38', '2022-06-18 16:11:26'),
+(47, 14, 5200300, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', 0, '', '2022-06-01 15:44:53', '2022-06-18 16:12:03'),
+(48, 14, 8924000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0123456789', 'Note', 0, '', '2021-08-24 15:09:56', '2022-06-18 16:12:26'),
+(49, 14, 4623000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', 0, '', '2021-10-27 15:44:24', '2022-06-18 16:12:38'),
+(50, 14, 50025000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', 0, '', '2021-11-11 15:44:38', '2022-06-18 16:12:55'),
+(51, 14, 5198000, 'Thanh toán khi nhận hàng', 'Ha Noi', 'Nguyen Mai Phuong', '0345090535', 'Note', 0, '', '2022-06-15 15:44:53', '2022-06-18 16:11:45'),
+(54, 16, 9816500, 'Thanh toán khi nhận hàng', 'Hải Lộc', 'Nguyễn Văn Dương', '0328558614', 'laafn 2', 0, '', '2022-06-18 16:24:10', '2022-06-18 16:24:10');
 
 -- --------------------------------------------------------
 
@@ -487,7 +488,7 @@ ALTER TABLE `customers`
   ADD PRIMARY KEY (`customer_id`);
 
 --
--- Chỉ mục cho bảng `images`
+-- Indexes for table `images`
 --
 ALTER TABLE `images`
   ADD PRIMARY KEY (`image_id`),
@@ -587,7 +588,7 @@ ALTER TABLE `slider`
   MODIFY `slide_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
