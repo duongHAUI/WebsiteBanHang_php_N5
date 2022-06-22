@@ -13,7 +13,9 @@
         
         if( $cart !=null){
             $update_qty = $quantity + $cart->qty;
-            $update = Cart::update_by_pk($con,$cart->id,array("cart_qty"=>$update_qty));
+            $product = product::find_one($con,array("where"=>"product_id = '$pro_id'"));
+            $qty = ($update_qty <= (int)$product->quantity) ? $update_qty : $product->quantity;
+            $update = Cart::update_by_pk($con,$cart->id,array("cart_qty"=>$qty));
         }else{
             $rs = Cart::create($con,array('cart_qty'=>$quantity,'cus_id'=>$cus_id,'pro_id'=>$pro_id));
         }

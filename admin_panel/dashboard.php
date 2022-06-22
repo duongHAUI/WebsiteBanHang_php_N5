@@ -7,6 +7,7 @@
         include_once "../helpers/config.php";
 ?>
 
+<link rel="stylesheet" href="./css/jquery.datetimepicker.min.css">
 <div class="row">
 	<div class="col-lg-12">
 		<h1 class="text-center">Chào mừng <?php echo $admin_name; ?></h1>
@@ -116,15 +117,34 @@
                         <strong>Biểu đồ doanh thu</strong>
                     </h3>
                 </div>
-                <div class="col-md-6 text-right">
-                    <div class="btn-group" role="group" id="chart-filter">
-                        <button type="button" class="btn btn-info active" data-unit="day">Ngày</button>
-                        <button type="button" class="btn btn-info" data-unit="month">Tháng</button>
-                        <button type="button" class="btn btn-info" data-unit="year">Năm</button>
+                <div class="col-md-6">
+                    <div class="chart-filter">
+                        <div class="form-group">
+                            <div class='input-group date'>
+                                <input type='text' class="form-control datetimepicker" id="start-date" readonly placeholder="Ngày bắt đầu" />
+                                <span class="input-group-addon">
+                                    <span class="fa fa-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <i class="fa fa-minus"></i>
+                        <div class="form-group">
+                            <div class='input-group date'>
+                                <input type='text' class="form-control datetimepicker" id="end-date" readonly placeholder="Ngày kết thúc" />
+                                <span class="input-group-addon">
+                                    <span class="fa fa-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary" id="btn-filter-chart">
+                            <i class="fa fa-filter"></i>
+                            Lọc
+                        </button>
                     </div>
                 </div>
             </div>
             <canvas id="revenueChart"></canvas>
+<!--            <button type="button" id="reset-chart">Reset</button>-->
         </div>
         <i class="fa fa-spinner fa-spin"></i>
     </div>
@@ -205,7 +225,12 @@
 </div>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/1.2.1/chartjs-plugin-zoom.min.js" integrity="sha512-klQv6lz2YR+MecyFYMFRuU2eAl8IPRo6zHnsc9n142TJuJHS8CG0ix4Oq9na9ceeg1u5EkBfZsFcV3U7J51iew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript" src="./js/jquery.datetimepicker.full.min.js"></script>
+<script src="./js/moment.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="./js/dashboard.js"></script>
 
 <?php endif; ?>

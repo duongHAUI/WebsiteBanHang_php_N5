@@ -6,6 +6,11 @@
 		echo "<script>window.open('login.php', '_self')</script>";
 	}
 	else{
+        if (empty($_GET)) {
+            header("Location: index.php?dashboard");
+            exit;
+        }
+
 		$admin_session = $_SESSION['admin_email'];
 		$get_admin = "select * from admins where admin_email = '$admin_session'";
 		$run_admin = mysqli_query($con, $get_admin);
@@ -279,6 +284,12 @@
 					}
 					if (isset($_GET['view_products'])) {
 						include("view_products.php");
+					}
+					if (isset($_GET['view_deleted_products'])) {
+						include("view_deleted_products.php");
+					}
+					if(isset($_GET['restore_pro'])){
+						include("restore_product.php");
 					}
 					if (isset($_GET['delete_product'])) {
 						include("delete_product.php");

@@ -4,9 +4,9 @@ function money_format(number) {
     const length = number.length;
     switch (true) {
         case length > 9: // 1 000 000 000
-            return number.slice(0, length - 9) + "tỷ";
+            return number.slice(0, length - 9) + "B";
         case length > 6: // 1 000 000
-            return number.slice(0, length - 6) + "tr";
+            return number.slice(0, length - 6) + "M";
         case length > 3: // 1 000
             return number.slice(0, length - 3) + "K";
         default:
@@ -14,18 +14,23 @@ function money_format(number) {
     }
 }
 
-function getActiveLabel() {
-    return $('#chart-container .btn.active').text();
-}
-
 function getData() {
     let result = null;
+
+    const start_date = $('#start-date').val();
+    const end_date = $('#end-date').val();
+
+    if (start_date && end_date && moment(start_date, 'DD/MM/YYYY').isAfter(moment(end_date, 'DD/MM/YYYY'))) {
+        alert('Ngày kết thúc phải lớn hơn ngày bắt đầu.');
+        return false;
+    }
 
     $.ajax({
         url: 'get_revenue_data.php',
         method: 'POST',
         data: {
-            unit: $('#chart-filter .btn.active').data('unit')
+            start_date,
+            end_date
         },
         dataType: 'json',
         async: false,
@@ -44,25 +49,32 @@ function getData() {
 $(document).ready(function () {
     'use strict';
 
+    $('.datetimepicker').datetimepicker({
+        timepicker: false,
+        format: 'd/m/Y',
+        maxDate: new Date()
+    });
+
     const data = getData();
 
     Chart.register(ChartDataLabels);
+    Chart.register(ChartZoom);
 
     const ctx = document.getElementById('revenueChart').getContext('2d');
 
     const myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: Object.keys(data),
+            labels: data.map(item => item.date),
             datasets: [{
-                data: Object.values(data),
+                data: data.map(item => item.amount),
                 backgroundColor: [
                     'rgb(127, 217, 199)'
                 ],
                 borderColor: [
                     'rgb(26, 188, 156)'
                 ],
-                borderWidth: 2
+                borderWidth: 2,
             }]
         },
         options: {
@@ -73,19 +85,26 @@ $(document).ready(function () {
                 }
             },
             scales: {
-                x: {
+                xAxis: {
+                    type: 'time',
                     title: {
                         display: true,
-                        text: getActiveLabel(),
+                        text: 'Ngày',
                         font: {
                             weight: 'bold'
                         }
                     },
                     grid: {
                         display: false
+                    },
+                    time: {
+                        unit: 'day',
+                        displayFormats: {
+                            day: 'dd-MM-yyyy'
+                        },
                     }
                 },
-                y: {
+                yAxis: {
                     title: {
                         display: true,
                         text: 'Doanh thu',
@@ -95,6 +114,11 @@ $(document).ready(function () {
                     },
                     grid: {
                         display: false
+                    },
+                    ticks: {
+                        callback: function(value) {
+                            return money_format(value)
+                        }
                     }
                 }
             },
@@ -105,9 +129,7 @@ $(document).ready(function () {
                 tooltip: {
                     callbacks: {
                         title: (tooltipItems) => {
-                            const month = String(new Date().getMonth() + 1).padStart(2, 0);
-                            const year = new Date().getFullYear();
-                            return getActiveLabel() + " " + tooltipItems[0].label.padStart(2, 0) +  "/" + month + "/" + year;
+                            return moment(tooltipItems[0].label, 'MMM DD, YYYY').format('DD-MM-YYYY');
                         },
                     }
                 },
@@ -117,28 +139,39 @@ $(document).ready(function () {
                     align: 'top',
                     padding: -10,
                     formatter: function (value) {
-                        return money_format(value);
+                        return value ? money_format(value) : null;
                     },
                 },
+                zoom: {
+                    pan: {
+                        enabled: true,
+                        mode: 'x',
+                    },
+                    zoom: {
+                        wheel: {
+                            enabled: true,
+                            modifierKey: 'ctrl'
+                        },
+                        pinch: {
+                            enabled: true
+                        },
+                        mode: 'x',
+                    }
+                }
             }
         }
     });
 
     /*== Handle chart filter ==*/
-    $(document).on('click', '#chart-filter .btn', function () {
-        if ($(this).hasClass('active')) {
+    $('#btn-filter-chart').click(function () {
+        const result = getData();
+        if (!result) {
             return false;
         }
 
-        $(this).siblings().removeClass('active');
-        $(this).addClass('active');
-
-        const result = getData();
-
-        myChart.data.labels = Object.keys(result);
-        myChart.data.datasets[0].data = Object.values(result);
-        myChart.options.scales.x.title.text = getActiveLabel();
-
+        myChart.data.labels = result.map(item => item.date);
+        myChart.data.datasets[0].data = result.map(item => item.amount);
+        myChart.resetZoom();
         myChart.update();
     });
 });

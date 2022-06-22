@@ -10,6 +10,7 @@ class Product extends Model
     public $mass_discount;
     public $is_mass_discount;
     public $desc;
+    public $deletedAt;
     public $cat_id;
     public $brand_id;
     public $category;
@@ -139,7 +140,8 @@ class Product extends Model
             "limit" => $limit,
             "offset" => $offset,
         ] = $queryArr;
-        $query = $select . " from " . self::TABLE_NAME . " " . $where . " " . $order . " " . $limit . " " . $offset;
+        $check_pro_delete = (empty($where) ? " where ": " and ")." deletedAt is NULL "; 
+        $query = $select . " from " . self::TABLE_NAME . " " . $where . " $check_pro_delete " . $order . " " . $limit . " " . $offset;
         $result = mysqli_query($con, $query);
 
         $products = array();

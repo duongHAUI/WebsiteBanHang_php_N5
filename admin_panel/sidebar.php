@@ -70,6 +70,9 @@
 					<li>
 						<a href="index.php?view_products">Danh sách sản phẩm</a>
 					</li>
+					<li>
+						<a href="index.php?view_deleted_products">Danh sách sản phẩm đã xóa</a>
+					</li>
 				</ul>
 			</li>
 			<li>
