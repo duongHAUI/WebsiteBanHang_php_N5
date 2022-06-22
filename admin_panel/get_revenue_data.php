@@ -3,9 +3,11 @@
 include "../db/connectdb.php";
 include "../helpers/common.php";
 
+date_default_timezone_set('Asia/Ho_Chi_Minh');
+
 $endDate = !empty($_POST['end_date'])
     ? date_format(date_create_from_format('d/m/Y', $_POST['end_date']), 'Y-m-d')
-    : date('Y-m-t');
+    : date('Y-m-d');
 
 $startDate = !empty($_POST['start_date'])
     ? date_format(date_create_from_format('d/m/Y', $_POST['start_date']), 'Y-m-d')
