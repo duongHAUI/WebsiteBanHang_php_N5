@@ -30,7 +30,11 @@ if (isset($_POST['order-again-submit'])) {
         return $acc;
     }, []);
 
-    Cart::create_many($con, array_filter($cartData));
+    $cartData = array_filter($cartData);
+
+    if (!empty($cartData)) {
+        Cart::create_many($con, $cartData);
+    }
 
     header("Location: ../../cart");
 } else {
