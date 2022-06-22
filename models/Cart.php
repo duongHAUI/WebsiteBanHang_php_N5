@@ -95,6 +95,31 @@ class Cart extends Model
     return null;
   }
 
+  public static function create_many($con, array $form)
+  {
+      $values = [];
+
+      foreach ($form as $item) {
+          [
+              "cart_qty" => $qty,
+              "cus_id" => $cus_id,
+              "pro_id" => $pro_id,
+          ] = $item;
+
+          $values[] = "('$qty', '$cus_id', '$pro_id')";
+      }
+
+      $query = "insert into " . self::TABLE_NAME . "(cart_qty, cus_id, pro_id)
+              values " . implode(',', $values);
+
+      if (mysqli_query($con, $query)) {
+          $id = mysqli_insert_id($con);
+          return self::find_by_pk($con, $id);
+      }
+
+      return null;
+  }
+
   public static function find_all($con, $conditions = array())
   {
     $queryArr = self::conditions_to_query($conditions);

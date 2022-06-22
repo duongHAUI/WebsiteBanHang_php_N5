@@ -13,8 +13,10 @@ $currentPage = $_GET['page'] ?? 1;
 $start = ($currentPage - 1) * $recordPerPage;
 
 $orderListAndCount = Order::find_all_and_count($con, [
+    "where" => "cus_id = $user_id",
     'offset' => $start,
-    'limit' => $recordPerPage
+    'limit' => $recordPerPage,
+    "order" => "createdAt DESC"
 ]);
 
 [
@@ -22,7 +24,6 @@ $orderListAndCount = Order::find_all_and_count($con, [
     'count' => $orderCount
 ] = $orderListAndCount;
 
-$orderList = Order::find_all($con, array("where" => "cus_id = $user_id", "order" => "createdAt DESC"));
 foreach ($orderList as $item) {
     $item->populated($con, 'customer');
 }
@@ -75,7 +76,7 @@ $totalPage = ceil($orderCount / $recordPerPage);
                         <h5>Trạng thái</h5>
                         <h5>Tổng tiền</h5>
                         <h5>Ngày mua</h5>
-                        <h5 ></h5>
+                        <h5></h5>
                     </div>
 
                     <?php foreach ($orderList as $item): ?>
@@ -83,7 +84,7 @@ $totalPage = ceil($orderCount / $recordPerPage);
                             <h5 style="margin: 0">#<?= $item->id ?></h5>
                             <div>
                                 <span class="badge bg-secondary rounded-pill fw-normal">
-                                    <?= ucfirst($item->status) ?>
+                                    <?= ucfirst($item->payment_methods) ?>
                                 </span>
                             </div>
                             <div><?= currency_format($item->amount) ?></div>

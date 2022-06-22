@@ -1,6 +1,6 @@
 <?php
 
-include "constants.php";
+include_once "constants.php";
 
 if (session_id() == '' || !isset($_SESSION) || session_status() === PHP_SESSION_NONE) {
     session_start();

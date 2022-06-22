@@ -1,10 +1,10 @@
 /*== This function to format the money ==*/
 function money_format(number) {
-    number = String(number)
+    number = String(parseInt(number))
     const length = number.length;
     switch (true) {
         case length > 9: // 1 000 000 000
-            return number.slice(0, length - 8) + "tỷ";
+            return number.slice(0, length - 9) + "tỷ";
         case length > 6: // 1 000 000
             return number.slice(0, length - 6) + "tr";
         case length > 3: // 1 000
@@ -115,7 +115,7 @@ $(document).ready(function () {
                     display: true,
                     anchor: 'end',
                     align: 'top',
-                    padding: 0,
+                    padding: -10,
                     formatter: function (value) {
                         return money_format(value);
                     },

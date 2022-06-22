@@ -5,6 +5,7 @@ include_once "models/index.php";
 include_once "./db/connectdb.php";
 include_once "helpers/common.php";
 include_once "./controllers/formatCurrency.php";
+include_once "helpers/config.php";
 
 $id = $_GET['id'] ?? 0;
 $order = Order::find_by_pk($con, $id);
@@ -50,12 +51,77 @@ foreach ($order->detail as $item) {
                 <?php include_once "sidebar.php" ?>
             </div>
             <div class="col-9">
-                <h3>
-                    <i class="bx bxs-cart-alt text-danger"></i>
-                    Chi tiết đơn hàng
-                </h3>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <h3>
+                            <i class="bx bxs-cart-alt text-danger"></i>
+                            Chi tiết đơn hàng
+                        </h3>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <form action="./controllers/product/order-again.php" method="post">
+                            <input type="hidden" name="order_id" value="<?= $_GET['id'] ?? 0 ?>" />
+                            <button type="submit" class="btn-custom" name="order-again-submit">Đặt hàng lại</button>
+                        </form>
+                    </div>
+                </div>
 
-                <div class="order-detail-content mt-3">
+                <?php include "order-detail-tabbar.php"; ?>
+
+                <?php if ($order->status == 0): ?>
+                    <div class="text-end">
+                        <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#cancel-order-modal">Hủy đơn hàng</button>
+                    </div>
+
+                    <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" id="cancel-order-modal">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <form action="./controllers/product/cancel-order.php" method="post" data-validate="true">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Hủy đơn hàng</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="cancel_reason" class="form-label">Vui lòng chọn lý do hủy</label>
+
+                                            <?php foreach ($cancelReason as $key => $item): ?>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="cancel_reason" id="cancel_reason_<?= $key ?>" value="<?= $item ?>" data-rule-required="true" data-msg-required="Vui lòng chọn 1 lý do">
+                                                    <label class="form-check-label" for="cancel_reason_<?= $key ?>">
+                                                        <?= $item ?>
+                                                    </label>
+                                                </div>
+                                            <?php endforeach; ?>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" id="cancel_reason_other" name="cancel_reason" value="other" data-rule-required="true" data-msg-required="Vui lòng chọn 1 lý do">
+                                                <label class="form-check-label" for="cancel_reason_other">
+                                                    Khác
+                                                </label>
+                                            </div>
+
+                                            <div class="form-group mt-2" id="cancel_reason_input" style="display: none;">
+                                                <input type="text" name="cancel_reason_text" placeholder="Vui lòng cho biết lý do" class="form-control" data-rule-required="true" data-msg-required="Vui lòng nhập lý do hủy" />
+                                            </div>
+
+                                            <input type="hidden" value="<?= $_GET['id'] ?? 0 ?>" name="order_id" />
+
+                                            <label for="cancel_reason" class="error"></label>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy bỏ</button>
+                                        <button type="submit" class="btn btn-danger" name="submit-cancel-order">Đồng ý</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
+                <?php $subtotal = 0; ?>
+                <div class="order-detail-content card mt-3">
                     <div class="order-detail-header">
                         <div>
                             <div class="order-detail-header-title">Mã đơn hàng:</div>
@@ -80,7 +146,12 @@ foreach ($order->detail as $item) {
                                     </div>
                                 </div>
                                 <div class="col-3 order-detail-item-total" style="text-align: right">
-                                    Tổng tiền: <?= currency_format($item->product->price * $item->quantity) ?>
+                                    Tổng tiền:
+                                    <?php
+                                        $price = $item->product->price * $item->quantity;
+                                        $subtotal += $price;
+                                        echo currency_format($price)
+                                    ?>
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -91,23 +162,17 @@ foreach ($order->detail as $item) {
                     <div class="col">
                         <div class="card order-detail-address">
                             <div class="card-body">
-                                <h5>Địa chỉ thanh toán</h5>
-                                <p><h6>Người nhận:</h6> <?=  $order->receiver ?></p>
-                                <p><h6>Số điện thoại:</h6> <?=  $order->phone ?></p>
-                                <p><h6>Địa chỉ:</h6> <?=  $order->address ?></p>
-                                <p><h6>Ghi chú:</h6> <?= $order->note ?></p>
+                                <h5>Địa chỉ giao hàng</h5>
+                                <p><strong>Người nhận:</strong> <?= $order->receiver ?></p>
+                                <p><strong>Số điện thoại:</strong> <?= $order->phone ?></p>
+                                <p><strong>Địa chỉ:</strong> <?= $order->address ?></p>
+                                <p><strong>Ghi chú:</strong> <?= $order->note ?></p>
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="card order-detail-amount">
                             <div class="card-body">
-                                <?php
-                                    $subtotal = array_reduce($order->detail, function ($acc, $cur) {
-                                        $acc += $cur->price * $cur->quantity;
-                                        return $acc;
-                                    }, 0);
-                                ?>
                                 <h5>Tổng thanh toán</h5>
                                 <div>
                                     <div class="order-detail-amount-title">Tạm tính:</div>
@@ -122,7 +187,7 @@ foreach ($order->detail as $item) {
                                     <h6>Thành tiền:</h6>
                                     <h6><?= currency_format($order->amount) ?></h6>
                                 </div>
-                                <div style="font-size: 14px;" class="mt-3"><?= $order->status ?></div>
+                                <div style="font-size: 14px;" class="mt-3"><?= $order->payment_methods ?></div>
                             </div>
                         </div>
                     </div>
@@ -133,5 +198,28 @@ foreach ($order->detail as $item) {
 </div>
 
 <?php include_once("footer.php"); ?>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+<script src="./js/jquery.validate.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        'use strict';
+
+        $("form[data-validate='true']").validate();
+
+        $("#cancel-order-modal input[name='cancel_reason']").change(function () {
+            const _this = $(this);
+
+            const value = _this.val();
+            if (value === 'other') {
+                _this.parents('form').find('#cancel_reason_input').show();
+            } else {
+                _this.parents('form').find('#cancel_reason_input').hide();
+            }
+        });
+    });
+</script>
 </body>
 </html>
