@@ -6,6 +6,11 @@
   margin-left: auto;
   margin-right: auto;
 }
+a,
+button {
+  border: none !important;
+  outline: none;
+}
 
 .header {
   display: flex;
@@ -45,6 +50,7 @@ h1 {
   padding: 10px 0;
   border-top: 1px solid rgba(128, 128, 128, 0.15);
   grid-gap: 10px;
+  flex-wrap: wrap;
 }
 
 .last-item {
@@ -131,6 +137,11 @@ h1 {
   padding: 40px 100px;
 }
 
+.btn-checkout:disabled {
+  background-color: rgb(133, 133, 133) !important;
+  cursor: unset;
+}
+
 .btn-checkout > span {
   margin: 0 10px;
   border-left: 1px solid rgba(209, 209, 209, 0.35);
@@ -141,4 +152,10 @@ h1 {
   font-size: 20px;
   color: rgba(63, 63, 63, 0.76);
   margin-bottom: 60px;
+}
+
+.item-notify {
+  flex-basis: 100%;
+  color: rgb(255, 52, 52);
+  font-style: italic;
 }
