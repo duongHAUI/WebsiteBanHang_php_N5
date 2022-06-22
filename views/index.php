@@ -155,7 +155,7 @@
             ?>
             <div class="row">
                 <?php  
-                    $products = Product::find_all($con,array("limit"=>4));
+                    $products = Product::find_all($con,array("limit"=>4,"order"=>"product_sold DESC"));
                     foreach ($products as $key => $value) {
                 ?>
                         <div class="col-3 col-md-6 col-sm-12 cards">
@@ -245,5 +245,7 @@
     <!-- <script src="./js/app.js"></script> -->
     <script src="./js/lastestProduct.js"></script>
     <script src="./js/addCartHeader.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="./admin_panel/js/notify.min.js"></script>
 </body>
 </html>
