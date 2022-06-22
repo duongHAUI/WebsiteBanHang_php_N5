@@ -6,6 +6,11 @@
 		echo "<script>window.open('login.php', '_self')</script>";
 	}
 	else{
+        if (empty($_GET)) {
+            header("Location: index.php?dashboard");
+            exit;
+        }
+
 		$admin_session = $_SESSION['admin_email'];
 		$get_admin = "select * from admins where admin_email = '$admin_session'";
 		$run_admin = mysqli_query($con, $get_admin);
