@@ -71,7 +71,6 @@
         </div>
     </div>
     <!-- end hero section -->
-
     <!-- promotion section -->
     <div class="promotion">
         <div class="row">
@@ -122,7 +121,6 @@
         </div>
     </div>
     <!-- end product list -->
-
     <!-- special product -->
     <div class="bg-second">
         <div class="section container">
@@ -160,7 +158,6 @@
                     $products = Product::find_all($con,array("limit"=>4));
                     foreach ($products as $key => $value) {
                 ?>
-                    
                         <div class="col-3 col-md-6 col-sm-12 cards">
                             <div class="product-card">
                                 <div class="product-discount">-<?= $value->getDiscount() ?>%</div>
@@ -187,7 +184,6 @@
                                 </div>
                             </div>
                         </div>
-                    
                 <?php } ?>
             </div>
             <div class="section-footer">

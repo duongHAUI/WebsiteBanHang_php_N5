@@ -34,17 +34,17 @@ include "./helpers/common.php";
 
             <form action="./controllers/auth/register.php" id="login-form" method="post" data-validate="true">
                 <div class="form-container">
-                    <input type="text" name="customer_email" data-rule-required="true" data-msg-required="Email is required" data-rule-email="true" data-msg-email="Email is invalid" value="<?= old('customer_email') ?>" required />
+                    <input type="text" name="customer_email" data-rule-required="true" data-msg-required="Email không được để trống" data-rule-email="true" data-msg-email="Email không hợp lệ" value="<?= old('customer_email') ?>" required />
                     <label>Email</label>
                     <div class="bar"></div>
                 </div>
                 <div class="form-container">
-                    <input type="text" name="customer_name" data-rule-required="true" data-msg-required="Full name is required" value="<?= old('customer_name') ?>" required />
+                    <input type="text" name="customer_name" data-rule-required="true" data-msg-required="Họ tên không được để trống" value="<?= old('customer_name') ?>" required />
                     <label>Họ và tên</label>
                     <div class="bar"></div>
                 </div>
                 <div class="form-container">
-                    <input type="password" name="customer_password" data-rule-required="true" data-msg-required="Password is required" data-rule-password="true" id="customer_password" required />
+                    <input type="password" name="customer_password" data-rule-required="true" data-msg-required="Mật khẩu không được để trống" data-rule-password="true" id="customer_password" required />
                     <label>Mật khẩu</label>
                     <div class="bar"></div>
                 </div>
