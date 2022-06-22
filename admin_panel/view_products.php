@@ -9,12 +9,12 @@ if (!isset($_SESSION['admin_email'])) {
                 if (isset($_POST['mass_update_discount'])) {
                     $discount = $_POST['apply_discount_on_products'];
                     $sql = "UPDATE products SET product_mass_discount = '$discount', is_mass_discount = 1";
-                    if (!empty($_POST['selected-products'])) {
-                        $selectedProducts = implode(',', $_POST['selected-products']);
+                    if (!empty($_POST['selected-categories'])) {
+                        $selectedCategories = implode(',', $_POST['selected-categories']);
 
-                        mysqli_query($con, "UPDATE products SET product_mass_discount = NULL, is_mass_discount = 0 WHERE product_id NOT IN ($selectedProducts)");
+                        mysqli_query($con, "UPDATE products SET product_mass_discount = NULL, is_mass_discount = 0 WHERE cat_id NOT IN ($selectedCategories)");
 
-                        $sql .= " WHERE product_id IN ($selectedProducts)";
+                        $sql .= " WHERE cat_id IN ($selectedCategories)";
                     }
 
                     mysqli_query($con, $sql);
@@ -79,7 +79,7 @@ if (!isset($_SESSION['admin_email'])) {
                             <tbody>
                             <?php
                             $i = 0;
-                            $get_pro = "select * from products";
+                            $get_pro = "select * from products where deletedAt is NULL";
                             $run_pro = mysqli_query($con, $get_pro);
                             while ($row_pro = mysqli_fetch_assoc($run_pro)) {
                                 $pro_id = $row_pro['product_id'];
@@ -135,7 +135,7 @@ if (!isset($_SESSION['admin_email'])) {
                         <div class="row">
                             <div class="col-xs-6">
                                 <h4 class="modal-title">
-                                    <strong>Áp dụng giảm giá cho nhiều sản phẩm</strong>
+                                    <strong>Áp dụng giảm giá hàng loạt</strong>
                                 </h4>
                             </div>
                             <div class="col-xs-6">
@@ -154,7 +154,7 @@ if (!isset($_SESSION['admin_email'])) {
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-3" style="line-height: 40px;">
-                                    <label for="select_applicable_products">Chọn ít nhất 1 sản phẩm</label>
+                                    <label for="select_applicable_products">Chọn ít nhất 1 thể loại</label>
                                 </div>
                                 <div class="col-md-9">
                                     <div class="checkbox">
@@ -165,14 +165,17 @@ if (!isset($_SESSION['admin_email'])) {
                                 </div>
                             </div>
                             <div class="row" id="select-product-container">
-                                <?php $result = mysqli_query($con, $get_pro); ?>
+                                <?php 
+                                     $get_cat = "select * from categories";
+                                    $result = mysqli_query($con, $get_cat); 
+                                ?>
 
                                 <?php while ($row = mysqli_fetch_assoc($result)): ?>
                                     <div class="select-product-item col-md-6">
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" value="<?= $row['product_id'] ?>" name="selected-products[]" />
-                                                <?= $row['product_title'] ?>
+                                                <input type="checkbox" value="<?= $row['cat_id'] ?>" name="selected-categories[]" />
+                                                <?= $row['cat_title'] ?>
                                             </label>
                                         </div>
                                     </div>
@@ -214,9 +217,9 @@ if (!isset($_SESSION['admin_email'])) {
     $('form[data-validate="true"]').validate({
         submitHandler: function (form) {
             const formData = $(form).serializeArray();
-            const flag = formData.some(item => item.name === 'selected-products[]' && !isEmpty(item.value))
+            const flag = formData.some(item => item.name === 'selected-categories[]' && !isEmpty(item.value))
             if (!flag) {
-                return alert("Vui lòng chọn ít nhất 1 sản phẩm");
+                return alert("Vui lòng chọn ít nhất 1 thể loại");
             }
 
             form.submit();

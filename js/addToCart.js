@@ -21,7 +21,7 @@ quantity.onchange = ()=>{
 
 addCart.onclick  =()=>{
 
-    if(quantity.value > addCart.getAttribute('quantity')){
+    if(Number(quantity.value) > Number(addCart.getAttribute('quantity'))){
         alert("Số lượng không đủ!");
     }
     else{
