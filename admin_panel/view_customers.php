@@ -34,7 +34,6 @@
 								<th>Thành phố</th>
 								<th>Địa chỉ</th>
 								<th>Số điện thoại</th>
-								<th>Xóa</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -63,11 +62,6 @@
 								<td><?php echo $c_city; ?></td>
 								<td><?php echo $c_address; ?></td>
 								<td><?php echo $c_phone; ?></td>
-								<td>
-									<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">
-										<a href="index.php?delete_customer=<?php echo $c_id; ?>"><i class="fa fa-trash"></i> Xóa</a>
-									</button>
-								</td>
 							</tr>
 							<?php 
 								}

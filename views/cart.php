@@ -74,7 +74,7 @@ for ($i = 0; $i < count($carts); $i++) {
         ?>
           <div class="item <?= $last_item ?>">
             <div class="item_img">
-              <img src="images/<?= $thumb ?>" alt="">
+              <a href="product-detail?pro_id=<?=$product->id?>"><img src="images/<?= $thumb ?>" alt=""></a>
             </div>
             <p class="item_name"><?= $name ?></p>
             <div class="item-price">
