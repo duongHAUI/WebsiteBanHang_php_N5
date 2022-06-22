@@ -22,7 +22,7 @@ quantity.onchange = ()=>{
 addCart.onclick  =()=>{
 
     if(Number(quantity.value) > Number(addCart.getAttribute('quantity'))){
-        alert("Số lượng không đủ!");
+        $.notify('Số lượng không đủ!', 'error');
     }
     else{
         var pro_id = addCart.getAttribute("pro_id");

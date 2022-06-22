@@ -71,7 +71,7 @@ if (!isset($_SESSION['admin_email'])) {
                                 <th>Giá bán</th>
                                 <th>Số lượng</th>
                                 <th>Sản phẩm đã bán</th>
-                                <th>Ngày sản xuất</th>
+                                <th>Ngày nhập</th>
                                 <th>Xóa</th>
                                 <th>Sửa</th>
                             </tr>
