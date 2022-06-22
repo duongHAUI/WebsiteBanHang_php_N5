@@ -261,9 +261,9 @@ class Order extends Model
         return $order;
     }
 
-    public static function update_cancel_reason($con, int $order_id, string $cancel_reason): \mysqli_result|bool
+    public static function update_cancel_reason($con, int $order_id, string $cancel_reason): \mysqli_result
     {
-        $query = "UPDATE " . self::TABLE_NAME . " SET order_cancel_reason = '$cancel_reason', order_status=".CANCELLED_STATUS." WHERE order_id = $order_id";
+        $query = "UPDATE " . self::TABLE_NAME . " SET order_cancel_reason = '$cancel_reason', order_status=" . CANCELLED_STATUS . " WHERE order_id = $order_id";
         return mysqli_query($con, $query);
     }
 }
