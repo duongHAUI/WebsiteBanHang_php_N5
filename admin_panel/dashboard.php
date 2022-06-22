@@ -121,7 +121,7 @@
                     <div class="chart-filter">
                         <div class="form-group">
                             <div class='input-group date'>
-                                <input type='text' class="form-control datetimepicker" id="start-date" readonly placeholder="Ngày bắt đầu" />
+                                <input type='text' class="form-control datetimepicker" id="start-date" placeholder="Ngày bắt đầu" />
                                 <span class="input-group-addon">
                                     <span class="fa fa-calendar"></span>
                                 </span>
@@ -130,7 +130,7 @@
                         <i class="fa fa-minus"></i>
                         <div class="form-group">
                             <div class='input-group date'>
-                                <input type='text' class="form-control datetimepicker" id="end-date" readonly placeholder="Ngày kết thúc" />
+                                <input type='text' class="form-control datetimepicker" id="end-date" placeholder="Ngày kết thúc" />
                                 <span class="input-group-addon">
                                     <span class="fa fa-calendar"></span>
                                 </span>
