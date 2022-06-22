@@ -130,9 +130,9 @@ include_once("footer.php");
                 data: {page: currentPage, limit: <?= $recordPerPage ?>, keywords: '<?= $keywords ?>'},
                 beforeSend: function () {
                     btnViewMore.prop('disabled', true).find('.fa-spinner').show();
-                }
+                },
+                dataType: 'json'
             }).done(response => {
-                response = JSON.parse(response);
                 $('#search-container').append(response.data);
                 if (currentPage === response.totalPage) {
                     btnViewMore.hide();

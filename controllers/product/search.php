@@ -34,7 +34,7 @@ foreach ($productList as $item) {
     $result .= "
         <div class='col-3 col-md-6 col-sm-12 cards' data-id='$item->id'>
             <div class='product-card'>
-                <div class='product-discount'>-$item->getDiscount()%</div>
+                <div class='product-discount'>-".$item->getDiscount()."%</div>
                 <a href='product-detail?pro_id=$item->id'>
                     <div class='product-card-img'>
                         <img src='images/{$item->get_images($con)[0]->link}' alt='$item->title'>
