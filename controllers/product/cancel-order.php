@@ -10,7 +10,7 @@ if (isset($_POST['submit-cancel-order'])) {
     [
         'order_id' => $orderId,
         'cancel_reason' => $cancelReason,
-        'cancel_reason _text' => $cancelReasonText
+        'cancel_reason_text' => $cancelReasonText
     ] = $_POST;
 
     if (empty($cancelReason) || ($cancelReason === 'other' && empty($cancelReasonText))) {
