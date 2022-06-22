@@ -3,7 +3,7 @@ namespace Models;
 
 include_once("models/index.php");
 include_once("./db/connectdb.php");
-
+include_once "./controllers/formatCurrency.php";
 $keywords = htmlspecialchars(trim($_GET['keywords'] ?? ''), ENT_COMPAT);
 
 $recordPerPage = 8;
@@ -69,7 +69,7 @@ include_once("header.php");
                                 <a href="product-detail?pro_id=<?= $item->id ?>">
                                     <div class="product-card-img">
                                         <img src="images/<?= $item->get_images($con)[0]->link ?>" alt="<?= $item->title ?>">
-                                        <img src="images/<?= $item->get_images($con)[0]->link ?>" alt="<?= $item->title ?>">
+                                        <img src="images/<?= $item->get_images($con)[1]->link ?>" alt="<?= $item->title ?>">
                                     </div>
                                 </a>
                                 <div class="product-card-info">
@@ -83,8 +83,8 @@ include_once("header.php");
                                         <?= $item->title ?>
                                     </a>
                                     <div class="product-card-price">
-                                        <span><del>$<?= $item->price ?></del></span>
-                                        <span class="curr-price">$<?= $item->priceDiscount() ?></span>
+                                        <span><del><?= currency_format($item->price) ?></del></span>
+                                        <span class="curr-price"><?= currency_format($item->priceDiscount()) ?></span>
                                     </div>
                                 </div>
                             </div>

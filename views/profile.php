@@ -9,44 +9,6 @@
     $user_id = $_SESSION['c_user']['id'];
     $customer = Customer::find_by_pk($con, $user_id);
 
-    // function stdName ($astr) {
-    //     // Chuẩn hóa xâu $astr theo định dạng tên người, tên địa danh
-    //     $retval = $astr;
-    //     //$retval = mb_convert_case($astr, MB_CASE_TITLE, "UTF-8");
-    //     // $astr ==> $retval
-    //     //xoa dau cach o dau
-    //     $length = strlen($retval);
-    //     while(substr($retval,0,1)==' ')
-    //     {
-    //     $retval = substr($retval,1,$length);
-    //     $length--;
-    //     }
-    //     //viết hoa kí tự đầu
-    //     $retval = ucfirst($retval);
-    //     //xóa dấu cách ở cuỗi
-    //     $length = strlen($retval);
-    //     while(substr($retval,-1,1)=='')
-        
-    //     {
-    //     $retval = substr($retval,0,$length-1);
-    //     $length--;
-    //     }
-    //     //Xóa dấu cách ở giữa
-        
-    //     $length = strlen($retval);
-    //     for($i=0;$i< $length; $i ++){
-    //     $length = strlen($retval);
-    //     if(substr($retval,$i,1)==' '){
-    //     $flag = $i;
-    //     while(substr($retval,$flag,1)==' ')
-    //     $flag ++;
-    //     $retval = substr($retval,0,$i)." ".ucfirst(substr($retval,$flag,$length)) ;
-    //     }//end if
-        
-    //     }//end for
-    //     $retval = mb_convert_case($retval,MB_CASE_TITLE,"UTF-8");
-    //     return $retval;
-    //     }
 
     function is_phone($str) {
         return (!preg_match("/^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/", $str)) ? false : true;

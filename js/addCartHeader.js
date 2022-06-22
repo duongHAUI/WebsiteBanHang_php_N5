@@ -1,5 +1,5 @@
 function addToCart(id){
-    alert('Sản phẩm đã được thêm vào giỏ hàng!');
+    alert("Sản phẩm đã được thêm vào giỏ hàng");
     var xmlhttp=new XMLHttpRequest();
     xmlhttp.onreadystatechange=function() {
         if (this.readyState==4 && this.status==200) {

@@ -85,6 +85,15 @@
                                 <i class='bx bxs-star'></i>
                             </span>
                         </div>
+                        <div class="product-info-detail">
+                            <span class="product-info-detail-title">Số lượng: </span>
+                            <a href="#"><?php $a =  $product->quantity <= 0 ? '<span style="color:red">Sản phẩm hết hàng!</span>' :  $product->quantity;
+                            echo $a; ?></a>
+                        </div>
+                        <div class="product-info-detail">
+                            <span class="product-info-detail-title">Đã bán: </span>
+                            <a href="#"><?=$product->sold?></a>
+                        </div>
                         <p class="product-description">
                             <?= $product->desc?>
                         </p>
@@ -105,11 +114,12 @@
                             </span>
                         </div>
                         <div>
-                            <button id="add-to-cart-prodetail" pro_id="<?=$product->id?>" class="btn-flat btn-hover">Thêm vào giỏ hàng</button>
+                            <button   id="add-to-cart-prodetail" quantity="<?=$product->quantity?>" pro_id="<?=$product->id?>" class="btn-flat btn-hover">Thêm vào giỏ hàng</button>
                         </div>
                     </div>
                 </div>
             </div>
+            
             <div class="box">
                 <div class="box-header">
                     Sản phẩm liên quan

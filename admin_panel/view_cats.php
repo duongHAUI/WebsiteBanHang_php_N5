@@ -55,7 +55,7 @@
 									</button>
 								</td>
 								<td>
-									<button class="btn btn-danger">
+									<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">
 										<a href="index.php?delete_cat=<?php echo $cat_id; ?>"><i class="fa fa-trash"></i> Xóa</a>
 									</button>
 								</td>
