@@ -4,6 +4,7 @@
 		echo "<script>window.open('login.php', '_self')</script>";
 	else:
         include_once "../controllers/formatCurrency.php";
+        include_once "../helpers/config.php";
 ?>
 
 <div class="row">
@@ -160,41 +161,36 @@
                 <thead>
                 <tr>
                     <th>Mã đơn hàng</th>
-                    <th>Email</th>
-                    <th>Mã hóa đơn</th>
-                    <th>Mã sản phẩm</th>
-                    <th>Số lượng sản phẩm</th>
+                    <th>Khách hàng</th>
+                    <th>Số điện thoại</th>
+                    <th>Ngày đặt</th>
+                    <th>Tổng tiền</th>
+                    <th>Trạng thái đơn hàng</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php
-                $i=0;
-                $get_order = "select * from orders order by 1 DESC LIMIT 0,5";
+                $get_order = "select * from orders where order_status = " . WAIT_CONFIRM_STATUS . " order by order_id DESC LIMIT 0, 10";
                 $run_order = mysqli_query($con, $get_order);
                 while ($row_order=mysqli_fetch_array($run_order)) {
-                    $order_id = $row_order['order_id'];
-                    $c_id = $row_order['cus_id'];
-                    $order_amount = $row_order['order_amount'];
-                    $order_address = $row_order['order_address'];
-                    $order_receiver = $row_order['order_receiver'];
-                    $order_status = $row_order['order_status'];
-                    $i++;
-
+                    $get_customer = "select * from customers where customer_id = {$row_order['cus_id']}";
+                    $run_customer = mysqli_query($con, $get_customer);
+                    $row_customer = mysqli_fetch_array($run_customer);
                     ?>
                     <tr>
-                        <td><?php echo $i; ?></td>
+                        <td><?= $row_order['order_id']; ?></td>
+                        <td><?= $row_customer['customer_name'] ?></td>
+                        <td><?= $row_customer['customer_phone'] ?></td>
+                        <td><?= date('d/m/Y', strtotime($row_order['createdAt'])) ?></td>
+                        <td><?= number_format($row_order['order_amount']) ?>đ</td>
                         <td>
-                            <?php
-                            $get_customer = "select * from customers where customer_id = '$c_id'";
-                            $run_customer = mysqli_query($con, $get_customer);
-                            $row_customer = mysqli_fetch_array($run_customer);
-                            $customer_email = $row_customer['customer_email'];
-                            echo $customer_email;
-                            ?>
+                            <span class="badge badge-<?= $orderStatus[$row_order['order_status']]['variant'] ?>">
+                                <?= $orderStatus[$row_order['order_status']]['label'] ?>
+                            </span>
+                            <?php if ($row_order['order_status'] == CANCELLED_STATUS): ?>
+                                <br /><strong>Lý do: </strong> <?= $row_order['order_cancel_reason'] ?>
+                            <?php endif; ?>
                         </td>
-                        <td style="text-align: left;"><?php echo currency_format($order_amount); ?></td>
-                        <td><?php echo $order_receiver; ?></td>
-                        <td><?php echo $order_address; ?></td>
                     </tr>
                     <?php
                 }
